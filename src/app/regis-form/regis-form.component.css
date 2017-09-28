@@ -1,0 +1,22 @@
+:host {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+.example-full-width {
+    width: 100%;
+}
+.regis-title {
+    font-weight:bold;
+    font-size: 40px;
+    margin:1.5em 0;
+    display:block;
+}
+.button-style {
+    margin:2.5em 0;
+}
+.gender-style {
+    margin:1.5em 0;
+}
