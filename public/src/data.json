@@ -1,0 +1,19 @@
+{
+    "screenshots": [
+        {
+            "img": "assets/images/city.jpg",
+            "description": "Awesome!",
+            "liked":"0"
+        },
+        {
+            "img": "assets/images/mountain.jpg",
+            "description": "Awesome!",
+            "liked":"0"
+        },
+        {
+            "img": "assets/images/color.jpg",
+            "description": "Awesome!",
+            "liked":"0"
+        }
+    ]
+}
