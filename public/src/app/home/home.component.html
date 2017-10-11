@@ -1,0 +1,60 @@
+<div class="make-post">
+  <md-expansion-panel>
+    <md-expansion-panel-header>
+      <md-panel-title>
+        Make Post
+      </md-panel-title>
+      <md-panel-description>
+        What's on your mind?
+      </md-panel-description>
+    </md-expansion-panel-header>
+
+    <md-form-field class="textwidth">
+      <input mdInput #message maxlength="256" placeholder="Say something">
+      <md-hint align="start"><strong>Don't disclose personal info</strong> </md-hint>
+      <md-hint align="end">{{message.value.length}} / 256</md-hint>
+    </md-form-field>
+    <div class="input">
+      <input class="ng-hide" id="input-file-id" multiple type="file" #inputFile hidden/>
+      <button color="primary" id="selectFile" md-raised-button>
+        <Label for="input-file-id">
+          <i class="material-icons md-18 icon-align">insert_photo</i>
+          Photo
+        </Label>
+      </button>
+      <button color="warn" md-raised-button>Post</button>
+    </div>
+  </md-expansion-panel>
+</div>
+<md-card class="post-card" *ngFor="let spaceScreen of spaceScreens | slice: [start] : [end]; let i = index">
+  <md-card-header>
+    <div md-card-avatar class="post-image"></div>
+    <md-card-title>{{spaceScreen.name}}</md-card-title>
+    <md-card-subtitle>{{spaceScreen.remark}}</md-card-subtitle>
+  </md-card-header>
+  <img md-card-image src="{{spaceScreen.img}}" alt="post photo">
+  <md-card-content>
+    <p>{{spaceScreen.description}}</p>
+  </md-card-content>
+  <md-card-actions>
+    <button md-button (click)="likeMe(i)">
+      <i class="material-icons md-18" [class.red-color]="spaceScreen.liked == '1'">favorite</i> 
+    </button>
+    <button md-button (click)="commentMe(i)">
+      <i class="material-icons md-18">insert_comment</i> 
+    </button>
+    <button md-button (click)="shareMe(i)">
+      <i class="material-icons md-18">share</i> 
+    </button>
+    <!-- <button md-button (click)="deleteMe(i)">
+      <i class="material-icons md-18">delete</i> 
+    </button> -->
+  </md-card-actions>
+</md-card>
+<div class="make-post">
+  <md-paginator [length]="spaceScreens.length"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="pageSizeOptions"
+  (page)="pageEvent = $event; pageChange($event)">
+  </md-paginator>
+</div>

@@ -1,0 +1,32 @@
+<form (submit)="signupUser()">
+    <div>
+      <label class="regis-title">Register</label>
+    </div>
+    <md-form-field class="example-full-width">
+        <input mdInput placeholder="Username" name="username" [(ngModel)]="newUser.username">
+    </md-form-field>
+    <md-form-field class="example-full-width">
+        <input type ="password" mdInput placeholder="Password" name="password" [(ngModel)]="newUser.password">
+    </md-form-field>
+    <md-form-field class="example-full-width">
+      <input type ="password" mdInput placeholder="Confirm Password">
+    </md-form-field>
+    <md-form-field class="example-full-width">
+      <input type ="password" mdInput placeholder="Email">
+    </md-form-field>
+    <md-form-field>
+      <input mdInput [mdDatepicker]="picker" placeholder="Birthdate">
+      <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
+      <md-datepicker #picker startView="year" [startAt]="startDate"></md-datepicker>
+    </md-form-field>
+    <div class="gender-style">
+      <md-radio-group>
+      <md-radio-button value="1">Male</md-radio-button>
+      <md-radio-button value="2">Female</md-radio-button>
+    </md-radio-group>
+    </div>
+    <div class="button-style">    
+      <button color ="primary" type ="submit" md-raised-button>Submit</button>
+      <button color ="primary" routerLink="/" md-raised-button>Cancel</button>
+    </div>
+  </form>
