@@ -37,7 +37,18 @@ export class UserService {
     return this._http.get('/users').map(data => data.json()).toPromise();
   }
   loginUser(username: String, password: String) {
-    return this._http.post('/users/authenticate', { username: username, password: password})
-    .map(data => data.json()).toPromise();
+    return this._http.post('/users/authenticate', { username: username, password: password })
+      // .map(data => data.json()).toPromise();
+      .map(data => {
+        // login successful if there's a jwt token in the response
+        const user = data.json();
+        // console.log(user);
+        if (user && user.token) {
+          // store user details and jwt token in local storage to keep user logged in between page refreshes
+          localStorage.setItem('currentUser', JSON.stringify(user));
+        }
+
+        return user.success;
+      }).toPromise();
   }
 }

@@ -2,12 +2,12 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
-
+const config = require('../config/database');
 const User = require('../models/user');
 
 //Register
 router.post('/register', (req, res, next) => {
-    //delete req.body._id
+    delete req.body._id
     let newUser = new User({
         //name: req.body.name,
         //email: req.body.email,
@@ -40,17 +40,19 @@ router.post('/authenticate', (req, res, next) => {
         User.comparePassword(password, user.password, (err, isMatch) => {
             if(err) throw err;
             if(isMatch){
-                const token = jwt.sign(user, config.secret, {
-                    expiresIn:604800//1 week
-                });
+                console.log(user);
+                const token = jwt.sign({ sub: user._id }, config.secret, {
+                     expiresIn:604800//1 week
+                 });
+                //console.log(token);
                 res.json({
                     success:true,
                     token:'JWT '+token,
                     user:{
-                        id:user.id,
-                        name:user.name,
+                        id:user._id,
+                        //name:user.name,
                         username:user.username,
-                        email:user.email
+                        //email:user.email
                     }
                 });
             } else {

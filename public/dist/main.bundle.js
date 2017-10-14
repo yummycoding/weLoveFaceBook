@@ -689,11 +689,27 @@ var LoginFormComponent = (function () {
         var password = e.target.elements[1].value;
         this.signinUser.username = username;
         this.signinUser.password = password;
+        // this.user.loginUser(username, password)
+        // .subscribe(
+        //     data => {
+        //       console.log(data);
+        //         this.router.navigate(['dashboard']);
+        //     },
+        //     error => {
+        //       console.log(error);
+        //         // this.alertService.error(error);
+        //         // this.loading = false;
+        //     });
         this.user.loginUser(username, password)
             .then(function (status) {
-            localStorage.setItem('currentUser', JSON.stringify(_this.signinUser));
-            _this.user.setUserLoggedIn();
-            _this.router.navigate(['dashboard']);
+            console.log(status);
+            if (status) {
+                _this.router.navigate(['dashboard']);
+                _this.user.setUserLoggedIn();
+            }
+            else {
+                _this.router.navigate(['']);
+            }
         }).catch(function (err) { return console.log(err); });
     };
     LoginFormComponent.prototype.getUser = function () {
@@ -988,7 +1004,7 @@ var UserService = (function () {
         return this.isUserLoggedIn;
     };
     UserService.prototype.create = function (user) {
-        return this._http.post('/users/users', user).map(function (data) { return data.json(); }).toPromise();
+        return this._http.post('/users/register', user).map(function (data) { return data.json(); }).toPromise();
     };
     UserService.prototype.destroy = function (user) {
         return this._http.delete('/users/' + user._id).map(function (data) { return data.json(); }).toPromise();
@@ -1004,7 +1020,16 @@ var UserService = (function () {
     };
     UserService.prototype.loginUser = function (username, password) {
         return this._http.post('/users/authenticate', { username: username, password: password })
-            .map(function (data) { return data.json(); }).toPromise();
+            .map(function (data) {
+            // login successful if there's a jwt token in the response
+            var user = data.json();
+            // console.log(user);
+            if (user && user.token) {
+                // store user details and jwt token in local storage to keep user logged in between page refreshes
+                localStorage.setItem('currentUser', JSON.stringify(user));
+            }
+            return user.success;
+        }).toPromise();
     };
     return UserService;
 }());

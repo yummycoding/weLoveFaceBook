@@ -22,11 +22,26 @@ export class LoginFormComponent implements OnInit {
     const password = e.target.elements[1].value;
     this.signinUser.username = username;
     this.signinUser.password = password;
+    // this.user.loginUser(username, password)
+    // .subscribe(
+    //     data => {
+    //       console.log(data);
+    //         this.router.navigate(['dashboard']);
+    //     },
+    //     error => {
+    //       console.log(error);
+    //         // this.alertService.error(error);
+    //         // this.loading = false;
+    //     });
     this.user.loginUser(username, password)
     .then(status => {
-      localStorage.setItem('currentUser', JSON.stringify(this.signinUser));
-      this.user.setUserLoggedIn();
-      this.router.navigate(['dashboard']);
+      console.log(status);
+      if (status) {
+        this.router.navigate(['dashboard']);
+        this.user.setUserLoggedIn();
+      } else {
+        this.router.navigate(['']);
+      }
     }).catch(err => console.log(err));
   }
   getUser() {
