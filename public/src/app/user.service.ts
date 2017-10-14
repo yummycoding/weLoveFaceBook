@@ -22,9 +22,8 @@ export class UserService {
     return this.isUserLoggedIn;
   }
   create(user: User) {
-    return this._http.post('/users', user).map(data => data.json()).toPromise();
+    return this._http.post('/users/register', user).map(data => data.json()).toPromise();
   }
-
   destroy(user: User) {
     return this._http.delete('/users/' + user._id).map(data => data.json()).toPromise();
   }

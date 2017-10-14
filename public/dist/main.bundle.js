@@ -988,7 +988,7 @@ var UserService = (function () {
         return this.isUserLoggedIn;
     };
     UserService.prototype.create = function (user) {
-        return this._http.post('/users', user).map(function (data) { return data.json(); }).toPromise();
+        return this._http.post('/users/users', user).map(function (data) { return data.json(); }).toPromise();
     };
     UserService.prototype.destroy = function (user) {
         return this._http.delete('/users/' + user._id).map(function (data) { return data.json(); }).toPromise();
