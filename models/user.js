@@ -31,6 +31,14 @@ module.exports.getUserById = function(id, callback) {
     User.findById(id, callback);
 }
 
+module.exports.createUser = function (req, res) {
+    var user = new User(req.body);
+    user.save(function (err, user) {
+        if(err) {res.send(500, err);}
+        res.json(200, user);
+    });
+};
+
 module.exports.getUserByUsername = function(username, callback) {
     const query = {username : username}
     User.findOne(query, callback);
@@ -51,4 +59,11 @@ module.exports.comparePassword = function(candidatePassword, hash, callback) {
         if(err) throw err;
         callback(null, isMatch);
     });
+}
+
+module.exports.getUser = function(req, res) {
+    User.find(function (err, users) {
+        if(err){res.send(500, err);}
+        res.json(200, users);
+    })
 }
