@@ -812,7 +812,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/regis-form/regis-form.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<form (submit)=\"signupUser()\">\n    <div>\n      <label class=\"regis-title\">Register</label>\n    </div>\n    <md-form-field class=\"example-full-width\">\n        <input mdInput placeholder=\"Username\" name=\"username\" [(ngModel)]=\"newUser.username\">\n    </md-form-field>\n    <md-form-field class=\"example-full-width\">\n        <input type =\"password\" mdInput placeholder=\"Password\" name=\"password\" [(ngModel)]=\"newUser.password\">\n    </md-form-field>\n    <md-form-field class=\"example-full-width\">\n      <input type =\"password\" mdInput placeholder=\"Confirm Password\">\n    </md-form-field>\n    <md-form-field class=\"example-full-width\">\n      <input type =\"password\" mdInput placeholder=\"Email\">\n    </md-form-field>\n    <md-form-field>\n      <input mdInput [mdDatepicker]=\"picker\" placeholder=\"Birthdate\">\n      <md-datepicker-toggle mdSuffix [for]=\"picker\"></md-datepicker-toggle>\n      <md-datepicker #picker startView=\"year\" [startAt]=\"startDate\"></md-datepicker>\n    </md-form-field>\n    <div class=\"gender-style\">\n      <md-radio-group>\n      <md-radio-button value=\"1\">Male</md-radio-button>\n      <md-radio-button value=\"2\">Female</md-radio-button>\n    </md-radio-group>\n    </div>\n    <div class=\"button-style\">    \n      <button color =\"primary\" type =\"submit\" md-raised-button>Submit</button>\n      <button color =\"primary\" routerLink=\"/\" md-raised-button>Cancel</button>\n    </div>\n  </form>"
+module.exports = "<form (submit)=\"signupUser()\">\n    <div>\n      <label class=\"regis-title\">Register</label>\n    </div>\n    <md-form-field class=\"example-full-width\">\n        <input mdInput placeholder=\"Username\" name=\"username\" [(ngModel)]=\"newUser.username\">\n    </md-form-field>\n    <md-form-field class=\"example-full-width\">\n        <input type =\"password\" mdInput placeholder=\"Password\" name=\"password\" [(ngModel)]=\"newUser.password\">\n    </md-form-field>\n    <md-form-field class=\"example-full-width\">\n      <input type =\"password\" mdInput placeholder=\"Confirm Password\">\n    </md-form-field>\n    <md-form-field class=\"example-full-width\">\n      <input type =\"text\" mdInput placeholder=\"Email\">\n    </md-form-field>\n    <md-form-field>\n      <input mdInput [mdDatepicker]=\"picker\" placeholder=\"Birthdate\">\n      <md-datepicker-toggle mdSuffix [for]=\"picker\"></md-datepicker-toggle>\n      <md-datepicker #picker startView=\"year\" [startAt]=\"startDate\"></md-datepicker>\n    </md-form-field>\n    <div class=\"gender-style\">\n      <md-radio-group>\n      <md-radio-button value=\"1\">Male</md-radio-button>\n      <md-radio-button value=\"2\">Female</md-radio-button>\n    </md-radio-group>\n    </div>\n    <div class=\"button-style\">    \n      <button color =\"primary\" type =\"submit\" md-raised-button>Submit</button>\n      <button color =\"primary\" routerLink=\"/\" md-raised-button>Cancel</button>\n    </div>\n  </form>"
 
 /***/ }),
 
@@ -1411,7 +1411,7 @@ var UserComponent = (function () {
         this.users = [];
     }
     UserComponent.prototype.ngOnInit = function () {
-        this.getUsers();
+        // this.getUsers();
     };
     UserComponent.prototype.create = function (user) {
         var _this = this;

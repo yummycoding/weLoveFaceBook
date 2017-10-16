@@ -21,7 +21,7 @@ const UserSchema = mongoose.Schema({
     },
     editable: {
         type: Boolean,
-        required: true
+        // required: true
     }
 });
 
