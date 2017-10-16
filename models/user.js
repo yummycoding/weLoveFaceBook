@@ -4,13 +4,6 @@ const config = require('../config/database');
 
 //User Schema
 const UserSchema = mongoose.Schema({
-    // name: {
-    //     type: String
-    // },
-    // email: {
-    //     type: String,
-    //     required: true
-    // },
     username: {
         type:String,
         required: true
@@ -19,10 +12,34 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    editable: {
+    email: {
+        type: String,
+        // required: true
+    },
+    nickname: {
+        type: String,
+        // required: true
+    },
+    gender: {
+        type: Number,
+        // required: true
+    },
+    dob: {
+        type: String,
+        // required: true
+    },
+    dobeditable: {
         type: Boolean,
         // required: true
-    }
+    },
+    emaileditable: {
+        type: Boolean,
+        // required: true
+    },
+    passwordeditable: {
+        type: Boolean,
+        // required: true
+    },
 });
 
 const User = module.exports = mongoose.model('User', UserSchema);

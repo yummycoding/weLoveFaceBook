@@ -28,6 +28,7 @@ export class UserService {
     return this._http.delete('/users/' + user._id).map(data => data.json()).toPromise();
   }
   update(user: User) {
+    console.log(user)
     return this._http.put('/users/' + user._id, user).map(data => data.json()).toPromise();
   }
   getUser(user: User) {

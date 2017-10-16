@@ -100,11 +100,10 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__home_home_component__ = __webpack_require__("../../../../../src/app/home/home.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__regis_form_regis_form_component__ = __webpack_require__("../../../../../src/app/regis-form/regis-form.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__user_user_component__ = __webpack_require__("../../../../../src/app/user/user.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__user_user_details_user_details_component__ = __webpack_require__("../../../../../src/app/user/user-details/user-details.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__user_user_list_user_list_component__ = __webpack_require__("../../../../../src/app/user/user-list/user-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__user_user_new_user_new_component__ = __webpack_require__("../../../../../src/app/user/user-new/user-new.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__user_user_edit_user_edit_component__ = __webpack_require__("../../../../../src/app/user/user-edit/user-edit.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__user_user_profile_user_profile_component__ = __webpack_require__("../../../../../src/app/user/user-profile/user-profile.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__user_user_list_user_list_component__ = __webpack_require__("../../../../../src/app/user/user-list/user-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__user_user_new_user_new_component__ = __webpack_require__("../../../../../src/app/user/user-new/user-new.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__user_user_edit_user_edit_component__ = __webpack_require__("../../../../../src/app/user/user-edit/user-edit.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__user_user_profile_user_profile_component__ = __webpack_require__("../../../../../src/app/user/user-profile/user-profile.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -141,7 +140,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-
 // file upload
 var appRoutes = [
     {
@@ -159,7 +157,7 @@ var appRoutes = [
     },
     {
         path: 'userprofile',
-        component: __WEBPACK_IMPORTED_MODULE_25__user_user_profile_user_profile_component__["a" /* UserProfileComponent */]
+        component: __WEBPACK_IMPORTED_MODULE_24__user_user_profile_user_profile_component__["a" /* UserProfileComponent */]
     },
 ];
 var AppModule = (function () {
@@ -181,11 +179,10 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_18__home_home_component__["a" /* HomeComponent */],
             __WEBPACK_IMPORTED_MODULE_19__regis_form_regis_form_component__["a" /* RegisFormComponent */],
             __WEBPACK_IMPORTED_MODULE_20__user_user_component__["a" /* UserComponent */],
-            __WEBPACK_IMPORTED_MODULE_21__user_user_details_user_details_component__["a" /* UserDetailsComponent */],
-            __WEBPACK_IMPORTED_MODULE_22__user_user_list_user_list_component__["a" /* UserListComponent */],
-            __WEBPACK_IMPORTED_MODULE_23__user_user_new_user_new_component__["a" /* UserNewComponent */],
-            __WEBPACK_IMPORTED_MODULE_24__user_user_edit_user_edit_component__["a" /* UserEditComponent */],
-            __WEBPACK_IMPORTED_MODULE_25__user_user_profile_user_profile_component__["a" /* UserProfileComponent */]
+            __WEBPACK_IMPORTED_MODULE_21__user_user_list_user_list_component__["a" /* UserListComponent */],
+            __WEBPACK_IMPORTED_MODULE_22__user_user_new_user_new_component__["a" /* UserNewComponent */],
+            __WEBPACK_IMPORTED_MODULE_23__user_user_edit_user_edit_component__["a" /* UserEditComponent */],
+            __WEBPACK_IMPORTED_MODULE_24__user_user_profile_user_profile_component__["a" /* UserProfileComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* RouterModule */].forRoot(appRoutes),
@@ -389,7 +386,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/friendlist/friendlist.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<md-list>\n  <h3 md-subheader>A</h3>\n  <md-list-item *ngFor=\"let nameA of A\">\n    <md-icon md-list-icon>face</md-icon>\n    <p md-line>{{nameA.name}}</p>\n  </md-list-item>\n  <md-divider></md-divider>\n  <h3 md-subheader>B</h3>\n  <md-list-item *ngFor=\"let nameB of B\">\n    <md-icon md-list-icon>face</md-icon>\n    <p md-line>{{nameB.name}}</p>\n  </md-list-item>\n</md-list>\n<app-user></app-user>"
+module.exports = "<md-list>\n  <h3 md-subheader>A</h3>\n  <md-list-item *ngFor=\"let nameA of A\">\n    <md-icon md-list-icon>face</md-icon>\n    <p md-line>{{nameA.name}}</p>\n  </md-list-item>\n  <md-divider></md-divider>\n  <h3 md-subheader>B</h3>\n  <md-list-item *ngFor=\"let nameB of B\">\n    <md-icon md-list-icon>face</md-icon>\n    <p md-line>{{nameB.name}}</p>\n  </md-list-item>\n</md-list>\n"
 
 /***/ }),
 
@@ -553,7 +550,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"make-post\">\n  <md-expansion-panel>\n    <md-expansion-panel-header>\n      <md-panel-title>\n        Make Post\n      </md-panel-title>\n      <md-panel-description>\n        What's on your mind?\n      </md-panel-description>\n    </md-expansion-panel-header>\n\n    <md-form-field class=\"textwidth\">\n      <input mdInput #message maxlength=\"256\" placeholder=\"Say something\">\n      <md-hint align=\"start\"><strong>Don't disclose personal info</strong> </md-hint>\n      <md-hint align=\"end\">{{message.value.length}} / 256</md-hint>\n    </md-form-field>\n    <div class=\"input\">\n      <input class=\"ng-hide\" id=\"input-file-id\" multiple type=\"file\" #inputFile hidden/>\n      <button color=\"primary\" id=\"selectFile\" md-raised-button>\n        <Label for=\"input-file-id\">\n          <i class=\"material-icons md-18 icon-align\">insert_photo</i>\n          Photo\n        </Label>\n      </button>\n      <button color=\"warn\" md-raised-button>Post</button>\n    </div>\n  </md-expansion-panel>\n</div>\n<md-card class=\"post-card\" *ngFor=\"let spaceScreen of spaceScreens | slice: [start] : [end]; let i = index\">\n  <md-card-header>\n    <div md-card-avatar class=\"post-image\"></div>\n    <md-card-title>{{spaceScreen.name}}</md-card-title>\n    <md-card-subtitle>{{spaceScreen.remark}}</md-card-subtitle>\n  </md-card-header>\n  <img md-card-image src=\"{{spaceScreen.img}}\" alt=\"post photo\">\n  <md-card-content>\n    <p>{{spaceScreen.description}}</p>\n  </md-card-content>\n  <md-card-actions>\n    <button md-button (click)=\"likeMe(i)\">\n      <i class=\"material-icons md-18\" [class.red-color]=\"spaceScreen.liked == '1'\">favorite</i> \n    </button>\n    <button md-button (click)=\"commentMe(i)\">\n      <i class=\"material-icons md-18\">insert_comment</i> \n    </button>\n    <button md-button (click)=\"shareMe(i)\">\n      <i class=\"material-icons md-18\">share</i> \n    </button>\n    <!-- <button md-button (click)=\"deleteMe(i)\">\n      <i class=\"material-icons md-18\">delete</i> \n    </button> -->\n  </md-card-actions>\n</md-card>\n<div class=\"make-post\">\n  <md-paginator [length]=\"spaceScreens.length\"\n  [pageSize]=\"pageSize\"\n  [pageSizeOptions]=\"pageSizeOptions\"\n  (page)=\"pageEvent = $event; pageChange($event)\">\n  </md-paginator>\n</div>\n"
+module.exports = "<div class=\"make-post\">\n  <md-expansion-panel>\n    <md-expansion-panel-header>\n      <md-panel-title>\n        Make Post\n      </md-panel-title>\n      <md-panel-description>\n        What's on your mind?\n      </md-panel-description>\n    </md-expansion-panel-header>\n\n    <md-form-field class=\"textwidth\">\n      <!-- <input mdInput #message maxlength=\"256\" placeholder=\"Say something\">\n      <md-hint align=\"start\"><strong>Don't disclose personal info</strong> </md-hint> -->\n      <input mdInput #message maxlength=\"256\">\n      <md-hint align=\"end\">{{message.value.length}} / 256</md-hint>\n    </md-form-field>\n    <div class=\"input\">\n      <input class=\"ng-hide\" id=\"input-file-id\" multiple type=\"file\" #inputFile hidden/>\n      <button color=\"primary\" id=\"selectFile\" md-raised-button>\n        <Label for=\"input-file-id\">\n          <i class=\"material-icons md-18 icon-align\">insert_photo</i>\n          Photo\n        </Label>\n      </button>\n      <button color=\"warn\" md-raised-button>Post</button>\n    </div>\n  </md-expansion-panel>\n</div>\n<md-card class=\"post-card\" *ngFor=\"let spaceScreen of spaceScreens | slice: [start] : [end]; let i = index\">\n  <md-card-header>\n    <div md-card-avatar class=\"post-image\"></div>\n    <md-card-title>{{spaceScreen.name}}</md-card-title>\n    <md-card-subtitle>{{spaceScreen.remark}}</md-card-subtitle>\n  </md-card-header>\n  <img md-card-image src=\"{{spaceScreen.img}}\" alt=\"post photo\">\n  <md-card-content>\n    <p>{{spaceScreen.description}}</p>\n  </md-card-content>\n  <md-card-actions>\n    <button md-button (click)=\"likeMe(i)\">\n      <i class=\"material-icons md-18\" [class.red-color]=\"spaceScreen.liked == '1'\">favorite</i> \n    </button>\n    <button md-button (click)=\"commentMe(i)\">\n      <i class=\"material-icons md-18\">insert_comment</i> \n    </button>\n    <button md-button (click)=\"shareMe(i)\">\n      <i class=\"material-icons md-18\">share</i> \n    </button>\n    <!-- <button md-button (click)=\"deleteMe(i)\">\n      <i class=\"material-icons md-18\">delete</i> \n    </button> -->\n  </md-card-actions>\n</md-card>\n<div class=\"make-post\">\n  <md-paginator [length]=\"spaceScreens.length\"\n  [pageSize]=\"pageSize\"\n  [pageSizeOptions]=\"pageSizeOptions\"\n  (page)=\"pageEvent = $event; pageChange($event)\">\n  </md-paginator>\n</div>\n"
 
 /***/ }),
 
@@ -822,7 +819,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/regis-form/regis-form.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<form (submit)=\"signupUser()\">\n    <div>\n      <label class=\"regis-title\">Register</label>\n    </div>\n    <md-form-field class=\"example-full-width\">\n        <input mdInput placeholder=\"Username\" name=\"username\" [(ngModel)]=\"newUser.username\">\n    </md-form-field>\n    <md-form-field class=\"example-full-width\">\n        <input type =\"password\" mdInput placeholder=\"Password\" name=\"password\" [(ngModel)]=\"newUser.password\">\n    </md-form-field>\n    <md-form-field class=\"example-full-width\">\n      <input type =\"password\" mdInput placeholder=\"Confirm Password\">\n    </md-form-field>\n    <md-form-field class=\"example-full-width\">\n      <input type =\"text\" mdInput placeholder=\"Email\">\n    </md-form-field>\n    <md-form-field>\n      <input mdInput [mdDatepicker]=\"picker\" placeholder=\"Birthdate\">\n      <md-datepicker-toggle mdSuffix [for]=\"picker\"></md-datepicker-toggle>\n      <md-datepicker #picker startView=\"year\" [startAt]=\"startDate\"></md-datepicker>\n    </md-form-field>\n    <div class=\"gender-style\">\n      <md-radio-group>\n      <md-radio-button value=\"1\">Male</md-radio-button>\n      <md-radio-button value=\"2\">Female</md-radio-button>\n    </md-radio-group>\n    </div>\n    <div class=\"button-style\">    \n      <button color =\"primary\" type =\"submit\" md-raised-button>Submit</button>\n      <button color =\"primary\" routerLink=\"/\" md-raised-button>Cancel</button>\n    </div>\n  </form>"
+module.exports = "<form (submit)=\"signupUser()\">\n    <div>\n      <label class=\"regis-title\">Sign Up</label>\n    </div>\n    <md-form-field class=\"example-full-width\">\n        <input mdInput placeholder=\"Username\" name=\"username\" [(ngModel)]=\"newUser.username\">\n    </md-form-field>\n    <md-form-field class=\"example-full-width\">\n        <input mdInput placeholder=\"Nickname\" name=\"nickname\" [(ngModel)]=\"newUser.nickname\">\n    </md-form-field>\n    <md-form-field class=\"example-full-width\">\n        <input type =\"password\" mdInput placeholder=\"Password\" name=\"password\" [(ngModel)]=\"newUser.password\">\n    </md-form-field>\n    <md-form-field class=\"example-full-width\">\n      <input type =\"password\" mdInput placeholder=\"Confirm Password\">\n    </md-form-field>\n    <md-form-field class=\"example-full-width\">\n      <input type =\"text\" mdInput placeholder=\"Email\" name=\"email\" [(ngModel)]=\"newUser.email\">\n    </md-form-field>\n    <!-- <md-form-field>\n      <input mdInput [mdDatepicker]=\"picker\" placeholder=\"Birthdate\" [(ngModel)]=\"newUser.dob\">\n      <md-datepicker-toggle mdSuffix [for]=\"picker\"></md-datepicker-toggle>\n      <md-datepicker #picker startView=\"year\" [startAt]=\"startDate\"></md-datepicker>\n    </md-form-field> -->\n    <md-form-field class=\"example-full-width\">\n        <input type =\"text\" mdInput placeholder=\"Birthday (mm/dd/yy)\" name=\"birthday\" [(ngModel)]=\"newUser.dob\">\n    </md-form-field>\n    <div class=\"gender-style\">\n      <md-radio-group>\n      <md-radio-button value=\"1\">Male</md-radio-button>\n      <md-radio-button value=\"2\">Female</md-radio-button>\n    </md-radio-group>\n    </div>\n    <div class=\"button-style\">    \n      <button color =\"primary\" type =\"submit\" md-raised-button>Submit</button>\n      <button color =\"primary\" routerLink=\"/\" md-raised-button>Cancel</button>\n    </div>\n  </form>"
 
 /***/ }),
 
@@ -860,6 +857,7 @@ var RegisFormComponent = (function () {
     };
     RegisFormComponent.prototype.signupUser = function () {
         var _this = this;
+        console.log(this.newUser);
         this.userService.create(this.newUser)
             .then(function (status) {
             localStorage.setItem('currentUser', JSON.stringify(_this.newUser));
@@ -1020,6 +1018,7 @@ var UserService = (function () {
         return this._http.delete('/users/' + user._id).map(function (data) { return data.json(); }).toPromise();
     };
     UserService.prototype.update = function (user) {
+        console.log(user);
         return this._http.put('/users/' + user._id, user).map(function (data) { return data.json(); }).toPromise();
     };
     UserService.prototype.getUser = function (user) {
@@ -1088,67 +1087,6 @@ var User = (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/user/user-details/user-details.component.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/user/user-details/user-details.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<p>\n  user-details works!\n</p>\n"
-
-/***/ }),
-
-/***/ "../../../../../src/app/user/user-details/user-details.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserDetailsComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var UserDetailsComponent = (function () {
-    function UserDetailsComponent() {
-    }
-    UserDetailsComponent.prototype.ngOnInit = function () {
-    };
-    return UserDetailsComponent;
-}());
-UserDetailsComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'app-user-details',
-        template: __webpack_require__("../../../../../src/app/user/user-details/user-details.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/user/user-details/user-details.component.css")]
-    }),
-    __metadata("design:paramtypes", [])
-], UserDetailsComponent);
-
-//# sourceMappingURL=user-details.component.js.map
-
-/***/ }),
-
 /***/ "../../../../../src/app/user/user-edit/user-edit.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1180,7 +1118,7 @@ module.exports = "<form (submit) = \"update()\">\n    <input type=\"text\" name=
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserEditComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__user__ = __webpack_require__("../../../../../src/app/user.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__user__ = __webpack_require__("../../../../../src/app/user/user-edit/user.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1226,6 +1164,29 @@ UserEditComponent = __decorate([
 
 var _a;
 //# sourceMappingURL=user-edit.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/user/user-edit/user.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return User; });
+var User = (function () {
+    function User(_id, username, password, editable) {
+        if (_id === void 0) { _id = ''; }
+        if (username === void 0) { username = ''; }
+        if (password === void 0) { password = ''; }
+        if (editable === void 0) { editable = false; }
+        this._id = _id;
+        this.username = username;
+        this.password = password;
+        this.editable = editable;
+    }
+    return User;
+}());
+
+//# sourceMappingURL=user.js.map
 
 /***/ }),
 

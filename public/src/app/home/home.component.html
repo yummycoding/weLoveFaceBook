@@ -10,8 +10,9 @@
     </md-expansion-panel-header>
 
     <md-form-field class="textwidth">
-      <input mdInput #message maxlength="256" placeholder="Say something">
-      <md-hint align="start"><strong>Don't disclose personal info</strong> </md-hint>
+      <!-- <input mdInput #message maxlength="256" placeholder="Say something">
+      <md-hint align="start"><strong>Don't disclose personal info</strong> </md-hint> -->
+      <input mdInput #message maxlength="256">
       <md-hint align="end">{{message.value.length}} / 256</md-hint>
     </md-form-field>
     <div class="input">

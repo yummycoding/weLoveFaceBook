@@ -9,11 +9,15 @@ const User = require('../models/user');
 router.post('/register', (req, res, next) => {
     delete req.body._id
     let newUser = new User({
-        //name: req.body.name,
-        //email: req.body.email,
         username: req.body.username,
         password: req.body.password,
-        editable: req.body.editable
+        email   : req.body.email,
+        nickname: req.body.nickname,
+        gender  : req.body.gender,
+        dob     : req.body.dob,
+        dobeditable: false,
+        emaileditable: false,
+        passwordeditable: false
     });
 
     User.addUser(newUser, (err, user) => {

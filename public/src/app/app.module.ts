@@ -26,7 +26,6 @@ import { FriendlistComponent } from './friendlist/friendlist.component';
 import { HomeComponent } from './home/home.component';
 import { RegisFormComponent } from './regis-form/regis-form.component';
 import { UserComponent } from './user/user.component';
-import { UserDetailsComponent } from './user/user-details/user-details.component';
 import { UserListComponent } from './user/user-list/user-list.component';
 import { UserNewComponent } from './user/user-new/user-new.component';
 import { UserEditComponent } from './user/user-edit/user-edit.component';
@@ -67,7 +66,6 @@ const appRoutes: Routes = [
     HomeComponent,
     RegisFormComponent,
     UserComponent,
-    UserDetailsComponent,
     UserListComponent,
     UserNewComponent,
     UserEditComponent,
