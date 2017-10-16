@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-  user = new User("123","admin","admin","eezhanagjunhao@gmail.com","frankzhang",0,"08/11/1993",false, false,false);
+  user = new User("123","admin","admin","eezhanagjunhao@gmail.com","frankzhang",0,"08/11/1993",false,false);
   userEdit: User = new User();
   constructor() { }
 

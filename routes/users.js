@@ -15,7 +15,6 @@ router.post('/register', (req, res, next) => {
         nickname: req.body.nickname,
         gender  : req.body.gender,
         dob     : req.body.dob,
-        dobeditable: false,
         emaileditable: false,
         passwordeditable: false
     });
