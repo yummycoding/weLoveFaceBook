@@ -1,4 +1,0 @@
-1. front and back end test into it
-2. password modification
-3. change data structure of localStorage -> currentUser when sign up
-    -- to add success and jwt fields
