@@ -1069,7 +1069,7 @@ var _a;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return User; });
 var User = (function () {
-    function User(_id, username, password, email, nickname, gender, dob, dobeditable, emaileditable, passwordeditable) {
+    function User(_id, username, password, email, nickname, gender, dob, emaileditable, passwordeditable) {
         if (_id === void 0) { _id = ''; }
         if (username === void 0) { username = ''; }
         if (password === void 0) { password = ''; }
@@ -1077,7 +1077,6 @@ var User = (function () {
         if (nickname === void 0) { nickname = ''; }
         if (gender === void 0) { gender = 0; }
         if (dob === void 0) { dob = ''; }
-        if (dobeditable === void 0) { dobeditable = false; }
         if (emaileditable === void 0) { emaileditable = false; }
         if (passwordeditable === void 0) { passwordeditable = false; }
         this._id = _id;
@@ -1087,7 +1086,6 @@ var User = (function () {
         this.nickname = nickname;
         this.gender = gender;
         this.dob = dob;
-        this.dobeditable = dobeditable;
         this.emaileditable = emaileditable;
         this.passwordeditable = passwordeditable;
     }
@@ -1401,7 +1399,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var UserProfileComponent = (function () {
     function UserProfileComponent() {
-        this.user = new __WEBPACK_IMPORTED_MODULE_1__user__["a" /* User */]("123", "admin", "admin", "eezhanagjunhao@gmail.com", "frankzhang", 0, "08/11/1993", false, false, false);
+        this.user = new __WEBPACK_IMPORTED_MODULE_1__user__["a" /* User */]("123", "admin", "admin", "eezhanagjunhao@gmail.com", "frankzhang", 0, "08/11/1993", false, false);
         this.userEdit = new __WEBPACK_IMPORTED_MODULE_1__user__["a" /* User */]();
     }
     UserProfileComponent.prototype.ngOnInit = function () {
