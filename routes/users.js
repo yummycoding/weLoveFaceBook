@@ -100,12 +100,25 @@ router.get('/getuserbyusername/:username', (req, res, next) => {
     })
 });
 
-router.put('/updateinfo/:id', (req, res, next) => {
+router.put('/updatepassword/:id', (req, res, next) => {
     console.log("Server > PUT 'users/:id' > id", req.params.id);
     console.log("Server > PUT 'users/:id' > user", req.body);
-    User.updateUser(req.body, (err, user) => {
+    User.updatePassword(req.body, (err, user) => {
         if(err) {
-            res.json({success: false, msg:'Failed to register user'});
+            res.json({success: false, msg:'Failed to update password'});
+        } else {
+            return res.json(user);
+            //res.json({success: true, msg:'User registered'});
+        }
+    })
+});
+
+router.put('/updateemail/:id', (req, res, next) => {
+    console.log("Server > PUT 'users/:id' > id", req.params.id);
+    console.log("Server > PUT 'users/:id' > user", req.body);
+    User.updateEmail(req.body, (err, user) => {
+        if(err) {
+            res.json({success: false, msg:'Failed to update email'});
         } else {
             return res.json(user);
             //res.json({success: true, msg:'User registered'});

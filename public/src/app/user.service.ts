@@ -35,9 +35,13 @@ export class UserService {
   destroy(user: User) {
     return this._http.delete('/users/' + user._id).map(data => data.json()).toPromise();
   }
-  update(user: User) {
-    console.log("Client > New user to be updated > ",user)
-    return this._http.put('/users/updateinfo/' + user._id, user).map(data => data.json()).toPromise();
+  updatePassword(user: User) {
+    console.log("Client > New password to be updated > ",user)
+    return this._http.put('/users/updatepassword/' + user._id, user).map(data => data.json()).toPromise();
+  }
+  updateEmail(user: User) {
+    console.log("Client > New email to be updated > ",user)
+    return this._http.put('/users/updateemail/' + user._id, user).map(data => data.json()).toPromise();
   }
   getUserByUsername(username: String) {
     console.log('client > Get user by user name > ',username);

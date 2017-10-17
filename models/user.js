@@ -63,7 +63,7 @@ module.exports.addUser = function(newUser, callback) {
     });
 }
 
-module.exports.updateUser = function(editUser, callback) {
+module.exports.updatePassword = function(editUser, callback) {
     bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(editUser.password, salt, (err, hash) => {
             if(err) throw err;
@@ -74,6 +74,13 @@ module.exports.updateUser = function(editUser, callback) {
             })
         })
     })  
+};
+
+module.exports.updateEmail = function(editUser, callback) {
+    User.update({_id:editUser._id},editUser,(err, raw)=>{
+        if(err) throw err;
+        else return raw
+    })
 };
 
 module.exports.comparePassword = function(candidatePassword, hash, callback) {

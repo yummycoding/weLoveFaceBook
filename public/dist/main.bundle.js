@@ -1028,9 +1028,13 @@ var UserService = (function () {
     UserService.prototype.destroy = function (user) {
         return this._http.delete('/users/' + user._id).map(function (data) { return data.json(); }).toPromise();
     };
-    UserService.prototype.update = function (user) {
-        console.log("Client > New user to be updated > ", user);
-        return this._http.put('/users/updateinfo/' + user._id, user).map(function (data) { return data.json(); }).toPromise();
+    UserService.prototype.updatePassword = function (user) {
+        console.log("Client > New password to be updated > ", user);
+        return this._http.put('/users/updatepassword/' + user._id, user).map(function (data) { return data.json(); }).toPromise();
+    };
+    UserService.prototype.updateEmail = function (user) {
+        console.log("Client > New email to be updated > ", user);
+        return this._http.put('/users/updateemail/' + user._id, user).map(function (data) { return data.json(); }).toPromise();
     };
     UserService.prototype.getUserByUsername = function (username) {
         console.log('client > Get user by user name > ', username);
@@ -1380,7 +1384,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/user/user-profile/user-profile.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<md-card>\n    <!-- {{ user | json }} <br>\n    {{ userEdit | json }} -->\n    <form class=\"example-form\">\n        <!-- User name -->\n        <md-form-field class=\"example-full-width\">\n          <input mdInput placeholder=\"Username\" disabled value={{user.username}}>\n        </md-form-field>\n        <!-- Nick name -->\n        <md-form-field class=\"example-full-width\">\n          <input mdInput placeholder=\"Nickname\" disabled value={{user.nickname}}>\n        </md-form-field>\n        <!-- Birthday -->\n        <md-form-field class=\"example-full-width\">\n            <input mdInput placeholder=\"Birthday\" disabled value={{user.dob}}>\n        </md-form-field>\n        <!-- Email -->\n        <table class=\"example-full-width\" cellspacing=\"0\"><tr>\n          <td><md-form-field class=\"example-full-width\">\n            <input mdInput placeholder=\"Email\" disabled value={{userEdit.email}}>\n          </md-form-field></td>\n          <td>\n              <button color=\"primary\" (click)=\"userEdit.emaileditable=!userEdit.emaileditable\" md-raised-button>Edit</button>     \n          </td>\n        </tr></table>\n        <table class=\"example-full-width\" cellspacing=\"0\" *ngIf=\"userEdit.emaileditable\"><tr>\n            <td><form class=\"example-form\">\n                <md-form-field class=\"example-full-width\">\n                  <input type=\"text\" mdInput placeholder=\"New Email Address\" name=\"email\" [(ngModel)]=\"userEdit.email\">\n                </md-form-field>\n            </form></td>\n            <td>\n              <button color=\"primary\" (click)=\"update_email()\" md-raised-button>Confirm Change</button>\n            </td>  \n        </tr></table>\n        <!-- Password -->\n        <table class=\"example-full-width\" cellspacing=\"0\"><tr>\n          <td><md-form-field class=\"example-full-width\">\n            <input mdInput placeholder=\"Password\" disabled value=......................................>\n          </md-form-field></td>\n          <td>\n              <button color =\"primary\" (click)=\"user.passwordeditable=!user.passwordeditable\" md-raised-button>Edit</button>    \n          </td>\n        </tr></table>\n        <table class=\"example-full-width\" cellspacing=\"0\" *ngIf=\"user.passwordeditable\"><tr>\n            <td><form class=\"example-form\">\n                <md-form-field class=\"example-full-width\">\n                  <input type=\"password\" mdInput placeholder=\"New Password\" name=\"password\" [(ngModel)]=\"userEdit.password\">\n                </md-form-field>\n            </form></td>\n            <td>\n              <button color=\"primary\" (click)=\"update_password()\" md-raised-button>Confirm Change</button>\n            </td>  \n        </tr></table>\n\n    </form>\n    \n    <button color =\"primary\" routerLink=\"/dashboard\" md-raised-button>Back to Homepage</button>\n\n\n</md-card>\n  "
+module.exports = "<md-card>\n    <!-- {{ user | json }} <br>\n    {{ userEdit | json }} -->\n    <form class=\"example-form\">\n        <!-- User name -->\n        <md-form-field class=\"example-full-width\">\n          <input mdInput placeholder=\"Username\" disabled value={{user.username}}>\n        </md-form-field>\n        <!-- Nick name -->\n        <md-form-field class=\"example-full-width\">\n          <input mdInput placeholder=\"Nickname\" disabled value={{user.nickname}}>\n        </md-form-field>\n        <!-- Birthday -->\n        <md-form-field class=\"example-full-width\">\n            <input mdInput placeholder=\"Birthday\" disabled value={{user.dob}}>\n        </md-form-field>\n        <!-- Email -->\n        <table class=\"example-full-width\" cellspacing=\"0\"><tr>\n          <td><md-form-field class=\"example-full-width\">\n            <input mdInput placeholder=\"Email\" disabled value={{userEdit.email}}>\n          </md-form-field></td>\n          <td>\n              <button color=\"primary\" (click)=\"userEdit.emaileditable=!userEdit.emaileditable\" md-raised-button>Edit</button>     \n          </td>\n        </tr></table>\n        <table class=\"example-full-width\" cellspacing=\"0\" *ngIf=\"userEdit.emaileditable\"><tr>\n            <td><form class=\"example-form\">\n                <md-form-field class=\"example-full-width\">\n                  <input type=\"text\" mdInput placeholder=\"New Email Address\" name=\"email\" [(ngModel)]=\"userEdit.email\">\n                </md-form-field>\n            </form></td>\n            <td>\n              <button color=\"primary\" (click)=\"update_email()\" md-raised-button>Confirm Change</button>\n            </td>  \n        </tr></table>\n        <!-- Password -->\n        <table class=\"example-full-width\" cellspacing=\"0\"><tr>\n          <td><md-form-field class=\"example-full-width\">\n            <input mdInput placeholder=\"Password\" disabled value=...............................>\n          </md-form-field></td>\n          <td>\n              <button color =\"primary\" (click)=\"user.passwordeditable=!user.passwordeditable\" md-raised-button>Edit</button>    \n          </td>\n        </tr></table>\n        <table class=\"example-full-width\" cellspacing=\"0\" *ngIf=\"user.passwordeditable\"><tr>\n            <td><form class=\"example-form\">\n                <md-form-field class=\"example-full-width\">\n                  <input type=\"password\" mdInput placeholder=\"New Password\" name=\"password\" [(ngModel)]=\"userEdit.password\">\n                </md-form-field>\n            </form></td>\n            <td>\n              <button color=\"primary\" (click)=\"update_password()\" md-raised-button>Confirm Change</button>\n            </td>  \n        </tr></table>\n\n    </form>\n    \n    <button color =\"primary\" routerLink=\"/dashboard\" md-raised-button>Back to Homepage</button>\n\n\n</md-card>\n  "
 
 /***/ }),
 
@@ -1421,7 +1425,7 @@ var UserProfileComponent = (function () {
         this.userService.getUserByUsername(this.userName).then(function (data) {
             _this.user = data;
             Object.assign(_this.userEdit, _this.user);
-            console.log(_this.user);
+            console.log("user info got from database", _this.user);
         });
     };
     // getUser(user: User) {
@@ -1432,12 +1436,12 @@ var UserProfileComponent = (function () {
     UserProfileComponent.prototype.update_email = function () {
         this.userEdit.emaileditable = false;
         this.user = this.userEdit;
-        this.userService.update(this.userEdit);
+        this.userService.updateEmail(this.userEdit);
     };
     UserProfileComponent.prototype.update_password = function () {
         this.userEdit.passwordeditable = false;
         this.user = this.userEdit;
-        this.userService.update(this.userEdit);
+        this.userService.updatePassword(this.userEdit);
         // call service.ts to store the new password(this.userEdit)
     };
     return UserProfileComponent;
@@ -1506,32 +1510,6 @@ var UserComponent = (function () {
     }
     UserComponent.prototype.ngOnInit = function () {
         // this.getUsers();
-    };
-    UserComponent.prototype.create = function (user) {
-        var _this = this;
-        this._userService.create(user)
-            .then(function (status) { return _this.getUsers(); })
-            .catch(function (err) { return console.log(err); });
-        this.users.push(user);
-    };
-    UserComponent.prototype.destroy = function (user) {
-        var _this = this;
-        this._userService.destroy(user)
-            .then(function (status) { return _this.getUsers(); })
-            .catch(function (err) { return console.log(err); });
-    };
-    UserComponent.prototype.update = function (user) {
-        var _this = this;
-        console.log(user);
-        this._userService.update(user)
-            .then(function (status) { return _this.getUsers(); })
-            .catch(function (err) { return console.log(err); });
-    };
-    UserComponent.prototype.getUsers = function () {
-        var _this = this;
-        this._userService.getUsers()
-            .then(function (users) { return _this.users = users; })
-            .catch(function (err) { return console.log(err); });
     };
     return UserComponent;
 }());

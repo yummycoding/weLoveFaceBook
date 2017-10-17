@@ -26,7 +26,7 @@ export class UserProfileComponent implements OnInit {
     this.userService.getUserByUsername(this.userName).then(data => {
       this.user = data
       Object.assign(this.userEdit, this.user);
-      console.log(this.user);
+      console.log("user info got from database", this.user);
     });
   }
   
@@ -39,13 +39,13 @@ export class UserProfileComponent implements OnInit {
   update_email() {
     this.userEdit.emaileditable=false;
     this.user = this.userEdit;
-    this.userService.update(this.userEdit);
+    this.userService.updateEmail(this.userEdit);
   }
 
   update_password() {
     this.userEdit.passwordeditable=false;
     this.user = this.userEdit;
-    this.userService.update(this.userEdit);
+    this.userService.updatePassword(this.userEdit);
     // call service.ts to store the new password(this.userEdit)
   }
 }
