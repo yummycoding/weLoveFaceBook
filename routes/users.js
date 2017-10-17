@@ -53,9 +53,14 @@ router.post('/authenticate', (req, res, next) => {
                     token:'JWT '+token,
                     user:{
                         id:user._id,
-                        //name:user.name,
                         username:user.username,
-                        //email:user.email
+                        // password:user.password,
+                        email:user.email,
+                        nickname:user.nickname,
+                        gender:user.gender,
+                        dob:user.dob,
+                        emaileditable:user.emaileditable,
+                        passwordeditable:user.passwordeditable,
                     }
                 });
             } else {
@@ -65,9 +70,36 @@ router.post('/authenticate', (req, res, next) => {
     });
 });
 
-//Profile
-router.get('/profile', (req, res, next) => {
-    res.send('PROFILE');
+// given an username string, returns all data of that user
+router.get('/getuserbyusername/:username', (req, res, next) => {
+    // console.log('Server > GET user by user name > ',req.params.username);
+    User.getUserByUsername(req.params.username, (err, user) =>{
+        if(err) throw err;
+        if(!user){
+            return res.json({success: false, msg:'User not fount'});
+        }
+        // console.log("Server > User returned by server", user);
+        return res.json(user);
+    })
 });
+
+router.put('/updateinfo/:id', (req, res, next) => {
+    console.log("Server > PUT 'users/:id' > id", req.params.id);
+    console.log("Server > PUT 'users/:id' > user", req.body);
+    User.updateUser(req.body, (err, user) => {
+        if(err) {
+            res.json({success: false, msg:'Failed to register user'});
+        } else {
+            return res.json(user);
+            //res.json({success: true, msg:'User registered'});
+        }
+    })
+});
+
+
+// //Profile
+// router.get('/profile', (req, res, next) => {
+//     res.send('PROFILE');
+// });
 
 module.exports = router;

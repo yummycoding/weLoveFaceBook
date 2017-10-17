@@ -1,5 +1,6 @@
 <md-card>
-    {{ user | json }}
+    {{ user | json }} <br>
+    {{ userEdit | json }}
     <form class="example-form">
         <!-- User name -->
         <md-form-field class="example-full-width">
@@ -16,13 +17,13 @@
         <!-- Email -->
         <table class="example-full-width" cellspacing="0"><tr>
           <td><md-form-field class="example-full-width">
-            <input mdInput placeholder="Email" disabled value={{user.email}}>
+            <input mdInput placeholder="Email" disabled value={{userEdit.email}}>
           </md-form-field></td>
           <td>
-              <button color="primary" (click)="user.emaileditable=!user.emaileditable" md-raised-button>Edit</button>     
+              <button color="primary" (click)="userEdit.emaileditable=!userEdit.emaileditable" md-raised-button>Edit</button>     
           </td>
         </tr></table>
-        <table class="example-full-width" cellspacing="0" *ngIf="user.emaileditable"><tr>
+        <table class="example-full-width" cellspacing="0" *ngIf="userEdit.emaileditable"><tr>
             <td><form class="example-form">
                 <md-form-field class="example-full-width">
                   <input type="text" mdInput placeholder="New Email Address" name="email" [(ngModel)]="userEdit.email">

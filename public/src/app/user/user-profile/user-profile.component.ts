@@ -9,18 +9,37 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-  user = new User("123","admin","admin","eezhanagjunhao@gmail.com","frankzhang",0,"08/11/1993",false,false);
+  user: User = new User();
   userEdit: User = new User();
-  constructor() { }
+
+  // attention!!!!! If loged based on sign up, should use 
+  // userName: any = JSON.parse(localStorage.getItem("currentUser")).username;
+  // Problem will be fixed if add more item to localstorage-currentUser when sign up
+  // to make it similar as when sign in
+  userName: String = JSON.parse(localStorage.getItem("currentUser")).user.username;
+  
+  constructor(private userService: UserService) {  
+    // console.log(this.userName); 
+  }
 
   ngOnInit() {
-    Object.assign(this.userEdit, this.user);
+    this.userService.getUserByUsername(this.userName).then(data => {
+      this.user = data
+      Object.assign(this.userEdit, this.user);
+      console.log(this.user);
+    });
   }
   
+  // getUser(user: User) {
+  //   this.userService.getUser()
+  //   .then(user => this.user = user)
+  //   .catch(err => console.log(err));
+  // }
+
   update_email() {
     this.userEdit.emaileditable=false;
     this.user = this.userEdit;
-    // call service.ts to store the new email address(this.userEdit)
+    this.userService.update(this.userEdit);
   }
 
   update_password() {

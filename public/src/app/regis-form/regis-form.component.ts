@@ -18,7 +18,7 @@ export class RegisFormComponent implements OnInit {
   }
 
   signupUser() {
-    console.log(this.newUser);
+    console.log("new user has been created, info: ", this.newUser);
     this.userService.create(this.newUser)
     .then(status => {
       localStorage.setItem('currentUser', JSON.stringify(this.newUser));

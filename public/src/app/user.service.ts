@@ -28,8 +28,12 @@ export class UserService {
     return this._http.delete('/users/' + user._id).map(data => data.json()).toPromise();
   }
   update(user: User) {
-    console.log(user)
-    return this._http.put('/users/' + user._id, user).map(data => data.json()).toPromise();
+    console.log("Client > New user to be updated > ",user)
+    return this._http.put('/users/updateinfo/' + user._id, user).map(data => data.json()).toPromise();
+  }
+  getUserByUsername(username: String) {
+    console.log('client > Get user by user name > ',username);
+    return this._http.get('/users/getuserbyusername/' + username).map(data=>data.json()).toPromise();
   }
   getUser(user: User) {
     return this._http.get('/users/' + user._id).map(data => data.json()).toPromise();
@@ -48,7 +52,7 @@ export class UserService {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentUser', JSON.stringify(user));
         }
-
+        console.log("current user: ", localStorage.getItem('currentUser'))
         return user.success;
       }).toPromise();
   }

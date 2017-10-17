@@ -104,7 +104,6 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__user_user_new_user_new_component__ = __webpack_require__("../../../../../src/app/user/user-new/user-new.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__user_user_edit_user_edit_component__ = __webpack_require__("../../../../../src/app/user/user-edit/user-edit.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__user_user_profile_user_profile_component__ = __webpack_require__("../../../../../src/app/user/user-profile/user-profile.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__user_user_profile_user_profile_component___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_24__user_user_profile_user_profile_component__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -158,7 +157,7 @@ var appRoutes = [
     },
     {
         path: 'userprofile',
-        component: __WEBPACK_IMPORTED_MODULE_24__user_user_profile_user_profile_component__["UserProfileComponent"]
+        component: __WEBPACK_IMPORTED_MODULE_24__user_user_profile_user_profile_component__["a" /* UserProfileComponent */]
     },
 ];
 var AppModule = (function () {
@@ -183,7 +182,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_21__user_user_list_user_list_component__["a" /* UserListComponent */],
             __WEBPACK_IMPORTED_MODULE_22__user_user_new_user_new_component__["a" /* UserNewComponent */],
             __WEBPACK_IMPORTED_MODULE_23__user_user_edit_user_edit_component__["a" /* UserEditComponent */],
-            __WEBPACK_IMPORTED_MODULE_24__user_user_profile_user_profile_component__["UserProfileComponent"]
+            __WEBPACK_IMPORTED_MODULE_24__user_user_profile_user_profile_component__["a" /* UserProfileComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* RouterModule */].forRoot(appRoutes),
@@ -858,7 +857,7 @@ var RegisFormComponent = (function () {
     };
     RegisFormComponent.prototype.signupUser = function () {
         var _this = this;
-        console.log(this.newUser);
+        console.log("new user has been created, info: ", this.newUser);
         this.userService.create(this.newUser)
             .then(function (status) {
             localStorage.setItem('currentUser', JSON.stringify(_this.newUser));
@@ -1019,8 +1018,12 @@ var UserService = (function () {
         return this._http.delete('/users/' + user._id).map(function (data) { return data.json(); }).toPromise();
     };
     UserService.prototype.update = function (user) {
-        console.log(user);
-        return this._http.put('/users/' + user._id, user).map(function (data) { return data.json(); }).toPromise();
+        console.log("Client > New user to be updated > ", user);
+        return this._http.put('/users/updateinfo/' + user._id, user).map(function (data) { return data.json(); }).toPromise();
+    };
+    UserService.prototype.getUserByUsername = function (username) {
+        console.log('client > Get user by user name > ', username);
+        return this._http.get('/users/getuserbyusername/' + username).map(function (data) { return data.json(); }).toPromise();
     };
     UserService.prototype.getUser = function (user) {
         return this._http.get('/users/' + user._id).map(function (data) { return data.json(); }).toPromise();
@@ -1038,6 +1041,7 @@ var UserService = (function () {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', JSON.stringify(user));
             }
+            console.log("current user: ", localStorage.getItem('currentUser'));
             return user.success;
         }).toPromise();
     };
@@ -1344,11 +1348,99 @@ UserNewComponent = __decorate([
 
 /***/ }),
 
+/***/ "../../../../../src/app/user/user-profile/user-profile.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".example-form {\n    min-width: 150px;\n    max-width: 500px;\n    width: 100%;\n  }\n  \n.example-full-width {\n  width: 100%;\n}\n\n.example-button-color {\n    color: #80CBC4\n}\n\n.example-form {\n  min-width: 150px;\n  max-width: 500px;\n  width: 100%;\n}\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/user/user-profile/user-profile.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<md-card>\n    {{ user | json }} <br>\n    {{ userEdit | json }}\n    <form class=\"example-form\">\n        <!-- User name -->\n        <md-form-field class=\"example-full-width\">\n          <input mdInput placeholder=\"Username\" disabled value={{user.username}}>\n        </md-form-field>\n        <!-- Nick name -->\n        <md-form-field class=\"example-full-width\">\n          <input mdInput placeholder=\"Nickname\" disabled value={{user.nickname}}>\n        </md-form-field>\n        <!-- Birthday -->\n        <md-form-field class=\"example-full-width\">\n            <input mdInput placeholder=\"Birthday\" disabled value={{user.dob}}>\n        </md-form-field>\n        <!-- Email -->\n        <table class=\"example-full-width\" cellspacing=\"0\"><tr>\n          <td><md-form-field class=\"example-full-width\">\n            <input mdInput placeholder=\"Email\" disabled value={{userEdit.email}}>\n          </md-form-field></td>\n          <td>\n              <button color=\"primary\" (click)=\"userEdit.emaileditable=!userEdit.emaileditable\" md-raised-button>Edit</button>     \n          </td>\n        </tr></table>\n        <table class=\"example-full-width\" cellspacing=\"0\" *ngIf=\"userEdit.emaileditable\"><tr>\n            <td><form class=\"example-form\">\n                <md-form-field class=\"example-full-width\">\n                  <input type=\"text\" mdInput placeholder=\"New Email Address\" name=\"email\" [(ngModel)]=\"userEdit.email\">\n                </md-form-field>\n            </form></td>\n            <td>\n              <button color=\"primary\" (click)=\"update_email()\" md-raised-button>Confirm Change</button>\n            </td>  \n        </tr></table>\n        <!-- Password -->\n        <table class=\"example-full-width\" cellspacing=\"0\"><tr>\n          <td><md-form-field class=\"example-full-width\">\n            <input mdInput placeholder=\"Password\" disabled value=......................................>\n          </md-form-field></td>\n          <td>\n              <button color =\"primary\" (click)=\"user.passwordeditable=!user.passwordeditable\" md-raised-button>Edit</button>    \n          </td>\n        </tr></table>\n        <table class=\"example-full-width\" cellspacing=\"0\" *ngIf=\"user.passwordeditable\"><tr>\n            <td><form class=\"example-form\">\n                <md-form-field class=\"example-full-width\">\n                  <input type=\"password\" mdInput placeholder=\"New Password\" name=\"password\" [(ngModel)]=\"userEdit.password\">\n                </md-form-field>\n            </form></td>\n            <td>\n              <button color=\"primary\" (click)=\"update_password()\" md-raised-button>Confirm Change</button>\n            </td>  \n        </tr></table>\n\n    </form>\n    \n    <button color =\"primary\" routerLink=\"/dashboard\" md-raised-button>Back to Homepage</button>\n\n\n</md-card>\n  "
+
+/***/ }),
+
 /***/ "../../../../../src/app/user/user-profile/user-profile.component.ts":
-/***/ (function(module, __webpack_exports__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserProfileComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__user_service__ = __webpack_require__("../../../../../src/app/user.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user__ = __webpack_require__("../../../../../src/app/user.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 
+
+
+var UserProfileComponent = (function () {
+    function UserProfileComponent(userService) {
+        this.userService = userService;
+        this.user = new __WEBPACK_IMPORTED_MODULE_2__user__["a" /* User */]();
+        this.userEdit = new __WEBPACK_IMPORTED_MODULE_2__user__["a" /* User */]();
+        // attention!!!!! If loged based on sign up, should use 
+        // userName: any = JSON.parse(localStorage.getItem("currentUser")).username;
+        // Problem will be fixed if add more item to localstorage-currentUser when sign up
+        // to make it similar as when sign in
+        this.userName = JSON.parse(localStorage.getItem("currentUser")).user.username;
+        // console.log(this.userName); 
+    }
+    UserProfileComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.userService.getUserByUsername(this.userName).then(function (data) {
+            _this.user = data;
+            Object.assign(_this.userEdit, _this.user);
+            console.log(_this.user);
+        });
+    };
+    // getUser(user: User) {
+    //   this.userService.getUser()
+    //   .then(user => this.user = user)
+    //   .catch(err => console.log(err));
+    // }
+    UserProfileComponent.prototype.update_email = function () {
+        this.userEdit.emaileditable = false;
+        this.user = this.userEdit;
+        this.userService.update(this.userEdit);
+    };
+    UserProfileComponent.prototype.update_password = function () {
+        this.userEdit.passwordeditable = false;
+        this.user = this.userEdit;
+        // call service.ts to store the new password(this.userEdit)
+    };
+    return UserProfileComponent;
+}());
+UserProfileComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-user-profile',
+        template: __webpack_require__("../../../../../src/app/user/user-profile/user-profile.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/user/user-profile/user-profile.component.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__user_service__["a" /* UserService */]) === "function" && _a || Object])
+], UserProfileComponent);
+
+var _a;
+//# sourceMappingURL=user-profile.component.js.map
 
 /***/ }),
 
