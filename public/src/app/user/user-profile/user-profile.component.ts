@@ -45,6 +45,7 @@ export class UserProfileComponent implements OnInit {
   update_password() {
     this.userEdit.passwordeditable=false;
     this.user = this.userEdit;
+    this.userService.update(this.userEdit);
     // call service.ts to store the new password(this.userEdit)
   }
 }

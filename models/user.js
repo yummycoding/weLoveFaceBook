@@ -68,12 +68,12 @@ module.exports.updateUser = function(editUser, callback) {
         bcrypt.hash(editUser.password, salt, (err, hash) => {
             if(err) throw err;
             editUser.password = hash;
+            User.update({_id:editUser._id},editUser,(err, raw)=>{
+                if(err) throw err;
+                else return raw
+            })
         })
-    })
-    User.update({_id:editUser._id},editUser,(err, raw)=>{
-        if(err) throw err;
-        else return raw
-    })
+    })  
 };
 
 module.exports.comparePassword = function(candidatePassword, hash, callback) {

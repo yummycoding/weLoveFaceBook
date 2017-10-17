@@ -57,7 +57,7 @@ describe('RegisFormComponent', () => {
   user
     .create(newUser)
     .then(status => {
-      expect(status).toEqual({ success: true });
+      expect(status).toEqual(true);
       done();
     });
   });
