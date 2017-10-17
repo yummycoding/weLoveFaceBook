@@ -11,9 +11,8 @@ import 'hammerjs';
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component'; // copyright component, used in all pages
-import { HeaderComponent } from './header/header.component';
-
 // components for dashboard (homepage)
+import { HeaderComponent } from './dashboard/header/header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 // components for login
 import { LoginFormComponent } from './login-form/login-form.component';
@@ -30,7 +29,6 @@ import { UserDetailsComponent } from './user/user-details/user-details.component
 import { UserListComponent } from './user/user-list/user-list.component';
 import { UserNewComponent } from './user/user-new/user-new.component';
 import { UserEditComponent } from './user/user-edit/user-edit.component';
-import { UserProfileComponent } from './user/user-profile/user-profile.component';
 // file upload
 
 
@@ -41,17 +39,13 @@ const appRoutes: Routes = [
   },
   {
     path: 'dashboard',
-    // canActivate: [AuthguardGuard],
+    canActivate: [AuthguardGuard],
     component: DashboardComponent
   },
   {
     path: 'regis-form',
     component: RegisFormComponent
-  },
-  {
-    path: 'userprofile',
-    component: UserProfileComponent
-  },
+  }
 ];
 
 @NgModule({
@@ -70,8 +64,7 @@ const appRoutes: Routes = [
     UserDetailsComponent,
     UserListComponent,
     UserNewComponent,
-    UserEditComponent,
-    UserProfileComponent
+    UserEditComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
