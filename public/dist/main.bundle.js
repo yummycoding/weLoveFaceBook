@@ -148,7 +148,7 @@ var appRoutes = [
     },
     {
         path: 'dashboard',
-        // canActivate: [AuthguardGuard],
+        canActivate: [__WEBPACK_IMPORTED_MODULE_7__authguard_guard__["a" /* AuthguardGuard */]],
         component: __WEBPACK_IMPORTED_MODULE_13__dashboard_dashboard_component__["a" /* DashboardComponent */]
     },
     {
@@ -595,6 +595,9 @@ var HomeComponent = (function () {
     HomeComponent.prototype.ngOnInit = function () {
         this.end = this.start + this.pageSize;
     };
+    // count() {
+    //   return this.spaceScreens.length;
+    // }
     HomeComponent.prototype.likeMe = function (i) {
         if (this.spaceScreens[i].liked !== 1) {
             this.spaceScreens[i].liked = 1;
@@ -1012,7 +1015,15 @@ var UserService = (function () {
         return this.isUserLoggedIn;
     };
     UserService.prototype.create = function (user) {
-        return this._http.post('/users/register', user).map(function (data) { return data.json(); }).toPromise();
+        return this._http.post('/users/register', user).map(function (data) {
+            var returnUser = data.json();
+            console.log(returnUser);
+            if (returnUser && returnUser.token) {
+                // store user details and jwt token in local storage to keep user logged in between page refreshes
+                localStorage.setItem('currentUser', JSON.stringify(returnUser));
+            }
+            return returnUser.success;
+        }).toPromise();
     };
     UserService.prototype.destroy = function (user) {
         return this._http.delete('/users/' + user._id).map(function (data) { return data.json(); }).toPromise();
@@ -1032,7 +1043,7 @@ var UserService = (function () {
             .map(function (data) {
             // login successful if there's a jwt token in the response
             var user = data.json();
-            // console.log(user);
+            console.log(user);
             if (user && user.token) {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', JSON.stringify(user));

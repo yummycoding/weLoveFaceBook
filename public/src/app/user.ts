@@ -7,7 +7,7 @@ export class User {
         public nickname: string = '',
         public gender  : number = 0,
         public dob     : string = '',
-        public dobeditable: boolean =false,
+        public dobeditable: boolean = false,
         public emaileditable: boolean = false,
         public passwordeditable: boolean = false
     ) {}

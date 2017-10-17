@@ -22,13 +22,21 @@ export class UserService {
     return this.isUserLoggedIn;
   }
   create(user: User) {
-    return this._http.post('/users/register', user).map(data => data.json()).toPromise();
+    return this._http.post('/users/register', user).map(data => {
+      const returnUser = data.json();
+      console.log(returnUser);
+      if (returnUser && returnUser.token) {
+        // store user details and jwt token in local storage to keep user logged in between page refreshes
+        localStorage.setItem('currentUser', JSON.stringify(returnUser));
+      }
+      return returnUser.success;
+    }).toPromise();
   }
   destroy(user: User) {
     return this._http.delete('/users/' + user._id).map(data => data.json()).toPromise();
   }
   update(user: User) {
-    console.log(user)
+    console.log(user);
     return this._http.put('/users/' + user._id, user).map(data => data.json()).toPromise();
   }
   getUser(user: User) {
@@ -43,7 +51,7 @@ export class UserService {
       .map(data => {
         // login successful if there's a jwt token in the response
         const user = data.json();
-        // console.log(user);
+        console.log(user);
         if (user && user.token) {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentUser', JSON.stringify(user));
