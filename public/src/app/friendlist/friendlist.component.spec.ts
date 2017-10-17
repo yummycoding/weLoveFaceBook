@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { MaterialModule } from '@angular/material';
 import { FriendlistComponent } from './friendlist.component';
 
 describe('FriendlistComponent', () => {
@@ -8,7 +8,8 @@ describe('FriendlistComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FriendlistComponent ]
+      declarations: [ FriendlistComponent ],
+      imports: [ MaterialModule ]
     })
     .compileComponents();
   }));
@@ -19,7 +20,14 @@ describe('FriendlistComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should be created', () => {
     expect(component).toBeTruthy();
   });
 });
+// describe('FriendlistComponent', () => {
+  
+//     it('true should be true', () => {
+//       expect(true).toBe(true);
+//     })
+  
+//   })

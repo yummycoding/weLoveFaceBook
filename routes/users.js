@@ -23,7 +23,24 @@ router.post('/register', (req, res, next) => {
         if(err) {
             res.json({success: false, msg:'Failed to register user'});
         } else {
-            return res.json(user);
+            const token = jwt.sign({ sub: user._id }, config.secret, {
+                expiresIn:604800//1 week
+            });
+            return res.json({
+                success:true,
+                token:'JWT '+token,
+                user:{
+                    id:user._id,
+                    username:user.username,
+                    // password:user.password,
+                    email:user.email,
+                    nickname:user.nickname,
+                    gender:user.gender,
+                    dob:user.dob,
+                    emaileditable:user.emaileditable,
+                    passwordeditable:user.passwordeditable,
+                }
+            });
             //res.json({success: true, msg:'User registered'});
         }
     });

@@ -24,7 +24,9 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.end = this.start + this.pageSize;
   }
-
+  // count() {
+  //   return this.spaceScreens.length;
+  // }
   likeMe(i) {
     if (this.spaceScreens[i].liked !== 1) {
       this.spaceScreens[i].liked = 1;
