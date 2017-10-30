@@ -20,10 +20,10 @@ export class HeaderComponent implements OnInit {
 
   logoutUser(e) {
     e.preventDefault();
-    console.log(e);
+    // console.log(e);
 
     this.user.setUserLoggedOut();
-    console.log(this.user.getUserLoggedIn());
+    // console.log('user logged in? ', this.user.getUserLoggedIn());
     localStorage.removeItem('currentUser');
     this.router.navigate(['']);
 

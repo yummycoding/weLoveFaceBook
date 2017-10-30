@@ -24,7 +24,7 @@ export class UserService {
   create(user: User) {
     return this._http.post('/users/register', user).map(data => {
       const returnUser = data.json();
-      console.log(returnUser);
+      // console.log(returnUser);
       if (returnUser && returnUser.token) {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('currentUser', JSON.stringify(returnUser));
@@ -47,6 +47,10 @@ export class UserService {
     console.log('client > Get user by user name > ',username);
     return this._http.get('/users/getuserbyusername/' + username).map(data=>data.json()).toPromise();
   }
+  getUserByUserID(userID: String) {
+    // console.log('client > Get user by UserID > ', userID);
+    return this._http.get('/users/getuserbyuserid/' + userID).map(data=>data.json()).toPromise();
+  }
   getUser(user: User) {
     return this._http.get('/users/' + user._id).map(data => data.json()).toPromise();
   }
@@ -59,7 +63,7 @@ export class UserService {
       .map(data => {
         // login successful if there's a jwt token in the response
         const user = data.json();
-        console.log(user);
+        // console.log(user);
         if (user && user.token) {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentUser', JSON.stringify(user));

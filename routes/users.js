@@ -100,6 +100,18 @@ router.get('/getuserbyusername/:username', (req, res, next) => {
     })
 });
 
+router.get('/getuserbyuserid/:userid', (req, res, next) => {
+     console.log('Server > GET user by user id > ',req.params.userid);
+     User.getUserByUserID(req.params.userid, (err, user) =>{
+         if(err) throw err;
+         if(!user){
+             return res.json({success: false, msg:'User not found'});
+         }
+         // console.log("Server > User returned by server", user);
+         return res.json(user);
+     })
+});
+
 router.put('/updatepassword/:id', (req, res, next) => {
     console.log("Server > PUT 'users/:id' > id", req.params.id);
     console.log("Server > PUT 'users/:id' > user", req.body);

@@ -17,7 +17,7 @@ export class LoginFormComponent implements OnInit {
   }
   loginUser(e) {
     e.preventDefault();
-    console.log(e);
+    // console.log(e);
     const username = e.target.elements[0].value;
     const password = e.target.elements[1].value;
     this.signinUser.username = username;
@@ -35,7 +35,7 @@ export class LoginFormComponent implements OnInit {
     //     });
     this.user.loginUser(username, password)
     .then(status => {
-      console.log(status);
+      // console.log(status);
       if (status) {
         this.router.navigate(['dashboard']);
         this.user.setUserLoggedIn();

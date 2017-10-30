@@ -16,14 +16,14 @@ export class UserProfileComponent implements OnInit {
   // userName: any = JSON.parse(localStorage.getItem("currentUser")).username;
   // Problem will be fixed if add more item to localstorage-currentUser when sign up
   // to make it similar as when sign in
-  userName: String = JSON.parse(localStorage.getItem("currentUser")).user.username;
-  
+  userID: String = JSON.parse(localStorage.getItem("currentUser")).user.id;
+
   constructor(private userService: UserService) {  
     // console.log(this.userName); 
   }
 
   ngOnInit() {
-    this.userService.getUserByUsername(this.userName).then(data => {
+    this.userService.getUserByUserID(this.userID).then(data => {
       this.user = data
       Object.assign(this.userEdit, this.user);
       console.log("user info got from database", this.user);

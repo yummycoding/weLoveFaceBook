@@ -507,9 +507,9 @@ var HeaderComponent = (function () {
     };
     HeaderComponent.prototype.logoutUser = function (e) {
         e.preventDefault();
-        console.log(e);
+        // console.log(e);
         this.user.setUserLoggedOut();
-        console.log(this.user.getUserLoggedIn());
+        // console.log('user logged in? ', this.user.getUserLoggedIn());
         localStorage.removeItem('currentUser');
         this.router.navigate(['']);
     };
@@ -694,7 +694,7 @@ var LoginFormComponent = (function () {
     LoginFormComponent.prototype.loginUser = function (e) {
         var _this = this;
         e.preventDefault();
-        console.log(e);
+        // console.log(e);
         var username = e.target.elements[0].value;
         var password = e.target.elements[1].value;
         this.signinUser.username = username;
@@ -712,7 +712,7 @@ var LoginFormComponent = (function () {
         //     });
         this.user.loginUser(username, password)
             .then(function (status) {
-            console.log(status);
+            // console.log(status);
             if (status) {
                 _this.router.navigate(['dashboard']);
                 _this.user.setUserLoggedIn();
@@ -1017,7 +1017,7 @@ var UserService = (function () {
     UserService.prototype.create = function (user) {
         return this._http.post('/users/register', user).map(function (data) {
             var returnUser = data.json();
-            console.log(returnUser);
+            // console.log(returnUser);
             if (returnUser && returnUser.token) {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', JSON.stringify(returnUser));
@@ -1040,6 +1040,10 @@ var UserService = (function () {
         console.log('client > Get user by user name > ', username);
         return this._http.get('/users/getuserbyusername/' + username).map(function (data) { return data.json(); }).toPromise();
     };
+    UserService.prototype.getUserByUserID = function (userID) {
+        // console.log('client > Get user by UserID > ', userID);
+        return this._http.get('/users/getuserbyuserid/' + userID).map(function (data) { return data.json(); }).toPromise();
+    };
     UserService.prototype.getUser = function (user) {
         return this._http.get('/users/' + user._id).map(function (data) { return data.json(); }).toPromise();
     };
@@ -1051,7 +1055,7 @@ var UserService = (function () {
             .map(function (data) {
             // login successful if there's a jwt token in the response
             var user = data.json();
-            console.log(user);
+            // console.log(user);
             if (user && user.token) {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', JSON.stringify(user));
@@ -1417,12 +1421,12 @@ var UserProfileComponent = (function () {
         // userName: any = JSON.parse(localStorage.getItem("currentUser")).username;
         // Problem will be fixed if add more item to localstorage-currentUser when sign up
         // to make it similar as when sign in
-        this.userName = JSON.parse(localStorage.getItem("currentUser")).user.username;
+        this.userID = JSON.parse(localStorage.getItem("currentUser")).user.id;
         // console.log(this.userName); 
     }
     UserProfileComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.userService.getUserByUsername(this.userName).then(function (data) {
+        this.userService.getUserByUserID(this.userID).then(function (data) {
             _this.user = data;
             Object.assign(_this.userEdit, _this.user);
             console.log("user info got from database", _this.user);
