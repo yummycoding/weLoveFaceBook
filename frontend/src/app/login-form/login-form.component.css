@@ -32,3 +32,9 @@ div.input {
 .example-full-width {
     width: 100%;
 }
+.alert {
+    padding: 20px;
+    /* background-color: #f44336; Red */
+    color: red;
+    margin-bottom: 15px;
+}

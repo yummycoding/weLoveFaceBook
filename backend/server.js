@@ -47,7 +47,7 @@ app.use('/users', users);
 // });
 
 app.all("*",(req,res,next) => {
-    res.sendFile(path.resolve('./public/dist/index.html'))
+    res.sendFile(path.resolve('../frontend/dist/index.html'))
 });
 
 app.listen(port, () => {

@@ -5,6 +5,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Http, HttpModule } from '@angular/http';
 import { MaterialModule, MdDatepickerModule, MdNativeDateModule, DateAdapter, NativeDateAdapter  } from '@angular/material';
 import { UserService } from './user.service';
+// validate
+import { ValidateService } from './validate.service';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 import { AuthguardGuard } from './authguard.guard';
 import { FormsModule } from '@angular/forms';
 import 'hammerjs';
@@ -79,9 +82,10 @@ const appRoutes: Routes = [
     HttpModule,
     MdDatepickerModule,
     MdNativeDateModule,
-    FormsModule
+    FormsModule,
+    FlashMessagesModule
   ],
-  providers: [UserService, AuthguardGuard],
+  providers: [UserService, AuthguardGuard, ValidateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

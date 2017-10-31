@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 import { User } from '../user';
-
+import { ValidateService } from '../validate.service';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-login-form',
@@ -11,7 +12,8 @@ import { User } from '../user';
 })
 export class LoginFormComponent implements OnInit {
   signinUser = new User();
-  constructor(private router: Router, private user: UserService) { }
+  // tslint:disable-next-line:max-line-length
+  constructor(private router: Router, private user: UserService, private validateService: ValidateService, private flashMessage: FlashMessagesService) { }
 
   ngOnInit() {
   }
@@ -22,17 +24,12 @@ export class LoginFormComponent implements OnInit {
     const password = e.target.elements[1].value;
     this.signinUser.username = username;
     this.signinUser.password = password;
-    // this.user.loginUser(username, password)
-    // .subscribe(
-    //     data => {
-    //       console.log(data);
-    //         this.router.navigate(['dashboard']);
-    //     },
-    //     error => {
-    //       console.log(error);
-    //         // this.alertService.error(error);
-    //         // this.loading = false;
-    //     });
+
+    if (!this.validateService.validateLogin(this.signinUser)) {
+      this.flashMessage.show('Please fill in all fields', {cssClass: 'alert', timeout: 3000});
+      return false;
+    }
+
     this.user.loginUser(username, password)
     .then(status => {
       // console.log(status);
@@ -40,7 +37,8 @@ export class LoginFormComponent implements OnInit {
         this.router.navigate(['dashboard']);
         this.user.setUserLoggedIn();
       } else {
-        this.router.navigate(['']);
+        this.flashMessage.show('Wrong username or password', {cssClass: 'alert', timeout: 3000});
+        // this.router.navigate(['']);
       }
     }).catch(err => console.log(err));
   }
