@@ -1,0 +1,19 @@
+<!-- <app-login-header></app-login-header> -->
+<form (submit)="loginUser($event)">
+  <div>
+    <img width="500" src="../assets/headerimage/GatorBook.jpg">
+  </div>
+  <div>
+    <img width="500" src="../assets/headerimage/gator.png">
+  </div>
+  <md-form-field class="example-full-width">
+      <input mdInput placeholder="Username" name="username" [(ngModel)]="signinUser.username">
+  </md-form-field>
+  <md-form-field class="example-full-width">
+      <input type ="password" mdInput placeholder="Password" name="password" [(ngModel)]="signinUser.password">
+  </md-form-field>
+  <div class="input">    
+    <button color ="primary" type ="submit" md-raised-button>Sign In</button>   
+    <button color ="primary" routerLink="/regis-form" md-raised-button>Sign Up</button>
+  </div>
+</form>

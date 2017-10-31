@@ -1,0 +1,6 @@
+<div *ngFor="let user of users">
+  {{ user._id }} - {{ user.username }} - {{ user.password }}
+  <button (click)="destroy(user)">Delete</button>
+  <button (click)="user.editable = !user.editable">Edit</button>
+  <app-user-edit [user]="user" (updateUserEvent)="update($event)" *ngIf="user.editable"></app-user-edit>
+</div>
