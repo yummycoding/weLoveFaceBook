@@ -28,10 +28,14 @@ Before running the tests make sure you are serving the app via `ng serve`.
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 ## Usage
-mongod
+mongod (open database)
 
 cd frontend
-ng build -w
+ng build -w (build dist for front end)
 
 cd backend
-nodemon server.js
+nodemon server.js (backend server.js use dist for front end, and mount server on localhost:3000)
+
+When do e2e testing 
+cd frontend/e2e
+ng e2e --no-serve

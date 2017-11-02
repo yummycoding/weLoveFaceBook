@@ -4,23 +4,23 @@
     <form class="example-form">
         <!-- User name -->
         <md-form-field class="example-full-width">
-          <input mdInput placeholder="Username" disabled value={{user.username}}>
+          <input mdInput id="prfusername" placeholder="Username" disabled value={{user.username}}>
         </md-form-field>
         <!-- Nick name -->
         <md-form-field class="example-full-width">
-          <input mdInput placeholder="Nickname" disabled value={{user.nickname}}>
+          <input mdInput id="prfnickname" placeholder="Nickname" disabled value={{user.nickname}}>
         </md-form-field>
         <!-- Birthday -->
         <md-form-field class="example-full-width">
-            <input mdInput placeholder="Birthday" disabled value={{user.dob}}>
+            <input mdInput id="prfbirthday" placeholder="Birthday" disabled value={{user.dob}}>
         </md-form-field>
         <!-- Email -->
         <table class="example-full-width" cellspacing="0"><tr>
           <td><md-form-field class="example-full-width">
-            <input mdInput placeholder="Email" disabled value={{userEdit.email}}>
+            <input mdInput id="prfemail" placeholder="Email" disabled value={{userEdit.email}}>
           </md-form-field></td>
           <td>
-              <button color="primary" (click)="userEdit.emaileditable=!userEdit.emaileditable" md-raised-button>Edit</button>     
+              <button color="primary" id="editemailbtn" (click)="userEdit.emaileditable=!userEdit.emaileditable" md-raised-button>Edit</button>     
           </td>
         </tr></table>
         <table class="example-full-width" cellspacing="0" *ngIf="userEdit.emaileditable"><tr>
@@ -30,7 +30,7 @@
                 </md-form-field>
             </form></td>
             <td>
-              <button color="primary" (click)="update_email()" md-raised-button>Confirm Change</button>
+              <button color="primary" id="confirmemailbtn" (click)="update_email()" md-raised-button>Confirm Change</button>
             </td>  
         </tr></table>
         <!-- Password -->
@@ -39,7 +39,7 @@
             <input mdInput placeholder="Password" disabled value=...............................>
           </md-form-field></td>
           <td>
-              <button color ="primary" (click)="user.passwordeditable=!user.passwordeditable" md-raised-button>Edit</button>    
+              <button color ="primary" id="editpasswordbtn" (click)="user.passwordeditable=!user.passwordeditable" md-raised-button>Edit</button>    
           </td>
         </tr></table>
         <table class="example-full-width" cellspacing="0" *ngIf="user.passwordeditable"><tr>
@@ -49,7 +49,7 @@
                 </md-form-field>
             </form></td>
             <td>
-              <button color="primary" (click)="update_password()" md-raised-button>Confirm Change</button>
+              <button color="primary" id="confirmpasswordbtn" (click)="update_password()" md-raised-button>Confirm Change</button>
             </td>  
         </tr></table>
 

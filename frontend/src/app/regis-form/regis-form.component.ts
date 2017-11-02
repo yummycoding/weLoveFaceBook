@@ -12,6 +12,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 })
 export class RegisFormComponent implements OnInit {
   newUser = new User();
+  confirmedpassword: String;
   @Output() createNewUserEvent = new EventEmitter();
   startDate = new Date(1990, 0, 1);
 
@@ -24,15 +25,19 @@ export class RegisFormComponent implements OnInit {
   signupUser() {
 
     console.log('new user has been created, info: ', this.newUser);
+    if (this.newUser.password!=this.confirmedpassword) {
+      this.flashMessage.show("These passwords don't match. Please try again", {cssClass: 'alert', timeout: 5000});
+      return false;
+    }
     if (!this.validateService.validateRegister(this.newUser)) {
-      this.flashMessage.show('Please fill in all fields', {cssClass: 'alert', timeout: 3000});
+      this.flashMessage.show('Please fill in all fields', {cssClass: 'alert', timeout: 5000});
       return false;
     }
     if (!this.validateService.validateEmail(this.newUser.email)) {
-      this.flashMessage.show('Please use a valid email', {cssClass: 'alert', timeout: 3000});
+      this.flashMessage.show('Please use a valid email', {cssClass: 'alert', timeout: 5000});
       return false;
     }
-    if (this.validateService.validateRegister(this.newUser) && this.validateService.validateEmail(this.newUser.email)) {
+    if (this.validateService.validateRegister(this.newUser) && this.validateService.validateEmail(this.newUser.email) && this.newUser.password===this.confirmedpassword) {
       this.userService.create(this.newUser)
         .then(status => {
           localStorage.setItem('currentUser', JSON.stringify(this.newUser));

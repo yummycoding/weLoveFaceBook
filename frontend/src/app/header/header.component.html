@@ -2,7 +2,7 @@
   <md-toolbar color="primary">
       <span style="text-align:center;">GatorBook</span>
       <span class="spacer"></span>
-      <button md-icon-button [mdMenuTriggerFor]="menu">
+      <button md-icon-button [mdMenuTriggerFor]="menu" id="menubtn">
           <i class="material-icons">account_circle</i>  
       </button>
       <md-menu #menu="mdMenu">
@@ -10,7 +10,7 @@
               <md-icon>lightbulb_outline</md-icon>
               <span>Notifications</span>
           </button>
-          <button md-menu-item (click)="setUserProfile($event)">
+          <button md-menu-item id="userprofilebtn" (click)="setUserProfile($event)">
               <md-icon>person_outline</md-icon>
               <span>Profile</span>
           </button>
@@ -18,7 +18,7 @@
               <md-icon>settings</md-icon>
               <span>Setting</span>
           </button>
-          <button md-menu-item (click)="logoutUser($event)">
+          <button md-menu-item id="logout_header" (click)="logoutUser($event)">
               <md-icon>power_settings_new</md-icon>
               <span>Log Out</span>
           </button>
