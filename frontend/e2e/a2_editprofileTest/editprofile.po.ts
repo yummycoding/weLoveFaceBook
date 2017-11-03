@@ -13,30 +13,31 @@ export class EditProfilePage {
 
   // function functions
   signin(username,password) {
-    browser.get('/');
     // sign in use username and password provided as parameters
+    this.getusername_signin().clear();
     this.getusername_signin().sendKeys(username);
+    this.getpassword_signin().clear();
     this.getpassword_signin().sendKeys(password);
     this.getsigninbtn().click();
   }
   logoutUsingHeader() {
     this.clickbtnInMenu(this.getmenubtn(),this.getLogoutBtnFromHeader());
   }
-  navigateToProfilePageFromHome() {
+  navigateToProfilePageFromHome2() {
     this.clickbtnInMenu(this.getmenubtn(),this.getprofilebtn());
+  }
+  navigateToProfilePageFromHome() {
+    browser.get('/userprofile');
   }
   changeEmail(newemail) {
     this.getEditEmailbtn().click();
-    // browser.sleep(3000);
-    // this.getEmailInput(); // clear original field
+    this.getEmailInput().clear(); 
     this.getEmailInput().sendKeys(newemail); 
-    // browser.sleep(3000);
     this.getConfirmEditEmailbtn().click();
-    // browser.sleep(3000);
   }
   changePassword(newpassword) {
     this.getEditPasswordbtn().click();
-    // this.getPasswordInput(); // clear original field
+    this.getPasswordInput().clear();
     this.getPasswordInput().sendKeys(newpassword); 
     this.getConfirmEditPasswordbtn().click();
   }
@@ -57,7 +58,11 @@ export class EditProfilePage {
   getmenubtn() {return element(by.id('menubtn'));}
   getprofilebtn() {return element(by.id('userprofilebtn'));}
   getEditEmailbtn() {return element(by.id('editemailbtn'));}
-  getEmailInput() {return element(by.name('email'));}
+  getEmailInput() {return element(by.name('email'));} //place to fill in new email address (appears after click edit)
+  getemail_profile() {return element(by.id('prfemail'));}  //Email displayed on profile page
+  getusername_profile() {return element(by.id('prfusername'));}
+  getnickname_profile() {return element(by.id('prfnickname'));}
+  getbirthday_profile() {return element(by.id('prfbirthday'));}
   getConfirmEditEmailbtn() {return element(by.id('confirmemailbtn'));}
   getEditPasswordbtn() {return element(by.id('editpasswordbtn'));}
   getPasswordInput() {return element(by.name('password'));}
