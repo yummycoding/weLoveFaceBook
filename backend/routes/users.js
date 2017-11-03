@@ -7,84 +7,86 @@ const User = require('../models/user');
 
 //Register
 router.post('/register', (req, res, next) => {
-    //delete req.body._id
-    let newUser = new User({
-        username: req.body.username,
-        password: req.body.password,
-        email   : req.body.email,
-        // nickname: req.body.nickname,
-        //gender  : req.body.gender,
-        // dob     : req.body.dob,
-        // emaileditable: false,
-        // passwordeditable: false
-    });
-
-    User.addUser(newUser, (err, user) => {
-        if(err) {
-            res.json({success: false, msg:'Failed to register user'});
+    if(!req.body.email) {
+        res.json({success: false, message: 'You must provide an e-mail'});
+    } else {
+        if (!req.body.username) {
+            res.json({success: false, message: 'You must provide a username'});
         } else {
-            // const token = jwt.sign({ sub: user._id }, config.secret, {
-            //     expiresIn:604800//1 week
-            // });
-            return res.json({
-                success:true,
-                //token:'JWT '+token,
-                user:{
-                    //id:user._id,
-                    username:user.username,
-                    password:user.password,
-                    email:user.email,
-                    // nickname:user.nickname,
-                    // gender:user.gender,
-                    // dob:user.dob,
-                    // emaileditable:user.emaileditable,
-                    // passwordeditable:user.passwordeditable,
-                }
-            });
-            res.json({success: true, msg:'User registered'});
-        }
-    });
-});
-
-//Authenticate
-router.post('/authenticate', (req, res, next) => {
-    const username = req.body.username;
-    const password = req.body.password;
-
-    User.getUserByUsername(username, (err, user) => {
-        if(err) throw err;
-        if(!user){
-            return res.json({success: false, msg:'User not fount'});
-        }
-
-        User.comparePassword(password, user.password, (err, isMatch) => {
-            if(err) throw err;
-            if(isMatch){
-                console.log(user);
-                const token = jwt.sign({ sub: user._id }, config.secret, {
-                     expiresIn:604800//1 week
-                 });
-                //console.log(token);
-                res.json({
-                    success:true,
-                    token:'JWT '+token,
-                    user:{
-                        id:user._id,
-                        username:user.username,
-                        // password:user.password,
-                        email:user.email,
-                        nickname:user.nickname,
-                        gender:user.gender,
-                        dob:user.dob,
-                        emaileditable:user.emaileditable,
-                        passwordeditable:user.passwordeditable,
+            if (!req.body.password) {
+                res.json({success: false, message: 'You must provide a password'});
+            } else {
+                let user = new User({
+                    email: req.body.email,
+                    username: req.body.username,
+                    password: req.body.password
+                });
+                user.save((err) => {
+                    if(err){
+                        if (err.code === 11000) {
+                            res.json({success: false, message: 'Username or e-mail already exists'});
+                        } else {
+                            if (err.errors) {
+                                if (err.errors.email) {
+                                    res.json({success: false, message: err.errors.email.message});
+                                } else {
+                                    if (err.errors.username) {
+                                        res.json({success: false, message: err.errors.username.message});
+                                    } else {
+                                        if (err.errors.password) {
+                                            res.json({success: false, message: err.errors.password.message});
+                                        } else {
+                                            res.json({success: false, message: err});
+                                        }
+                                    }
+                                }
+                            } else {
+                                res.json({success: false, message: 'Could not save user. Error: ', err});
+                            }
+                        }
+                    } else {
+                        res.json({success: true, message: 'Account registered'});
                     }
                 });
-            } else {
-                return res.json({success:false, msg:'Wrong password'});
             }
-        });
-    });
+        }
+    }
+});
+
+//Authenticate 
+//Notice :changed here from /authenticate to /login
+router.post('/login', (req, res) => {
+    if (!req.body.username) {
+        res.json({success: false, message: 'No username was provided.'})
+    } else {
+        if (!req.body.password) {
+            res.json({success: false, message: 'No password was provided.'});
+        } else {
+            User.findOne({username: req.body.username}, (err, user) => {
+                if(err) {
+                    res.json({success: false, message: err});
+                } else {
+                    if (!user) {
+                        res.json({success: false, message: 'Username not found.'});
+                    } else {
+                        const validPassword = user.comparePassword(req.body.password);
+                        if (!validPassword) {
+                            res.json({success: false, message: 'Invalid password.'});
+                        } else {
+                            const token = jwt.sign({userId: user._id}, config.secret, {expiresIn: '24h'});
+                            res.json({success: true, 
+                                      message: 'Success!',
+                                      token: token,
+                                      user: {
+                                            username: user.username
+                                      }
+                                    });
+                        }
+                    }
+                }
+            })
+        }
+    }
 });
 
 // given an username string, returns all data of that user
