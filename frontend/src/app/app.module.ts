@@ -35,6 +35,8 @@ import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 // file upload
 import { AddFriendComponent } from './friendlist/friendlist.component';
+// make post
+import { PostService } from './post.service';
 
 const appRoutes: Routes = [
   {
@@ -89,7 +91,12 @@ const appRoutes: Routes = [
   entryComponents: [
     AddFriendComponent
   ],
-  providers: [UserService, AuthguardGuard, ValidateService],
+  providers: [
+    UserService, 
+    AuthguardGuard, 
+    ValidateService,
+    PostService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

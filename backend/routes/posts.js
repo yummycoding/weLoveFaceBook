@@ -6,6 +6,7 @@ const config = require('../config/database');
 const router = express.Router();
 
 router.post('/newPost', (req, res) => {
+    console.log('POST > posts/newPost > req', req);
     if (!req.body.title) {
         res.json({success: false, message: 'Post title is requested!'});
     } else {

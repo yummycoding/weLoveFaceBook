@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Post } from '../post';
+import { PostService } from '../post.service';
 import { UserService } from '../user.service';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -8,14 +10,20 @@ import 'rxjs/add/operator/map';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
 export class HomeComponent implements OnInit {
+  
+  post: Post = new Post();
+  cur_username: String = JSON.parse(localStorage.getItem("currentUser")).user.username;
+
   spaceScreens: Array<any> = [];
   start = 0;
   end = 0;
   pageIndex = 0;
   pageSize = 2;
   pageSizeOptions = [1, 2, 5, 10];
-  constructor(private user: UserService, private http: Http) {
+  
+  constructor(private userService: UserService, private postService: PostService, private http: Http) {
     this.http.get('assets/mock-data-home/data.json')
     .map(response => response.json().screenshots)
     .subscribe(res => this.spaceScreens = res);
@@ -24,9 +32,18 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.end = this.start + this.pageSize;
   }
+
+  sendPost() {
+    this.post.title = 'wedontneedtitle';
+    this.post.createdBy = this.cur_username;
+    this.postService.sendPost(this.post);
+    this.post = new Post();
+  }
+
   // count() {
   //   return this.spaceScreens.length;
   // }
+
   likeMe(i) {
     if (this.spaceScreens[i].liked !== 1) {
       this.spaceScreens[i].liked = 1;

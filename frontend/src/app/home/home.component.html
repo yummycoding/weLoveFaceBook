@@ -14,7 +14,7 @@
       <md-form-field class="textwidth">
         <!-- <input mdInput #message maxlength="256" placeholder="Say something">
       <md-hint align="start"><strong>Don't disclose personal info</strong> </md-hint> -->
-        <input mdInput #message maxlength="256">
+        <input mdInput [(ngModel)]="post.body" #message maxlength="256">
         <md-hint align="end">{{message.value.length}} / 256</md-hint>
       </md-form-field>
       <div class="input">
@@ -25,7 +25,7 @@
             Photo
           </Label>
         </button>
-        <button color="warn" md-raised-button>Post</button>
+        <button color="warn" (click)="sendPost()" md-raised-button>Post</button>
       </div>
     </md-expansion-panel>
   </div>
