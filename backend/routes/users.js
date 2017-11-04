@@ -80,14 +80,63 @@ router.post('/login', (req, res) => {
                                       user: {
                                             username: user.username
                                       }
-                                    });
+                            });
                         }
                     }
                 }
-            })
+            });
         }
     }
 });
+
+router.get('/checkEmail/:email', (req, res) => {
+    if (!req.params.email) {
+        res.json({success: false, message: 'E-mail was not provided'});
+    } else {
+        User.findOne({email: req.params.email}, (err, user) => {
+            if (err) {
+                res.json({success: false, message: err});
+            } else {
+                if (user) {
+                    res.json({success: false, message: 'E-mail is already taken'});
+                } else {
+                    res.json({success: true, message: 'E-mail is available'});
+                }
+            }
+        });
+    }
+});
+
+router.get('/checkUsername/:username', (req, res) => {
+    if (!req.params.username) {
+        res.json({success: false, message: err});
+    } else {
+        User.findOne({username: req.params.username}, (err, user) => {
+            if (err) {
+                res.json({success: false, message: err});
+            } else {
+                if (user) {
+                    res.json({success: false, message: 'Username is already taken'});
+                } else {
+                    res.json({success: true, message: 'Username is available'});
+                }
+            }
+        });
+    }
+});
+
+router.get('/profile', (req, res) => {
+    User.findOne({_id: req.decoded.userId}).select('username email').exec((err, user) => {
+        if (err) {
+            res.json({success: false, message: 'User not found'});
+        } else {
+            res.json({success: true, user: user});
+        }
+    });
+});
+
+
+
 
 // given an username string, returns all data of that user
 router.get('/getuserbyusername/:username', (req, res, next) => {
@@ -140,10 +189,5 @@ router.put('/updateemail/:id', (req, res, next) => {
     })
 });
 
-
-// //Profile
-// router.get('/profile', (req, res, next) => {
-//     res.send('PROFILE');
-// });
 
 module.exports = router;
