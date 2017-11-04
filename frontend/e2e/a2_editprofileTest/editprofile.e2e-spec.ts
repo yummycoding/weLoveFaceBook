@@ -4,11 +4,11 @@ import {} from 'jasmine';
 
 describe('Profile edit:', () => {
   let profilepage: EditProfilePage;
-  var username = "test8";
+  var username =  "test10";
+  var email_old = "test10@ufl.edu";
+  var email_new = "test10@gmail.com";
   var password_old = "Admin$$$1";
   var password_new = "Newpassword$$$1";
-  var email_old = "gatorbook@ufl.edu";
-  var email_new = "newemail@ufl.edu";
 
   beforeEach(() => {
     profilepage = new EditProfilePage();

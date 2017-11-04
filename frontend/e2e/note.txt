@@ -1,7 +1,7 @@
 Some important things need to remember:
 1. Very important!!!!!
-   Every time testing signup and edit profile, need change newusername in signupspec and 
-   username in editprofilespec to a never registered one.
+   Every time testing signup and edit profile, need change newusername,newemail in signupspec and 
+   username,email_old and email_new in editprofilespec to a never registered one.
 2. There are two id=locations <h> in both loginpage and homepage's html file.
    For loginpage, it = "-- share your beautiful life", for homepage, it = "Welcome to Gatorbook!",
    so error type expect "-- share ..." to be "Welcome to ..." means you are not logged in, but you
