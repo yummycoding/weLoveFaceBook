@@ -1,13 +1,13 @@
 var should = require('should');
-var supertest = requier('supertest');
+var supertest = require('supertest');
 var server = supertest.agent("http://localhost:3000");
 
-describe('Test the APIs of users', function(){
+describe('Test the users registration API', function(){
     it('should register a right new user', function(done){
         server
         .post('/users/register')
         .send({
-            username: 'Zhuoru Li',
+            username: 'Zhuoru',
             password: 'Oz65229780!',
             email: 'lizhuoru19940423@gmail.com'
         })
@@ -23,7 +23,7 @@ describe('Test the APIs of users', function(){
         server
         .post('/users/register')
         .send({
-            username: 'Zhuoru Li',
+            username: 'Zhuoru',
             password: 'Oz65229780!',
             email: ''
         })
@@ -55,7 +55,7 @@ describe('Test the APIs of users', function(){
         server
         .post('/users/register')
         .send({
-            username: 'Zhuoru Li',
+            username: 'Zhuoru',
             password: '',
             email: 'lizhuoru19940423@gmail.com'
         })
@@ -63,6 +63,24 @@ describe('Test the APIs of users', function(){
             res.status.should.equal(200),
             res.body.success.should.equal(false),
             res.body.message.should.equal('You must provide a password')
+            done();
+        });
+    });
+});
+
+describe('Test the user login API', function(){
+    it('should login successfully', function(done){
+        server
+        .post('/users/login')
+        .send({
+            username: 'Zhuoru',
+            password: 'Oz65229780!',
+            email: 'lizhuoru19940423@gmail.com'
+        })
+        .end(function(err, res){
+            res.status.should.equal(200),
+            res.body.success.should.equal(true),
+            res.body.message.should.equal('Success!')
             done();
         });
     });
