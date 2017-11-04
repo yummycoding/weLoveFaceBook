@@ -17,3 +17,11 @@
   display: inline-flex;
   vertical-align: middle;
 }
+.notification{
+  margin-left: 5px;
+  width:350px;
+}
+.notiTitle{
+  margin-left: 150px;
+  font-size: 20px;
+}

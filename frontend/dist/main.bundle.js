@@ -147,6 +147,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 // file upload
+
 var appRoutes = [
     {
         path: '',
@@ -181,25 +182,29 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_15__dashboard_dashboard_component__["a" /* DashboardComponent */],
             __WEBPACK_IMPORTED_MODULE_17__login_form_login_header_login_header_component__["a" /* LoginHeaderComponent */],
             __WEBPACK_IMPORTED_MODULE_18__selfpost_selfpost_component__["a" /* SelfpostComponent */],
-            __WEBPACK_IMPORTED_MODULE_19__friendlist_friendlist_component__["a" /* FriendlistComponent */],
+            __WEBPACK_IMPORTED_MODULE_19__friendlist_friendlist_component__["b" /* FriendlistComponent */],
             __WEBPACK_IMPORTED_MODULE_20__home_home_component__["a" /* HomeComponent */],
             __WEBPACK_IMPORTED_MODULE_21__regis_form_regis_form_component__["a" /* RegisFormComponent */],
             __WEBPACK_IMPORTED_MODULE_22__user_user_component__["a" /* UserComponent */],
             __WEBPACK_IMPORTED_MODULE_23__user_user_list_user_list_component__["a" /* UserListComponent */],
             __WEBPACK_IMPORTED_MODULE_24__user_user_new_user_new_component__["a" /* UserNewComponent */],
             __WEBPACK_IMPORTED_MODULE_25__user_user_edit_user_edit_component__["a" /* UserEditComponent */],
-            __WEBPACK_IMPORTED_MODULE_26__user_user_profile_user_profile_component__["a" /* UserProfileComponent */]
+            __WEBPACK_IMPORTED_MODULE_26__user_user_profile_user_profile_component__["a" /* UserProfileComponent */],
+            __WEBPACK_IMPORTED_MODULE_19__friendlist_friendlist_component__["a" /* AddFriendComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* RouterModule */].forRoot(appRoutes),
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
-            __WEBPACK_IMPORTED_MODULE_5__angular_material__["a" /* MaterialModule */],
+            __WEBPACK_IMPORTED_MODULE_5__angular_material__["b" /* MaterialModule */],
             __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
             __WEBPACK_IMPORTED_MODULE_4__angular_http__["b" /* HttpModule */],
-            __WEBPACK_IMPORTED_MODULE_5__angular_material__["b" /* MdDatepickerModule */],
-            __WEBPACK_IMPORTED_MODULE_5__angular_material__["c" /* MdNativeDateModule */],
+            __WEBPACK_IMPORTED_MODULE_5__angular_material__["c" /* MdDatepickerModule */],
+            __WEBPACK_IMPORTED_MODULE_5__angular_material__["f" /* MdNativeDateModule */],
             __WEBPACK_IMPORTED_MODULE_10__angular_forms__["c" /* FormsModule */],
             __WEBPACK_IMPORTED_MODULE_8_angular2_flash_messages__["FlashMessagesModule"]
+        ],
+        entryComponents: [
+            __WEBPACK_IMPORTED_MODULE_19__friendlist_friendlist_component__["a" /* AddFriendComponent */]
         ],
         providers: [__WEBPACK_IMPORTED_MODULE_6__user_service__["a" /* UserService */], __WEBPACK_IMPORTED_MODULE_9__authguard_guard__["a" /* AuthguardGuard */], __WEBPACK_IMPORTED_MODULE_7__validate_service__["a" /* ValidateService */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_12__app_component__["a" /* AppComponent */]]
@@ -372,6 +377,13 @@ FooterComponent = __decorate([
 
 /***/ }),
 
+/***/ "../../../../../src/app/friendlist/addFriend.html":
+/***/ (function(module, exports) {
+
+module.exports = "<h1 md-dialog-title>New Friend Request</h1>\n<!-- Hi {{data.name}} -->\n<div md-dialog-content>\n  <p>Friend's name:</p>\n  <md-form-field>\n    <input placeholder= {{data.name}} mdInput tabindex=\"1\" [(ngModel)]=\"data.friendName\">\n  </md-form-field>\n  <p>Friend's email:</p>\n  <md-form-field>\n    <input placeholder= \"Enter the email\" mdInput tabindex=\"2\" [(ngModel)]=\"data.friendEmail\">\n  </md-form-field>\n</div>\n<div md-dialog-actions>\n  <button md-button [md-dialog-close]=\"data\" tabindex=\"3\" color=\"alert\">Send</button>\n  <button md-button (click)=\"onNoClick()\" tabindex=\"-1\" color=\"primary\">Cancel</button>\n</div>"
+
+/***/ }),
+
 /***/ "../../../../../src/app/friendlist/friendlist.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -393,7 +405,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/friendlist/friendlist.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<md-list>\n  <h3 md-subheader>A</h3>\n  <md-list-item *ngFor=\"let nameA of A\">\n    <md-icon md-list-icon>face</md-icon>\n    <p md-line>{{nameA.name}}</p>\n  </md-list-item>\n  <md-divider></md-divider>\n  <h3 md-subheader>B</h3>\n  <md-list-item *ngFor=\"let nameB of B\">\n    <md-icon md-list-icon>face</md-icon>\n    <p md-line>{{nameB.name}}</p>\n  </md-list-item>\n</md-list>\n"
+module.exports = "<md-form-field style=\"width: 300px\">\n    <input mdInput [(ngModel)]=\"name\" placeholder=\"Search\">\n</md-form-field>\n<button md-raised-button (click)=\"openDialog()\" color=\"primary\" style=\"margin-left: 15px\">Add a new friend</button>\n<md-list>\n  <h3 md-subheader>A</h3>\n  <md-list-item *ngFor=\"let nameA of A\">\n    <md-icon md-list-icon>face</md-icon>\n    <p md-line>{{nameA.name}}</p>\n  </md-list-item>\n  <md-divider></md-divider>\n  <h3 md-subheader>B</h3>\n  <md-list-item *ngFor=\"let nameB of B\">\n    <md-icon md-list-icon>face</md-icon>\n    <p md-line>{{nameB.name}}</p>\n  </md-list-item>\n</md-list>\n"
 
 /***/ }),
 
@@ -401,8 +413,10 @@ module.exports = "<md-list>\n  <h3 md-subheader>A</h3>\n  <md-list-item *ngFor=\
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FriendlistComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return FriendlistComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddFriendComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_material__ = __webpack_require__("../../../material/@angular/material.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -412,9 +426,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+
 
 var FriendlistComponent = (function () {
-    function FriendlistComponent() {
+    function FriendlistComponent(dialog) {
+        this.dialog = dialog;
+        // tslint:disable-next-line:member-ordering
         this.A = [
             {
                 name: 'Allan',
@@ -429,6 +449,7 @@ var FriendlistComponent = (function () {
                 updated: new Date('1/28/16'),
             }
         ];
+        // tslint:disable-next-line:member-ordering
         this.B = [
             {
                 name: 'Bob',
@@ -442,6 +463,21 @@ var FriendlistComponent = (function () {
     }
     FriendlistComponent.prototype.ngOnInit = function () {
     };
+    FriendlistComponent.prototype.openDialog = function () {
+        var _this = this;
+        var dialogRef = this.dialog.open(AddFriendComponent, {
+            width: '250px',
+            data: { name: this.name, animal: this.friendName, friendEmail: this.friendEmail }
+        });
+        dialogRef.afterClosed().subscribe(function (result) {
+            if (typeof result !== 'undefined') {
+                _this.friendName = result.friendName;
+                _this.friendEmail = result.friendEmail;
+                _this.currentTime = Date.now();
+                console.log('Username:' + _this.friendName + ' Email:' + _this.friendEmail + ' Time:' + _this.currentTime);
+            }
+        });
+    };
     return FriendlistComponent;
 }());
 FriendlistComponent = __decorate([
@@ -450,9 +486,29 @@ FriendlistComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/friendlist/friendlist.component.html"),
         styles: [__webpack_require__("../../../../../src/app/friendlist/friendlist.component.css")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_material__["d" /* MdDialog */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_material__["d" /* MdDialog */]) === "function" && _a || Object])
 ], FriendlistComponent);
 
+var AddFriendComponent = (function () {
+    function AddFriendComponent(dialogRef, data) {
+        this.dialogRef = dialogRef;
+        this.data = data;
+    }
+    AddFriendComponent.prototype.onNoClick = function () {
+        this.dialogRef.close();
+    };
+    return AddFriendComponent;
+}());
+AddFriendComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-addfriend',
+        template: __webpack_require__("../../../../../src/app/friendlist/addFriend.html"),
+    }),
+    __param(1, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])(__WEBPACK_IMPORTED_MODULE_1__angular_material__["a" /* MD_DIALOG_DATA */])),
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_material__["e" /* MdDialogRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_material__["e" /* MdDialogRef */]) === "function" && _b || Object, Object])
+], AddFriendComponent);
+
+var _a, _b;
 //# sourceMappingURL=friendlist.component.js.map
 
 /***/ }),
@@ -544,7 +600,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".post-card {\n    width: 600px;\n  }\n  \n.post-image {\n  background-image: url(" + __webpack_require__("../../../../../src/assets/headerimage/head6.jpg") + ");\n  /* background-image: spaceScreen.headerimg; */\n  background-size: cover;\n}\n.make-post {\n  width: 648px;\n}\n.textwidth {\n  width: 100%;\n}\n.icon-align{\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  vertical-align: middle;\n}", ""]);
+exports.push([module.i, ".post-card {\n    width: 600px;\n  }\n  \n.post-image {\n  background-image: url(" + __webpack_require__("../../../../../src/assets/headerimage/head6.jpg") + ");\n  /* background-image: spaceScreen.headerimg; */\n  background-size: cover;\n}\n.make-post {\n  width: 648px;\n}\n.textwidth {\n  width: 100%;\n}\n.icon-align{\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  vertical-align: middle;\n}\n.notification{\n  margin-left: 5px;\n  width:350px;\n}\n.notiTitle{\n  margin-left: 150px;\n  font-size: 20px;\n}", ""]);
 
 // exports
 
@@ -557,7 +613,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"make-post\">\n  <md-expansion-panel>\n    <md-expansion-panel-header>\n      <md-panel-title>\n        Make Post\n      </md-panel-title>\n      <md-panel-description>\n        What's on your mind?\n      </md-panel-description>\n    </md-expansion-panel-header>\n\n    <md-form-field class=\"textwidth\">\n      <!-- <input mdInput #message maxlength=\"256\" placeholder=\"Say something\">\n      <md-hint align=\"start\"><strong>Don't disclose personal info</strong> </md-hint> -->\n      <input mdInput #message maxlength=\"256\">\n      <md-hint align=\"end\">{{message.value.length}} / 256</md-hint>\n    </md-form-field>\n    <div class=\"input\">\n      <input class=\"ng-hide\" id=\"input-file-id\" multiple type=\"file\" #inputFile hidden/>\n      <button color=\"primary\" id=\"selectFile\" md-raised-button>\n        <Label for=\"input-file-id\">\n          <i class=\"material-icons md-18 icon-align\">insert_photo</i>\n          Photo\n        </Label>\n      </button>\n      <button color=\"warn\" md-raised-button>Post</button>\n    </div>\n  </md-expansion-panel>\n</div>\n<md-card class=\"post-card\" *ngFor=\"let spaceScreen of spaceScreens | slice: [start] : [end]; let i = index\">\n  <md-card-header>\n    <div md-card-avatar class=\"post-image\"></div>\n    <md-card-title>{{spaceScreen.name}}</md-card-title>\n    <md-card-subtitle>{{spaceScreen.remark}}</md-card-subtitle>\n  </md-card-header>\n  <img md-card-image src=\"{{spaceScreen.img}}\" alt=\"post photo\">\n  <md-card-content>\n    <p>{{spaceScreen.description}}</p>\n  </md-card-content>\n  <md-card-actions>\n    <button md-button (click)=\"likeMe(i)\">\n      <i class=\"material-icons md-18\" [class.red-color]=\"spaceScreen.liked == '1'\">favorite</i> \n    </button>\n    <button md-button (click)=\"commentMe(i)\">\n      <i class=\"material-icons md-18\">insert_comment</i> \n    </button>\n    <button md-button (click)=\"shareMe(i)\">\n      <i class=\"material-icons md-18\">share</i> \n    </button>\n    <!-- <button md-button (click)=\"deleteMe(i)\">\n      <i class=\"material-icons md-18\">delete</i> \n    </button> -->\n  </md-card-actions>\n</md-card>\n<div class=\"make-post\">\n  <md-paginator [length]=\"spaceScreens.length\"\n  [pageSize]=\"pageSize\"\n  [pageSizeOptions]=\"pageSizeOptions\"\n  (page)=\"pageEvent = $event; pageChange($event)\">\n  </md-paginator>\n</div>\n"
+module.exports = "<div>\n<div style=\"float:left\">\n  <div class=\"make-post\">\n    <md-expansion-panel>\n      <md-expansion-panel-header>\n        <md-panel-title>\n          Make Post\n        </md-panel-title>\n        <md-panel-description>\n          What's on your mind?\n        </md-panel-description>\n      </md-expansion-panel-header>\n\n      <md-form-field class=\"textwidth\">\n        <!-- <input mdInput #message maxlength=\"256\" placeholder=\"Say something\">\n      <md-hint align=\"start\"><strong>Don't disclose personal info</strong> </md-hint> -->\n        <input mdInput #message maxlength=\"256\">\n        <md-hint align=\"end\">{{message.value.length}} / 256</md-hint>\n      </md-form-field>\n      <div class=\"input\">\n        <input class=\"ng-hide\" id=\"input-file-id\" multiple type=\"file\" #inputFile hidden/>\n        <button color=\"primary\" id=\"selectFile\" md-raised-button>\n          <Label for=\"input-file-id\">\n            <i class=\"material-icons md-18 icon-align\">insert_photo</i>\n            Photo\n          </Label>\n        </button>\n        <button color=\"warn\" md-raised-button>Post</button>\n      </div>\n    </md-expansion-panel>\n  </div>\n  <md-card class=\"post-card\" *ngFor=\"let spaceScreen of spaceScreens | slice: [start] : [end]; let i = index\">\n    <md-card-header>\n      <div md-card-avatar class=\"post-image\"></div>\n      <md-card-title>{{spaceScreen.name}}</md-card-title>\n      <md-card-subtitle>{{spaceScreen.remark}}</md-card-subtitle>\n    </md-card-header>\n    <img md-card-image src=\"{{spaceScreen.img}}\" alt=\"post photo\">\n    <md-card-content>\n      <p>{{spaceScreen.description}}</p>\n    </md-card-content>\n    <md-card-actions>\n      <button md-button (click)=\"likeMe(i)\">\n        <i class=\"material-icons md-18\" [class.red-color]=\"spaceScreen.liked == '1'\">favorite</i>\n      </button>\n      <button md-button (click)=\"commentMe(i)\">\n        <i class=\"material-icons md-18\">insert_comment</i>\n      </button>\n      <button md-button (click)=\"shareMe(i)\">\n        <i class=\"material-icons md-18\">share</i>\n      </button>\n      <!-- <button md-button (click)=\"deleteMe(i)\">\n      <i class=\"material-icons md-18\">delete</i> \n    </button> -->\n    </md-card-actions>\n  </md-card>\n  <div class=\"make-post\">\n    <md-paginator [length]=\"spaceScreens.length\" [pageSize]=\"pageSize\" [pageSizeOptions]=\"pageSizeOptions\" (page)=\"pageEvent = $event; pageChange($event)\">\n    </md-paginator>\n  </div>\n</div>\n<div style=\"float:left\">\n  <p class=\"notiTitle\">Notifications</p>\n  <md-card class=\"notification\">Notifications</md-card>\n</div>\n</div>"
 
 /***/ }),
 

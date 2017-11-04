@@ -10,7 +10,7 @@ import { Http } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 
 describe('AppComponent', () => {
-  let mockRouter = {
+  const mockRouter = {
     navigate: jasmine.createSpy('navigate')
   };
   beforeEach(async(() => {
