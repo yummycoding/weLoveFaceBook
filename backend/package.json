@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "./node_modules/.bin/mocha --reporter spec",
     "serve": "nodemon server.js"
   },
   "author": "",
@@ -23,6 +23,7 @@
     "nodemon": "^1.12.1",
     "passport": "^0.4.0",
     "passport-jwt": "^3.0.0",
-    "request": "^2.83.0"
+    "request": "^2.83.0",
+    "should": "^13.1.3"
   }
 }
