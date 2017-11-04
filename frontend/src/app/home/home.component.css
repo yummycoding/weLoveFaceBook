@@ -1,0 +1,27 @@
+.post-card {
+    width: 600px;
+  }
+  
+.post-image {
+  background-image: url('../../assets/headerimage/head6.jpg');
+  /* background-image: spaceScreen.headerimg; */
+  background-size: cover;
+}
+.make-post {
+  width: 648px;
+}
+.textwidth {
+  width: 100%;
+}
+.icon-align{
+  display: inline-flex;
+  vertical-align: middle;
+}
+.notification{
+  margin-left: 5px;
+  width:350px;
+}
+.notiTitle{
+  margin-left: 150px;
+  font-size: 20px;
+}
