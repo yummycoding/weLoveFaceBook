@@ -17,9 +17,14 @@ router.post('/register', (req, res, next) => {
                 res.json({success: false, message: 'You must provide a password'});
             } else {
                 let user = new User({
-                    email: req.body.email,
                     username: req.body.username,
-                    password: req.body.password
+                    password: req.body.password,
+                    email   : req.body.email,
+                    nickname: req.body.nickname,
+                    gender  : req.body.gender,
+                    dob     : req.body.dob,
+                    emaileditable: false,
+                    passwordeditable: false
                 });
                 user.save((err) => {
                     if(err){
@@ -45,7 +50,26 @@ router.post('/register', (req, res, next) => {
                             }
                         }
                     } else {
-                        res.json({success: true, message: 'Account registered'});
+                        const token = jwt.sign({ sub: user._id }, config.secret, {
+                            expiresIn:604800//1 week
+                        });
+                        return res.json({
+                            success:true,
+                            token:'JWT '+token,
+                            user:{
+                                id:user._id,
+                                username:user.username,
+                                // password:user.password,
+                                email:user.email,
+                                nickname:user.nickname,
+                                gender:user.gender,
+                                dob:user.dob,
+                                emaileditable:user.emaileditable,
+                                passwordeditable:user.passwordeditable,
+                            },
+                            message: 'Account registered'
+                        });
+                        //res.json({success: true, message: 'Account registered'});
                     }
                 });
             }
@@ -55,7 +79,7 @@ router.post('/register', (req, res, next) => {
 
 //Authenticate 
 //Notice :changed here from /authenticate to /login
-router.post('/login', (req, res) => {
+router.post('/authenticate', (req, res) => {
     if (!req.body.username) {
         res.json({success: false, message: 'No username was provided.'})
     } else {
@@ -73,14 +97,34 @@ router.post('/login', (req, res) => {
                         if (!validPassword) {
                             res.json({success: false, message: 'Invalid password.'});
                         } else {
-                            const token = jwt.sign({userId: user._id}, config.secret, {expiresIn: '24h'});
-                            res.json({success: true, 
-                                      message: 'Success!',
-                                      token: token,
-                                      user: {
-                                            username: user.username
-                                      }
+                            const token = jwt.sign({ sub: user._id }, config.secret, {
+                                expiresIn:604800//1 week
                             });
+                           //console.log(token);
+                           res.json({
+                               success:true,
+                               token:'JWT '+token,
+                               user:{
+                                   id:user._id,
+                                   username:user.username,
+                                   // password:user.password,
+                                   email:user.email,
+                                   nickname:user.nickname,
+                                   gender:user.gender,
+                                   dob:user.dob,
+                                   emaileditable:user.emaileditable,
+                                   passwordeditable:user.passwordeditable,
+                               },
+                               message: 'Success!'
+                           });
+                            // const token = jwt.sign({userId: user._id}, config.secret, {expiresIn: '24h'});
+                            // res.json({success: true, 
+                            //           message: 'Success!',
+                            //           token: token,
+                            //           user: {
+                            //                 username: user.username
+                            //           }
+                            // });
                         }
                     }
                 }

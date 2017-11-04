@@ -4,8 +4,9 @@ import {} from 'jasmine';
 
 describe('Sign up:', () => {
   let signuppage: SignUpPage;
-  var newusername = "test6";
-  var newpassword = "admin";
+  var newusername = "test10";
+  var newemail =    "test10@ufl.edu";
+  var newpassword = "Admin$$$1";
 
   beforeEach(() => {
     signuppage = new SignUpPage();
@@ -38,8 +39,8 @@ describe('Sign up:', () => {
     password_signup.sendKeys(newpassword);
     confirmedpassword.sendKeys(newpassword);
 
-    email_signup.sendKeys("gatorbook@ufl.edu");
-    expect(email_signup.getAttribute('value')).toEqual("gatorbook@ufl.edu");
+    email_signup.sendKeys(newemail);
+    expect(email_signup.getAttribute('value')).toEqual(newemail);
 
     birthday_signup.sendKeys("10/01/1949");
     expect(birthday_signup.getAttribute('value')).toEqual("10/01/1949");
@@ -78,7 +79,7 @@ describe('Sign up:', () => {
     signuppage.clickbtnInMenu(menubtn,profilebtn);
     expect(username_profile.getAttribute('value')).toEqual(newusername);
     expect(nickname_profile.getAttribute('value')).toEqual("Florida Code Farmer");
-    expect(email_profile.getAttribute('value')).toEqual("gatorbook@ufl.edu");
+    expect(email_profile.getAttribute('value')).toEqual(newemail);
     expect(birthday_profile.getAttribute('value')).toEqual("10/01/1949");
   });
 });

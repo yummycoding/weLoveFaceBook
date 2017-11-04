@@ -190,16 +190,25 @@ module.exports.addUser = function(newUser, callback) {
 
 
 module.exports.updatePassword = function(editUser, callback) {
-    bcrypt.genSalt(10, (err, salt) => {
-        bcrypt.hash(editUser.password, salt, (err, hash) => {
-            if(err) throw err;
-            var newvalues = {$set: { password: hash }};
-            User.update({_id:editUser._id},newvalues,(err, raw)=>{
-                if(err) throw err;
-                else return raw
-            })
+    bcrypt.hash(editUser.password, null, null, (err, hash) => {
+        if (err) return next(err);
+        var newvalues = { $set: { password: hash } };
+        User.update({ _id: editUser._id }, newvalues, (err, raw) => {
+            if (err) throw err;
+            else return raw
         })
-    })  
+    });
+
+    // bcrypt.genSalt(10, (err, salt) => {
+    //     bcrypt.hash(editUser.password, salt, (err, hash) => {
+    //         if(err) throw err;
+    //         var newvalues = {$set: { password: hash }};
+    //         User.update({_id:editUser._id},newvalues,(err, raw)=>{
+    //             if(err) throw err;
+    //             else return raw
+    //         })
+    //     })
+    // })  
 };
 
 module.exports.updateEmail = function(editUser, callback) {
