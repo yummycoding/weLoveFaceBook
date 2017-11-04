@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 const Schema = mongoose.Schema;
 
-module.exports.titleLengthChecker = (title) => {
+let titleLengthChecker = (title) => {
     if (!title) {
         return false;
     } else {
