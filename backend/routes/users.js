@@ -164,8 +164,8 @@ router.get('/getuserbyuserid/:userid', (req, res, next) => {
 });
 
 router.put('/updatepassword/:id', (req, res, next) => {
-    console.log("Server > PUT 'users/:id' > id", req.params.id);
-    console.log("Server > PUT 'users/:id' > user", req.body);
+    console.log("Server > PUT 'users/updatepassword/:id' > id", req.params.id);
+    console.log("Server > PUT 'users/updatepassword/:id' > user", req.body);
     User.updatePassword(req.body, (err, user) => {
         if(err) {
             res.json({success: false, msg:'Failed to update password'});
@@ -177,8 +177,8 @@ router.put('/updatepassword/:id', (req, res, next) => {
 });
 
 router.put('/updateemail/:id', (req, res, next) => {
-    console.log("Server > PUT 'users/:id' > id", req.params.id);
-    console.log("Server > PUT 'users/:id' > user", req.body);
+    console.log("Server > PUT 'users/updateemail/:id' > id", req.params.id);
+    console.log("Server > PUT 'users/updateemail/:id' > user", req.body);
     User.updateEmail(req.body, (err, user) => {
         if(err) {
             res.json({success: false, msg:'Failed to update email'});

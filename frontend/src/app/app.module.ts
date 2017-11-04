@@ -34,7 +34,7 @@ import { UserNewComponent } from './user/user-new/user-new.component';
 import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 // file upload
-
+import { AddFriendComponent } from './friendlist/friendlist.component';
 
 const appRoutes: Routes = [
   {
@@ -72,7 +72,8 @@ const appRoutes: Routes = [
     UserListComponent,
     UserNewComponent,
     UserEditComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    AddFriendComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -84,6 +85,9 @@ const appRoutes: Routes = [
     MdNativeDateModule,
     FormsModule,
     FlashMessagesModule
+  ],
+  entryComponents: [
+    AddFriendComponent
   ],
   providers: [UserService, AuthguardGuard, ValidateService],
   bootstrap: [AppComponent]

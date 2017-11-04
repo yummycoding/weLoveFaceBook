@@ -6,16 +6,16 @@
       <flash-messages></flash-messages>
     </div>
     <md-form-field class="example-full-width">
-        <input mdInput placeholder="Username" name="username" [(ngModel)]="newUser.username">
+      <input mdInput placeholder="Username" name="signupusername" [(ngModel)]="newUser.username">
     </md-form-field>
     <md-form-field class="example-full-width">
-        <input mdInput placeholder="Nickname" name="nickname" [(ngModel)]="newUser.nickname">
+      <input mdInput placeholder="Nickname" name="nickname" [(ngModel)]="newUser.nickname">
     </md-form-field>
     <md-form-field class="example-full-width">
-        <input type ="password" mdInput placeholder="Password" name="password" [(ngModel)]="newUser.password">
+      <input type ="password" mdInput placeholder="Password" name="signuppassword" [(ngModel)]="newUser.password">
     </md-form-field>
     <md-form-field class="example-full-width">
-      <input type ="password" mdInput placeholder="Confirm Password">
+      <input type ="password" mdInput placeholder="Confirm Password" name="confirmedpassword" [(ngModel)]="confirmedpassword">
     </md-form-field>
     <md-form-field class="example-full-width">
       <input type ="text" mdInput placeholder="Email" name="email" [(ngModel)]="newUser.email">
@@ -26,7 +26,7 @@
       <md-datepicker #picker startView="year" [startAt]="startDate"></md-datepicker>
     </md-form-field> -->
     <md-form-field class="example-full-width">
-        <input type ="text" mdInput placeholder="Birthday (mm/dd/yy)" name="birthday" [(ngModel)]="newUser.dob">
+      <input type ="text" mdInput placeholder="Birthday (mm/dd/yy)" name="birthday" [(ngModel)]="newUser.dob">
     </md-form-field>
     <div class="gender-style">
       <md-radio-group>
@@ -35,7 +35,7 @@
     </md-radio-group>
     </div>
     <div class="button-style">    
-      <button color ="primary" type ="submit" md-raised-button>Submit</button>
-      <button color ="primary" routerLink="/" md-raised-button>Cancel</button>
+      <button color ="primary" id=signupsubmitbtn type ="submit" md-raised-button>Submit</button>
+      <button color ="primary" id=signupcancelbtn routerLink="/" md-raised-button>Cancel</button>
     </div>
   </form>
