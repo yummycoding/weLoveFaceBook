@@ -66,6 +66,22 @@ describe('Test the users registration API', function(){
             done();
         });
     });
+
+    it('should return an empty password message', function(done){
+        server
+        .post('/users/register')
+        .send({
+            username: 'Grandstar',
+            password: '',
+            email: 'grandstar11111@gmail.com'
+        })
+        .end(function(err, res){
+            res.status.should.equal(200),
+            res.body.success.should.equal(false),
+            res.body.message.should.equal('You must provide a password')
+            done();
+        });
+    });
 });
 
 describe('Test the user login API', function(){
@@ -76,6 +92,22 @@ describe('Test the user login API', function(){
             username: 'Zhuoru',
             password: 'Oz65229780!',
             email: 'lizhuoru19940423@gmail.com'
+        })
+        .end(function(err, res){
+            res.status.should.equal(200),
+            res.body.success.should.equal(true),
+            res.body.message.should.equal('Success!')
+            done();
+        });
+    });
+
+    it('should login successfully', function(done){
+        server
+        .post('/users/login')
+        .send({
+            username: 'grandstar1234',
+            password: 'Ozfdscd32!,Gds',
+            email: 'grandstar11111@gmail.com'
         })
         .end(function(err, res){
             res.status.should.equal(200),
