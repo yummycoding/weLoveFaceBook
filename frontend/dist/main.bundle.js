@@ -935,8 +935,12 @@ var PostService = (function () {
         this._http = _http;
     }
     PostService.prototype.sendPost = function (post) {
-        console.log("Client > New post to be added > post ");
+        console.log("Client > New post to be added > post ", post);
         return this._http.post('/posts/newPost', post).map(function (data) { return data.json(); }).toPromise();
+    };
+    PostService.prototype.deletePost = function (postid) {
+        console.log("client > post to be deleted > postid" > postid);
+        return this._http.delete('/posts/deletePost/' + postid).map(function (data) { return data.json(); }).toPromise();
     };
     PostService.prototype.getSelfPosts = function (username) {
         console.log("Client > Get all post of myself > username", username);
@@ -960,10 +964,9 @@ var _a;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Post; });
 var Post = (function () {
-    function Post(
-        // public _id: String = '',
-        title, body, createdBy, createdAt, // need take care initial value
+    function Post(_id, title, body, createdBy, createdAt, // need take care initial value
         likes, likedBy, dislikes, dislikedBy, comments) {
+        if (_id === void 0) { _id = ''; }
         if (title === void 0) { title = 'wedontneedtitle'; }
         if (body === void 0) { body = ''; }
         if (createdBy === void 0) { createdBy = ''; }
@@ -973,6 +976,7 @@ var Post = (function () {
         if (dislikes === void 0) { dislikes = 0; }
         if (dislikedBy === void 0) { dislikedBy = []; }
         if (comments === void 0) { comments = []; }
+        this._id = _id;
         this.title = title;
         this.body = body;
         this.createdBy = createdBy;
@@ -1121,7 +1125,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/selfpost/selfpost.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<button color =\"primary\" (click)=\"refreshSelfposts($event)\" md-raised-button>Refresh</button>\n<md-card class=\"post-card\" *ngFor=\"let selfPost of selfPosts; let i = index\">\n  <!-- <img md-card-image src =\"{{spaceScreen.img}}\"> -->\n  <md-card-content>\n    <p>{{selfPost.body}}</p>\n  </md-card-content>\n  <!-- <md-card-actions>\n    <button md-button (click)=\"markMe(i)\">\n      <i class=\"material-icons md-18\" [class.green-color]=\"spaceScreen.marked == '1'\">bookmark</i> \n    </button>\n    <button md-button (click)=\"deleteMe(i)\">\n      <i class=\"material-icons md-18\">delete</i> \n    </button>\n  </md-card-actions> -->\n</md-card>\n\n\n\n"
+module.exports = "\n<button color =\"primary\" (click)=\"refreshSelfposts($event)\" md-raised-button>Refresh</button>\n<md-card class=\"post-card\" *ngFor=\"let selfPost of selfPosts; let i = index\">\n  <!-- <img md-card-image src =\"{{spaceScreen.img}}\"> -->\n  <md-card-content>\n    <p>{{selfPost.body}}</p>\n  </md-card-content>\n  <md-card-actions>\n    <!-- <button md-button (click)=\"markMe(i)\">\n      <i class=\"material-icons md-18\" [class.green-color]=\"spaceScreen.marked == '1'\">bookmark</i> \n    </button> -->\n    <button md-button (click)=\"deleteSelfposts(i)\">\n      <i class=\"material-icons md-18\">delete</i> \n    </button>\n  </md-card-actions>\n</md-card>\n\n\n\n"
 
 /***/ }),
 
@@ -1160,26 +1164,23 @@ var SelfpostComponent = (function () {
         // .subscribe(res => this.spaceScreens = res);
     }
     SelfpostComponent.prototype.ngOnInit = function () {
-        // this.postService.getSelfPosts(this.curUsername).then(data => {
-        //   if (data.success === true) {
-        //     this.selfPosts = data.posts
-        //     console.log("Self posts got from database", this.selfPosts);
-        //   }else {
-        //     console.log("Error when getting self post from database: ",data.message)
-        //   }
-        // });
         this.getMyPosts(this.curUsername);
     };
     SelfpostComponent.prototype.refreshSelfposts = function (e) {
-        // this.postService.getSelfPosts(this.curUsername).then(data => {
-        //   if (data.success === true) {
-        //     this.selfPosts = data.posts
-        //     console.log("Self posts got from database", this.selfPosts);
-        //   }else {
-        //     console.log("Error when getting self post from database: ",data.message)
-        //   }
-        // });
         this.getMyPosts(this.curUsername);
+    };
+    SelfpostComponent.prototype.deleteSelfposts = function (i) {
+        var _this = this;
+        var postid = this.selfPosts[i]._id;
+        this.postService.deletePost(postid).then(function (data) {
+            if (data.success === true) {
+                _this.getMyPosts(_this.curUsername); // refresh self posts after delete
+                console.log("Self posts deleted from database, post id: ", postid);
+            }
+            else {
+                console.log("Error when delete self post from database: ", data.message);
+            }
+        });
     };
     SelfpostComponent.prototype.getMyPosts = function (curUsername) {
         var _this = this;
@@ -1187,6 +1188,7 @@ var SelfpostComponent = (function () {
             if (data.success === true) {
                 _this.selfPosts = data.posts;
                 console.log("Self posts got from database", _this.selfPosts);
+                // console.log("ID of first post returned", this.selfPosts[0]._id)
             }
             else {
                 console.log("Error when getting self post from database: ", data.message);

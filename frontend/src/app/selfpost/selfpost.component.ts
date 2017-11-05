@@ -23,27 +23,23 @@ export class SelfpostComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.postService.getSelfPosts(this.curUsername).then(data => {
-    //   if (data.success === true) {
-    //     this.selfPosts = data.posts
-    //     console.log("Self posts got from database", this.selfPosts);
-    //   }else {
-    //     console.log("Error when getting self post from database: ",data.message)
-    //   }
-    // });
     this.getMyPosts(this.curUsername);
   }
 
   refreshSelfposts(e) {
-    // this.postService.getSelfPosts(this.curUsername).then(data => {
-    //   if (data.success === true) {
-    //     this.selfPosts = data.posts
-    //     console.log("Self posts got from database", this.selfPosts);
-    //   }else {
-    //     console.log("Error when getting self post from database: ",data.message)
-    //   }
-    // });
     this.getMyPosts(this.curUsername);
+  }
+
+  deleteSelfposts(i) {
+    let postid:String = this.selfPosts[i]._id;
+    this.postService.deletePost(postid).then(data => {
+      if (data.success === true) {
+        this.getMyPosts(this.curUsername); // refresh self posts after delete
+        console.log("Self posts deleted from database, post id: ", postid);
+      }else {
+        console.log("Error when delete self post from database: ",data.message)
+      }
+    });
   }
 
   getMyPosts(curUsername: string) {
@@ -51,6 +47,7 @@ export class SelfpostComponent implements OnInit {
       if (data.success === true) {
         this.selfPosts = data.posts
         console.log("Self posts got from database", this.selfPosts);
+        // console.log("ID of first post returned", this.selfPosts[0]._id)
       }else {
         console.log("Error when getting self post from database: ",data.message)
       }

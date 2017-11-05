@@ -13,8 +13,13 @@ export class PostService {
   }
 
   sendPost(post:Post) {
-    console.log("Client > New post to be added > post ");
+    console.log("Client > New post to be added > post ", post);
     return this._http.post('/posts/newPost', post).map(data => data.json()).toPromise();
+  }
+
+  deletePost(postid:String) {
+    console.log("client > post to be deleted > postid" > postid);
+    return this._http.delete('/posts/deletePost/' + postid).map(data => data.json()).toPromise();
   }
 
   getSelfPosts(username:String) {

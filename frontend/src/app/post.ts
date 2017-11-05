@@ -1,7 +1,7 @@
 import {Comment} from './comment'
 export class Post {
     constructor(
-        // public _id: String = '',
+        public _id: String = '',
         public title: String = 'wedontneedtitle',
         public body: String = '',
         public createdBy: String = '',
