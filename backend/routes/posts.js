@@ -286,6 +286,59 @@ router.put('/dislikePost', (req, res) => {
             }
         });
     }
-})
+});
+
+router.post('/comment', (req, res) => {
+    // Check if comment was provided in request body
+    if (!req.body.comment) {
+      res.json({ success: false, message: 'No comment provided' }); // Return error message
+    } else {
+      // Check if id was provided in request body
+      if (!req.body.id) {
+        res.json({ success: false, message: 'No id was provided' }); // Return error message
+      } else {
+        // Use id to search for blog post in database
+        Post.findOne({ _id: req.body.id }, (err, post) => {
+          // Check if error was found
+          if (err) {
+            res.json({ success: false, message: 'Invalid Post id' }); // Return error message
+          } else {
+            // Check if id matched the id of any blog post in the database
+            if (!post) {
+              res.json({ success: false, message: 'Post not found.' }); // Return error message
+            } else {
+              // Grab data of user that is logged in
+              User.findOne({ _id: req.decoded.userId }, (err, user) => {
+                // Check if error was found
+                if (err) {
+                  res.json({ success: false, message: 'Something went wrong' }); // Return error message
+                } else {
+                  // Check if user was found in the database
+                  if (!user) {
+                    res.json({ success: false, message: 'User not found.' }); // Return error message
+                  } else {
+                    // Add the new comment to the blog post's array
+                    post.comments.push({
+                      comment: req.body.comment, // Comment field
+                      commentator: user.username // Person who commented
+                    });
+                    // Save blog post
+                    post.save((err) => {
+                      // Check if error was found
+                      if (err) {
+                        res.json({ success: false, message: 'Something went wrong.' }); // Return error message
+                      } else {
+                        res.json({ success: true, message: 'Comment saved' }); // Return success message
+                      }
+                    });
+                  }
+                }
+              });
+            }
+          }
+        });
+      }
+    }
+  });
 
 module.exports = router;
