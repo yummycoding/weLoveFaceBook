@@ -1,5 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
+import { User } from '../user';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-friendlist',
@@ -11,10 +13,15 @@ export class FriendlistComponent implements OnInit {
   friendName: string;
   name: string;
   friendEmail: string;
-  currentTime: number;
-  constructor(public dialog: MdDialog) { }
+  //currentTime: number;
+  currentuser: any = JSON.parse(localStorage.getItem("currentUser"));
+  myFriends: Array<User> = [];
+
+  constructor(public dialog: MdDialog, private userService: UserService) { }
 
   ngOnInit() {
+    this.getFriends(this.currentuser.user);
+    console.log('myfriends: ' + this.myFriends); 
   }
 
   openDialog(): void {
@@ -26,39 +33,118 @@ export class FriendlistComponent implements OnInit {
       if (typeof result !== 'undefined') {
         this.friendName = result.friendName;
         this.friendEmail = result.friendEmail;
-        this.currentTime = Date.now();
-        console.log('Username:' + this.friendName + ' Email:' + this.friendEmail + ' Time:' + this.currentTime);
+        if (typeof this.friendEmail !== 'undefined' && this.friendEmail!== '') {
+          this.userService.getUserByUserEmail(this.friendEmail).then(data => {
+            const friend = new User();
+            Object.assign(friend, data);
+            if(friend._id !== '') {
+              if(this.currentuser.user.friend.indexOf(friend._id+'$$'+friend.nickname+'$$'+friend.email) === -1){
+                this.currentuser.user.friend.push(friend._id+'$$'+friend.nickname+'$$'+friend.email);
+                const updateUser = new User();
+                Object.assign(updateUser, this.currentuser.user);
+                console.log(updateUser);
+                this.userService.updateFriend(updateUser);
+              } else { 
+                console.log('friend already exists');
+             }
+              if(friend.friend.indexOf(this.currentuser.user._id+'$$'+this.currentuser.user.nickname+'$$'+this.currentuser.user.email) === -1) {
+                friend.friend.push(this.currentuser.user._id+'$$'+this.currentuser.user.nickname+'$$'+this.currentuser.user.email);
+                console.log(friend);
+                this.userService.updateFriend(friend);
+              }
+            } else {
+              console.log('User not exist')
+            }
+          });
+        } else {
+          this.userService.getUserByUsername(this.friendName).then(data => {
+            const friend = new User();
+            Object.assign(friend, data);
+            if(friend._id !== '') {
+              if(this.currentuser.user.friend.indexOf(friend._id+'$$'+friend.nickname+'$$'+friend.email) === -1){
+                this.currentuser.user.friend.push(friend._id+'$$'+friend.nickname+'$$'+friend.email);
+                const updateUser = new User();
+                Object.assign(updateUser, this.currentuser.user);
+                console.log(updateUser);
+                this.userService.updateFriend(updateUser);
+              } else { 
+                console.log('friend already exists');
+              }
+              if(friend.friend.indexOf(this.currentuser.user._id+'$$'+this.currentuser.user.nickname+'$$'+this.currentuser.user.email) === -1) {
+                friend.friend.push(this.currentuser.user._id+'$$'+this.currentuser.user.nickname+'$$'+this.currentuser.user.email);
+                console.log(friend);
+                this.userService.updateFriend(friend);
+              }
+            } else {
+              console.log('User not exist')
+            }
+          });
+        }
+
       }
     });
   }
-
-
+  getFriends(user) {
+    this.myFriends = [];
+    const friends = user.friend;
+    for (let friend of friends) {
+      if (friend.indexOf('$$') !== -1) {
+        var info = friend.split('$$');
+        const user = new User();
+        user._id = info[0];
+        user.nickname = info[1]
+        user.email = info[2];
+        this.myFriends.push(user);
+      }
+    }  
+  }
+  refreshFriendlist() {
+    this.getFriends(this.currentuser.user);
+  }
+  deleteFriend(friend) {
+    const user = new User;
+    //update current user's friendlist
+    const index = this.currentuser.user.friend.indexOf(friend._id+'$$'+friend.nickname+'$$'+friend.email);
+    this.currentuser.user.friend.splice(index, index + 1);
+    this.userService.updateFriend(this.currentuser.user);
+    //update friend's friendlist
+    this.userService.getUserByUserEmail(friend.email).then(data => {
+      const editfriend = new User();
+      Object.assign(editfriend, data);
+      const index1 = editfriend.friend.indexOf(this.currentuser.user._id+'$$'+this.currentuser.user.nickname+'$$'+this.currentuser.user.email);
+      editfriend.friend.splice(index1, index1 + 1);
+      this.userService.updateFriend(editfriend);
+    });
+    
+    this.getFriends(this.currentuser.user);
+    
+  }
   // tslint:disable-next-line:member-ordering
-  A = [
-    {
-      name: 'Allan',
-      updated: new Date('1/1/16'),
-    },
-    {
-      name: 'Andrew',
-      updated: new Date('1/17/16'),
-    },
-    {
-      name: 'Ashe',
-      updated: new Date('1/28/16'),
-    }
-  ];
-  // tslint:disable-next-line:member-ordering
-  B = [
-    {
-      name: 'Bob',
-      updated: new Date('2/20/16'),
-    },
-    {
-      name: 'Boss',
-      updated: new Date('1/18/16'),
-    }
-  ];
+  // A = [
+  //   {
+  //     name: 'Allan',
+  //     updated: new Date('1/1/16'),
+  //   },
+  //   {
+  //     name: 'Andrew',
+  //     updated: new Date('1/17/16'),
+  //   },
+  //   {
+  //     name: 'Ashe',
+  //     updated: new Date('1/28/16'),
+  //   }
+  // ];
+  // // tslint:disable-next-line:member-ordering
+  // B = [
+  //   {
+  //     name: 'Bob',
+  //     updated: new Date('2/20/16'),
+  //   },
+  //   {
+  //     name: 'Boss',
+  //     updated: new Date('1/18/16'),
+  //   }
+  // ];
 }
 @Component({
   selector: 'app-addfriend',

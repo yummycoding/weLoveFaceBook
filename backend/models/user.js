@@ -141,6 +141,9 @@ const UserSchema = mongoose.Schema({
      passwordeditable: {
          type: Boolean,
          // required: true
+     },
+     friend: {
+         type: Array
      }
 });
 
@@ -168,6 +171,11 @@ module.exports.getUserById = function(id, callback) {
 
 module.exports.getUserByUsername = function(username, callback) {
     const query = {username : username}
+    User.findOne(query, callback);
+}
+
+module.exports.getUserByEmail = function(email, callback) {
+    const query = {email : email}
     User.findOne(query, callback);
 }
 
@@ -213,6 +221,14 @@ module.exports.updatePassword = function(editUser, callback) {
 
 module.exports.updateEmail = function(editUser, callback) {
     var newvalues = {$set: { email: editUser.email }};
+    User.update({_id:editUser._id},newvalues,(err, raw)=>{
+        if(err) throw err;
+        else return raw
+    })
+};
+
+module.exports.updateFriend = function(editUser, callback) {
+    var newvalues = {$set: { friend: editUser.friend }};
     User.update({_id:editUser._id},newvalues,(err, raw)=>{
         if(err) throw err;
         else return raw

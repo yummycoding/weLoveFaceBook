@@ -23,6 +23,7 @@ router.post('/register', (req, res, next) => {
                     nickname: req.body.nickname,
                     gender  : req.body.gender,
                     dob     : req.body.dob,
+                    friend  : req.body.friend,
                     emaileditable: false,
                     passwordeditable: false
                 });
@@ -57,13 +58,14 @@ router.post('/register', (req, res, next) => {
                             success:true,
                             token:'JWT '+token,
                             user:{
-                                id:user._id,
+                                _id:user._id,
                                 username:user.username,
                                 // password:user.password,
                                 email:user.email,
                                 nickname:user.nickname,
                                 gender:user.gender,
                                 dob:user.dob,
+                                friend:user.friend,
                                 emaileditable:user.emaileditable,
                                 passwordeditable:user.passwordeditable,
                             },
@@ -105,13 +107,14 @@ router.post('/authenticate', (req, res) => {
                                success:true,
                                token:'JWT '+token,
                                user:{
-                                   id:user._id,
+                                   _id:user._id,
                                    username:user.username,
                                    // password:user.password,
                                    email:user.email,
                                    nickname:user.nickname,
                                    gender:user.gender,
                                    dob:user.dob,
+                                   friend:user.friend,
                                    emaileditable:user.emaileditable,
                                    passwordeditable:user.passwordeditable,
                                },
@@ -194,6 +197,20 @@ router.get('/getuserbyusername/:username', (req, res, next) => {
         return res.json(user);
     })
 });
+// given an user email, return all data of that user
+
+router.get('/getuserbyemail/:email', (req, res, next) => {
+    //console.log('Server > GET user by email > ',req.params.email);
+    User.getUserByEmail(req.params.email, (err, user) =>{
+        if(err) throw err;
+        if(!user){
+            return res.json({success: false, msg:'User not fount'});
+        }
+        // console.log("Server > User returned by server", user);
+        return res.json(user);
+    })
+});
+
 
 router.get('/getuserbyuserid/:userid', (req, res, next) => {
      console.log('Server > GET user by user id > ',req.params.userid);
@@ -226,6 +243,19 @@ router.put('/updateemail/:id', (req, res, next) => {
     User.updateEmail(req.body, (err, user) => {
         if(err) {
             res.json({success: false, msg:'Failed to update email'});
+        } else {
+            return res.json(user);
+            //res.json({success: true, msg:'User registered'});
+        }
+    })
+});
+
+router.put('/updatefriend/:id', (req, res, next) => {
+    console.log("Server > PUT 'users/updatefriend/:id' > id", req.params.id);
+    console.log("Server > PUT 'users/updatefriend/:id' > user", req.body);
+    User.updateFriend(req.body, (err, user) => {
+        if(err) {
+            res.json({success: false, msg:'Failed to update friend'});
         } else {
             return res.json(user);
             //res.json({success: true, msg:'User registered'});
