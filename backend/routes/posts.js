@@ -6,7 +6,7 @@ const config = require('../config/database');
 const router = express.Router();
 
 router.post('/newPost', (req, res) => {
-    console.log('POST > posts/newPost > req', req);
+    console.log('POST > posts/newPost');
     if (!req.body.title) {
         res.json({success: false, message: 'Post title is requested!'});
     } else {
@@ -58,6 +58,7 @@ router.get('/allPosts', (req, res) => {
 
 // get all posts sent by user: username
 router.get('/getSelfPosts/:username', (req, res) => {
+    console.log('GET > /getSelfPosts/:username > username',req.params.username)
     Post.find({ createdBy: req.params.username }, (err, posts) => {
         if (err) {
             res.json({success: false, message: err});

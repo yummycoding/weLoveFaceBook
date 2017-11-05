@@ -19,7 +19,6 @@ export class UserProfileComponent implements OnInit {
   ngOnInit() {
     // get current user name, currentuser stored in local storage is different, signup without token, sinin with,
     // so need the if clause to get username
-    console.log("currentuser from local storage: ",this.currentuser);
     if('token' in this.currentuser){
       this.username = this.currentuser.user.username;
     }else {

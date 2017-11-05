@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
+import { PostService } from '../post.service';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { Post } from '../post';
 
 @Component({
   selector: 'app-selfpost',
@@ -11,17 +13,48 @@ import 'rxjs/add/operator/map';
 export class SelfpostComponent implements OnInit {
 
   spaceScreens: Array<any>;
+  @Input() curUsername: string;
+  selfPosts: Array<Post>;
 
-  constructor(private user: UserService, private http: Http) {
-    this.http.get('assets/mock-data-mypost/data.json')
-    .map(response => response.json().screenshots)
-    .subscribe(res => this.spaceScreens = res);
+  constructor(private userService: UserService, private postService: PostService, private http: Http) {
+    // this.http.get('assets/mock-data-mypost/data.json')
+    // .map(response => response.json().screenshots)
+    // .subscribe(res => this.spaceScreens = res);
   }
 
   ngOnInit() {
-    // console.log( this.http.get('assets/mock-data-mypost/data.json')
-    // .map(response => response.json().screenshots)
-    // .subscribe(res => this.spaceScreens = res));
+    // this.postService.getSelfPosts(this.curUsername).then(data => {
+    //   if (data.success === true) {
+    //     this.selfPosts = data.posts
+    //     console.log("Self posts got from database", this.selfPosts);
+    //   }else {
+    //     console.log("Error when getting self post from database: ",data.message)
+    //   }
+    // });
+    this.getMyPosts(this.curUsername);
+  }
+
+  refreshSelfposts(e) {
+    // this.postService.getSelfPosts(this.curUsername).then(data => {
+    //   if (data.success === true) {
+    //     this.selfPosts = data.posts
+    //     console.log("Self posts got from database", this.selfPosts);
+    //   }else {
+    //     console.log("Error when getting self post from database: ",data.message)
+    //   }
+    // });
+    this.getMyPosts(this.curUsername);
+  }
+
+  getMyPosts(curUsername: string) {
+    this.postService.getSelfPosts(curUsername).then(data => {
+      if (data.success === true) {
+        this.selfPosts = data.posts
+        console.log("Self posts got from database", this.selfPosts);
+      }else {
+        console.log("Error when getting self post from database: ",data.message)
+      }
+    });
   }
 
   markMe(i) {

@@ -281,7 +281,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/dashboard/dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<md-tab-group> \n  <md-tab label=\"Home\">\n    <app-home></app-home>\n  </md-tab>\n  <md-tab label=\"My Post\">\n    <app-selfpost></app-selfpost>\n  </md-tab>\n  <md-tab label=\"Friends List\">\n    <app-friendlist></app-friendlist>\n  </md-tab>\n  <!-- <md-tab label=\"Settings\">\n    <div id=\"page-padding\">\n      <h1>Settings</h1>\n      <p>A bunch of useful settings can be done here</p>\n      <label class=\"label-title\">Number of news displayed</label>\n      <md-slider class=\"md-slider-horizontal\" showTicks=\"true\" max=\"100\" min=\"0\" step=\"1\" thumbLabel=\"true\" value=\"18\"></md-slider>\n      <md-slide-toggle>Some settings</md-slide-toggle>\n    </div>\n  </md-tab> -->\n</md-tab-group>\n\n<h5 id=\"location\">Welcome to Gatorbook!</h5>    <!-- this line used for e2e testing, don't delete -->\n\n\n<!-- <p>\n  Welcome to FitNex!\n  <a routerLink=\"/\">Go Back</a>\n</p> -->\n"
+module.exports = "<md-tab-group> \n  <md-tab label=\"Home\">\n    <app-home [curUsername]=\"curUsername\"></app-home>\n  </md-tab>\n  <md-tab label=\"My Post\">\n    <app-selfpost [curUsername]=\"curUsername\"></app-selfpost>\n  </md-tab>\n  <md-tab label=\"Friends List\">\n    <app-friendlist></app-friendlist>\n  </md-tab>\n  <!-- <md-tab label=\"Settings\">\n    <div id=\"page-padding\">\n      <h1>Settings</h1>\n      <p>A bunch of useful settings can be done here</p>\n      <label class=\"label-title\">Number of news displayed</label>\n      <md-slider class=\"md-slider-horizontal\" showTicks=\"true\" max=\"100\" min=\"0\" step=\"1\" thumbLabel=\"true\" value=\"18\"></md-slider>\n      <md-slide-toggle>Some settings</md-slide-toggle>\n    </div>\n  </md-tab> -->\n</md-tab-group>\n\n<h5 id=\"location\">Welcome to Gatorbook!</h5>    <!-- this line used for e2e testing, don't delete -->\n\n\n<!-- <p>\n  Welcome to FitNex!\n  <a routerLink=\"/\">Go Back</a>\n</p> -->\n"
 
 /***/ }),
 
@@ -291,8 +291,9 @@ module.exports = "<md-tab-group> \n  <md-tab label=\"Home\">\n    <app-home></ap
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DashboardComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -304,10 +305,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var DashboardComponent = (function () {
-    function DashboardComponent() {
+    function DashboardComponent(router) {
+        this.router = router;
+        this.currentuser = JSON.parse(localStorage.getItem("currentUser"));
+        this.curUsername = '';
     }
     DashboardComponent.prototype.ngOnInit = function () {
+        // get current user name, currentuser stored in local storage is different, signup without token, sinin with,
+        // so need the if clause to get username
+        if ('token' in this.currentuser) {
+            this.curUsername = this.currentuser.user.username;
+        }
+        else {
+            this.curUsername = this.currentuser.username;
+        }
+        ;
+        console.log("current username got from dashboard: ", this.curUsername);
     };
     return DashboardComponent;
 }());
@@ -317,9 +332,10 @@ DashboardComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/dashboard/dashboard.component.html"),
         styles: [__webpack_require__("../../../../../src/app/dashboard/dashboard.component.css")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */]) === "function" && _a || Object])
 ], DashboardComponent);
 
+var _a;
 //# sourceMappingURL=dashboard.component.js.map
 
 /***/ }),
@@ -659,8 +675,6 @@ var HomeComponent = (function () {
         this.postService = postService;
         this.http = http;
         this.post = new __WEBPACK_IMPORTED_MODULE_1__post__["a" /* Post */]();
-        this.currentuser = JSON.parse(localStorage.getItem("currentUser"));
-        this.cur_username = '';
         this.spaceScreens = [];
         this.start = 0;
         this.end = 0;
@@ -672,20 +686,11 @@ var HomeComponent = (function () {
             .subscribe(function (res) { return _this.spaceScreens = res; });
     }
     HomeComponent.prototype.ngOnInit = function () {
-        // get current user name, currentuser stored in local storage is different, signup without token, sinin with,
-        // so need the if clause to get username
-        if ('token' in this.currentuser) {
-            this.cur_username = this.currentuser.user.username;
-        }
-        else {
-            this.cur_username = this.currentuser.username;
-        }
-        ;
         this.end = this.start + this.pageSize;
     };
     HomeComponent.prototype.sendPost = function () {
         this.post.title = 'wedontneedtitle';
-        this.post.createdBy = this.cur_username;
+        this.post.createdBy = this.curUsername;
         this.postService.sendPost(this.post);
         this.post = new __WEBPACK_IMPORTED_MODULE_1__post__["a" /* Post */]();
     };
@@ -716,6 +721,10 @@ var HomeComponent = (function () {
     };
     return HomeComponent;
 }());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", String)
+], HomeComponent.prototype, "curUsername", void 0);
 HomeComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-home',
@@ -1112,7 +1121,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/selfpost/selfpost.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<md-card class=\"post-card\" *ngFor=\"let spaceScreen of spaceScreens; let i = index\">\n  <!-- <img md-card-image src =\"{{spaceScreen.img}}\"> -->\n  <md-card-content>\n    <p>{{spaceScreen.description}}</p>\n  </md-card-content>\n  <md-card-actions>\n    <button md-button (click)=\"markMe(i)\">\n      <i class=\"material-icons md-18\" [class.green-color]=\"spaceScreen.marked == '1'\">bookmark</i> \n    </button>\n    <button md-button (click)=\"deleteMe(i)\">\n      <i class=\"material-icons md-18\">delete</i> \n    </button>\n  </md-card-actions>\n</md-card>\n\n\n\n"
+module.exports = "\n<button color =\"primary\" (click)=\"refreshSelfposts($event)\" md-raised-button>Refresh</button>\n<md-card class=\"post-card\" *ngFor=\"let selfPost of selfPosts; let i = index\">\n  <!-- <img md-card-image src =\"{{spaceScreen.img}}\"> -->\n  <md-card-content>\n    <p>{{selfPost.body}}</p>\n  </md-card-content>\n  <!-- <md-card-actions>\n    <button md-button (click)=\"markMe(i)\">\n      <i class=\"material-icons md-18\" [class.green-color]=\"spaceScreen.marked == '1'\">bookmark</i> \n    </button>\n    <button md-button (click)=\"deleteMe(i)\">\n      <i class=\"material-icons md-18\">delete</i> \n    </button>\n  </md-card-actions> -->\n</md-card>\n\n\n\n"
 
 /***/ }),
 
@@ -1123,9 +1132,10 @@ module.exports = "\n<md-card class=\"post-card\" *ngFor=\"let spaceScreen of spa
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SelfpostComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__user_service__ = __webpack_require__("../../../../../src/app/user.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__post_service__ = __webpack_require__("../../../../../src/app/post.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1139,19 +1149,49 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var SelfpostComponent = (function () {
-    function SelfpostComponent(user, http) {
-        var _this = this;
-        this.user = user;
+    function SelfpostComponent(userService, postService, http) {
+        this.userService = userService;
+        this.postService = postService;
         this.http = http;
-        this.http.get('assets/mock-data-mypost/data.json')
-            .map(function (response) { return response.json().screenshots; })
-            .subscribe(function (res) { return _this.spaceScreens = res; });
+        // this.http.get('assets/mock-data-mypost/data.json')
+        // .map(response => response.json().screenshots)
+        // .subscribe(res => this.spaceScreens = res);
     }
     SelfpostComponent.prototype.ngOnInit = function () {
-        // console.log( this.http.get('assets/mock-data-mypost/data.json')
-        // .map(response => response.json().screenshots)
-        // .subscribe(res => this.spaceScreens = res));
+        // this.postService.getSelfPosts(this.curUsername).then(data => {
+        //   if (data.success === true) {
+        //     this.selfPosts = data.posts
+        //     console.log("Self posts got from database", this.selfPosts);
+        //   }else {
+        //     console.log("Error when getting self post from database: ",data.message)
+        //   }
+        // });
+        this.getMyPosts(this.curUsername);
+    };
+    SelfpostComponent.prototype.refreshSelfposts = function (e) {
+        // this.postService.getSelfPosts(this.curUsername).then(data => {
+        //   if (data.success === true) {
+        //     this.selfPosts = data.posts
+        //     console.log("Self posts got from database", this.selfPosts);
+        //   }else {
+        //     console.log("Error when getting self post from database: ",data.message)
+        //   }
+        // });
+        this.getMyPosts(this.curUsername);
+    };
+    SelfpostComponent.prototype.getMyPosts = function (curUsername) {
+        var _this = this;
+        this.postService.getSelfPosts(curUsername).then(function (data) {
+            if (data.success === true) {
+                _this.selfPosts = data.posts;
+                console.log("Self posts got from database", _this.selfPosts);
+            }
+            else {
+                console.log("Error when getting self post from database: ", data.message);
+            }
+        });
     };
     SelfpostComponent.prototype.markMe = function (i) {
         if (this.spaceScreens[i].marked !== 1) {
@@ -1167,16 +1207,20 @@ var SelfpostComponent = (function () {
     };
     return SelfpostComponent;
 }());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", String)
+], SelfpostComponent.prototype, "curUsername", void 0);
 SelfpostComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-selfpost',
         template: __webpack_require__("../../../../../src/app/selfpost/selfpost.component.html"),
         styles: [__webpack_require__("../../../../../src/app/selfpost/selfpost.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__user_service__["a" /* UserService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Http */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__user_service__["a" /* UserService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__post_service__["a" /* PostService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__post_service__["a" /* PostService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */]) === "function" && _c || Object])
 ], SelfpostComponent);
 
-var _a, _b;
+var _a, _b, _c;
 //# sourceMappingURL=selfpost.component.js.map
 
 /***/ }),
@@ -1629,7 +1673,6 @@ var UserProfileComponent = (function () {
         var _this = this;
         // get current user name, currentuser stored in local storage is different, signup without token, sinin with,
         // so need the if clause to get username
-        console.log("currentuser from local storage: ", this.currentuser);
         if ('token' in this.currentuser) {
             this.username = this.currentuser.user.username;
         }

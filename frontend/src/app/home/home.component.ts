@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Post } from '../post';
 import { PostService } from '../post.service';
 import { UserService } from '../user.service';
@@ -14,8 +14,8 @@ import 'rxjs/add/operator/map';
 export class HomeComponent implements OnInit {
   
   post: Post = new Post();
-  currentuser: any = JSON.parse(localStorage.getItem("currentUser"));
-  cur_username: String = '';  
+  @Input() curUsername: string;
+
   spaceScreens: Array<any> = [];
   start = 0;
   end = 0;
@@ -30,20 +30,14 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    // get current user name, currentuser stored in local storage is different, signup without token, sinin with,
-    // so need the if clause to get username
-    if('token' in this.currentuser){
-      this.cur_username = this.currentuser.user.username;
-    }else {
-      this.cur_username = this.currentuser.username;
-    };
+
 
     this.end = this.start + this.pageSize;
   }
 
   sendPost() {
     this.post.title = 'wedontneedtitle';
-    this.post.createdBy = this.cur_username;
+    this.post.createdBy = this.curUsername;
     this.postService.sendPost(this.post);
     this.post = new Post();
   }
