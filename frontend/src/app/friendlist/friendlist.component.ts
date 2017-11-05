@@ -20,8 +20,11 @@ export class FriendlistComponent implements OnInit {
   constructor(public dialog: MdDialog, private userService: UserService) { }
 
   ngOnInit() {
-    this.getFriends(this.currentuser.user);
-    console.log('myfriends: ' + this.myFriends); 
+    if('token' in this.currentuser){
+      this.getFriends(this.currentuser.user);
+    }else {
+      this.getFriends(this.currentuser);
+    };
   }
 
   openDialog(): void {

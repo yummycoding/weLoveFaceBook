@@ -40,7 +40,7 @@ export class RegisFormComponent implements OnInit {
     if (this.validateService.validateRegister(this.newUser) && this.validateService.validateEmail(this.newUser.email) && this.newUser.password===this.confirmedpassword) {
       this.userService.create(this.newUser)
         .then(status => {
-          localStorage.setItem('currentUser', JSON.stringify(this.newUser));
+          //localStorage.setItem('currentUser', JSON.stringify(this.newUser));
           this.userService.setUserLoggedIn();
           this.router.navigate(['dashboard']);
         })
