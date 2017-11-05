@@ -429,7 +429,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/friendlist/friendlist.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<md-form-field style=\"width: 300px\">\n    <input mdInput [(ngModel)]=\"name\" placeholder=\"Search\">\n</md-form-field>\n<button md-raised-button (click)=\"openDialog()\" color=\"primary\" style=\"margin-left: 15px\">Add a new friend</button>\n<md-list>\n  <h3 md-subheader>A</h3>\n  <md-list-item *ngFor=\"let nameA of A\">\n    <md-icon md-list-icon>face</md-icon>\n    <p md-line>{{nameA.name}}</p>\n  </md-list-item>\n  <md-divider></md-divider>\n  <h3 md-subheader>B</h3>\n  <md-list-item *ngFor=\"let nameB of B\">\n    <md-icon md-list-icon>face</md-icon>\n    <p md-line>{{nameB.name}}</p>\n  </md-list-item>\n</md-list>\n"
+module.exports = "<md-form-field style=\"width: 300px\">\n    <input mdInput [(ngModel)]=\"name\" placeholder=\"Search\">\n</md-form-field>\n<button md-raised-button (click)=\"openDialog()\" color=\"primary\" style=\"margin-left: 15px\">Add a new friend</button>\n<button color =\"primary\" (click)=\"refreshFriendlist()\" md-raised-button>Refresh</button>\n<md-list>\n  <md-list-item *ngFor=\"let friend of myFriends\">\n    <md-icon md-list-icon>face</md-icon>\n    <p md-line>{{friend.nickname}}</p>\n    <span class=\"spacer\"></span>\n    <button md-icon-button (click)=\"deleteFriend(friend)\">\n      <i class=\"material-icons\">clear</i>  \n    </button>\n  </md-list-item>\n</md-list>\n\n<!-- <md-list>\n  <h3 md-subheader>A</h3>\n  <md-list-item *ngFor=\"let nameA of A\">\n    <md-icon md-list-icon>face</md-icon>\n    <p md-line>{{nameA.name}}</p>\n  </md-list-item>\n  <md-divider></md-divider>\n  <h3 md-subheader>B</h3>\n  <md-list-item *ngFor=\"let nameB of B\">\n    <md-icon md-list-icon>face</md-icon>\n    <p md-line>{{nameB.name}}</p>\n  </md-list-item>\n</md-list> -->\n"
 
 /***/ }),
 
@@ -441,6 +441,8 @@ module.exports = "<md-form-field style=\"width: 300px\">\n    <input mdInput [(n
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddFriendComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_material__ = __webpack_require__("../../../material/@angular/material.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user__ = __webpack_require__("../../../../../src/app/user.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__user_service__ = __webpack_require__("../../../../../src/app/user.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -455,37 +457,19 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 
 
+
+
 var FriendlistComponent = (function () {
-    function FriendlistComponent(dialog) {
+    function FriendlistComponent(dialog, userService) {
         this.dialog = dialog;
-        // tslint:disable-next-line:member-ordering
-        this.A = [
-            {
-                name: 'Allan',
-                updated: new Date('1/1/16'),
-            },
-            {
-                name: 'Andrew',
-                updated: new Date('1/17/16'),
-            },
-            {
-                name: 'Ashe',
-                updated: new Date('1/28/16'),
-            }
-        ];
-        // tslint:disable-next-line:member-ordering
-        this.B = [
-            {
-                name: 'Bob',
-                updated: new Date('2/20/16'),
-            },
-            {
-                name: 'Boss',
-                updated: new Date('1/18/16'),
-            }
-        ];
+        this.userService = userService;
+        //currentTime: number;
+        this.currentuser = JSON.parse(localStorage.getItem("currentUser"));
+        this.myFriends = [];
     }
     FriendlistComponent.prototype.ngOnInit = function () {
+        this.getFriends(this.currentuser.user);
+        console.log('myfriends: ' + this.myFriends);
     };
     FriendlistComponent.prototype.openDialog = function () {
         var _this = this;
@@ -497,10 +481,95 @@ var FriendlistComponent = (function () {
             if (typeof result !== 'undefined') {
                 _this.friendName = result.friendName;
                 _this.friendEmail = result.friendEmail;
-                _this.currentTime = Date.now();
-                console.log('Username:' + _this.friendName + ' Email:' + _this.friendEmail + ' Time:' + _this.currentTime);
+                if (typeof _this.friendEmail !== 'undefined' && _this.friendEmail !== '') {
+                    _this.userService.getUserByUserEmail(_this.friendEmail).then(function (data) {
+                        var friend = new __WEBPACK_IMPORTED_MODULE_2__user__["a" /* User */]();
+                        Object.assign(friend, data);
+                        if (friend._id !== '') {
+                            if (_this.currentuser.user.friend.indexOf(friend._id + '$$' + friend.nickname + '$$' + friend.email) === -1) {
+                                _this.currentuser.user.friend.push(friend._id + '$$' + friend.nickname + '$$' + friend.email);
+                                var updateUser = new __WEBPACK_IMPORTED_MODULE_2__user__["a" /* User */]();
+                                Object.assign(updateUser, _this.currentuser.user);
+                                console.log(updateUser);
+                                _this.userService.updateFriend(updateUser);
+                            }
+                            else {
+                                console.log('friend already exists');
+                            }
+                            if (friend.friend.indexOf(_this.currentuser.user._id + '$$' + _this.currentuser.user.nickname + '$$' + _this.currentuser.user.email) === -1) {
+                                friend.friend.push(_this.currentuser.user._id + '$$' + _this.currentuser.user.nickname + '$$' + _this.currentuser.user.email);
+                                console.log(friend);
+                                _this.userService.updateFriend(friend);
+                            }
+                        }
+                        else {
+                            console.log('User not exist');
+                        }
+                    });
+                }
+                else {
+                    _this.userService.getUserByUsername(_this.friendName).then(function (data) {
+                        var friend = new __WEBPACK_IMPORTED_MODULE_2__user__["a" /* User */]();
+                        Object.assign(friend, data);
+                        if (friend._id !== '') {
+                            if (_this.currentuser.user.friend.indexOf(friend._id + '$$' + friend.nickname + '$$' + friend.email) === -1) {
+                                _this.currentuser.user.friend.push(friend._id + '$$' + friend.nickname + '$$' + friend.email);
+                                var updateUser = new __WEBPACK_IMPORTED_MODULE_2__user__["a" /* User */]();
+                                Object.assign(updateUser, _this.currentuser.user);
+                                console.log(updateUser);
+                                _this.userService.updateFriend(updateUser);
+                            }
+                            else {
+                                console.log('friend already exists');
+                            }
+                            if (friend.friend.indexOf(_this.currentuser.user._id + '$$' + _this.currentuser.user.nickname + '$$' + _this.currentuser.user.email) === -1) {
+                                friend.friend.push(_this.currentuser.user._id + '$$' + _this.currentuser.user.nickname + '$$' + _this.currentuser.user.email);
+                                console.log(friend);
+                                _this.userService.updateFriend(friend);
+                            }
+                        }
+                        else {
+                            console.log('User not exist');
+                        }
+                    });
+                }
             }
         });
+    };
+    FriendlistComponent.prototype.getFriends = function (user) {
+        this.myFriends = [];
+        var friends = user.friend;
+        for (var _i = 0, friends_1 = friends; _i < friends_1.length; _i++) {
+            var friend = friends_1[_i];
+            if (friend.indexOf('$$') !== -1) {
+                var info = friend.split('$$');
+                var user_1 = new __WEBPACK_IMPORTED_MODULE_2__user__["a" /* User */]();
+                user_1._id = info[0];
+                user_1.nickname = info[1];
+                user_1.email = info[2];
+                this.myFriends.push(user_1);
+            }
+        }
+    };
+    FriendlistComponent.prototype.refreshFriendlist = function () {
+        this.getFriends(this.currentuser.user);
+    };
+    FriendlistComponent.prototype.deleteFriend = function (friend) {
+        var _this = this;
+        var user = new __WEBPACK_IMPORTED_MODULE_2__user__["a" /* User */];
+        //update current user's friendlist
+        var index = this.currentuser.user.friend.indexOf(friend._id + '$$' + friend.nickname + '$$' + friend.email);
+        this.currentuser.user.friend.splice(index, index + 1);
+        this.userService.updateFriend(this.currentuser.user);
+        //update friend's friendlist
+        this.userService.getUserByUserEmail(friend.email).then(function (data) {
+            var editfriend = new __WEBPACK_IMPORTED_MODULE_2__user__["a" /* User */]();
+            Object.assign(editfriend, data);
+            var index1 = editfriend.friend.indexOf(_this.currentuser.user._id + '$$' + _this.currentuser.user.nickname + '$$' + _this.currentuser.user.email);
+            editfriend.friend.splice(index1, index1 + 1);
+            _this.userService.updateFriend(editfriend);
+        });
+        this.getFriends(this.currentuser.user);
     };
     return FriendlistComponent;
 }());
@@ -510,7 +579,7 @@ FriendlistComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/friendlist/friendlist.component.html"),
         styles: [__webpack_require__("../../../../../src/app/friendlist/friendlist.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_material__["d" /* MdDialog */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_material__["d" /* MdDialog */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_material__["d" /* MdDialog */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_material__["d" /* MdDialog */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__user_service__["a" /* UserService */]) === "function" && _b || Object])
 ], FriendlistComponent);
 
 var AddFriendComponent = (function () {
@@ -529,10 +598,10 @@ AddFriendComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/friendlist/addFriend.html"),
     }),
     __param(1, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])(__WEBPACK_IMPORTED_MODULE_1__angular_material__["a" /* MD_DIALOG_DATA */])),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_material__["e" /* MdDialogRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_material__["e" /* MdDialogRef */]) === "function" && _b || Object, Object])
+    __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_material__["e" /* MdDialogRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_material__["e" /* MdDialogRef */]) === "function" && _c || Object, Object])
 ], AddFriendComponent);
 
-var _a, _b;
+var _a, _b, _c;
 //# sourceMappingURL=friendlist.component.js.map
 
 /***/ }),
@@ -1315,6 +1384,13 @@ var UserService = (function () {
             return user.success;
         }).toPromise();
     };
+    UserService.prototype.getUserByUserEmail = function (email) {
+        return this._http.get('/users/getuserbyemail/' + email).map(function (data) { return data.json(); }).toPromise();
+    };
+    UserService.prototype.updateFriend = function (user) {
+        //console.log("Client > New friend to be updated > ", user)
+        return this._http.put('/users/updatefriend/' + user._id, user).map(function (data) { return data.json(); }).toPromise();
+    };
     return UserService;
 }());
 UserService = __decorate([
@@ -1333,7 +1409,7 @@ var _a;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return User; });
 var User = (function () {
-    function User(_id, username, password, email, nickname, gender, dob, emaileditable, passwordeditable) {
+    function User(_id, username, password, email, nickname, gender, dob, friend, emaileditable, passwordeditable) {
         if (_id === void 0) { _id = ''; }
         if (username === void 0) { username = ''; }
         if (password === void 0) { password = ''; }
@@ -1341,6 +1417,7 @@ var User = (function () {
         if (nickname === void 0) { nickname = ''; }
         if (gender === void 0) { gender = 0; }
         if (dob === void 0) { dob = ''; }
+        if (friend === void 0) { friend = []; }
         if (emaileditable === void 0) { emaileditable = false; }
         if (passwordeditable === void 0) { passwordeditable = false; }
         this._id = _id;
@@ -1350,6 +1427,7 @@ var User = (function () {
         this.nickname = nickname;
         this.gender = gender;
         this.dob = dob;
+        this.friend = friend;
         this.emaileditable = emaileditable;
         this.passwordeditable = passwordeditable;
     }

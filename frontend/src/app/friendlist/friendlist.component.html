@@ -2,7 +2,19 @@
     <input mdInput [(ngModel)]="name" placeholder="Search">
 </md-form-field>
 <button md-raised-button (click)="openDialog()" color="primary" style="margin-left: 15px">Add a new friend</button>
+<button color ="primary" (click)="refreshFriendlist()" md-raised-button>Refresh</button>
 <md-list>
+  <md-list-item *ngFor="let friend of myFriends">
+    <md-icon md-list-icon>face</md-icon>
+    <p md-line>{{friend.nickname}}</p>
+    <span class="spacer"></span>
+    <button md-icon-button (click)="deleteFriend(friend)">
+      <i class="material-icons">clear</i>  
+    </button>
+  </md-list-item>
+</md-list>
+
+<!-- <md-list>
   <h3 md-subheader>A</h3>
   <md-list-item *ngFor="let nameA of A">
     <md-icon md-list-icon>face</md-icon>
@@ -14,4 +26,4 @@
     <md-icon md-list-icon>face</md-icon>
     <p md-line>{{nameB.name}}</p>
   </md-list-item>
-</md-list>
+</md-list> -->

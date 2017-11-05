@@ -72,4 +72,11 @@ export class UserService {
         return user.success;
       }).toPromise();
   }
+  getUserByUserEmail(email: String) {
+    return this._http.get('/users/getuserbyemail/' + email).map(data => data.json()).toPromise();
+  }
+  updateFriend(user: User) {
+    //console.log("Client > New friend to be updated > ", user)
+    return this._http.put('/users/updatefriend/' + user._id, user).map(data => data.json()).toPromise();
+  }
 }
