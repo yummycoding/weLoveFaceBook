@@ -13,8 +13,12 @@ export class PostService {
   }
 
   sendPost(post:Post) {
-    console.log("Client > New post to be added > post ", post)
+    console.log("Client > New post to be added > post ");
     return this._http.post('/posts/newPost', post).map(data => data.json()).toPromise();
   }
 
+  getSelfPosts(username:String) {
+    console.log("Client > Get all post of myself > username", username);
+    return this._http.get('/posts/getSelfPosts/' + username).map(data => data.json()).toPromise();
+  }
 }

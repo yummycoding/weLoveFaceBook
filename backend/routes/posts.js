@@ -56,6 +56,21 @@ router.get('/allPosts', (req, res) => {
     }).sort({'_id': -1});
 });
 
+// get all posts sent by user: username
+router.get('/getSelfPosts/:username', (req, res) => {
+    Post.find({ createdBy: req.params.username }, (err, posts) => {
+        if (err) {
+            res.json({success: false, message: err});
+        } else {
+            if (!posts) {
+                res.json({success: false, message: 'No posts found.'});
+            } else {
+                res.json({success: true, posts: posts});
+            }
+        }
+    }).sort({'_id': -1});
+});
+
 router.put('/updatePost', (req, res) => {
     if (!req.body._id) {
         res.json({success: false, message: 'No post id provided'});

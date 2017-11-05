@@ -19,7 +19,11 @@ export class SelfpostComponent implements OnInit {
   }
 
   ngOnInit() {
+    // console.log( this.http.get('assets/mock-data-mypost/data.json')
+    // .map(response => response.json().screenshots)
+    // .subscribe(res => this.spaceScreens = res));
   }
+
   markMe(i) {
     if (this.spaceScreens[i].marked !== 1) {
       this.spaceScreens[i].marked = 1;
@@ -27,6 +31,7 @@ export class SelfpostComponent implements OnInit {
       this.spaceScreens[i].marked = 0;
     }
   }
+  
   deleteMe(i) {
     this.spaceScreens.splice(i, 1);
     console.log(i);

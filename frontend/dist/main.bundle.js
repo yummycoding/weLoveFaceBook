@@ -659,7 +659,8 @@ var HomeComponent = (function () {
         this.postService = postService;
         this.http = http;
         this.post = new __WEBPACK_IMPORTED_MODULE_1__post__["a" /* Post */]();
-        this.cur_username = JSON.parse(localStorage.getItem("currentUser")).user.username;
+        this.currentuser = JSON.parse(localStorage.getItem("currentUser"));
+        this.cur_username = '';
         this.spaceScreens = [];
         this.start = 0;
         this.end = 0;
@@ -671,6 +672,15 @@ var HomeComponent = (function () {
             .subscribe(function (res) { return _this.spaceScreens = res; });
     }
     HomeComponent.prototype.ngOnInit = function () {
+        // get current user name, currentuser stored in local storage is different, signup without token, sinin with,
+        // so need the if clause to get username
+        if ('token' in this.currentuser) {
+            this.cur_username = this.currentuser.user.username;
+        }
+        else {
+            this.cur_username = this.currentuser.username;
+        }
+        ;
         this.end = this.start + this.pageSize;
     };
     HomeComponent.prototype.sendPost = function () {
@@ -916,8 +926,12 @@ var PostService = (function () {
         this._http = _http;
     }
     PostService.prototype.sendPost = function (post) {
-        console.log("Client > New post to be added > post ", post);
+        console.log("Client > New post to be added > post ");
         return this._http.post('/posts/newPost', post).map(function (data) { return data.json(); }).toPromise();
+    };
+    PostService.prototype.getSelfPosts = function (username) {
+        console.log("Client > Get all post of myself > username", username);
+        return this._http.get('/posts/getSelfPosts/' + username).map(function (data) { return data.json(); }).toPromise();
     };
     return PostService;
 }());
@@ -1098,7 +1112,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/selfpost/selfpost.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<md-card class=\"post-card\" *ngFor=\"let spaceScreen of spaceScreens; let i = index\">\n  <img md-card-image src =\"{{spaceScreen.img}}\">\n  <md-card-content>\n    <p>{{spaceScreen.description}}</p>\n  </md-card-content>\n  <md-card-actions>\n    <button md-button (click)=\"markMe(i)\">\n      <i class=\"material-icons md-18\" [class.green-color]=\"spaceScreen.marked == '1'\">bookmark</i> \n    </button>\n    <button md-button (click)=\"deleteMe(i)\">\n      <i class=\"material-icons md-18\">delete</i> \n    </button>\n  </md-card-actions>\n</md-card>\n\n\n\n"
+module.exports = "\n<md-card class=\"post-card\" *ngFor=\"let spaceScreen of spaceScreens; let i = index\">\n  <!-- <img md-card-image src =\"{{spaceScreen.img}}\"> -->\n  <md-card-content>\n    <p>{{spaceScreen.description}}</p>\n  </md-card-content>\n  <md-card-actions>\n    <button md-button (click)=\"markMe(i)\">\n      <i class=\"material-icons md-18\" [class.green-color]=\"spaceScreen.marked == '1'\">bookmark</i> \n    </button>\n    <button md-button (click)=\"deleteMe(i)\">\n      <i class=\"material-icons md-18\">delete</i> \n    </button>\n  </md-card-actions>\n</md-card>\n\n\n\n"
 
 /***/ }),
 
@@ -1135,6 +1149,9 @@ var SelfpostComponent = (function () {
             .subscribe(function (res) { return _this.spaceScreens = res; });
     }
     SelfpostComponent.prototype.ngOnInit = function () {
+        // console.log( this.http.get('assets/mock-data-mypost/data.json')
+        // .map(response => response.json().screenshots)
+        // .subscribe(res => this.spaceScreens = res));
     };
     SelfpostComponent.prototype.markMe = function (i) {
         if (this.spaceScreens[i].marked !== 1) {
@@ -1225,7 +1242,7 @@ var UserService = (function () {
         return this._http.put('/users/updateemail/' + user._id, user).map(function (data) { return data.json(); }).toPromise();
     };
     UserService.prototype.getUserByUsername = function (username) {
-        console.log('client > Get user by user name > ', username);
+        // console.log('client > Get user by user name > ',username);
         return this._http.get('/users/getuserbyusername/' + username).map(function (data) { return data.json(); }).toPromise();
     };
     UserService.prototype.getUserByUserID = function (userID) {
@@ -1605,16 +1622,23 @@ var UserProfileComponent = (function () {
         this.userService = userService;
         this.user = new __WEBPACK_IMPORTED_MODULE_2__user__["a" /* User */]();
         this.userEdit = new __WEBPACK_IMPORTED_MODULE_2__user__["a" /* User */]();
-        // attention!!!!! If loged based on sign up, should use 
-        // userName: any = JSON.parse(localStorage.getItem("currentUser")).username;
-        // Problem will be fixed if add more item to localstorage-currentUser when sign up
-        // to make it similar as when sign in
-        this.userID = JSON.parse(localStorage.getItem("currentUser")).user.id;
-        // console.log(this.userName); 
+        this.currentuser = JSON.parse(localStorage.getItem("currentUser"));
+        this.username = '';
     }
     UserProfileComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.userService.getUserByUserID(this.userID).then(function (data) {
+        // get current user name, currentuser stored in local storage is different, signup without token, sinin with,
+        // so need the if clause to get username
+        console.log("currentuser from local storage: ", this.currentuser);
+        if ('token' in this.currentuser) {
+            this.username = this.currentuser.user.username;
+        }
+        else {
+            this.username = this.currentuser.username;
+        }
+        ;
+        // get all user information from database and assign to user and useredit
+        this.userService.getUserByUsername(this.username).then(function (data) {
             _this.user = data;
             Object.assign(_this.userEdit, _this.user);
             console.log("user info got from database", _this.user);
@@ -1634,7 +1658,6 @@ var UserProfileComponent = (function () {
         this.userEdit.passwordeditable = false;
         this.user = this.userEdit;
         this.userService.updatePassword(this.userEdit);
-        // call service.ts to store the new password(this.userEdit)
     };
     return UserProfileComponent;
 }());

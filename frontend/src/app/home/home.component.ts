@@ -14,8 +14,8 @@ import 'rxjs/add/operator/map';
 export class HomeComponent implements OnInit {
   
   post: Post = new Post();
-  cur_username: String = JSON.parse(localStorage.getItem("currentUser")).user.username;
-
+  currentuser: any = JSON.parse(localStorage.getItem("currentUser"));
+  cur_username: String = '';  
   spaceScreens: Array<any> = [];
   start = 0;
   end = 0;
@@ -30,6 +30,14 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    // get current user name, currentuser stored in local storage is different, signup without token, sinin with,
+    // so need the if clause to get username
+    if('token' in this.currentuser){
+      this.cur_username = this.currentuser.user.username;
+    }else {
+      this.cur_username = this.currentuser.username;
+    };
+
     this.end = this.start + this.pageSize;
   }
 

@@ -44,7 +44,7 @@ export class UserService {
     return this._http.put('/users/updateemail/' + user._id, user).map(data => data.json()).toPromise();
   }
   getUserByUsername(username: String) {
-    console.log('client > Get user by user name > ',username);
+    // console.log('client > Get user by user name > ',username);
     return this._http.get('/users/getuserbyusername/' + username).map(data=>data.json()).toPromise();
   }
   getUserByUserID(userID: String) {
