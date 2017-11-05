@@ -101,6 +101,7 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__selfpost_selfpost_component__ = __webpack_require__("../../../../../src/app/selfpost/selfpost.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__friendlist_friendlist_component__ = __webpack_require__("../../../../../src/app/friendlist/friendlist.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__home_home_component__ = __webpack_require__("../../../../../src/app/home/home.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__home_home_component___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_20__home_home_component__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__regis_form_regis_form_component__ = __webpack_require__("../../../../../src/app/regis-form/regis-form.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__user_user_component__ = __webpack_require__("../../../../../src/app/user/user.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__user_user_list_user_list_component__ = __webpack_require__("../../../../../src/app/user/user-list/user-list.component.ts");
@@ -186,7 +187,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_17__login_form_login_header_login_header_component__["a" /* LoginHeaderComponent */],
             __WEBPACK_IMPORTED_MODULE_18__selfpost_selfpost_component__["a" /* SelfpostComponent */],
             __WEBPACK_IMPORTED_MODULE_19__friendlist_friendlist_component__["b" /* FriendlistComponent */],
-            __WEBPACK_IMPORTED_MODULE_20__home_home_component__["a" /* HomeComponent */],
+            __WEBPACK_IMPORTED_MODULE_20__home_home_component__["HomeComponent"],
             __WEBPACK_IMPORTED_MODULE_21__regis_form_regis_form_component__["a" /* RegisFormComponent */],
             __WEBPACK_IMPORTED_MODULE_22__user_user_component__["a" /* UserComponent */],
             __WEBPACK_IMPORTED_MODULE_23__user_user_list_user_list_component__["a" /* UserListComponent */],
@@ -616,126 +617,11 @@ var _a, _b;
 
 /***/ }),
 
-/***/ "../../../../../src/app/home/home.component.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, ".post-card {\n    width: 600px;\n  }\n  \n.post-image {\n  background-image: url(" + __webpack_require__("../../../../../src/assets/headerimage/head6.jpg") + ");\n  /* background-image: spaceScreen.headerimg; */\n  background-size: cover;\n}\n.make-post {\n  width: 648px;\n}\n.textwidth {\n  width: 100%;\n}\n.icon-align{\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  vertical-align: middle;\n}\n.notification{\n  margin-left: 5px;\n  width:350px;\n}\n.notiTitle{\n  margin-left: 150px;\n  font-size: 20px;\n}", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/home/home.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<div>\n<div style=\"float:left\">\n  <div class=\"make-post\">\n    <md-expansion-panel>\n      <md-expansion-panel-header>\n        <md-panel-title>\n          Make Post\n        </md-panel-title>\n        <md-panel-description>\n          What's on your mind?\n        </md-panel-description>\n      </md-expansion-panel-header>\n\n      <md-form-field class=\"textwidth\">\n        <!-- <input mdInput #message maxlength=\"256\" placeholder=\"Say something\">\n      <md-hint align=\"start\"><strong>Don't disclose personal info</strong> </md-hint> -->\n        <input mdInput [(ngModel)]=\"post.body\" #message maxlength=\"256\">\n        <md-hint align=\"end\">{{message.value.length}} / 256</md-hint>\n      </md-form-field>\n      <div class=\"input\">\n        <input class=\"ng-hide\" id=\"input-file-id\" multiple type=\"file\" #inputFile hidden/>\n        <button color=\"primary\" id=\"selectFile\" md-raised-button>\n          <Label for=\"input-file-id\">\n            <i class=\"material-icons md-18 icon-align\">insert_photo</i>\n            Photo\n          </Label>\n        </button>\n        <button color=\"warn\" (click)=\"sendPost()\" md-raised-button>Post</button>\n      </div>\n    </md-expansion-panel>\n  </div>\n  <md-card class=\"post-card\" *ngFor=\"let spaceScreen of spaceScreens | slice: [start] : [end]; let i = index\">\n    <md-card-header>\n      <div md-card-avatar class=\"post-image\"></div>\n      <md-card-title>{{spaceScreen.name}}</md-card-title>\n      <md-card-subtitle>{{spaceScreen.remark}}</md-card-subtitle>\n    </md-card-header>\n    <img md-card-image src=\"{{spaceScreen.img}}\" alt=\"post photo\">\n    <md-card-content>\n      <p>{{spaceScreen.description}}</p>\n    </md-card-content>\n    <md-card-actions>\n      <button md-button (click)=\"likeMe(i)\">\n        <i class=\"material-icons md-18\" [class.red-color]=\"spaceScreen.liked == '1'\">favorite</i>\n      </button>\n      <button md-button (click)=\"commentMe(i)\">\n        <i class=\"material-icons md-18\">insert_comment</i>\n      </button>\n      <button md-button (click)=\"shareMe(i)\">\n        <i class=\"material-icons md-18\">share</i>\n      </button>\n      <!-- <button md-button (click)=\"deleteMe(i)\">\n      <i class=\"material-icons md-18\">delete</i> \n    </button> -->\n    </md-card-actions>\n  </md-card>\n  <div class=\"make-post\">\n    <md-paginator [length]=\"spaceScreens.length\" [pageSize]=\"pageSize\" [pageSizeOptions]=\"pageSizeOptions\" (page)=\"pageEvent = $event; pageChange($event)\">\n    </md-paginator>\n  </div>\n</div>\n<div style=\"float:left\">\n  <p class=\"notiTitle\">Notifications</p>\n  <md-card class=\"notification\">Notifications</md-card>\n</div>\n</div>"
-
-/***/ }),
-
 /***/ "../../../../../src/app/home/home.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, __webpack_exports__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__post__ = __webpack_require__("../../../../../src/app/post.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__post_service__ = __webpack_require__("../../../../../src/app/post.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__user_service__ = __webpack_require__("../../../../../src/app/user.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
 
-
-
-
-
-
-var HomeComponent = (function () {
-    function HomeComponent(userService, postService, http) {
-        var _this = this;
-        this.userService = userService;
-        this.postService = postService;
-        this.http = http;
-        this.post = new __WEBPACK_IMPORTED_MODULE_1__post__["a" /* Post */]();
-        this.spaceScreens = [];
-        this.start = 0;
-        this.end = 0;
-        this.pageIndex = 0;
-        this.pageSize = 2;
-        this.pageSizeOptions = [1, 2, 5, 10];
-        this.http.get('assets/mock-data-home/data.json')
-            .map(function (response) { return response.json().screenshots; })
-            .subscribe(function (res) { return _this.spaceScreens = res; });
-    }
-    HomeComponent.prototype.ngOnInit = function () {
-        this.end = this.start + this.pageSize;
-    };
-    HomeComponent.prototype.sendPost = function () {
-        this.post.title = 'wedontneedtitle';
-        this.post.createdBy = this.curUsername;
-        this.postService.sendPost(this.post);
-        this.post = new __WEBPACK_IMPORTED_MODULE_1__post__["a" /* Post */]();
-    };
-    // count() {
-    //   return this.spaceScreens.length;
-    // }
-    HomeComponent.prototype.likeMe = function (i) {
-        if (this.spaceScreens[i].liked !== 1) {
-            this.spaceScreens[i].liked = 1;
-        }
-        else {
-            this.spaceScreens[i].liked = 0;
-        }
-    };
-    // deleteMe(i) {
-    //   this.spaceScreens.splice(i, 1);
-    //   console.log(i);
-    // }
-    HomeComponent.prototype.commentMe = function (i) {
-    };
-    HomeComponent.prototype.shareMe = function (i) {
-    };
-    HomeComponent.prototype.pageChange = function (event) {
-        this.pageIndex = event.pageIndex;
-        this.pageSize = event.pageSize;
-        this.start = (this.pageIndex + 1) * this.pageSize - this.pageSize;
-        this.end = (this.pageIndex + 1) * this.pageSize;
-    };
-    return HomeComponent;
-}());
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
-    __metadata("design:type", String)
-], HomeComponent.prototype, "curUsername", void 0);
-HomeComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-home',
-        template: __webpack_require__("../../../../../src/app/home/home.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/home/home.component.css")]
-    }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__user_service__["a" /* UserService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__post_service__["a" /* PostService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__post_service__["a" /* PostService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_http__["a" /* Http */]) === "function" && _c || Object])
-], HomeComponent);
-
-var _a, _b, _c;
-//# sourceMappingURL=home.component.js.map
 
 /***/ }),
 
@@ -946,6 +832,11 @@ var PostService = (function () {
         console.log("Client > Get all post of myself > username", username);
         return this._http.get('/posts/getSelfPosts/' + username).map(function (data) { return data.json(); }).toPromise();
     };
+    PostService.prototype.getHomePosts = function (curUser) {
+        console.log("Client > Get posts from myself and all my friends >");
+        // return this._http.get('/getHomePosts/'+ curUser.username, curUser.friendlist).map(data => data.json()).toPromise();
+        return this._http.get('/getHomePosts/' + curUser.username, curUser.username).map(function (data) { return data.json(); }).toPromise();
+    };
     return PostService;
 }());
 PostService = __decorate([
@@ -955,42 +846,6 @@ PostService = __decorate([
 
 var _a;
 //# sourceMappingURL=post.service.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/post.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Post; });
-var Post = (function () {
-    function Post(_id, title, body, createdBy, createdAt, // need take care initial value
-        likes, likedBy, dislikes, dislikedBy, comments) {
-        if (_id === void 0) { _id = ''; }
-        if (title === void 0) { title = 'wedontneedtitle'; }
-        if (body === void 0) { body = ''; }
-        if (createdBy === void 0) { createdBy = ''; }
-        if (createdAt === void 0) { createdAt = null; }
-        if (likes === void 0) { likes = 0; }
-        if (likedBy === void 0) { likedBy = []; }
-        if (dislikes === void 0) { dislikes = 0; }
-        if (dislikedBy === void 0) { dislikedBy = []; }
-        if (comments === void 0) { comments = []; }
-        this._id = _id;
-        this.title = title;
-        this.body = body;
-        this.createdBy = createdBy;
-        this.createdAt = createdAt;
-        this.likes = likes;
-        this.likedBy = likedBy;
-        this.dislikes = dislikes;
-        this.dislikedBy = dislikedBy;
-        this.comments = comments;
-    }
-    return Post;
-}());
-
-//# sourceMappingURL=post.js.map
 
 /***/ }),
 

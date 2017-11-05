@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Post } from '../post';
+import { User } from '../user';
 import { PostService } from '../post.service';
 import { UserService } from '../user.service';
 import { Http } from '@angular/http';
@@ -13,8 +14,10 @@ import 'rxjs/add/operator/map';
 
 export class HomeComponent implements OnInit {
   
-  post: Post = new Post();
   @Input() curUsername: string;
+  post: Post = new Post();
+  curUser: User = new User();
+  homePosts: Array<Post>;
 
   spaceScreens: Array<any> = [];
   start = 0;
@@ -30,7 +33,11 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    // get all user information from database and assign to user and useredit
+    this.userService.getUserByUsername(this.curUsername).then(data => {
+      this.curUser = data
+      console.log("user info got from database (home page)", this.curUser);
+    });
 
     this.end = this.start + this.pageSize;
   }
@@ -40,6 +47,17 @@ export class HomeComponent implements OnInit {
     this.post.createdBy = this.curUsername;
     this.postService.sendPost(this.post);
     this.post = new Post();
+  }
+
+  getHomeposts() {
+    this.postService.getHomePosts(this.curUser).then(data => {
+      if (data.success === true) {
+        this.homePosts = data.posts
+        console.log("Home posts got from database", this.homePosts);
+      }else {
+        console.log("Error when getting self post from database: ",data.message)
+      }
+    });
   }
 
   // count() {

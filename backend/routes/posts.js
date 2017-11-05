@@ -56,6 +56,23 @@ router.get('/allPosts', (req, res) => {
     }).sort({'_id': -1});
 });
 
+router.get('/getHomePosts/:username', (req, res) => {
+    console.log('GET > /getHomePosts/:username > username', req.params.username);
+    // console.log('all his friends included him', req.body);
+    var query = { $or: [ { createdBy:req.params.username }, { createdBy: "test3"} ] };
+    Post.find( query, (err, posts) => {
+        if (err) {
+            res.json({success: false, message: err});
+        } else {
+            if (!posts) {
+                res.json({success: false, message: 'No posts found.'});
+            } else {
+                res.json({success: true, posts: posts});
+            }
+        }
+    }).sort({'_id': -1});
+});
+
 // get all posts sent by user: username
 router.get('/getSelfPosts/:username', (req, res) => {
     console.log('GET > /getSelfPosts/:username > username',req.params.username)
