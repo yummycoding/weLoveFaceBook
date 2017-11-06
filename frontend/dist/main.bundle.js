@@ -564,7 +564,7 @@ var FriendlistComponent = (function () {
         var user = new __WEBPACK_IMPORTED_MODULE_2__user__["a" /* User */];
         //update current user's friendlist
         var index = this.currentuser.user.friend.indexOf(friend._id + '$$' + friend.nickname + '$$' + friend.email);
-        this.currentuser.user.friend.splice(index, index + 1);
+        this.currentuser.user.friend.splice(index, 1);
         this.userService.updateFriend(this.currentuser.user);
         localStorage.setItem('currentUser', JSON.stringify(this.currentuser));
         //update friend's friendlist
@@ -572,7 +572,7 @@ var FriendlistComponent = (function () {
             var editfriend = new __WEBPACK_IMPORTED_MODULE_2__user__["a" /* User */]();
             Object.assign(editfriend, data);
             var index1 = editfriend.friend.indexOf(_this.currentuser.user._id + '$$' + _this.currentuser.user.nickname + '$$' + _this.currentuser.user.email);
-            editfriend.friend.splice(index1, index1 + 1);
+            editfriend.friend.splice(index1, 1);
             _this.userService.updateFriend(editfriend);
         });
         this.getFriends(this.currentuser.user);

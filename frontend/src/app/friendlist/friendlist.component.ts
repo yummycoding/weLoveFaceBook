@@ -110,7 +110,7 @@ export class FriendlistComponent implements OnInit {
     const user = new User;
     //update current user's friendlist
     const index = this.currentuser.user.friend.indexOf(friend._id+'$$'+friend.nickname+'$$'+friend.email);
-    this.currentuser.user.friend.splice(index, index + 1);
+    this.currentuser.user.friend.splice(index, 1);
     this.userService.updateFriend(this.currentuser.user);
     localStorage.setItem('currentUser', JSON.stringify(this.currentuser));
     //update friend's friendlist
@@ -118,7 +118,7 @@ export class FriendlistComponent implements OnInit {
       const editfriend = new User();
       Object.assign(editfriend, data);
       const index1 = editfriend.friend.indexOf(this.currentuser.user._id+'$$'+this.currentuser.user.nickname+'$$'+this.currentuser.user.email);
-      editfriend.friend.splice(index1, index1 + 1);
+      editfriend.friend.splice(index1, 1);
       this.userService.updateFriend(editfriend);
     });
     
