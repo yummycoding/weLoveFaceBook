@@ -253,7 +253,7 @@ router.put('/updateemail/:id', (req, res, next) => {
 router.put('/updatefriend/:id', (req, res, next) => {
     console.log("Server > PUT 'users/updatefriend/:id' > id", req.params.id);
     console.log("Server > PUT 'users/updatefriend/:id' > user", req.body);
-    User.findByIdAndUpdate(req.param.id,
+    User.findByIdAndUpdate(req.params.id,
     {
         $set:{ friend: req.body.friend }
     },
