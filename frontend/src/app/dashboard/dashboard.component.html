@@ -1,9 +1,9 @@
 <md-tab-group> 
   <md-tab label="Home">
-    <app-home></app-home>
+    <app-home [curUsername]="curUsername"></app-home>
   </md-tab>
   <md-tab label="My Post">
-    <app-selfpost></app-selfpost>
+    <app-selfpost [curUsername]="curUsername"></app-selfpost>
   </md-tab>
   <md-tab label="Friends List">
     <app-friendlist></app-friendlist>

@@ -141,6 +141,9 @@ const UserSchema = mongoose.Schema({
      passwordeditable: {
          type: Boolean,
          // required: true
+     },
+     friend: {
+         type: Array
      }
 });
 
@@ -171,6 +174,11 @@ module.exports.getUserByUsername = function(username, callback) {
     User.findOne(query, callback);
 }
 
+module.exports.getUserByEmail = function(email, callback) {
+    const query = {email : email}
+    User.findOne(query, callback);
+}
+
 module.exports.getUserByUserID = function(userid, callback) {
     const query = { _id : userid }
     User.findOne(query, callback);
@@ -193,31 +201,21 @@ module.exports.updatePassword = function(editUser, callback) {
     bcrypt.hash(editUser.password, null, null, (err, hash) => {
         if (err) return next(err);
         var newvalues = { $set: { password: hash } };
-        User.update({ _id: editUser._id }, newvalues, (err, raw) => {
+        User.updateOne({ _id: editUser._id }, newvalues, (err, raw) => {
             if (err) throw err;
             else return raw
         })
     });
-
-    // bcrypt.genSalt(10, (err, salt) => {
-    //     bcrypt.hash(editUser.password, salt, (err, hash) => {
-    //         if(err) throw err;
-    //         var newvalues = {$set: { password: hash }};
-    //         User.update({_id:editUser._id},newvalues,(err, raw)=>{
-    //             if(err) throw err;
-    //             else return raw
-    //         })
-    //     })
-    // })  
 };
 
 module.exports.updateEmail = function(editUser, callback) {
     var newvalues = {$set: { email: editUser.email }};
-    User.update({_id:editUser._id},newvalues,(err, raw)=>{
+    User.updateOne({_id:editUser._id},newvalues,(err, raw)=>{
         if(err) throw err;
         else return raw
     })
 };
+
 
 
 module.exports.comparePassword = function(candidatePassword, hash, callback) {

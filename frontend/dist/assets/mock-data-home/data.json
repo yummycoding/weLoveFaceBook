@@ -1,0 +1,28 @@
+{
+    "screenshots": [
+        {
+            "name": "Jason Chang",
+            "remark": "classmate",
+            "headerimg": "assets/headerimage/head1.jpg",
+            "img": "assets/images-home/city.jpg",
+            "description": "I love this city!",
+            "liked":"0"
+        },
+        {
+            "name": "Frank Zhang",
+            "remark": "close friend",
+            "headerimg": "assets/headerimage/head2.jpg",
+            "img": "assets/images-home/mountain.jpg",
+            "description": "I love this mountain!",
+            "liked":"0"
+        },
+        {
+            "name": "Eric Liu",
+            "remark": "boss",
+            "headerimg": "assets/headerimage/head3.jpg",
+            "img": "assets/images-home/color.jpg",
+            "description": "I love ...##$????",
+            "liked":"0"
+        }
+    ]
+}

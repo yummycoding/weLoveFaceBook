@@ -44,7 +44,7 @@ export class UserService {
     return this._http.put('/users/updateemail/' + user._id, user).map(data => data.json()).toPromise();
   }
   getUserByUsername(username: String) {
-    console.log('client > Get user by user name > ',username);
+    // console.log('client > Get user by user name > ',username);
     return this._http.get('/users/getuserbyusername/' + username).map(data=>data.json()).toPromise();
   }
   getUserByUserID(userID: String) {
@@ -71,5 +71,12 @@ export class UserService {
         console.log("current user: ", localStorage.getItem('currentUser'))
         return user.success;
       }).toPromise();
+  }
+  getUserByUserEmail(email: String) {
+    return this._http.get('/users/getuserbyemail/' + email).map(data => data.json()).toPromise();
+  }
+  updateFriend(user: User) {
+    //console.log("Client > New friend to be updated > ", user)
+    return this._http.put('/users/updatefriend/' + user._id, user).map(data => data.json()).toPromise();
   }
 }

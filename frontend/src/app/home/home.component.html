@@ -10,11 +10,10 @@
           What's on your mind?
         </md-panel-description>
       </md-expansion-panel-header>
-
       <md-form-field class="textwidth">
         <!-- <input mdInput #message maxlength="256" placeholder="Say something">
       <md-hint align="start"><strong>Don't disclose personal info</strong> </md-hint> -->
-        <input mdInput #message maxlength="256">
+        <input mdInput [(ngModel)]="post.body" #message maxlength="256">
         <md-hint align="end">{{message.value.length}} / 256</md-hint>
       </md-form-field>
       <div class="input">
@@ -25,11 +24,13 @@
             Photo
           </Label>
         </button>
-        <button color="warn" md-raised-button>Post</button>
+        <button color="warn" (click)="sendPost()" md-raised-button>Post</button>
       </div>
     </md-expansion-panel>
   </div>
-  <md-card class="post-card" *ngFor="let spaceScreen of spaceScreens | slice: [start] : [end]; let i = index">
+
+  <!-- post information -->
+  <!-- <md-card class="post-card" *ngFor="let spaceScreen of spaceScreens | slice: [start] : [end]; let i = index">
     <md-card-header>
       <div md-card-avatar class="post-image"></div>
       <md-card-title>{{spaceScreen.name}}</md-card-title>
@@ -49,18 +50,42 @@
       <button md-button (click)="shareMe(i)">
         <i class="material-icons md-18">share</i>
       </button>
-      <!-- <button md-button (click)="deleteMe(i)">
-      <i class="material-icons md-18">delete</i> 
-    </button> -->
+    </md-card-actions>
+  </md-card> -->
+  <button color ="primary" (click)="refreshSelfposts($event)" md-raised-button>Refresh</button>
+  <md-card class="post-card" *ngFor="let homePost of homePosts | slice: [start] : [end]; let i = index">
+    <md-card-header>
+      <div md-card-avatar class="post-image"></div>
+      <md-card-title>{{homePost.createdBy}}</md-card-title>
+      <md-card-subtitle>{{homePost.createdAt}}</md-card-subtitle>
+    </md-card-header>
+    <md-card-content>
+      <p>{{homePost.body}}</p>
+    </md-card-content>
+    <md-card-actions>
+      <button md-button>
+        <i class="material-icons md-18">favorite</i>
+      </button>
+      <button md-button>
+        <i class="material-icons md-18">insert_comment</i>
+      </button>
+      <button md-button>
+        <i class="material-icons md-18">share</i>
+      </button>
     </md-card-actions>
   </md-card>
+
+  <!-- choose post amount to display in each page -->
   <div class="make-post">
     <md-paginator [length]="spaceScreens.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="pageEvent = $event; pageChange($event)">
     </md-paginator>
   </div>
 </div>
+
+<!-- notification -->
 <div style="float:left">
   <p class="notiTitle">Notifications</p>
   <md-card class="notification">Notifications</md-card>
 </div>
+
 </div>

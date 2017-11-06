@@ -11,19 +11,22 @@ import { Router } from '@angular/router';
 export class UserProfileComponent implements OnInit {
   user: User = new User();
   userEdit: User = new User();
+  currentuser: any = JSON.parse(localStorage.getItem("currentUser"));
+  username: String = '';  
 
-  // attention!!!!! If loged based on sign up, should use 
-  // userName: any = JSON.parse(localStorage.getItem("currentUser")).username;
-  // Problem will be fixed if add more item to localstorage-currentUser when sign up
-  // to make it similar as when sign in
-  userID: String = JSON.parse(localStorage.getItem("currentUser")).user.id;
-
-  constructor(private userService: UserService) {  
-    // console.log(this.userName); 
-  }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
-    this.userService.getUserByUserID(this.userID).then(data => {
+    // get current user name, currentuser stored in local storage is different, signup without token, sinin with,
+    // so need the if clause to get username
+    // console.log(this.currentuser);
+    // if('token' in this.currentuser){
+      this.username = this.currentuser.user.username;
+    // }else {
+    //   this.username = this.currentuser.username;
+    // };
+    // get all user information from database and assign to user and useredit
+    this.userService.getUserByUsername(this.username).then(data => {
       this.user = data
       Object.assign(this.userEdit, this.user);
       console.log("user info got from database", this.user);
@@ -46,6 +49,5 @@ export class UserProfileComponent implements OnInit {
     this.userEdit.passwordeditable=false;
     this.user = this.userEdit;
     this.userService.updatePassword(this.userEdit);
-    // call service.ts to store the new password(this.userEdit)
   }
 }

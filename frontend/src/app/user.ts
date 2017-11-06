@@ -7,6 +7,7 @@ export class User {
         public nickname: string = '',
         public gender  : number = 0,
         public dob     : string = '',
+        public friend  : Array<string> = [],
         public emaileditable: boolean = false,
         public passwordeditable: boolean = false
     ) {}
