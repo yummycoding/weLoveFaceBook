@@ -64,7 +64,7 @@
     </md-card-content>
     <md-card-actions>
       <button md-button (click)="likeCancelLikePost(i)">
-        <span><i class="material-icons md-18">favorite</i></span>
+        <span><i class="material-icons md-18" [class.red-color]="homePost.likedBy.indexOf(curUsername) >= 0">favorite</i></span>
         <span class="fill-space"></span>
         <span>{{homePost.likes}}</span>
       </button>
