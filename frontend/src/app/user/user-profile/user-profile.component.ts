@@ -19,11 +19,12 @@ export class UserProfileComponent implements OnInit {
   ngOnInit() {
     // get current user name, currentuser stored in local storage is different, signup without token, sinin with,
     // so need the if clause to get username
-    if('token' in this.currentuser){
+    // console.log(this.currentuser);
+    // if('token' in this.currentuser){
       this.username = this.currentuser.user.username;
-    }else {
-      this.username = this.currentuser.username;
-    };
+    // }else {
+    //   this.username = this.currentuser.username;
+    // };
     // get all user information from database and assign to user and useredit
     this.userService.getUserByUsername(this.username).then(data => {
       this.user = data

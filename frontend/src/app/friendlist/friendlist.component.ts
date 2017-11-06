@@ -20,11 +20,11 @@ export class FriendlistComponent implements OnInit {
   constructor(public dialog: MdDialog, private userService: UserService) { }
 
   ngOnInit() {
-    if('token' in this.currentuser){
+    // if('token' in this.currentuser){
       this.getFriends(this.currentuser.user);
-    }else {
-      this.getFriends(this.currentuser);
-    };
+    // }else {
+    //   this.getFriends(this.currentuser);
+    // };
   }
 
   openDialog(): void {
@@ -47,6 +47,7 @@ export class FriendlistComponent implements OnInit {
                 Object.assign(updateUser, this.currentuser.user);
                 console.log(updateUser);
                 this.userService.updateFriend(updateUser);
+                localStorage.setItem('currentUser', JSON.stringify(this.currentuser));
               } else { 
                 console.log('friend already exists');
              }
@@ -70,6 +71,7 @@ export class FriendlistComponent implements OnInit {
                 Object.assign(updateUser, this.currentuser.user);
                 console.log(updateUser);
                 this.userService.updateFriend(updateUser);
+                localStorage.setItem('currentUser', JSON.stringify(this.currentuser));
               } else { 
                 console.log('friend already exists');
               }
@@ -110,6 +112,7 @@ export class FriendlistComponent implements OnInit {
     const index = this.currentuser.user.friend.indexOf(friend._id+'$$'+friend.nickname+'$$'+friend.email);
     this.currentuser.user.friend.splice(index, index + 1);
     this.userService.updateFriend(this.currentuser.user);
+    localStorage.setItem('currentUser', JSON.stringify(this.currentuser));
     //update friend's friendlist
     this.userService.getUserByUserEmail(friend.email).then(data => {
       const editfriend = new User();

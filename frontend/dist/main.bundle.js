@@ -468,13 +468,11 @@ var FriendlistComponent = (function () {
         this.myFriends = [];
     }
     FriendlistComponent.prototype.ngOnInit = function () {
-        if ('token' in this.currentuser) {
-            this.getFriends(this.currentuser.user);
-        }
-        else {
-            this.getFriends(this.currentuser);
-        }
-        ;
+        // if('token' in this.currentuser){
+        this.getFriends(this.currentuser.user);
+        // }else {
+        //   this.getFriends(this.currentuser);
+        // };
     };
     FriendlistComponent.prototype.openDialog = function () {
         var _this = this;
@@ -497,6 +495,7 @@ var FriendlistComponent = (function () {
                                 Object.assign(updateUser, _this.currentuser.user);
                                 console.log(updateUser);
                                 _this.userService.updateFriend(updateUser);
+                                localStorage.setItem('currentUser', JSON.stringify(_this.currentuser));
                             }
                             else {
                                 console.log('friend already exists');
@@ -523,6 +522,7 @@ var FriendlistComponent = (function () {
                                 Object.assign(updateUser, _this.currentuser.user);
                                 console.log(updateUser);
                                 _this.userService.updateFriend(updateUser);
+                                localStorage.setItem('currentUser', JSON.stringify(_this.currentuser));
                             }
                             else {
                                 console.log('friend already exists');
@@ -566,6 +566,7 @@ var FriendlistComponent = (function () {
         var index = this.currentuser.user.friend.indexOf(friend._id + '$$' + friend.nickname + '$$' + friend.email);
         this.currentuser.user.friend.splice(index, index + 1);
         this.userService.updateFriend(this.currentuser.user);
+        localStorage.setItem('currentUser', JSON.stringify(this.currentuser));
         //update friend's friendlist
         this.userService.getUserByUserEmail(friend.email).then(function (data) {
             var editfriend = new __WEBPACK_IMPORTED_MODULE_2__user__["a" /* User */]();
@@ -1784,13 +1785,12 @@ var UserProfileComponent = (function () {
         var _this = this;
         // get current user name, currentuser stored in local storage is different, signup without token, sinin with,
         // so need the if clause to get username
-        if ('token' in this.currentuser) {
-            this.username = this.currentuser.user.username;
-        }
-        else {
-            this.username = this.currentuser.username;
-        }
-        ;
+        // console.log(this.currentuser);
+        // if('token' in this.currentuser){
+        this.username = this.currentuser.user.username;
+        // }else {
+        //   this.username = this.currentuser.username;
+        // };
         // get all user information from database and assign to user and useredit
         this.userService.getUserByUsername(this.username).then(function (data) {
             _this.user = data;
