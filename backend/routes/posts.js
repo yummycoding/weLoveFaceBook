@@ -178,45 +178,6 @@ router.delete('/deletePost/:id', (req, res) => {
     };
 });
 
-// router.delete('/deletePost/:id', (req, res) => { 
-//     console.log('DELETE > /deleteBlog/:id > id', req.params.id);
-//     if (!req.params.id) {
-//         res.json({success: false, message: 'No id provided'});
-//     } else {
-//         Post.findOne({_id: req.params.id}, (err, post) => {
-//             if (err) {
-//                 res.json({success: false, message: 'Invalid id'});
-//             } else {
-//                 if (!post) {
-//                     res.json({success: false, message: 'Post was not found'});
-//                 } else {
-//                     User.findOne({_id: req.decoded.userId}, (err, user) => {
-//                         if (err) {
-//                            res.json({success: false, message: err});
-//                         } else {
-//                             if (!user) {
-//                                 res.json({success: false, message: 'Unable to authenticate user'});
-//                             } else {
-//                                 if (user.username !== post.createdBy) {
-//                                     res.json({success: false, message: 'You are not authorized to delete this post'});
-//                                 } else {
-//                                     post.remove((err) => {
-//                                         if (err) {
-//                                             res.json({success: false, message: err});
-//                                         } else {
-//                                             res.json({success: true, message: 'Post deleted successfully!'});
-//                                         }
-//                                     })
-//                                 }
-//                             }
-//                         }
-//                     })
-//                 }
-//             }
-//         });
-//     }
-// });
-
 // find post in database using post id, check whether user has liked this post or not,
 // if liked before, cancel like
 // if not liked before, update that like
@@ -389,7 +350,7 @@ router.post('/comment', (req, res) => {
               res.json({ success: false, message: 'Post not found.' }); // Return error message
             } else {
               // Grab data of user that is logged in
-              User.findOne({ _id: req.decoded.userId }, (err, user) => {
+              User.findOne({ _id: req.body.id }, (err, user) => {
                 // Check if error was found
                 if (err) {
                   res.json({ success: false, message: 'Something went wrong' }); // Return error message
