@@ -60,18 +60,39 @@ router.get('/allPosts', (req, res) => {
 // userhimself and his friends
 router.get('/getHomePosts/:username', (req, res) => {
     console.log('GET > /getHomePosts/:username > username', req.params.username);
-    var query = { $or: [ { createdBy:req.params.username }, { createdBy: "test3"} ] };
-    Post.find( query, (err, posts) => {
-        if (err) {
+    User.find({username:req.params.username},(err, curUser) => {
+        if(err) {
             res.json({success: false, message: err});
         } else {
-            if (!posts) {
-                res.json({success: false, message: 'No posts found.'});
-            } else {
-                res.json({success: true, posts: posts});
+            if(curUser.length === 0) {
+                res.json({success: false, message: 'username:'+req.params.username+'does not exist'});
+            }else if(curUser.length !== 1) {
+                res.json({success: false, message: 'multiple users are called(username): '+req.params.username});
+            }else{ // the only curUser were found using username
+                console.log("curUser friends found using username",curUser[0].friend)
+                var qarray = [{createdBy: req.params.username}];
+                curUser[0].friend.forEach(function(friendraw) {
+                    console.log(friendraw);
+                    // parse friend
+                    var friendallinfo = friendraw.split("$$");
+                    qarray.push({createdBy: friendallinfo[1]});
+                });
+                console.log("qarray to get post: ",qarray);
+                var query = { $or: qarray};
+                Post.find( query, (err, posts) => {
+                    if (err) {
+                        res.json({success: false, message: err});
+                    } else {
+                        if (!posts) {
+                            res.json({success: false, message: 'No posts found.'});
+                        } else {
+                            res.json({success: true, posts: posts});
+                        }
+                    }
+                }).sort({'_id': -1});
             }
         }
-    }).sort({'_id': -1});
+    })
 });
 
 // get all posts sent by user: username

@@ -129,22 +129,22 @@ const UserSchema = mongoose.Schema({
     dob: {
         type: String,
         // required: true
-     },
-     dobeditable: {
-         type: Boolean,
-         // required: true
-     },
-     emaileditable: {
-         type: Boolean,
-         // required: true
-     },
-     passwordeditable: {
-         type: Boolean,
-         // required: true
-     },
-     friend: {
-         type: Array
-     }
+    },
+    dobeditable: {
+        type: Boolean,
+        // required: true
+    },
+    emaileditable: {
+        type: Boolean,
+        // required: true
+    },
+    passwordeditable: {
+        type: Boolean,
+        // required: true
+    },
+    friend: {
+        type: Array
+    }
 });
 
 UserSchema.pre('save', function(next){
