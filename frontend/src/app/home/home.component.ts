@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   @Input() curUsername: string;
   post: Post = new Post();
   curUser: User = new User();
-  homePosts: Array<Post>;
+  homePosts: Array<Post> = [];
 
   spaceScreens: Array<any> = [];
   start = 0;

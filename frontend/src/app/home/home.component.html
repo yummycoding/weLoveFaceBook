@@ -77,7 +77,7 @@
 
   <!-- choose post amount to display in each page -->
   <div class="make-post">
-    <md-paginator [length]="spaceScreens.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="pageEvent = $event; pageChange($event)">
+    <md-paginator [length]="homePosts.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="pageEvent = $event; pageChange($event)">
     </md-paginator>
   </div>
 </div>
