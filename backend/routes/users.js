@@ -253,14 +253,17 @@ router.put('/updateemail/:id', (req, res, next) => {
 router.put('/updatefriend/:id', (req, res, next) => {
     console.log("Server > PUT 'users/updatefriend/:id' > id", req.params.id);
     console.log("Server > PUT 'users/updatefriend/:id' > user", req.body);
-    User.updateFriend(req.body, (err, user) => {
+    User.findByIdAndUpdate(req.param.id,
+    {
+        $set:{ friend: req.body.friend }
+    },
+    function(err, updatedUser) {
         if(err) {
-            res.json({success: false, msg:'Failed to update friend'});
-        } else {
-            return res.json(user);
-            //res.json({success: true, msg:'User registered'});
+            res.send("Failed updating the friend")
+        }else{
+            res.json(updatedUser);
         }
-    })
+    });
 });
 
 

@@ -206,17 +206,6 @@ module.exports.updatePassword = function(editUser, callback) {
             else return raw
         })
     });
-
-    // bcrypt.genSalt(10, (err, salt) => {
-    //     bcrypt.hash(editUser.password, salt, (err, hash) => {
-    //         if(err) throw err;
-    //         var newvalues = {$set: { password: hash }};
-    //         User.update({_id:editUser._id},newvalues,(err, raw)=>{
-    //             if(err) throw err;
-    //             else return raw
-    //         })
-    //     })
-    // })  
 };
 
 module.exports.updateEmail = function(editUser, callback) {
@@ -227,13 +216,6 @@ module.exports.updateEmail = function(editUser, callback) {
     })
 };
 
-module.exports.updateFriend = function(editUser, callback) {
-    var newvalues = {$set: { friend: editUser.friend }};
-    User.updateOne({_id:editUser._id},newvalues,(err, raw)=>{
-        if(err) throw err;
-        else return raw
-    })
-};
 
 
 module.exports.comparePassword = function(candidatePassword, hash, callback) {
