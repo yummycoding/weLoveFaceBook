@@ -85,23 +85,6 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  // count() {
-  //   return this.spaceScreens.length;
-  // }
-
-  likeMe(i) {
-    if (this.spaceScreens[i].liked !== 1) {
-      this.spaceScreens[i].liked = 1;
-    } else {
-      this.spaceScreens[i].liked = 0;
-    }
-  }
-
-  // deleteMe(i) {
-  //   this.spaceScreens.splice(i, 1);
-  //   console.log(i);
-  // }
-
   commentMe(i) {
 
   }

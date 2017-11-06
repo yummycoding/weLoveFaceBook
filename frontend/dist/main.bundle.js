@@ -818,21 +818,6 @@ var HomeComponent = (function () {
             }
         });
     };
-    // count() {
-    //   return this.spaceScreens.length;
-    // }
-    HomeComponent.prototype.likeMe = function (i) {
-        if (this.spaceScreens[i].liked !== 1) {
-            this.spaceScreens[i].liked = 1;
-        }
-        else {
-            this.spaceScreens[i].liked = 0;
-        }
-    };
-    // deleteMe(i) {
-    //   this.spaceScreens.splice(i, 1);
-    //   console.log(i);
-    // }
     HomeComponent.prototype.commentMe = function (i) {
     };
     HomeComponent.prototype.shareMe = function (i) {
@@ -1257,7 +1242,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/selfpost/selfpost.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<button color =\"primary\" (click)=\"refreshSelfposts($event)\" md-raised-button>Refresh</button>\n<md-card class=\"post-card\" *ngFor=\"let selfPost of selfPosts; let i = index\">\n  <md-card-header>\n      <div md-card-avatar class=\"post-image\"></div>\n      <md-card-title>{{selfPost.createdBy}}</md-card-title>\n      <md-card-subtitle>{{selfPost.createdAt}}</md-card-subtitle>\n  </md-card-header>\n  <!-- <img md-card-image src =\"{{spaceScreen.img}}\"> -->\n  <md-card-content>\n    <p>{{selfPost.body}}</p>\n  </md-card-content>\n  <md-card-actions>\n    <button md-button (click)=\"markMe(i)\">\n      <i class=\"material-icons md-18\">bookmark</i> \n    </button>\n    <!-- <button md-button (click)=\"markMe(i)\">\n      <i class=\"material-icons md-18\" [class.green-color]=\"spaceScreen.marked == '1'\">bookmark</i> \n    </button> -->\n    <button md-button (click)=\"deleteSelfposts(i)\">\n      <i class=\"material-icons md-18\">delete</i> \n    </button>\n  </md-card-actions>\n</md-card>\n\n\n\n"
+module.exports = "\n<button color =\"primary\" (click)=\"refreshSelfposts($event)\" md-raised-button>Refresh</button>\n<md-card class=\"post-card\" *ngFor=\"let selfPost of selfPosts; let i = index\">\n  <md-card-header>\n      <div md-card-avatar class=\"post-image\"></div>\n      <md-card-title>{{selfPost.createdBy}}</md-card-title>\n      <md-card-subtitle>{{selfPost.createdAt}}</md-card-subtitle>\n  </md-card-header>\n  <!-- <img md-card-image src =\"{{spaceScreen.img}}\"> -->\n  <md-card-content>\n    <p>{{selfPost.body}}</p>\n  </md-card-content>\n  <md-card-actions>\n    <button md-button>\n      <i class=\"material-icons md-18\">bookmark</i> \n    </button>\n    <!-- <button md-button (click)=\"markMe(i)\">\n      <i class=\"material-icons md-18\" [class.green-color]=\"spaceScreen.marked == '1'\">bookmark</i> \n    </button> -->\n    <button md-button (click)=\"deleteSelfposts(i)\">\n      <i class=\"material-icons md-18\">delete</i> \n    </button>\n  </md-card-actions>\n</md-card>\n\n\n\n"
 
 /***/ }),
 

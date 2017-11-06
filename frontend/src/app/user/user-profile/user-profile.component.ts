@@ -21,7 +21,7 @@ export class UserProfileComponent implements OnInit {
     // so need the if clause to get username
     // console.log(this.currentuser);
     // if('token' in this.currentuser){
-      this.username = this.currentuser.user.username;
+    this.username = this.currentuser.user.username;
     // }else {
     //   this.username = this.currentuser.username;
     // };

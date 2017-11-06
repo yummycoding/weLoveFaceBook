@@ -4,6 +4,7 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const User = require('../models/user');
+const bcrypt = require('bcrypt-nodejs');
 
 //Register
 router.post('/register', (req, res, next) => {
@@ -222,28 +223,47 @@ router.get('/getuserbyuserid/:userid', (req, res, next) => {
      })
 });
 
+// router.put('/updatepassword/:id', (req, res, next) => {
+//     console.log("Server > PUT 'users/updatepassword/:id' > id", req.params.id);
+//     console.log("Server > PUT 'users/updatepassword/:id' > user", req.body);
+//     User.updatePassword(req.body, (err, user) => {
+//         if(err) {
+//             res.json({success: false, msg:'Failed to update password'});
+//         } else {
+//             return res.json(user);
+//             //res.json({success: true, msg:'User registered'});
+//         }
+//     })
+// });
+
 router.put('/updatepassword/:id', (req, res, next) => {
     console.log("Server > PUT 'users/updatepassword/:id' > id", req.params.id);
     console.log("Server > PUT 'users/updatepassword/:id' > user", req.body);
-    User.updatePassword(req.body, (err, user) => {
-        if(err) {
-            res.json({success: false, msg:'Failed to update password'});
+    bcrypt.hash(req.body.password, null, null, (err, hash) => {
+        if (err) {
+            return res.json({success: false, msg:'Failed to hash password'});
         } else {
-            return res.json(user);
-            //res.json({success: true, msg:'User registered'});
+           var queary = { $set: { password: hash } };
+           User.findByIdAndUpdate(req.params.id,queary,function(err,updatedUser){
+               if(err) {
+                   return res.json({success: false, msg:'Failed to update password'});
+               } else {
+                   res.json(updatedUser);
+               }
+           })
         }
-    })
+    });
 });
 
 router.put('/updateemail/:id', (req, res, next) => {
     console.log("Server > PUT 'users/updateemail/:id' > id", req.params.id);
     console.log("Server > PUT 'users/updateemail/:id' > user", req.body);
-    User.updateEmail(req.body, (err, user) => {
+    var queary = { $set:{email: req.body.email} }
+    User.findByIdAndUpdate(req.params.id,queary,function(err,updatedUser){
         if(err) {
-            res.json({success: false, msg:'Failed to update email'});
+            return res.json({success: false, msg:'Failed to update email'});
         } else {
-            return res.json(user);
-            //res.json({success: true, msg:'User registered'});
+            res.json(updatedUser);
         }
     })
 });
