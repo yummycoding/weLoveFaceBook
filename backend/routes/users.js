@@ -183,8 +183,6 @@ router.get('/profile', (req, res) => {
 });
 
 
-
-
 // given an username string, returns all data of that user
 router.get('/getuserbyusername/:username', (req, res, next) => {
     // console.log('Server > GET user by user name > ',req.params.username);
