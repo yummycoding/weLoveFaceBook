@@ -155,32 +155,32 @@ router.put('/updatePost', (req, res) => {
     }
 });
 
-router.delete('/deletePost/:id', (req, res) => { 
-    console.log('DELETE > /deletePost/:id > id', req.params.id);
-    if (!req.params.id) {
-        res.json({success: false, message: 'No id provided'});
-    } else {
-        Post.findOne({_id: req.params.id}, (err, post) => {
-            if (err) {
-                res.json({success: false, message: 'Invalid id'});
-            } else {
-                if (!post) {
-                    res.json({success: false, message: 'Post was not found'});
-                } else {
-                    post.remove((err) => {
-                        if (err) {
-                            res.json({success: false, message: err});
-                        } else {
-                            res.json({success: true, message: 'Post deleted successfully!'});
-                        }
-                    })
-                }
-            }
-        });
-    };
-});
+// router.delete('/deletePost/:id', (req, res) => { 
+//     console.log('DELETE > /deletePost/:id > id', req.params.id);
+//     if (!req.params.id) {
+//         res.json({success: false, message: 'No id provided'});
+//     } else {
+//         Post.findOne({_id: req.params.id}, (err, post) => {
+//             if (err) {
+//                 res.json({success: false, message: 'Invalid id'});
+//             } else {
+//                 if (!post) {
+//                     res.json({success: false, message: 'Post was not found'});
+//                 } else {
+//                     post.remove((err) => {
+//                         if (err) {
+//                             res.json({success: false, message: err});
+//                         } else {
+//                             res.json({success: true, message: 'Post deleted successfully!'});
+//                         }
+//                     })
+//                 }
+//             }
+//         });
+//     };
+// });
 
-router.delete('/deleteBlog/:id', (req, res) => { 
+router.delete('/deletePost/:id', (req, res) => { 
     console.log('DELETE > /deleteBlog/:id > id', req.params.id);
     if (!req.params.id) {
         res.json({success: false, message: 'No id provided'});
@@ -190,7 +190,7 @@ router.delete('/deleteBlog/:id', (req, res) => {
                 res.json({success: false, message: 'Invalid id'});
             } else {
                 if (!post) {
-                    res.json({success: false, message: 'Blog was not found'});
+                    res.json({success: false, message: 'Post was not found'});
                 } else {
                     User.findOne({_id: req.decoded.userId}, (err, user) => {
                         if (err) {

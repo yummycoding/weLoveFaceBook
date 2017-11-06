@@ -71,7 +71,7 @@ describe('Test the users registration API', function(){
 describe('Test the user login API', function(){
     it('should login successfully', function(done){
         server
-        .post('/users/login')
+        .post('/users/authenticate')
         .send({
             username: 'Zhuoru',
             password: 'Oz65229780!',
@@ -81,6 +81,21 @@ describe('Test the user login API', function(){
             res.status.should.equal(200),
             res.body.success.should.equal(true),
             res.body.message.should.equal('Success!')
+            done();
+        });
+    });
+
+    it('should login successfully', function(done){
+        server
+        .post('/users/authenticate')
+        .send({
+            password: 'Oz65229780!',
+            email: 'lizhuoru19940423@gmail.com'
+        })
+        .end(function(err, res){
+            res.status.should.equal(200),
+            res.body.success.should.equal(false),
+            res.body.message.should.equal('No username was provided.')
             done();
         });
     });
