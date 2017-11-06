@@ -79,6 +79,33 @@ describe('Test the APIs in post', function() {
         });
     });
 
-    
+    describe('Test the comment API', function(){
+        it('should return no id provided', function(done){
+            server
+            .post('/posts/comment')
+            .send({
+                comment: 'Test of Zhuoru'
+            })
+            .end(function(err, res){
+                res.status.should.equal(200);
+                res.body.success.should.equal(false);
+                res.body.message.should.equal('No id was provided');
+                done();
+            });
+        });
 
+        it('should return no comment provided', function(done){
+            server
+            .post('/posts/comment')
+            .send({
+                id: '59fd61383358a747d3b632f9'
+            })
+            .end(function(err, res){
+                res.status.should.equal(200);
+                res.body.success.should.equal(false);
+                res.body.message.should.equal('No comment provided');
+                done();
+            });
+        });
+    });
 });

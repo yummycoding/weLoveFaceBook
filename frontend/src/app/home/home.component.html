@@ -64,7 +64,9 @@
     </md-card-content>
     <md-card-actions>
       <button md-button (click)="likeCancelLikePost(i)">
-        <i class="material-icons md-18">favorite</i>
+        <span><i class="material-icons md-18">favorite</i></span>
+        <span class="fill-space"></span>
+        <span>{{homePost.likes}}</span>
       </button>
       <button md-button>
         <i class="material-icons md-18">insert_comment</i>
@@ -72,6 +74,9 @@
       <button md-button>
         <i class="material-icons md-18">share</i>
       </button>
+      <md-card-content>
+          <p class="like-font">Liked by: {{homePost.likedBy}}</p>
+      </md-card-content>
     </md-card-actions>
   </md-card>
 

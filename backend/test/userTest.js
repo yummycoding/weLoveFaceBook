@@ -2,6 +2,7 @@ var should = require('should');
 var supertest = require('supertest');
 var server = supertest.agent("http://localhost:3000");
 
+//Testing the users registration API
 describe('Test the users registration API', function(){
     it('should register a right new user', function(done){
         server
@@ -68,10 +69,11 @@ describe('Test the users registration API', function(){
     });
 });
 
+//Test the user login API
 describe('Test the user login API', function(){
     it('should login successfully', function(done){
         server
-        .post('/users/login')
+        .post('/users/authenticate')
         .send({
             username: 'Zhuoru',
             password: 'Oz65229780!',
@@ -84,5 +86,103 @@ describe('Test the user login API', function(){
             done();
         });
     });
+
+    it('should return no username provided', function(done){
+        server
+        .post('/users/authenticate')
+        .send({
+            password: 'Oz65229780!',
+            email: 'lizhuoru19940423@gmail.com'
+        })
+        .end(function(err, res){
+            res.status.should.equal(200),
+            res.body.success.should.equal(false),
+            res.body.message.should.equal('No username was provided.')
+            done();
+        });
+    });
+
+    it('should return no user information', function(done){
+        server
+        .post('/users/authenticate')
+        .send({
+            username: 'YouZhou',
+            password: 'Oz65229780!',
+            email: 'lizhuoru19940423@gmail.com'
+        })
+        .end(function(err, res){
+            res.status.should.equal(200),
+            res.body.success.should.equal(false),
+            res.body.message.should.equal('Username not found.')
+            done();
+        });
+    });
+
+    it('should return invalid password', function(done){
+        server
+        .post('/users/authenticate')
+        .send({
+            username: 'Zhuoru',
+            password: 'Oz65229780',
+            email: 'lizhuoru19940423@gmail.com'
+        })
+        .end(function(err, res){
+            res.status.should.equal(200),
+            res.body.success.should.equal(false),
+            res.body.message.should.equal('Invalid password.')
+            done();
+        });
+    });
+});
+
+//Testing check email API
+describe('Test check email API', function(){
+    it('should return email is already taken', function(done){
+        server
+        .get('/users/checkEmail/lizhuoru19940423@gmail.com')
+        .end(function(err, res){
+            res.status.should.equal(200),
+            res.body.success.should.equal(false),
+            res.body.message.should.equal('E-mail is already taken')
+            done();
+        });
+    });
+
+    it('should return email is available', function(done){
+        server
+        .get('/users/checkEmail/hehe@gmail.com')
+        .end(function(err, res){
+            res.status.should.equal(200),
+            res.body.success.should.equal(true),
+            res.body.message.should.equal('E-mail is available')
+            done();
+        });
+    });
+});
+
+//Testing the checkUsername API
+describe('Test the checkUsername API', function(){
+    it('should return username is already taken', function(done){
+        server
+        .get('/users/checkUsername/Zhuoru')
+        .end(function(err, res){
+            res.status.should.equal(200),
+            res.body.success.should.equal(false),
+            res.body.message.should.equal('Username is already taken')
+            done();
+        });
+    });
+
+    it('should return username is available', function(done){
+        server
+        .get('/users/checkUsername/YouZhou')
+        .end(function(err, res){
+            res.status.should.equal(200),
+            res.body.success.should.equal(true),
+            res.body.message.should.equal('Username is available')
+            done();
+        });
+    });
 })
+
 

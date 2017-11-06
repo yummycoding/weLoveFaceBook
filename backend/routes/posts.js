@@ -178,44 +178,44 @@ router.delete('/deletePost/:id', (req, res) => {
     };
 });
 
-router.delete('/deleteBlog/:id', (req, res) => { 
-    console.log('DELETE > /deleteBlog/:id > id', req.params.id);
-    if (!req.params.id) {
-        res.json({success: false, message: 'No id provided'});
-    } else {
-        Post.findOne({_id: req.params.id}, (err, post) => {
-            if (err) {
-                res.json({success: false, message: 'Invalid id'});
-            } else {
-                if (!post) {
-                    res.json({success: false, message: 'Blog was not found'});
-                } else {
-                    User.findOne({_id: req.decoded.userId}, (err, user) => {
-                        if (err) {
-                           res.json({success: false, message: err});
-                        } else {
-                            if (!user) {
-                                res.json({success: false, message: 'Unable to authenticate user'});
-                            } else {
-                                if (user.username !== post.createdBy) {
-                                    res.json({success: false, message: 'You are not authorized to delete this post'});
-                                } else {
-                                    post.remove((err) => {
-                                        if (err) {
-                                            res.json({success: false, message: err});
-                                        } else {
-                                            res.json({success: true, message: 'Post deleted successfully!'});
-                                        }
-                                    })
-                                }
-                            }
-                        }
-                    })
-                }
-            }
-        });
-    }
-});
+// router.delete('/deletePost/:id', (req, res) => { 
+//     console.log('DELETE > /deleteBlog/:id > id', req.params.id);
+//     if (!req.params.id) {
+//         res.json({success: false, message: 'No id provided'});
+//     } else {
+//         Post.findOne({_id: req.params.id}, (err, post) => {
+//             if (err) {
+//                 res.json({success: false, message: 'Invalid id'});
+//             } else {
+//                 if (!post) {
+//                     res.json({success: false, message: 'Post was not found'});
+//                 } else {
+//                     User.findOne({_id: req.decoded.userId}, (err, user) => {
+//                         if (err) {
+//                            res.json({success: false, message: err});
+//                         } else {
+//                             if (!user) {
+//                                 res.json({success: false, message: 'Unable to authenticate user'});
+//                             } else {
+//                                 if (user.username !== post.createdBy) {
+//                                     res.json({success: false, message: 'You are not authorized to delete this post'});
+//                                 } else {
+//                                     post.remove((err) => {
+//                                         if (err) {
+//                                             res.json({success: false, message: err});
+//                                         } else {
+//                                             res.json({success: true, message: 'Post deleted successfully!'});
+//                                         }
+//                                     })
+//                                 }
+//                             }
+//                         }
+//                     })
+//                 }
+//             }
+//         });
+//     }
+// });
 
 // find post in database using post id, check whether user has liked this post or not,
 // if liked before, cancel like
