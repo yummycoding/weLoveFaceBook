@@ -1,10 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { Post } from '../post';
 import { User } from '../user';
 import { PostService } from '../post.service';
 import { UserService } from '../user.service';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
+import { Comment } from '../comment';
 
 @Component({
   selector: 'app-home',
@@ -18,6 +20,7 @@ export class HomeComponent implements OnInit {
   post: Post = new Post();
   curUser: User = new User();
   homePosts: Array<Post> = [];
+  commentContent: String;
 
   spaceScreens: Array<any> = [];
   start = 0;
@@ -26,7 +29,7 @@ export class HomeComponent implements OnInit {
   pageSize = 2;
   pageSizeOptions = [1, 2, 5, 10];
   
-  constructor(private userService: UserService, private postService: PostService, private http: Http) {
+  constructor(private userService: UserService, private postService: PostService, private http: Http, public dialog: MdDialog) {
     this.http.get('assets/mock-data-home/data.json')
     .map(response => response.json().screenshots)
     .subscribe(res => this.spaceScreens = res);
@@ -100,4 +103,46 @@ export class HomeComponent implements OnInit {
     this.end = (this.pageIndex + 1) * this.pageSize;
   }
 
+  openDialog(i): void {
+    let dialogRef = this.dialog.open(AddCommentComponent, {
+      width: '250px',
+      data: { commentContent: this.commentContent }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (typeof result !== 'undefined') {
+        let commentedpost: Post = this.homePosts[i];
+        this.commentContent = result.commentContent;
+        if(this.commentContent !== '') {
+          const newComment = new Comment;
+          newComment.comment = this.commentContent;
+          newComment.commentator = this.curUsername;
+          commentedpost.comments.push(newComment);
+          this.postService.updateComment(commentedpost);
+        }
+        console.log('postID: ' + commentedpost._id + 'comment: ' + this.commentContent);
+      }
+    });
+  }
+deleteComment(comment, i){
+  let commentedpost: Post = this.homePosts[i];
+  const index = commentedpost.comments.indexOf(comment);
+  commentedpost.comments.splice(index,1);
+  this.postService.updateComment(commentedpost);
+}
+
+}
+@Component({
+  selector: 'app-addcomment',
+  templateUrl: './addComment.html',
+})
+export class AddCommentComponent {
+
+  constructor(
+    public dialogRef: MdDialogRef<AddCommentComponent>,
+    @Inject(MD_DIALOG_DATA) public data: any) { }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 }

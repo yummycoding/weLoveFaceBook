@@ -36,4 +36,8 @@ export class PostService {
     console.log("Client > PUT > /posts/likePostOrCancelLike/:username", username);
     return this._http.put('/posts/likePostOrCancelLike/' + username , post).map(data => data.json()).toPromise();
   }
+  updateComment(post: Post) {
+    console.log("Client > PUT > /posts/updateComment/:id" + post._id);
+    return this._http.put('/posts/updateComment/' + post._id , post).map(data => data.json()).toPromise();
+  }
 }

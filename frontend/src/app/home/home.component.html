@@ -63,14 +63,39 @@
     </md-card-header>
     <md-card-content>
       <p>{{homePost.body}}</p>
+      <!-- comment section -->
+      <div *ngIf="homePost.comments.length > 0">
+        <span>
+          <i class="material-icons">mode_comment</i>
+        </span>
+        <span>
+          <md-list class="comment-section">
+            <md-list-item class="comment-font" *ngFor="let comment of homePost.comments">
+              <div style="font-weight: bold">
+                {{comment.commentator}}: 
+              </div> 
+              {{comment.comment}}
+              <span class="spacer"></span>
+              <div *ngIf="comment.commentator == curUsername">
+                <button md-icon-button (click)="deleteComment(comment,i)">
+                  <i class="material-icons">clear</i>  
+                </button>
+              </div>
+            </md-list-item>
+          </md-list>
+          </span>
+      </div>
     </md-card-content>
+    
+    
+    <!-- post operation -->
     <md-card-actions>
       <button md-button (click)="likeCancelLikePost(i)">
         <span><i class="material-icons md-18" [class.red-color]="homePost.likedBy.indexOf(curUsername) >= 0">favorite</i></span>
         <span class="fill-space"></span>
         <span>{{homePost.likes}}</span>
       </button>
-      <button md-button>
+      <button md-button (click)="openDialog(i)">
         <i class="material-icons md-18">insert_comment</i>
       </button>
       <button md-button>

@@ -34,3 +34,12 @@
   font-size: 12px;
   color:#9E9E9E;
 }
+
+.comment-section {
+  width:570px;
+  background-color:#E0F2F1;
+}
+
+.comment-font{
+  font-size: 12px;
+}

@@ -35,6 +35,7 @@ import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 // file upload
 import { AddFriendComponent } from './friendlist/friendlist.component';
+import { AddCommentComponent } from './home/home.component';
 // make post
 import { PostService } from './post.service';
 
@@ -75,7 +76,8 @@ const appRoutes: Routes = [
     UserNewComponent,
     UserEditComponent,
     UserProfileComponent,
-    AddFriendComponent
+    AddFriendComponent,
+    AddCommentComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -89,7 +91,8 @@ const appRoutes: Routes = [
     FlashMessagesModule
   ],
   entryComponents: [
-    AddFriendComponent
+    AddFriendComponent,
+    AddCommentComponent
   ],
   providers: [
     UserService, 

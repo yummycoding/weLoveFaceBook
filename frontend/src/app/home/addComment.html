@@ -1,0 +1,11 @@
+<h1 md-dialog-title>Comment Something..</h1>
+<div md-dialog-content>
+    <md-form-field class="textwidth">
+        <input mdInput [(ngModel)]="data.commentContent" #message maxlength="200">
+        <md-hint align="end">{{message.value.length}} / 200</md-hint>
+      </md-form-field>
+</div>
+<div md-dialog-actions>
+  <button md-button [md-dialog-close]="data" tabindex="3" color="alert">Send</button>
+  <button md-button (click)="onNoClick()" tabindex="-1" color="primary">Cancel</button>
+</div>

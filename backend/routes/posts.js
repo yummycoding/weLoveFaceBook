@@ -383,4 +383,20 @@ router.post('/comment', (req, res) => {
     }
   });
 
+router.put('/updateComment/:id', (req, res, next) => {
+    console.log("Server > PUT 'posts/updateComment/:id' > id", req.params.id);
+    console.log("Server > PUT 'posts/updateComment/:post' > post", req.body);
+    Post.findByIdAndUpdate(req.params.id,
+        {
+            $set: { comments: req.body.comments }
+        },
+        function (err, updatedPost) {
+            if (err) {
+                res.send("Failed updating the friend")
+            } else {
+                res.json(updatedPost);
+            }
+        });
+});
+
 module.exports = router;
