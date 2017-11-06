@@ -28,9 +28,7 @@ export class PostService {
   }
 
   getHomePosts(curUser: User) {
-    console.log("Client > Get posts from myself and all my friends >");
-    // return this._http.get('/getHomePosts/'+ curUser.username, curUser.friendlist).map(data => data.json()).toPromise();
-    return this._http.get('/getHomePosts/'+ curUser.username, curUser.username).map(data => data.json()).toPromise();
+    console.log("Client > GET > /posts/getHomePosts/:username", curUser.username);
+    return this._http.get('/posts/getHomePosts/'+ curUser.username).map(data => data.json()).toPromise();
   }
-
 }

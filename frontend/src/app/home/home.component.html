@@ -52,25 +52,24 @@
       </button>
     </md-card-actions>
   </md-card> -->
-  
-  <md-card class="post-card" *ngFor="let spaceScreen of spaceScreens | slice: [start] : [end]; let i = index">
+  <button color ="primary" (click)="refreshSelfposts($event)" md-raised-button>Refresh</button>
+  <md-card class="post-card" *ngFor="let homePost of homePosts | slice: [start] : [end]; let i = index">
     <md-card-header>
       <div md-card-avatar class="post-image"></div>
-      <md-card-title>{{spaceScreen.name}}</md-card-title>
-      <md-card-subtitle>{{spaceScreen.remark}}</md-card-subtitle>
+      <md-card-title>{{homePost.createdBy}}</md-card-title>
+      <md-card-subtitle>{{homePost.createdAt}}</md-card-subtitle>
     </md-card-header>
-    <img md-card-image src="{{spaceScreen.img}}" alt="post photo">
     <md-card-content>
-      <p>{{spaceScreen.description}}</p>
+      <p>{{homePost.body}}</p>
     </md-card-content>
     <md-card-actions>
-      <button md-button (click)="likeMe(i)">
-        <i class="material-icons md-18" [class.red-color]="spaceScreen.liked == '1'">favorite</i>
+      <button md-button>
+        <i class="material-icons md-18">favorite</i>
       </button>
-      <button md-button (click)="commentMe(i)">
+      <button md-button>
         <i class="material-icons md-18">insert_comment</i>
       </button>
-      <button md-button (click)="shareMe(i)">
+      <button md-button>
         <i class="material-icons md-18">share</i>
       </button>
     </md-card-actions>

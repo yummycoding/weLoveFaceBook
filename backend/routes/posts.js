@@ -56,9 +56,10 @@ router.get('/allPosts', (req, res) => {
     }).sort({'_id': -1});
 });
 
+// Given username, find all of its friends first, search in database all posts from both 
+// userhimself and his friends
 router.get('/getHomePosts/:username', (req, res) => {
     console.log('GET > /getHomePosts/:username > username', req.params.username);
-    // console.log('all his friends included him', req.body);
     var query = { $or: [ { createdBy:req.params.username }, { createdBy: "test3"} ] };
     Post.find( query, (err, posts) => {
         if (err) {

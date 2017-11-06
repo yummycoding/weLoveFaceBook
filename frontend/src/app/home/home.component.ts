@@ -36,26 +36,38 @@ export class HomeComponent implements OnInit {
     // get all user information from database and assign to user and useredit
     this.userService.getUserByUsername(this.curUsername).then(data => {
       this.curUser = data
-      console.log("user info got from database (home page)", this.curUser);
+      this.getHomeposts();
     });
-
+   
     this.end = this.start + this.pageSize;
+  }
+
+  refreshSelfposts(e) {
+    this.getHomeposts();
   }
 
   sendPost() {
     this.post.title = 'wedontneedtitle';
     this.post.createdBy = this.curUsername;
-    this.postService.sendPost(this.post);
+    this.postService.sendPost(this.post).then(data => {
+      if (data.success === true) {
+        this.getHomeposts();  // refresh homepage after send new post
+        console.log("New post sent successfully ",this.post);
+      }else {
+        console.log("Fail to add new post: ",data.message)
+      }
+    });
+    // clear make post form
     this.post = new Post();
   }
 
   getHomeposts() {
     this.postService.getHomePosts(this.curUser).then(data => {
       if (data.success === true) {
-        this.homePosts = data.posts
+        this.homePosts = data.posts;
         console.log("Home posts got from database", this.homePosts);
       }else {
-        console.log("Error when getting self post from database: ",data.message)
+        console.log("Error when getting self post from database: ",data.message);
       }
     });
   }

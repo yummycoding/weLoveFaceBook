@@ -1,11 +1,19 @@
 
 <button color ="primary" (click)="refreshSelfposts($event)" md-raised-button>Refresh</button>
 <md-card class="post-card" *ngFor="let selfPost of selfPosts; let i = index">
+  <md-card-header>
+      <div md-card-avatar class="post-image"></div>
+      <md-card-title>{{selfPost.createdBy}}</md-card-title>
+      <md-card-subtitle>{{selfPost.createdAt}}</md-card-subtitle>
+  </md-card-header>
   <!-- <img md-card-image src ="{{spaceScreen.img}}"> -->
   <md-card-content>
     <p>{{selfPost.body}}</p>
   </md-card-content>
   <md-card-actions>
+    <button md-button (click)="markMe(i)">
+      <i class="material-icons md-18">bookmark</i> 
+    </button>
     <!-- <button md-button (click)="markMe(i)">
       <i class="material-icons md-18" [class.green-color]="spaceScreen.marked == '1'">bookmark</i> 
     </button> -->

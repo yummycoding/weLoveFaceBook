@@ -322,7 +322,7 @@ var DashboardComponent = (function () {
             this.curUsername = this.currentuser.username;
         }
         ;
-        console.log("current username got from dashboard: ", this.curUsername);
+        // console.log("current username got from dashboard: ", this.curUsername);
     };
     return DashboardComponent;
 }());
@@ -712,7 +712,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n<div style=\"float:left\">\n  <div class=\"make-post\">\n    <md-expansion-panel>\n      <md-expansion-panel-header>\n        <md-panel-title>\n          Make Post\n        </md-panel-title>\n        <md-panel-description>\n          What's on your mind?\n        </md-panel-description>\n      </md-expansion-panel-header>\n      <md-form-field class=\"textwidth\">\n        <!-- <input mdInput #message maxlength=\"256\" placeholder=\"Say something\">\n      <md-hint align=\"start\"><strong>Don't disclose personal info</strong> </md-hint> -->\n        <input mdInput [(ngModel)]=\"post.body\" #message maxlength=\"256\">\n        <md-hint align=\"end\">{{message.value.length}} / 256</md-hint>\n      </md-form-field>\n      <div class=\"input\">\n        <input class=\"ng-hide\" id=\"input-file-id\" multiple type=\"file\" #inputFile hidden/>\n        <button color=\"primary\" id=\"selectFile\" md-raised-button>\n          <Label for=\"input-file-id\">\n            <i class=\"material-icons md-18 icon-align\">insert_photo</i>\n            Photo\n          </Label>\n        </button>\n        <button color=\"warn\" (click)=\"sendPost()\" md-raised-button>Post</button>\n      </div>\n    </md-expansion-panel>\n  </div>\n\n  <!-- post information -->\n  <!-- <md-card class=\"post-card\" *ngFor=\"let spaceScreen of spaceScreens | slice: [start] : [end]; let i = index\">\n    <md-card-header>\n      <div md-card-avatar class=\"post-image\"></div>\n      <md-card-title>{{spaceScreen.name}}</md-card-title>\n      <md-card-subtitle>{{spaceScreen.remark}}</md-card-subtitle>\n    </md-card-header>\n    <img md-card-image src=\"{{spaceScreen.img}}\" alt=\"post photo\">\n    <md-card-content>\n      <p>{{spaceScreen.description}}</p>\n    </md-card-content>\n    <md-card-actions>\n      <button md-button (click)=\"likeMe(i)\">\n        <i class=\"material-icons md-18\" [class.red-color]=\"spaceScreen.liked == '1'\">favorite</i>\n      </button>\n      <button md-button (click)=\"commentMe(i)\">\n        <i class=\"material-icons md-18\">insert_comment</i>\n      </button>\n      <button md-button (click)=\"shareMe(i)\">\n        <i class=\"material-icons md-18\">share</i>\n      </button>\n    </md-card-actions>\n  </md-card> -->\n  \n  <md-card class=\"post-card\" *ngFor=\"let spaceScreen of spaceScreens | slice: [start] : [end]; let i = index\">\n    <md-card-header>\n      <div md-card-avatar class=\"post-image\"></div>\n      <md-card-title>{{spaceScreen.name}}</md-card-title>\n      <md-card-subtitle>{{spaceScreen.remark}}</md-card-subtitle>\n    </md-card-header>\n    <img md-card-image src=\"{{spaceScreen.img}}\" alt=\"post photo\">\n    <md-card-content>\n      <p>{{spaceScreen.description}}</p>\n    </md-card-content>\n    <md-card-actions>\n      <button md-button (click)=\"likeMe(i)\">\n        <i class=\"material-icons md-18\" [class.red-color]=\"spaceScreen.liked == '1'\">favorite</i>\n      </button>\n      <button md-button (click)=\"commentMe(i)\">\n        <i class=\"material-icons md-18\">insert_comment</i>\n      </button>\n      <button md-button (click)=\"shareMe(i)\">\n        <i class=\"material-icons md-18\">share</i>\n      </button>\n    </md-card-actions>\n  </md-card>\n\n  <!-- choose post amount to display in each page -->\n  <div class=\"make-post\">\n    <md-paginator [length]=\"spaceScreens.length\" [pageSize]=\"pageSize\" [pageSizeOptions]=\"pageSizeOptions\" (page)=\"pageEvent = $event; pageChange($event)\">\n    </md-paginator>\n  </div>\n</div>\n\n<!-- notification -->\n<div style=\"float:left\">\n  <p class=\"notiTitle\">Notifications</p>\n  <md-card class=\"notification\">Notifications</md-card>\n</div>\n\n</div>"
+module.exports = "<div>\n<div style=\"float:left\">\n  <div class=\"make-post\">\n    <md-expansion-panel>\n      <md-expansion-panel-header>\n        <md-panel-title>\n          Make Post\n        </md-panel-title>\n        <md-panel-description>\n          What's on your mind?\n        </md-panel-description>\n      </md-expansion-panel-header>\n      <md-form-field class=\"textwidth\">\n        <!-- <input mdInput #message maxlength=\"256\" placeholder=\"Say something\">\n      <md-hint align=\"start\"><strong>Don't disclose personal info</strong> </md-hint> -->\n        <input mdInput [(ngModel)]=\"post.body\" #message maxlength=\"256\">\n        <md-hint align=\"end\">{{message.value.length}} / 256</md-hint>\n      </md-form-field>\n      <div class=\"input\">\n        <input class=\"ng-hide\" id=\"input-file-id\" multiple type=\"file\" #inputFile hidden/>\n        <button color=\"primary\" id=\"selectFile\" md-raised-button>\n          <Label for=\"input-file-id\">\n            <i class=\"material-icons md-18 icon-align\">insert_photo</i>\n            Photo\n          </Label>\n        </button>\n        <button color=\"warn\" (click)=\"sendPost()\" md-raised-button>Post</button>\n      </div>\n    </md-expansion-panel>\n  </div>\n\n  <!-- post information -->\n  <!-- <md-card class=\"post-card\" *ngFor=\"let spaceScreen of spaceScreens | slice: [start] : [end]; let i = index\">\n    <md-card-header>\n      <div md-card-avatar class=\"post-image\"></div>\n      <md-card-title>{{spaceScreen.name}}</md-card-title>\n      <md-card-subtitle>{{spaceScreen.remark}}</md-card-subtitle>\n    </md-card-header>\n    <img md-card-image src=\"{{spaceScreen.img}}\" alt=\"post photo\">\n    <md-card-content>\n      <p>{{spaceScreen.description}}</p>\n    </md-card-content>\n    <md-card-actions>\n      <button md-button (click)=\"likeMe(i)\">\n        <i class=\"material-icons md-18\" [class.red-color]=\"spaceScreen.liked == '1'\">favorite</i>\n      </button>\n      <button md-button (click)=\"commentMe(i)\">\n        <i class=\"material-icons md-18\">insert_comment</i>\n      </button>\n      <button md-button (click)=\"shareMe(i)\">\n        <i class=\"material-icons md-18\">share</i>\n      </button>\n    </md-card-actions>\n  </md-card> -->\n  <button color =\"primary\" (click)=\"refreshSelfposts($event)\" md-raised-button>Refresh</button>\n  <md-card class=\"post-card\" *ngFor=\"let homePost of homePosts | slice: [start] : [end]; let i = index\">\n    <md-card-header>\n      <div md-card-avatar class=\"post-image\"></div>\n      <md-card-title>{{homePost.createdBy}}</md-card-title>\n      <md-card-subtitle>{{homePost.createdAt}}</md-card-subtitle>\n    </md-card-header>\n    <md-card-content>\n      <p>{{homePost.body}}</p>\n    </md-card-content>\n    <md-card-actions>\n      <button md-button>\n        <i class=\"material-icons md-18\">favorite</i>\n      </button>\n      <button md-button>\n        <i class=\"material-icons md-18\">insert_comment</i>\n      </button>\n      <button md-button>\n        <i class=\"material-icons md-18\">share</i>\n      </button>\n    </md-card-actions>\n  </md-card>\n\n  <!-- choose post amount to display in each page -->\n  <div class=\"make-post\">\n    <md-paginator [length]=\"spaceScreens.length\" [pageSize]=\"pageSize\" [pageSizeOptions]=\"pageSizeOptions\" (page)=\"pageEvent = $event; pageChange($event)\">\n    </md-paginator>\n  </div>\n</div>\n\n<!-- notification -->\n<div style=\"float:left\">\n  <p class=\"notiTitle\">Notifications</p>\n  <md-card class=\"notification\">Notifications</md-card>\n</div>\n\n</div>"
 
 /***/ }),
 
@@ -768,14 +768,27 @@ var HomeComponent = (function () {
         // get all user information from database and assign to user and useredit
         this.userService.getUserByUsername(this.curUsername).then(function (data) {
             _this.curUser = data;
-            console.log("user info got from database (home page)", _this.curUser);
+            _this.getHomeposts();
         });
         this.end = this.start + this.pageSize;
     };
+    HomeComponent.prototype.refreshSelfposts = function (e) {
+        this.getHomeposts();
+    };
     HomeComponent.prototype.sendPost = function () {
+        var _this = this;
         this.post.title = 'wedontneedtitle';
         this.post.createdBy = this.curUsername;
-        this.postService.sendPost(this.post);
+        this.postService.sendPost(this.post).then(function (data) {
+            if (data.success === true) {
+                _this.getHomeposts(); // refresh homepage after send new post
+                console.log("New post sent successfully ", _this.post);
+            }
+            else {
+                console.log("Fail to add new post: ", data.message);
+            }
+        });
+        // clear make post form
         this.post = new __WEBPACK_IMPORTED_MODULE_1__post__["a" /* Post */]();
     };
     HomeComponent.prototype.getHomeposts = function () {
@@ -1043,9 +1056,8 @@ var PostService = (function () {
         return this._http.get('/posts/getSelfPosts/' + username).map(function (data) { return data.json(); }).toPromise();
     };
     PostService.prototype.getHomePosts = function (curUser) {
-        console.log("Client > Get posts from myself and all my friends >");
-        // return this._http.get('/getHomePosts/'+ curUser.username, curUser.friendlist).map(data => data.json()).toPromise();
-        return this._http.get('/getHomePosts/' + curUser.username, curUser.username).map(function (data) { return data.json(); }).toPromise();
+        console.log("Client > GET > /posts/getHomePosts/:username", curUser.username);
+        return this._http.get('/posts/getHomePosts/' + curUser.username).map(function (data) { return data.json(); }).toPromise();
     };
     return PostService;
 }());
@@ -1213,7 +1225,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".post-card {\n    width: 600px;\n  }\n  \n/* .post-image {\n  background-image: url('../../../assets/img/examples/shiba1.jpg');\n  background-size: cover;\n} */", ""]);
+exports.push([module.i, ".post-card {\n    width: 600px;\n  }\n  \n.post-image {\n  background-image: url(" + __webpack_require__("../../../../../src/assets/headerimage/head5.jpg") + ");\n  /* background-image: spaceScreen.headerimg; */\n  background-size: cover;\n}", ""]);
 
 // exports
 
@@ -1226,7 +1238,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/selfpost/selfpost.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<button color =\"primary\" (click)=\"refreshSelfposts($event)\" md-raised-button>Refresh</button>\n<md-card class=\"post-card\" *ngFor=\"let selfPost of selfPosts; let i = index\">\n  <!-- <img md-card-image src =\"{{spaceScreen.img}}\"> -->\n  <md-card-content>\n    <p>{{selfPost.body}}</p>\n  </md-card-content>\n  <md-card-actions>\n    <!-- <button md-button (click)=\"markMe(i)\">\n      <i class=\"material-icons md-18\" [class.green-color]=\"spaceScreen.marked == '1'\">bookmark</i> \n    </button> -->\n    <button md-button (click)=\"deleteSelfposts(i)\">\n      <i class=\"material-icons md-18\">delete</i> \n    </button>\n  </md-card-actions>\n</md-card>\n\n\n\n"
+module.exports = "\n<button color =\"primary\" (click)=\"refreshSelfposts($event)\" md-raised-button>Refresh</button>\n<md-card class=\"post-card\" *ngFor=\"let selfPost of selfPosts; let i = index\">\n  <md-card-header>\n      <div md-card-avatar class=\"post-image\"></div>\n      <md-card-title>{{selfPost.createdBy}}</md-card-title>\n      <md-card-subtitle>{{selfPost.createdAt}}</md-card-subtitle>\n  </md-card-header>\n  <!-- <img md-card-image src =\"{{spaceScreen.img}}\"> -->\n  <md-card-content>\n    <p>{{selfPost.body}}</p>\n  </md-card-content>\n  <md-card-actions>\n    <button md-button (click)=\"markMe(i)\">\n      <i class=\"material-icons md-18\">bookmark</i> \n    </button>\n    <!-- <button md-button (click)=\"markMe(i)\">\n      <i class=\"material-icons md-18\" [class.green-color]=\"spaceScreen.marked == '1'\">bookmark</i> \n    </button> -->\n    <button md-button (click)=\"deleteSelfposts(i)\">\n      <i class=\"material-icons md-18\">delete</i> \n    </button>\n  </md-card-actions>\n</md-card>\n\n\n\n"
 
 /***/ }),
 
@@ -1288,8 +1300,7 @@ var SelfpostComponent = (function () {
         this.postService.getSelfPosts(curUsername).then(function (data) {
             if (data.success === true) {
                 _this.selfPosts = data.posts;
-                console.log("Self posts got from database", _this.selfPosts);
-                // console.log("ID of first post returned", this.selfPosts[0]._id)
+                // console.log("Self posts got from database", this.selfPosts);
             }
             else {
                 console.log("Error when getting self post from database: ", data.message);
@@ -1956,6 +1967,13 @@ ValidateService = __decorate([
 ], ValidateService);
 
 //# sourceMappingURL=validate.service.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/assets/headerimage/head5.jpg":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "head5.41a4de022d0b875cc4d9.jpg";
 
 /***/ }),
 

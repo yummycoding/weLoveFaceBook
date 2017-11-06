@@ -46,8 +46,7 @@ export class SelfpostComponent implements OnInit {
     this.postService.getSelfPosts(curUsername).then(data => {
       if (data.success === true) {
         this.selfPosts = data.posts
-        console.log("Self posts got from database", this.selfPosts);
-        // console.log("ID of first post returned", this.selfPosts[0]._id)
+        // console.log("Self posts got from database", this.selfPosts);
       }else {
         console.log("Error when getting self post from database: ",data.message)
       }

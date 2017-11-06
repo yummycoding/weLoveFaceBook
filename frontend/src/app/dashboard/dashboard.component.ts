@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit {
     }else {
       this.curUsername = this.currentuser.username;
     };
-    console.log("current username got from dashboard: ", this.curUsername);
+    // console.log("current username got from dashboard: ", this.curUsername);
   }
 
 }
