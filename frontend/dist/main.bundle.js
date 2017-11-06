@@ -712,7 +712,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n<div style=\"float:left\">\n  <div class=\"make-post\">\n    <md-expansion-panel>\n      <md-expansion-panel-header>\n        <md-panel-title>\n          Make Post\n        </md-panel-title>\n        <md-panel-description>\n          What's on your mind?\n        </md-panel-description>\n      </md-expansion-panel-header>\n      <md-form-field class=\"textwidth\">\n        <!-- <input mdInput #message maxlength=\"256\" placeholder=\"Say something\">\n      <md-hint align=\"start\"><strong>Don't disclose personal info</strong> </md-hint> -->\n        <input mdInput [(ngModel)]=\"post.body\" #message maxlength=\"256\">\n        <md-hint align=\"end\">{{message.value.length}} / 256</md-hint>\n      </md-form-field>\n      <div class=\"input\">\n        <input class=\"ng-hide\" id=\"input-file-id\" multiple type=\"file\" #inputFile hidden/>\n        <button color=\"primary\" id=\"selectFile\" md-raised-button>\n          <Label for=\"input-file-id\">\n            <i class=\"material-icons md-18 icon-align\">insert_photo</i>\n            Photo\n          </Label>\n        </button>\n        <button color=\"warn\" (click)=\"sendPost()\" md-raised-button>Post</button>\n      </div>\n    </md-expansion-panel>\n  </div>\n\n  <!-- post information -->\n  <!-- <md-card class=\"post-card\" *ngFor=\"let spaceScreen of spaceScreens | slice: [start] : [end]; let i = index\">\n    <md-card-header>\n      <div md-card-avatar class=\"post-image\"></div>\n      <md-card-title>{{spaceScreen.name}}</md-card-title>\n      <md-card-subtitle>{{spaceScreen.remark}}</md-card-subtitle>\n    </md-card-header>\n    <img md-card-image src=\"{{spaceScreen.img}}\" alt=\"post photo\">\n    <md-card-content>\n      <p>{{spaceScreen.description}}</p>\n    </md-card-content>\n    <md-card-actions>\n      <button md-button (click)=\"likeMe(i)\">\n        <i class=\"material-icons md-18\" [class.red-color]=\"spaceScreen.liked == '1'\">favorite</i>\n      </button>\n      <button md-button (click)=\"commentMe(i)\">\n        <i class=\"material-icons md-18\">insert_comment</i>\n      </button>\n      <button md-button (click)=\"shareMe(i)\">\n        <i class=\"material-icons md-18\">share</i>\n      </button>\n    </md-card-actions>\n  </md-card> -->\n  <button color =\"primary\" (click)=\"refreshSelfposts($event)\" md-raised-button>Refresh</button>\n  <md-card class=\"post-card\" *ngFor=\"let homePost of homePosts | slice: [start] : [end]; let i = index\">\n    <md-card-header>\n      <div md-card-avatar class=\"post-image\"></div>\n      <md-card-title>{{homePost.createdBy}}</md-card-title>\n      <md-card-subtitle>{{homePost.createdAt}}</md-card-subtitle>\n    </md-card-header>\n    <md-card-content>\n      <p>{{homePost.body}}</p>\n    </md-card-content>\n    <md-card-actions>\n      <button md-button>\n        <i class=\"material-icons md-18\">favorite</i>\n      </button>\n      <button md-button>\n        <i class=\"material-icons md-18\">insert_comment</i>\n      </button>\n      <button md-button>\n        <i class=\"material-icons md-18\">share</i>\n      </button>\n    </md-card-actions>\n  </md-card>\n\n  <!-- choose post amount to display in each page -->\n  <div class=\"make-post\">\n    <md-paginator [length]=\"homePosts.length\" [pageSize]=\"pageSize\" [pageSizeOptions]=\"pageSizeOptions\" (page)=\"pageEvent = $event; pageChange($event)\">\n    </md-paginator>\n  </div>\n</div>\n\n<!-- notification -->\n<div style=\"float:left\">\n  <p class=\"notiTitle\">Notifications</p>\n  <md-card class=\"notification\">Notifications</md-card>\n</div>\n\n</div>"
+module.exports = "<div>\n<div style=\"float:left\">\n  <div class=\"make-post\">\n    <md-expansion-panel>\n      <md-expansion-panel-header>\n        <md-panel-title>\n          Make Post\n        </md-panel-title>\n        <md-panel-description>\n          What's on your mind?\n        </md-panel-description>\n      </md-expansion-panel-header>\n      <md-form-field class=\"textwidth\">\n        <!-- <input mdInput #message maxlength=\"256\" placeholder=\"Say something\">\n      <md-hint align=\"start\"><strong>Don't disclose personal info</strong> </md-hint> -->\n        <input mdInput [(ngModel)]=\"post.body\" #message maxlength=\"256\">\n        <md-hint align=\"end\">{{message.value.length}} / 256</md-hint>\n      </md-form-field>\n      <div class=\"input\">\n        <input class=\"ng-hide\" id=\"input-file-id\" multiple type=\"file\" #inputFile hidden/>\n        <button color=\"primary\" id=\"selectFile\" md-raised-button>\n          <Label for=\"input-file-id\">\n            <i class=\"material-icons md-18 icon-align\">insert_photo</i>\n            Photo\n          </Label>\n        </button>\n        <button color=\"warn\" (click)=\"sendPost()\" md-raised-button>Post</button>\n      </div>\n    </md-expansion-panel>\n  </div>\n\n  <!-- post information -->\n  <!-- <md-card class=\"post-card\" *ngFor=\"let spaceScreen of spaceScreens | slice: [start] : [end]; let i = index\">\n    <md-card-header>\n      <div md-card-avatar class=\"post-image\"></div>\n      <md-card-title>{{spaceScreen.name}}</md-card-title>\n      <md-card-subtitle>{{spaceScreen.remark}}</md-card-subtitle>\n    </md-card-header>\n    <img md-card-image src=\"{{spaceScreen.img}}\" alt=\"post photo\">\n    <md-card-content>\n      <p>{{spaceScreen.description}}</p>\n    </md-card-content>\n    <md-card-actions>\n      <button md-button (click)=\"likeMe(i)\">\n        <i class=\"material-icons md-18\" [class.red-color]=\"spaceScreen.liked == '1'\">favorite</i>\n      </button>\n      <button md-button (click)=\"commentMe(i)\">\n        <i class=\"material-icons md-18\">insert_comment</i>\n      </button>\n      <button md-button (click)=\"shareMe(i)\">\n        <i class=\"material-icons md-18\">share</i>\n      </button>\n    </md-card-actions>\n  </md-card> -->\n  <button color =\"primary\" (click)=\"refreshSelfposts($event)\" md-raised-button>Refresh</button>\n  <md-card class=\"post-card\" *ngFor=\"let homePost of homePosts | slice: [start] : [end]; let i = index\">\n    <md-card-header>\n      <div md-card-avatar class=\"post-image\"></div>\n      <md-card-title>{{homePost.createdBy}}</md-card-title>\n      <md-card-subtitle>{{homePost.createdAt}}</md-card-subtitle>\n    </md-card-header>\n    <md-card-content>\n      <p>{{homePost.body}}</p>\n    </md-card-content>\n    <md-card-actions>\n      <button md-button (click)=\"likeCancelLikePost(i)\">\n        <i class=\"material-icons md-18\">favorite</i>\n      </button>\n      <button md-button>\n        <i class=\"material-icons md-18\">insert_comment</i>\n      </button>\n      <button md-button>\n        <i class=\"material-icons md-18\">share</i>\n      </button>\n    </md-card-actions>\n  </md-card>\n\n  <!-- choose post amount to display in each page -->\n  <div class=\"make-post\">\n    <md-paginator [length]=\"homePosts.length\" [pageSize]=\"pageSize\" [pageSizeOptions]=\"pageSizeOptions\" (page)=\"pageEvent = $event; pageChange($event)\">\n    </md-paginator>\n  </div>\n</div>\n\n<!-- notification -->\n<div style=\"float:left\">\n  <p class=\"notiTitle\">Notifications</p>\n  <md-card class=\"notification\">Notifications</md-card>\n</div>\n\n</div>"
 
 /***/ }),
 
@@ -801,6 +801,20 @@ var HomeComponent = (function () {
             }
             else {
                 console.log("Error when getting self post from database: ", data.message);
+            }
+        });
+    };
+    HomeComponent.prototype.likeCancelLikePost = function (i) {
+        var _this = this;
+        var likedpost = this.homePosts[i];
+        var likinguser = this.curUsername;
+        this.postService.addOrCancelLikePosts(likedpost, likinguser).then(function (data) {
+            if (data.success === true) {
+                _this.getHomeposts(); // refresh homepage after liked
+                // console.log("liked successfully ",this.post);
+            }
+            else {
+                console.log("Fail to like -- err msg from home component ", data.message);
             }
         });
     };
@@ -1049,7 +1063,7 @@ var PostService = (function () {
         return this._http.post('/posts/newPost', post).map(function (data) { return data.json(); }).toPromise();
     };
     PostService.prototype.deletePost = function (postid) {
-        console.log("client > post to be deleted > postid" > postid);
+        console.log("Client > post to be deleted > postid" > postid);
         return this._http.delete('/posts/deletePost/' + postid).map(function (data) { return data.json(); }).toPromise();
     };
     PostService.prototype.getSelfPosts = function (username) {
@@ -1059,6 +1073,10 @@ var PostService = (function () {
     PostService.prototype.getHomePosts = function (curUser) {
         console.log("Client > GET > /posts/getHomePosts/:username", curUser.username);
         return this._http.get('/posts/getHomePosts/' + curUser.username).map(function (data) { return data.json(); }).toPromise();
+    };
+    PostService.prototype.addOrCancelLikePosts = function (post, username) {
+        console.log("Client > PUT > /posts/likePostOrCancelLike/:username", username);
+        return this._http.put('/posts/likePostOrCancelLike/' + username, post).map(function (data) { return data.json(); }).toPromise();
     };
     return PostService;
 }());

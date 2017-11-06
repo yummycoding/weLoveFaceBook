@@ -72,6 +72,19 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  likeCancelLikePost(i) {
+    let likedpost:Post = this.homePosts[i];
+    let likinguser: String = this.curUsername;
+    this.postService.addOrCancelLikePosts(likedpost,likinguser).then(data => {
+      if (data.success === true) {
+        this.getHomeposts();  // refresh homepage after liked
+        // console.log("liked successfully ",this.post);
+      }else {
+        console.log("Fail to like -- err msg from home component ",data.message)
+      }
+    });
+  }
+
   // count() {
   //   return this.spaceScreens.length;
   // }

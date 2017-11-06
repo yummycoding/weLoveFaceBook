@@ -18,7 +18,7 @@ export class PostService {
   }
 
   deletePost(postid:String) {
-    console.log("client > post to be deleted > postid" > postid);
+    console.log("Client > post to be deleted > postid" > postid);
     return this._http.delete('/posts/deletePost/' + postid).map(data => data.json()).toPromise();
   }
 
@@ -30,5 +30,10 @@ export class PostService {
   getHomePosts(curUser: User) {
     console.log("Client > GET > /posts/getHomePosts/:username", curUser.username);
     return this._http.get('/posts/getHomePosts/'+ curUser.username).map(data => data.json()).toPromise();
+  }
+
+  addOrCancelLikePosts(post:Post,username:String) {
+    console.log("Client > PUT > /posts/likePostOrCancelLike/:username", username);
+    return this._http.put('/posts/likePostOrCancelLike/' + username , post).map(data => data.json()).toPromise();
   }
 }

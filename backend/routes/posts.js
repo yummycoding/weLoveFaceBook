@@ -69,15 +69,13 @@ router.get('/getHomePosts/:username', (req, res) => {
             }else if(curUser.length !== 1) {
                 res.json({success: false, message: 'multiple users are called(username): '+req.params.username});
             }else{ // the only curUser were found using username
-                console.log("curUser friends found using username",curUser[0].friend)
+                // found query array 
                 var qarray = [{createdBy: req.params.username}];
                 curUser[0].friend.forEach(function(friendraw) {
-                    console.log(friendraw);
-                    // parse friend
-                    var friendallinfo = friendraw.split("$$");
+                    var friendallinfo = friendraw.split("$$"); // parse friend
                     qarray.push({createdBy: friendallinfo[1]});
                 });
-                console.log("qarray to get post: ",qarray);
+                // console.log("qarray to get post: ",qarray);
                 var query = { $or: qarray};
                 Post.find( query, (err, posts) => {
                     if (err) {
@@ -218,6 +216,50 @@ router.delete('/deleteBlog/:id', (req, res) => {
         });
     }
 });
+
+// find post in database using post id, check whether user has liked this post or not,
+// if liked before, cancel like
+// if not liked before, update that like
+router.put('/likePostOrCancelLike/:username', (req,res) => {
+    if (!req.body._id) {
+        res.json({success: false, message: 'No id for post was provided'});
+    } else {
+        Post.findOne({_id: req.body._id}, (err, post) => { // check if post exists according to postid and get that post from db
+            if (err) {
+                res.json({success: false, message: 'Cannot find post using postid provided'});
+            } else {
+                User.findOne({username: req.params.username}, (err, user) => { // check if username is valid (exists in db)
+                    if (err) {
+                        res.json({success: false, message: 'Cannot find username using username provided'});
+                    } else { //user name exists, we can save that username to post object's liked field or cancel
+                        if(post.likedBy.includes(req.params.username)){ // cancel like
+                            var idx = post.likedBy.indexOf(req.params.username);
+                            post.likedBy.splice(idx,1);
+                            post.likes--;
+                            post.save((err) => {
+                                if (err) {
+                                    res.json({success: false, message: err});
+                                } else {
+                                    res.json({success: true, message: 'cancel liked post'});
+                                }
+                            });
+                        } else { // add like
+                            post.likedBy.push(req.params.username);
+                            post.likes++;
+                            post.save((err) => {
+                                if (err) {
+                                    res.json({success: false, message: err});
+                                } else {
+                                    res.json({success: true, message: 'add liked post'});
+                                }
+                            });
+                        }
+                    }
+                })
+            }
+        })
+    }
+})
 
 router.put('/likePost', (req, res) => {
     if (!req.body.id) {
