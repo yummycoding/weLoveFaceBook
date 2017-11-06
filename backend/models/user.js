@@ -201,7 +201,7 @@ module.exports.updatePassword = function(editUser, callback) {
     bcrypt.hash(editUser.password, null, null, (err, hash) => {
         if (err) return next(err);
         var newvalues = { $set: { password: hash } };
-        User.update({ _id: editUser._id }, newvalues, (err, raw) => {
+        User.updateOne({ _id: editUser._id }, newvalues, (err, raw) => {
             if (err) throw err;
             else return raw
         })
@@ -221,7 +221,7 @@ module.exports.updatePassword = function(editUser, callback) {
 
 module.exports.updateEmail = function(editUser, callback) {
     var newvalues = {$set: { email: editUser.email }};
-    User.update({_id:editUser._id},newvalues,(err, raw)=>{
+    User.updateOne({_id:editUser._id},newvalues,(err, raw)=>{
         if(err) throw err;
         else return raw
     })
@@ -229,7 +229,7 @@ module.exports.updateEmail = function(editUser, callback) {
 
 module.exports.updateFriend = function(editUser, callback) {
     var newvalues = {$set: { friend: editUser.friend }};
-    User.update({_id:editUser._id},newvalues,(err, raw)=>{
+    User.updateOne({_id:editUser._id},newvalues,(err, raw)=>{
         if(err) throw err;
         else return raw
     })
