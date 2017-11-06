@@ -52,7 +52,9 @@
       </button>
     </md-card-actions>
   </md-card> -->
-  <button color ="primary" (click)="refreshSelfposts($event)" md-raised-button>Refresh</button>
+  <button class="make-post" color ="primary" (click)="refreshSelfposts($event)" md-raised-button>
+    <i class="material-icons">refresh</i>
+  </button>
   <md-card class="post-card" *ngFor="let homePost of homePosts | slice: [start] : [end]; let i = index">
     <md-card-header>
       <div md-card-avatar class="post-image"></div>

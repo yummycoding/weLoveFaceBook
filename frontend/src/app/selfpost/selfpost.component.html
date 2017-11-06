@@ -1,5 +1,7 @@
 
-<button color ="primary" (click)="refreshSelfposts($event)" md-raised-button>Refresh</button>
+<button class="refresh" color ="primary" (click)="refreshSelfposts($event)" md-raised-button>
+    <i class="material-icons">refresh</i>
+</button>
 <md-card class="post-card" *ngFor="let selfPost of selfPosts; let i = index">
   <md-card-header>
       <div md-card-avatar class="post-image"></div>
