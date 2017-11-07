@@ -17,7 +17,7 @@ describe('Post function:', () => {
         postfunc.sendPost("new post from user");
         postfunc.navigateToLoginPage();
         postfunc.signinUser(username,password);
-        // expect(postfunc.getAllPostsContent().count()).toEqual(1);
+        expect(postfunc.getAllPostsContent().count()).toEqual(1);
         expect(postfunc.getAllPostsAuthor().get(0).getText()).toEqual(username);
         expect(postfunc.getAllPostsContent().get(0).getText()).toEqual("new post from user");
     })
@@ -29,7 +29,7 @@ describe('Post function:', () => {
         postfunc.getAllPostsLikeBtn().get(0).click();
         expect(postfunc.getAllPostsLikeNum().get(0).getText()).toEqual("1");
         expect(postfunc.getAllPostsLikeBy().get(0).getText()).toContain(username);
-        // cancel like, doesn't work now, because 0 like does not display
+        // cancel like
         postfunc.getAllPostsLikeBtn().get(0).click();
         postfunc.navigateToLoginPage();
         postfunc.signinUser(username,password);
