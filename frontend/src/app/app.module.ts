@@ -39,7 +39,7 @@ import { AddCommentComponent } from './home/home.component';
 // make post
 import { PostService } from './post.service';
 
-const appRoutes: Routes = [
+export const appRoutes: Routes = [
   {
     path: '',
     component: LoginFormComponent

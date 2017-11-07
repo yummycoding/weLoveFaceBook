@@ -77,6 +77,7 @@ AppComponent = __decorate([
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* unused harmony export appRoutes */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__("../../../platform-browser/@angular/platform-browser.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
@@ -655,7 +656,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/header/header.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<header>\n  <md-toolbar color=\"primary\">\n      <span style=\"text-align:center;\">GatorBook</span>\n      <span class=\"spacer\"></span>\n      <button md-icon-button [mdMenuTriggerFor]=\"menu\" id=\"menubtn\">\n          <i class=\"material-icons\">account_circle</i>  \n      </button>\n      <md-menu #menu=\"mdMenu\">\n          <button md-menu-item>\n              <md-icon>lightbulb_outline</md-icon>\n              <span>Notifications</span>\n          </button>\n          <button md-menu-item id=\"userprofilebtn\" (click)=\"setUserProfile($event)\">\n              <md-icon>person_outline</md-icon>\n              <span>Profile</span>\n          </button>\n          <button md-menu-item>\n              <md-icon>settings</md-icon>\n              <span>Setting</span>\n          </button>\n          <button md-menu-item id=\"logout_header\" (click)=\"logoutUser($event)\">\n              <md-icon>power_settings_new</md-icon>\n              <span>Log Out</span>\n          </button>\n          <!-- <button md-menu-item>\n              <md-icon>notifications_off</md-icon>\n              <span>Disable alerts</span>\n          </button> -->\n      </md-menu>\n  </md-toolbar>\n</header>\n"
+module.exports = "<header>\n  <md-toolbar color=\"primary\">\n      <span style=\"text-align:center;\">GatorBook</span>\n      <span class=\"spacer\"></span>\n      <button md-icon-button [mdMenuTriggerFor]=\"menu\" id=\"menubtn\">\n          <i class=\"material-icons\">account_circle</i>  \n      </button>\n      <md-menu #menu=\"mdMenu\">\n          <button md-menu-item>\n              <md-icon>lightbulb_outline</md-icon>\n              <span>Notifications</span>\n          </button>\n          <button md-menu-item id=\"userprofilebtn\" (click)=\"setUserProfile()\">\n              <md-icon>person_outline</md-icon>\n              <span>Profile</span>\n          </button>\n          <button md-menu-item>\n              <md-icon>settings</md-icon>\n              <span>Setting</span>\n          </button>\n          <button md-menu-item id=\"logout_header\" (click)=\"logoutUser()\">\n              <md-icon>power_settings_new</md-icon>\n              <span>Log Out</span>\n          </button>\n          <!-- <button md-menu-item>\n              <md-icon>notifications_off</md-icon>\n              <span>Disable alerts</span>\n          </button> -->\n      </md-menu>\n  </md-toolbar>\n</header>\n"
 
 /***/ }),
 
@@ -686,11 +687,11 @@ var HeaderComponent = (function () {
     }
     HeaderComponent.prototype.ngOnInit = function () {
     };
-    HeaderComponent.prototype.setUserProfile = function (e) {
+    HeaderComponent.prototype.setUserProfile = function () {
         this.router.navigate(['/userprofile']);
     };
-    HeaderComponent.prototype.logoutUser = function (e) {
-        e.preventDefault();
+    HeaderComponent.prototype.logoutUser = function () {
+        //e.preventDefault();
         // console.log(e);
         this.user.setUserLoggedOut();
         // console.log('user logged in? ', this.user.getUserLoggedIn());
@@ -784,7 +785,6 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 
 var HomeComponent = (function () {
     function HomeComponent(userService, postService, http, dialog) {
-        var _this = this;
         this.userService = userService;
         this.postService = postService;
         this.http = http;
@@ -798,9 +798,9 @@ var HomeComponent = (function () {
         this.pageIndex = 0;
         this.pageSize = 2;
         this.pageSizeOptions = [1, 2, 5, 10];
-        this.http.get('assets/mock-data-home/data.json')
-            .map(function (response) { return response.json().screenshots; })
-            .subscribe(function (res) { return _this.spaceScreens = res; });
+        // this.http.get('assets/mock-data-home/data.json')
+        // .map(response => response.json().screenshots)
+        // .subscribe(res => this.spaceScreens = res);
     }
     HomeComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -855,10 +855,6 @@ var HomeComponent = (function () {
                 console.log("Fail to like -- err msg from home component ", data.message);
             }
         });
-    };
-    HomeComponent.prototype.commentMe = function (i) {
-    };
-    HomeComponent.prototype.shareMe = function (i) {
     };
     HomeComponent.prototype.pageChange = function (event) {
         this.pageIndex = event.pageIndex;
@@ -953,7 +949,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/login-form/login-form.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<form (submit)=\"loginUser($event)\"> \n  <div class=\"alert\">\n    <flash-messages></flash-messages>\n  </div>\n  <div>\n    <img width=\"500\" src=\"../assets/headerimage/GatorBook.jpg\">\n    <h4 id=\"location\">-- share your beautiful life</h4>     <!-- this line used for e2e testing, don't delete -->\n  </div>\n  <div>\n    <img width=\"500\" src=\"../assets/headerimage/gator.png\">\n  </div>\n  <md-form-field class=\"example-full-width\">\n      <input mdInput placeholder=\"Username\" name=\"signinusername\" [(ngModel)]=\"signinUser.username\">\n  </md-form-field>\n  <md-form-field class=\"example-full-width\">\n      <input type =\"password\" mdInput placeholder=\"Password\" name=\"signinpassword\" [(ngModel)]=\"signinUser.password\">\n  </md-form-field>\n  <div class=\"input\">    \n    <button color =\"primary\" id=signinbtn type =\"submit\" md-raised-button>Sign In</button>   \n    <button color =\"primary\" id=signupbtn routerLink=\"/regis-form\" md-raised-button>Sign Up</button>\n  </div>\n</form>\n\n\n\n"
+module.exports = "\n<form (submit)=\"loginUser($event)\"> \n  <div class=\"alert\">\n    <flash-messages></flash-messages>\n  </div>\n  <div>\n    <img width=\"500\" src=\"../assets/headerimage/GatorBook.jpg\">\n    <h4 id=\"location\">-- share your beautiful life</h4>     <!-- this line used for e2e testing, don't delete -->\n  </div>\n  <div>\n    <img width=\"500\" src=\"../assets/headerimage/gator.png\">\n  </div>\n  <md-form-field class=\"example-full-width\">\n      <input mdInput placeholder=\"Username\" type =\"username\" name=\"signinusername\" [(ngModel)]=\"signinUser.username\">\n  </md-form-field>\n  <md-form-field class=\"example-full-width\">\n      <input type =\"password\" mdInput placeholder=\"Password\" type =\"password\"name=\"signinpassword\" [(ngModel)]=\"signinUser.password\">\n  </md-form-field>\n  <div class=\"input\">    \n    <button color =\"primary\" id=signinbtn type =\"submit\" md-raised-button>Sign In</button>   \n    <button color =\"primary\" id=signupbtn routerLink=\"/regis-form\" md-raised-button>Sign Up</button>\n  </div>\n</form>\n\n\n\n"
 
 /***/ }),
 
@@ -1364,6 +1360,7 @@ var SelfpostComponent = (function () {
         this.userService = userService;
         this.postService = postService;
         this.http = http;
+        this.selfPosts = [];
         // this.http.get('assets/mock-data-mypost/data.json')
         // .map(response => response.json().screenshots)
         // .subscribe(res => this.spaceScreens = res);
@@ -1398,18 +1395,6 @@ var SelfpostComponent = (function () {
                 console.log("Error when getting self post from database: ", data.message);
             }
         });
-    };
-    SelfpostComponent.prototype.markMe = function (i) {
-        if (this.spaceScreens[i].marked !== 1) {
-            this.spaceScreens[i].marked = 1;
-        }
-        else {
-            this.spaceScreens[i].marked = 0;
-        }
-    };
-    SelfpostComponent.prototype.deleteMe = function (i) {
-        this.spaceScreens.splice(i, 1);
-        console.log(i);
     };
     return SelfpostComponent;
 }());

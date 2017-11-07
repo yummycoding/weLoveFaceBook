@@ -14,7 +14,7 @@ export class SelfpostComponent implements OnInit {
 
   spaceScreens: Array<any>;
   @Input() curUsername: string;
-  selfPosts: Array<Post>;
+  selfPosts: Array<Post> =[];
 
   constructor(private userService: UserService, private postService: PostService, private http: Http) {
     // this.http.get('assets/mock-data-mypost/data.json')
@@ -52,18 +52,6 @@ export class SelfpostComponent implements OnInit {
       }
     });
   }
-
-  markMe(i) {
-    if (this.spaceScreens[i].marked !== 1) {
-      this.spaceScreens[i].marked = 1;
-    } else {
-      this.spaceScreens[i].marked = 0;
-    }
-  }
   
-  deleteMe(i) {
-    this.spaceScreens.splice(i, 1);
-    console.log(i);
-  }
 
 }
