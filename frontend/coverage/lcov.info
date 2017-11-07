@@ -1,5 +1,5 @@
 TN:
-SF:/Users/grandstar/Documents/github/proj/weLoveFaceBook/frontend/src/polyfills.ts
+SF:/Users/frankzhang/Desktop/weLoveFaceBook/frontend/src/polyfills.ts
 FNF:0
 FNH:0
 DA:41,1
@@ -11,7 +11,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/grandstar/Documents/github/proj/weLoveFaceBook/frontend/src/test.ts
+SF:/Users/frankzhang/Desktop/weLoveFaceBook/frontend/src/test.ts
 FN:20,(anonymous_0)
 FNF:1
 FNH:1
@@ -35,7 +35,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/grandstar/Documents/github/proj/weLoveFaceBook/frontend/src/app/app.component.ts
+SF:/Users/frankzhang/Desktop/weLoveFaceBook/frontend/src/app/app.component.ts
 FN:8,(anonymous_1)
 FN:8,AppComponent
 FNF:2
@@ -51,7 +51,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/grandstar/Documents/github/proj/weLoveFaceBook/frontend/src/app/authguard.guard.ts
+SF:/Users/frankzhang/Desktop/weLoveFaceBook/frontend/src/app/authguard.guard.ts
 FN:7,(anonymous_2)
 FN:8,AuthguardGuard
 FN:11,(anonymous_4)
@@ -76,7 +76,7 @@ BRF:3
 BRH:2
 end_of_record
 TN:
-SF:/Users/grandstar/Documents/github/proj/weLoveFaceBook/frontend/src/app/comment.ts
+SF:/Users/frankzhang/Desktop/weLoveFaceBook/frontend/src/app/comment.ts
 FN:1,(anonymous_0)
 FN:2,Comment
 FNF:2
@@ -97,7 +97,7 @@ BRF:4
 BRH:2
 end_of_record
 TN:
-SF:/Users/grandstar/Documents/github/proj/weLoveFaceBook/frontend/src/app/post.service.ts
+SF:/Users/frankzhang/Desktop/weLoveFaceBook/frontend/src/app/post.service.ts
 FN:10,(anonymous_2)
 FN:12,PostService
 FN:15,(anonymous_4)
@@ -162,7 +162,7 @@ BRF:3
 BRH:2
 end_of_record
 TN:
-SF:/Users/grandstar/Documents/github/proj/weLoveFaceBook/frontend/src/app/post.ts
+SF:/Users/frankzhang/Desktop/weLoveFaceBook/frontend/src/app/post.ts
 FN:2,(anonymous_0)
 FN:3,Post
 FNF:2
@@ -207,7 +207,7 @@ BRF:20
 BRH:10
 end_of_record
 TN:
-SF:/Users/grandstar/Documents/github/proj/weLoveFaceBook/frontend/src/app/user.service.ts
+SF:/Users/frankzhang/Desktop/weLoveFaceBook/frontend/src/app/user.service.ts
 FN:9,(anonymous_2)
 FN:12,UserService
 FN:15,(anonymous_4)
@@ -328,7 +328,7 @@ BRF:11
 BRH:8
 end_of_record
 TN:
-SF:/Users/grandstar/Documents/github/proj/weLoveFaceBook/frontend/src/app/user.ts
+SF:/Users/frankzhang/Desktop/weLoveFaceBook/frontend/src/app/user.ts
 FN:1,(anonymous_0)
 FN:2,User
 FNF:2
@@ -373,7 +373,7 @@ BRF:20
 BRH:10
 end_of_record
 TN:
-SF:/Users/grandstar/Documents/github/proj/weLoveFaceBook/frontend/src/app/validate.service.ts
+SF:/Users/frankzhang/Desktop/weLoveFaceBook/frontend/src/app/validate.service.ts
 FN:4,(anonymous_2)
 FN:6,ValidateService
 FN:8,(anonymous_4)
@@ -424,7 +424,7 @@ BRF:18
 BRH:18
 end_of_record
 TN:
-SF:/Users/grandstar/Documents/github/proj/weLoveFaceBook/frontend/src/app/footer/footer.component.ts
+SF:/Users/frankzhang/Desktop/weLoveFaceBook/frontend/src/app/footer/footer.component.ts
 FN:8,(anonymous_2)
 FN:10,FooterComponent
 FN:12,(anonymous_4)
@@ -443,7 +443,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/grandstar/Documents/github/proj/weLoveFaceBook/frontend/src/app/header/header.component.ts
+SF:/Users/frankzhang/Desktop/weLoveFaceBook/frontend/src/app/header/header.component.ts
 FN:10,(anonymous_2)
 FN:12,HeaderComponent
 FN:14,(anonymous_4)
@@ -483,7 +483,7 @@ BRF:8
 BRH:6
 end_of_record
 TN:
-SF:/Users/grandstar/Documents/github/proj/weLoveFaceBook/frontend/src/app/home/home.component.ts
+SF:/Users/frankzhang/Desktop/weLoveFaceBook/frontend/src/app/home/home.component.ts
 FN:17,(anonymous_4)
 FN:32,HomeComponent
 FN:38,(anonymous_6)
@@ -639,7 +639,7 @@ BRF:31
 BRH:16
 end_of_record
 TN:
-SF:/Users/grandstar/Documents/github/proj/weLoveFaceBook/frontend/src/app/login-form/login-form.component.ts
+SF:/Users/frankzhang/Desktop/weLoveFaceBook/frontend/src/app/login-form/login-form.component.ts
 FN:13,(anonymous_2)
 FN:16,LoginFormComponent
 FN:18,(anonymous_4)
@@ -711,7 +711,7 @@ BRF:22
 BRH:14
 end_of_record
 TN:
-SF:/Users/grandstar/Documents/github/proj/weLoveFaceBook/frontend/src/app/regis-form/regis-form.component.ts
+SF:/Users/frankzhang/Desktop/weLoveFaceBook/frontend/src/app/regis-form/regis-form.component.ts
 FN:13,(anonymous_2)
 FN:20,RegisFormComponent
 FN:22,(anonymous_4)
@@ -790,7 +790,7 @@ BRF:29
 BRH:15
 end_of_record
 TN:
-SF:/Users/grandstar/Documents/github/proj/weLoveFaceBook/frontend/src/app/selfpost/selfpost.component.ts
+SF:/Users/frankzhang/Desktop/weLoveFaceBook/frontend/src/app/selfpost/selfpost.component.ts
 FN:13,(anonymous_2)
 FN:19,SelfpostComponent
 FN:25,(anonymous_4)

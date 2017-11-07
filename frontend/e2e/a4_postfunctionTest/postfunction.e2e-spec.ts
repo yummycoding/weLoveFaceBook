@@ -4,7 +4,7 @@ import {} from 'jasmine';
 
 describe('Post function:', () => {
     let postfunc:PostFunc;
-    let username:string = 'e2etest6';
+    let username:string = 'e2etest9';
     let password:string = 'Admin$$$1';
 
     beforeEach(() => {
@@ -29,12 +29,12 @@ describe('Post function:', () => {
         postfunc.getAllPostsLikeBtn().get(0).click();
         expect(postfunc.getAllPostsLikeNum().get(0).getText()).toEqual("1");
         expect(postfunc.getAllPostsLikeBy().get(0).getText()).toContain(username);
-        // cancel like 
+        // cancel like, doesn't work now, because 0 like does not display
         postfunc.getAllPostsLikeBtn().get(0).click();
         postfunc.navigateToLoginPage();
         postfunc.signinUser(username,password);
-        expect(postfunc.getAllPostsLikeNum().get(0).getText()).toEqual("0");
-        expect(postfunc.getAllPostsLikeBy().get(0).getText()).not.toContain(username);
+        expect(postfunc.getAllPostsLikeNum().get(0).isPresent()).toBe(false);
+        expect(postfunc.getAllPostsLikeBy().get(0).isPresent()).toBe(false);
     })
 
     it('should successfully make a comment', () => {
