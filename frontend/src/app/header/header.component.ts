@@ -14,12 +14,12 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
   
-  setUserProfile(e) {
+  setUserProfile() {
     this.router.navigate(['/userprofile']);
   }
 
-  logoutUser(e) {
-    e.preventDefault();
+  logoutUser() {
+    //e.preventDefault();
     // console.log(e);
 
     this.user.setUserLoggedOut();
