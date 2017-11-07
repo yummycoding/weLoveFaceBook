@@ -37,6 +37,8 @@ import { UserProfileComponent } from './user/user-profile/user-profile.component
 import { AddFriendComponent } from './friendlist/friendlist.component';
 // make post
 import { PostService } from './post.service';
+//help center
+import { HelpcenterComponent } from './helpcenter/helpcenter.component';
 
 const appRoutes: Routes = [
   {
@@ -55,6 +57,10 @@ const appRoutes: Routes = [
   {
     path: 'userprofile',
     component: UserProfileComponent
+  },
+  {
+    path: 'helpcenter',
+    component: HelpcenterComponent
   },
 ];
 
@@ -75,7 +81,8 @@ const appRoutes: Routes = [
     UserNewComponent,
     UserEditComponent,
     UserProfileComponent,
-    AddFriendComponent
+    AddFriendComponent,
+    HelpcenterComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
