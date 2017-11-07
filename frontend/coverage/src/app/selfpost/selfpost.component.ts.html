@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/app/selfpost/selfpost.component.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">All files</a> / <a href="index.html">src/app/selfpost</a> selfpost.component.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">57.89% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>22/38</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">52.63% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>10/19</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">40% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>4/10</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">53.13% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>17/32</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Component, Input, OnInit } from '@angular/core';
+import { UserService } from '../user.service';
+import { PostService } from '../post.service';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
+import { Post } from '../post';
+&nbsp;
+@Component({
+  selector: 'app-selfpost',
+  templateUrl: './selfpost.component.html',
+  styleUrls: ['./selfpost.component.css']
+})
+export class SelfpostComponent implements OnInit {
+&nbsp;
+  spaceScreens: Array&lt;any&gt;;
+  @Input() curUsername: string;
+  selfPosts: Array&lt;Post&gt;;
+&nbsp;
+  constructor(private userService: UserService<span class="branch-1 cbranch-no" title="branch not covered" >, private postService: </span>PostService<span class="branch-2 cbranch-no" title="branch not covered" >, private http: </span>Http<span class="branch-2 cbranch-no" title="branch not covered" >) {</span>
+    // this.http.get('assets/mock-data-mypost/data.json')
+    // .map(response =&gt; response.json().screenshots)
+    // .subscribe(res =&gt; this.spaceScreens = res);
+  }
+&nbsp;
+  ngOnInit() {
+    this.getMyPosts(this.curUsername);
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  refreshSelfposts(</span>e) {
+<span class="cstat-no" title="statement not covered" >    this.getMyPosts(this.curUsername);</span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >  deleteSelfposts(</span>i) {</span>
+    let postid:String = <span class="cstat-no" title="statement not covered" >this.selfPosts[i]._id;</span>
+<span class="cstat-no" title="statement not covered" >    this.postService.deletePost(postid).then(<span class="fstat-no" title="function not covered" >data =&gt; {</span></span>
+<span class="cstat-no" title="statement not covered" >      if (data.success === true) {</span>
+<span class="cstat-no" title="statement not covered" >        this.getMyPosts(this.curUsername); </span>// refresh self posts after delete
+<span class="cstat-no" title="statement not covered" >        console.log("Self posts deleted from database, post id: ", postid);</span>
+      }else {
+<span class="cstat-no" title="statement not covered" >        console.log("Error when delete self post from database: ",data.message)</span>
+      }
+    });
+  }
+&nbsp;
+  getMyPosts(curUsername: string) {
+    this.postService.getSelfPosts(curUsername).then(<span class="fstat-no" title="function not covered" >data =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      if (data.success === true) {</span>
+<span class="cstat-no" title="statement not covered" >        this.selfPosts = data.posts</span>
+        // console.log("Self posts got from database", this.selfPosts);
+      }else {
+<span class="cstat-no" title="statement not covered" >        console.log("Error when getting self post from database: ",data.message)</span>
+      }
+    });
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  markMe(</span>i) {
+<span class="cstat-no" title="statement not covered" >    if (this.spaceScreens[i].marked !== 1) {</span>
+<span class="cstat-no" title="statement not covered" >      this.spaceScreens[i].marked = 1;</span>
+    } else {
+<span class="cstat-no" title="statement not covered" >      this.spaceScreens[i].marked = 0;</span>
+    }
+  }
+  
+<span class="fstat-no" title="function not covered" >  deleteMe(</span>i) {
+<span class="cstat-no" title="statement not covered" >    this.spaceScreens.splice(i, 1);</span>
+<span class="cstat-no" title="statement not covered" >    console.log(i);</span>
+  }
+&nbsp;
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Nov 06 2017 23:35:23 GMT-0500 (EST)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/app/user.service.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">All files</a> / <a href="index.html">src/app</a> user.service.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">96.55% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>56/58</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">72.73% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>8/11</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>27/27</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">95.74% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>45/47</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Injectable } from '@angular/core';
+import { User } from './user';
+import { Observable } from 'rxjs/Rx';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
+&nbsp;
+@Injectable()
+export class UserService {
+  private isUserLoggedIn;
+  private username;
+  constructor(private _http: Http<span class="branch-1 cbranch-no" title="branch not covered" >) {</span>
+    this.isUserLoggedIn = false;
+  }
+  setUserLoggedIn() {
+    this.isUserLoggedIn = true;
+  }
+  setUserLoggedOut() {
+    this.isUserLoggedIn = false;
+  }
+  getUserLoggedIn() {
+    return this.isUserLoggedIn;
+  }
+  create(user: User) {
+    return this._http.post('/users/register', user).map(data =&gt; {
+      const returnUser = data.json();
+      // console.log(returnUser);
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (returnUser &amp;&amp; returnUser.token) {
+        // store user details and jwt token in local storage to keep user logged in between page refreshes
+<span class="cstat-no" title="statement not covered" >        localStorage.setItem('currentUser', JSON.stringify(returnUser));</span>
+      }
+      return returnUser.success;
+    }).toPromise();
+  }
+  destroy(user: User) {
+    return this._http.delete('/users/' + user._id).map(data =&gt; data.json()).toPromise();
+  }
+  updatePassword(user: User) {
+    console.log("Client &gt; New password to be updated &gt; ",user)
+    return this._http.put('/users/updatepassword/' + user._id, user).map(data =&gt; data.json()).toPromise();
+  }
+  updateEmail(user: User) {
+    console.log("Client &gt; New email to be updated &gt; ",user)
+    return this._http.put('/users/updateemail/' + user._id, user).map(data =&gt; data.json()).toPromise();
+  }
+  getUserByUsername(username: String) {
+    // console.log('client &gt; Get user by user name &gt; ',username);
+    return this._http.get('/users/getuserbyusername/' + username).map(data=&gt;data.json()).toPromise();
+  }
+  getUserByUserID(userID: String) {
+    // console.log('client &gt; Get user by UserID &gt; ', userID);
+    return this._http.get('/users/getuserbyuserid/' + userID).map(data=&gt;data.json()).toPromise();
+  }
+  getUser(user: User) {
+    return this._http.get('/users/' + user._id).map(data =&gt; data.json()).toPromise();
+  }
+  getUsers() {
+    return this._http.get('/users').map(data =&gt; data.json()).toPromise();
+  }
+  loginUser(username: String, password: String) {
+    return this._http.post('/users/authenticate', { username: username, password: password })
+      // .map(data =&gt; data.json()).toPromise();
+      .map(data =&gt; {
+        // login successful if there's a jwt token in the response
+        const user = data.json();
+        // console.log(user);
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (user &amp;&amp; user.token) {
+          // store user details and jwt token in local storage to keep user logged in between page refreshes
+<span class="cstat-no" title="statement not covered" >          localStorage.setItem('currentUser', JSON.stringify(user));</span>
+        }
+        console.log("current user: ", localStorage.getItem('currentUser'))
+        return user.success;
+      }).toPromise();
+  }
+  getUserByUserEmail(email: String) {
+    return this._http.get('/users/getuserbyemail/' + email).map(data =&gt; data.json()).toPromise();
+  }
+  updateFriend(user: User) {
+    //console.log("Client &gt; New friend to be updated &gt; ", user)
+    return this._http.put('/users/updatefriend/' + user._id, user).map(data =&gt; data.json()).toPromise();
+  }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Nov 06 2017 23:35:23 GMT-0500 (EST)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

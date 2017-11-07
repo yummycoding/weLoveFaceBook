@@ -8,6 +8,8 @@ import { UserService } from '../user.service';
 import { Http, BaseRequestOptions, Response, ResponseOptions, RequestMethod } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
+import { FlashMessagesService, FlashMessagesModule } from 'angular2-flash-messages';
+import { ValidateService } from '../validate.service';
 
 describe('LoginFormComponent', () => {
   let component: LoginFormComponent;
@@ -20,9 +22,9 @@ describe('LoginFormComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [ LoginFormComponent ],
-      imports: [ MaterialModule, FormsModule, BrowserAnimationsModule ],
+      imports: [ MaterialModule, FormsModule, BrowserAnimationsModule, FlashMessagesModule ],
       providers: [
-        UserService, MockBackend, BaseRequestOptions,
+        UserService, MockBackend, BaseRequestOptions, FlashMessagesService, ValidateService, 
         {provide: Router,  useValue: mockRouter },
         {provide: Http, useFactory: (backendInstance: MockBackend, defaultOptions: BaseRequestOptions) => {
           return new Http(backendInstance, defaultOptions);

@@ -9,6 +9,8 @@ import { UserService } from '../user.service';
 import { Http, BaseRequestOptions, Response, ResponseOptions, RequestMethod } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { User } from '../user';
+import { FlashMessagesService, FlashMessagesModule } from 'angular2-flash-messages';
+import { ValidateService } from '../validate.service';
 
 describe('RegisFormComponent', () => {
   let component: RegisFormComponent;
@@ -22,9 +24,9 @@ describe('RegisFormComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ RegisFormComponent ],
-      imports: [ MaterialModule, FormsModule, BrowserAnimationsModule ],
+      imports: [ MaterialModule, FormsModule, BrowserAnimationsModule, FlashMessagesModule ],
       providers: [
-        UserService, MockBackend, BaseRequestOptions,
+        UserService, MockBackend, BaseRequestOptions, FlashMessagesService, ValidateService, 
         {provide: Router,  useValue: mockRouter },
         {provide: Http, useFactory: (backendInstance: MockBackend, defaultOptions: BaseRequestOptions) => {
           return new Http(backendInstance, defaultOptions);

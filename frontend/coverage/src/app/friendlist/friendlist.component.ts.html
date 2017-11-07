@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/app/friendlist/friendlist.component.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">All files</a> / <a href="index.html">src/app/friendlist</a> friendlist.component.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">23.91% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>22/92</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">25.81% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>8/31</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">21.43% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>3/14</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">20.24% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>17/84</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Component, OnInit, Inject } from '@angular/core';
+import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
+import { User } from '../user';
+import { UserService } from '../user.service';
+&nbsp;
+@Component({
+  selector: 'app-friendlist',
+  templateUrl: './friendlist.component.html',
+  styleUrls: ['./friendlist.component.css']
+})
+export class FriendlistComponent implements OnInit {
+&nbsp;
+  friendName: string;
+  name: string;
+  friendEmail: string;
+  //currentTime: number;
+  currentuser: any = JSON.parse(localStorage.getItem("currentUser"));
+  myFriends: Array&lt;User&gt; = [];
+&nbsp;
+  constructor(public dialog: MdDialog<span class="branch-1 cbranch-no" title="branch not covered" >, private userService: </span>UserService<span class="branch-2 cbranch-no" title="branch not covered" >) { }</span>
+&nbsp;
+<span class="fstat-no" title="function not covered" >  ngOnInit() {</span>
+    // if('token' in this.currentuser){
+<span class="cstat-no" title="statement not covered" >      this.getFriends(this.currentuser.user);</span>
+    // }else {
+    //   this.getFriends(this.currentuser);
+    // };
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >  openDialog(): void {</span></span>
+    const dialogRef = <span class="cstat-no" title="statement not covered" >this.dialog.open(AddFriendComponent, {</span>
+      width: '250px',
+      data: { name: this.name, animal: this.friendName, friendEmail: this.friendEmail }
+    });
+<span class="cstat-no" title="statement not covered" >    dialogRef.afterClosed().subscribe(<span class="fstat-no" title="function not covered" >result =&gt; {</span></span>
+<span class="cstat-no" title="statement not covered" >      if (typeof result !== 'undefined') {</span>
+<span class="cstat-no" title="statement not covered" >        this.friendName = result.friendName;</span>
+<span class="cstat-no" title="statement not covered" >        this.friendEmail = result.friendEmail;</span>
+<span class="cstat-no" title="statement not covered" >        if (typeof this.friendEmail !== 'undefined' &amp;&amp; this.friendEmail!== '') {</span>
+<span class="cstat-no" title="statement not covered" >          this.userService.getUserByUserEmail(this.friendEmail).then(<span class="fstat-no" title="function not covered" >data =&gt; {</span></span>
+            const friend = <span class="cstat-no" title="statement not covered" >new User();</span>
+<span class="cstat-no" title="statement not covered" >            Object.assign(friend, data);</span>
+<span class="cstat-no" title="statement not covered" >            if(friend._id !== '') {</span>
+<span class="cstat-no" title="statement not covered" >              if(this.currentuser.user.friend.indexOf(friend._id+'$$'+friend.nickname+'$$'+friend.email) === -1){</span>
+<span class="cstat-no" title="statement not covered" >                this.currentuser.user.friend.push(friend._id+'$$'+friend.nickname+'$$'+friend.email);</span>
+                const updateUser = <span class="cstat-no" title="statement not covered" >new User();</span>
+<span class="cstat-no" title="statement not covered" >                Object.assign(updateUser, this.currentuser.user);</span>
+<span class="cstat-no" title="statement not covered" >                console.log(updateUser);</span>
+<span class="cstat-no" title="statement not covered" >                this.userService.updateFriend(updateUser);</span>
+<span class="cstat-no" title="statement not covered" >                localStorage.setItem('currentUser', JSON.stringify(this.currentuser));</span>
+              } else { 
+<span class="cstat-no" title="statement not covered" >                console.log('friend already exists');</span>
+             }
+<span class="cstat-no" title="statement not covered" >              if(friend.friend.indexOf(this.currentuser.user._id+'$$'+this.currentuser.user.nickname+'$$'+this.currentuser.user.email) === -1) {</span>
+<span class="cstat-no" title="statement not covered" >                friend.friend.push(this.currentuser.user._id+'$$'+this.currentuser.user.nickname+'$$'+this.currentuser.user.email);</span>
+<span class="cstat-no" title="statement not covered" >                console.log(friend);</span>
+<span class="cstat-no" title="statement not covered" >                this.userService.updateFriend(friend);</span>
+              }
+            } else {
+<span class="cstat-no" title="statement not covered" >              console.log('User not exist')</span>
+            }
+          });
+        } else {
+<span class="cstat-no" title="statement not covered" >          this.userService.getUserByUsername(this.friendName).then(<span class="fstat-no" title="function not covered" >data =&gt; {</span></span>
+            const friend = <span class="cstat-no" title="statement not covered" >new User();</span>
+<span class="cstat-no" title="statement not covered" >            Object.assign(friend, data);</span>
+<span class="cstat-no" title="statement not covered" >            if(friend._id !== '') {</span>
+<span class="cstat-no" title="statement not covered" >              if(this.currentuser.user.friend.indexOf(friend._id+'$$'+friend.nickname+'$$'+friend.email) === -1){</span>
+<span class="cstat-no" title="statement not covered" >                this.currentuser.user.friend.push(friend._id+'$$'+friend.nickname+'$$'+friend.email);</span>
+                const updateUser = <span class="cstat-no" title="statement not covered" >new User();</span>
+<span class="cstat-no" title="statement not covered" >                Object.assign(updateUser, this.currentuser.user);</span>
+<span class="cstat-no" title="statement not covered" >                console.log(updateUser);</span>
+<span class="cstat-no" title="statement not covered" >                this.userService.updateFriend(updateUser);</span>
+<span class="cstat-no" title="statement not covered" >                localStorage.setItem('currentUser', JSON.stringify(this.currentuser));</span>
+              } else { 
+<span class="cstat-no" title="statement not covered" >                console.log('friend already exists');</span>
+              }
+<span class="cstat-no" title="statement not covered" >              if(friend.friend.indexOf(this.currentuser.user._id+'$$'+this.currentuser.user.nickname+'$$'+this.currentuser.user.email) === -1) {</span>
+<span class="cstat-no" title="statement not covered" >                friend.friend.push(this.currentuser.user._id+'$$'+this.currentuser.user.nickname+'$$'+this.currentuser.user.email);</span>
+<span class="cstat-no" title="statement not covered" >                console.log(friend);</span>
+<span class="cstat-no" title="statement not covered" >                this.userService.updateFriend(friend);</span>
+              }
+            } else {
+<span class="cstat-no" title="statement not covered" >              console.log('User not exist')</span>
+            }
+          });
+        }
+&nbsp;
+      }
+    });
+  }
+<span class="fstat-no" title="function not covered" >  getFriends(</span>user) {
+<span class="cstat-no" title="statement not covered" >    this.myFriends = [];</span>
+    const friends = <span class="cstat-no" title="statement not covered" >user.friend;</span>
+<span class="cstat-no" title="statement not covered" >    for (let friend<span class="cstat-no" title="statement not covered" > of friends) {</span></span>
+<span class="cstat-no" title="statement not covered" >      if (friend.indexOf('$$') !== -1) {</span>
+        var info = <span class="cstat-no" title="statement not covered" >friend.split('$$');</span>
+        const user = <span class="cstat-no" title="statement not covered" >new User();</span>
+<span class="cstat-no" title="statement not covered" >        user._id = info[0];</span>
+<span class="cstat-no" title="statement not covered" >        user.nickname = info[1]</span>
+<span class="cstat-no" title="statement not covered" >        user.email = info[2];</span>
+<span class="cstat-no" title="statement not covered" >        this.myFriends.push(user);</span>
+      }
+    }  
+  }
+<span class="fstat-no" title="function not covered" >  refreshFriendlist() {</span>
+<span class="cstat-no" title="statement not covered" >    this.getFriends(this.currentuser.user);</span>
+  }
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >  deleteFriend(</span>friend) {</span>
+    const user = <span class="cstat-no" title="statement not covered" >new User;</span>
+    //update current user's friendlist
+    const index = <span class="cstat-no" title="statement not covered" >this.currentuser.user.friend.indexOf(friend._id+'$$'+friend.nickname+'$$'+friend.email);</span>
+<span class="cstat-no" title="statement not covered" >    this.currentuser.user.friend.splice(index, 1);</span>
+<span class="cstat-no" title="statement not covered" >    this.userService.updateFriend(this.currentuser.user);</span>
+<span class="cstat-no" title="statement not covered" >    localStorage.setItem('currentUser', JSON.stringify(this.currentuser));</span>
+    //update friend's friendlist
+<span class="cstat-no" title="statement not covered" >    this.userService.getUserByUserEmail(friend.email).then(<span class="fstat-no" title="function not covered" >data =&gt; {</span></span>
+      const editfriend = <span class="cstat-no" title="statement not covered" >new User();</span>
+<span class="cstat-no" title="statement not covered" >      Object.assign(editfriend, data);</span>
+      const index1 = <span class="cstat-no" title="statement not covered" >editfriend.friend.indexOf(this.currentuser.user._id+'$$'+this.currentuser.user.nickname+'$$'+this.currentuser.user.email);</span>
+<span class="cstat-no" title="statement not covered" >      editfriend.friend.splice(index1, 1);</span>
+<span class="cstat-no" title="statement not covered" >      this.userService.updateFriend(editfriend);</span>
+    });
+    
+<span class="cstat-no" title="statement not covered" >    this.getFriends(this.currentuser.user);</span>
+    
+  }
+  // tslint:disable-next-line:member-ordering
+  // A = [
+  //   {
+  //     name: 'Allan',
+  //     updated: new Date('1/1/16'),
+  //   },
+  //   {
+  //     name: 'Andrew',
+  //     updated: new Date('1/17/16'),
+  //   },
+  //   {
+  //     name: 'Ashe',
+  //     updated: new Date('1/28/16'),
+  //   }
+  // ];
+  // // tslint:disable-next-line:member-ordering
+  // B = [
+  //   {
+  //     name: 'Bob',
+  //     updated: new Date('2/20/16'),
+  //   },
+  //   {
+  //     name: 'Boss',
+  //     updated: new Date('1/18/16'),
+  //   }
+  // ];
+}
+@Component({
+  selector: 'app-addfriend',
+  templateUrl: './addFriend.html',
+})
+export class AddFriendComponent {
+&nbsp;
+<span class="fstat-no" title="function not covered" >  constructor(</span>
+    public <span class="cstat-no" title="statement not covered" >dialogRef: MdDialogRef<span class="branch-1 cbranch-no" title="branch not covered" >&lt;AddFriendComponent&gt;,</span></span>
+    @Inject(MD_DIALOG_DATA) public <span class="cstat-no" title="statement not covered" >data: any)</span> { }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  onNoClick(): void {</span>
+<span class="cstat-no" title="statement not covered" >    this.dialogRef.close();</span>
+  }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Nov 06 2017 20:36:41 GMT-0500 (EST)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

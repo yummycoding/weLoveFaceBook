@@ -2,9 +2,11 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MaterialModule } from '@angular/material';
 import { HomeComponent } from './home.component';
 import { UserService } from '../user.service';
+import { PostService } from '../post.service';
 import { Http, BaseRequestOptions, Response, ResponseOptions, RequestMethod } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 import { BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -13,9 +15,9 @@ describe('HomeComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ HomeComponent ],
-      imports: [ MaterialModule, BrowserAnimationsModule ],
+      imports: [ MaterialModule, BrowserAnimationsModule, FormsModule ],
       providers: [
-        UserService, MockBackend, BaseRequestOptions,
+        UserService, MockBackend, BaseRequestOptions, PostService,
         {provide: Http, useFactory: (backendInstance: MockBackend, defaultOptions: BaseRequestOptions) => {
           return new Http(backendInstance, defaultOptions);
         }, deps: [MockBackend, BaseRequestOptions]}

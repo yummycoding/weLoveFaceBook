@@ -5,6 +5,7 @@ import { UserService } from '../user.service';
 import { Http, BaseRequestOptions, Response, ResponseOptions, RequestMethod } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 import { BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
+import { PostService } from '../post.service';
 
 describe('SelfpostComponent', () => {
   let component: SelfpostComponent;
@@ -15,7 +16,7 @@ describe('SelfpostComponent', () => {
       declarations: [ SelfpostComponent ],
       imports: [ MaterialModule, BrowserAnimationsModule ],
       providers: [
-        UserService, MockBackend, BaseRequestOptions,
+        UserService, MockBackend, BaseRequestOptions, PostService,
         {provide: Http, useFactory: (backendInstance: MockBackend, defaultOptions: BaseRequestOptions) => {
           return new Http(backendInstance, defaultOptions);
         }, deps: [MockBackend, BaseRequestOptions]}
