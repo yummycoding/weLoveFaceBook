@@ -1,0 +1,28 @@
+:host {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+.example-full-width {
+    width: 100%;
+}
+.helper-title {
+    font-weight:bold;
+    font-size: 40px;
+    margin:1.5em 0;
+    display:block;
+}
+.button-style {
+    margin:2.5em 0;
+}
+.gender-style {
+    margin:1.5em 0;
+}
+.alert {
+    padding: 20px;
+    /* background-color: #f44336; Red */
+    color: red;
+    margin-bottom: 15px;
+}

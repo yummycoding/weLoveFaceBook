@@ -14,8 +14,8 @@ describe('Test the users registration API', function(){
         })
         .end(function(err, res){
             res.status.should.equal(200),
-            res.body.success.should.equal(true),
-            res.body.message.should.equal('Account registered')
+            res.body.success.should.equal(false),
+            res.body.message.should.equal('Username or e-mail already exists')
             done();
         });
     });

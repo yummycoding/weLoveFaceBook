@@ -38,6 +38,7 @@ import { AddFriendComponent } from './friendlist/friendlist.component';
 import { AddCommentComponent } from './home/home.component';
 // make post
 import { PostService } from './post.service';
+import { HelpcenterComponent } from './helpcenter/helpcenter.component';
 
 export const appRoutes: Routes = [
   {
@@ -56,6 +57,10 @@ export const appRoutes: Routes = [
   {
     path: 'userprofile',
     component: UserProfileComponent
+  },
+  {
+    path: 'helpcenter',
+    component: HelpcenterComponent
   },
 ];
 
@@ -77,7 +82,8 @@ export const appRoutes: Routes = [
     UserEditComponent,
     UserProfileComponent,
     AddFriendComponent,
-    AddCommentComponent
+    AddCommentComponent,
+    HelpcenterComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
