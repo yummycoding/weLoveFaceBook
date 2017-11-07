@@ -2,14 +2,15 @@ Some important things need to remember:
 1. Very important!!!!!
    Every time testing signup and edit profile, need change newusername,newemail in signupspec and 
    username,email_old and email_new in editprofilespec to a never registered one.
-2. There are two id=locations <h> in both loginpage and homepage's html file.
+2. a2 depends on account registere in a1;
+3. There are two id=locations <h> in both loginpage and homepage's html file.
    For loginpage, it = "-- share your beautiful life", for homepage, it = "Welcome to Gatorbook!",
    so error type expect "-- share ..." to be "Welcome to ..." means you are not logged in, but you
    were expected to.
-3. navigateToProfilePageFromHome() function in "editprofile" directly routes to profile page using
+4. navigateToProfilePageFromHome() function in "editprofile" directly routes to profile page using
    path, so after log in need to wait for a while, for system to recognize user, and then 
    route to profile using path can work(otherwise the effect same to route to profile without login)
-4. Be careful to use "clickbtnInMenu" function in signup and editprofile. 
+5. Be careful to use "clickbtnInMenu" function in signup and editprofile. 
    When error type: wait for 11s, cannot get by(.css(XXX)), which means you expect to route to btninMenu
    page to get that element, but you were not route to there, so cannot get by(.css(XXX))
 
