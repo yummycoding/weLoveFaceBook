@@ -2,6 +2,88 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.2.
 
+**Table of Contents**
+
+- [Installation](#installation)
+  - [Node v6.11.2](#node-v6.11.2)
+  - [NPM global dependencies](#npm-global-dependencies)
+  - [MongoDB v3.4.9](#mongodb-v3.4.9)
+  - [Source code](#source-code)
+- [Usage](#usage)
+- [Issues](#issues)
+- [Contributors](#contributors)
+- [Contact](#contact)
+- [Licence](#licence)
+
+# Installation
+
+The following instructions are the most common to get the development environment up and running, if you run into issues, check out the [issues](#issues) section and let us know what issues you met.
+
+## Node v6.11.2
+You need Node 6.11.2 in your system. Verify if you already have it with `node -v`. If not or different version, you can use Node Version Manager (nvm) to install it.
+```bash
+curl https://raw.githubusercontent.com/creationix/nvm/v0.24.1/install.sh | bash
+source ~/.nvm/nvm.sh
+nvm install 0.12
+nvm use 0.12
+```
+
+## NPM global dependencies
+```bash
+# Nodemon
+npm install -g nodemon
+
+# Express
+npm install -g express
+
+# Mocha
+npm install -g mocha
+
+# Mongoose
+npm install -g mongoose
+
+# Supertest
+npm install -g supertest
+
+# Cors
+npm install -g cors
+
+# jwt
+npm install -g jwt
+
+# bcrypt-nodejs
+npm install -g bcrypt-nodejs
+```
+
+## MongoDB v3.4.9
+
+- Mac: `brew install mongodb 3.4.9`
+- Ubuntu: `sudo apt-get -y install mongodb=3.4.9`
+
+## Source code
+You can build the project from scratch following the instructions below.
+```bash
+git clone https://github.com/yummycoding/weLoveFaceBook
+cd weLoveFaceBook
+npm install
+```
+
+## Usage
+   - cd backend and then run server: `nodemon`
+   - run tests: `npm test`
+   - run e2e test:
+   - compile assets: `ng build`
+   
+ 
+# Issues
+For any questions, ideas for improvement use [click here](https://github.com/yummycoding/weLoveFaceBook/issues/new).
+
+# Contributors
+
+# Contact
+
+# Licence
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
