@@ -5,26 +5,28 @@ const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const router = express.Router();
 
+//Create a new post
 router.post('/newPost', (req, res) => {
     console.log('POST > posts/newPost');
-    if (!req.body.title) {
+    if (!req.body.title) {//Title should not be empty 
         res.json({success: false, message: 'Post title is requested!'});
     } else {
-        if (!req.body.body) {
+        if (!req.body.body) {//body should not be empty
             res.json({success: false, message: 'Post body is required!'});
         } else {
-            if (!req.body.createdBy) {
+            if (!req.body.createdBy) {//There should be someone who create this post
                 res.json({success: false, message: 'Post creator is required!'});
-            } else {
+            } else {//create a new post schema
                 const post = new Post({
                     title: req.body.title,
                     body: req.body.body,
                     createdBy: req.body.createdBy
                 });
 
+                //Save this post into database
                 post.save((err) => {
                     if (err) {
-                        if (err.errors) {
+                        if (err.errors) {//Check if the post is valid
                             if (err.errors.title) {
                                 res.json({success: false, message: err.errors.title.message});
                             } else {
@@ -42,6 +44,7 @@ router.post('/newPost', (req, res) => {
     }
 });
 
+//Get all the posts sent by all people
 router.get('/allPosts', (req, res) => {
     Post.find({}, (err, posts) => {
         if (err) {
@@ -109,6 +112,7 @@ router.get('/getSelfPosts/:username', (req, res) => {
     }).sort({'_id': -1});
 });
 
+//Update the post after posting
 router.put('/updatePost', (req, res) => {
     if (!req.body._id) {
         res.json({success: false, message: 'No post id provided'});
@@ -153,6 +157,7 @@ router.put('/updatePost', (req, res) => {
     }
 });
 
+//Delete a post if you want
 router.delete('/deletePost/:id', (req, res) => { 
     console.log('DELETE > /deletePost/:id > id', req.params.id);
     if (!req.params.id) {
@@ -222,6 +227,7 @@ router.put('/likePostOrCancelLike/:username', (req,res) => {
     }
 })
 
+//Like the post
 router.put('/likePost', (req, res) => {
     if (!req.body.id) {
         res.json({success: false, message: 'No id was provided'});
@@ -234,7 +240,7 @@ router.put('/likePost', (req, res) => {
                     if (err) {
                         res.json({success: false, message: 'Something went wrong'});
                     } else {
-                        if (!user) {
+                        if (!user) {//check if user is valid to like this post
                             res.json({success: false, message: 'Could not authenticate user.'});
                         } else {
                             if (user.username === post.createdBy) {
@@ -242,7 +248,7 @@ router.put('/likePost', (req, res) => {
                             } else {
                                 if (post.likedBy.includes(user.username)) {
                                     res.json({success: false, message: 'You already liked this post.'});
-                                } else {
+                                } else {//If you dislike this post, then you click like button
                                     if (post.dislikedBy.includes(user.username)) {
                                         post.dislikedBy.splice(arrayIndex, 1);
                                         post.likes++;
@@ -275,27 +281,28 @@ router.put('/likePost', (req, res) => {
     }
 });
 
+//If you dislike the post
 router.put('/dislikePost', (req, res) => {
-    if (!req.body.id) {
+    if (!req.body.id) {//If you want to dislike the post, you should provide id
         res.json({success: false, message: 'No id was provided.'});
     } else {
-        Post.findOne({_id: req.body.id}, (err, blog) => {
+        Post.findOne({_id: req.body.id}, (err, blog) => {//Get the post you want to dislike
             if (err) {
                 res.json({success: false, message: 'Invalid post id'});
             } else {
-                if (!post) {
+                if (!post) {//If the post does not exist, you cannot dislike it
                     res.json({success: false, message: 'That post was not found'});
                 } else {
                     User.findOne({_id: req.decoded.userId}, (err, user) => {
-                        if (err) {
+                        if (err) {//Get the user who logs in
                             res.json({success: false, message: 'Something went wrong.'});
                         } else {
                             if (!user) {
                                 res.json({success: false, message: 'Could not authenticate user.'});
-                            } else {
+                            } else {//You cannot dislike your own post
                                 if (user.username === post.createdBy) {
                                     res.json({success: false, message: 'You already disliked this post'});
-                                } else {
+                                } else {//Check if you have liked this post before
                                     if (post.likedBy.includes(user.username)) {
                                         post.likes--;
                                         const arrayIndex = post.likedBy.indexOf(user.username);
@@ -313,7 +320,7 @@ router.put('/dislikePost', (req, res) => {
                                         post.dislikes++;
                                         post.dislikedBy.push(user.username);
                                         post.save((err) => {
-                                            if (err) {
+                                            if (err) {//Dislike this post successfully
                                                 res.json({success: false, message: 'Something went wrong.'});
                                             } else {
                                                 res.json({success: true, message: 'Post disliked!'});
@@ -383,6 +390,7 @@ router.post('/comment', (req, res) => {
     }
   });
 
+//Update the comment if you want
 router.put('/updateComment/:id', (req, res, next) => {
     console.log("Server > PUT 'posts/updateComment/:id' > id", req.params.id);
     console.log("Server > PUT 'posts/updateComment/:post' > post", req.body);

@@ -101,7 +101,7 @@ router.post('/authenticate', (req, res) => {
                             res.json({success: false, message: 'Invalid password.'});
                         } else {
                             const token = jwt.sign({ sub: user._id }, config.secret, {
-                                expiresIn:604800//1 week
+                                expiresIn:'24h'//The jwt will expire in 24h
                             });
                            //console.log(token);
                            res.json({
@@ -173,8 +173,23 @@ router.get('/checkUsername/:username', (req, res) => {
     }
 });
 
+router.use((req, res, next) => {
+    const token = req.headers['authorization'];
+    if (!token) {
+        res.json({success: false, message: 'No token provided'})
+    } else {
+        jwt.verify(token, config.secret, (err, decoded) => {
+            if (err) {
+                res.json({success: false, message: 'Token invalid ' + err});
+            } else {
+                req.decoded = decoded;
+                next();
+            }
+        })
+    }
+})
 router.get('/profile', (req, res) => {
-    User.findOne({_id: req.decoded.userId}).select('username email').exec((err, user) => {
+    User.findOne({_id: req.decoded.sub}).select('username email').exec((err, user) => {
         if (err) {
             res.json({success: false, message: 'User not found'});
         } else {
@@ -283,6 +298,5 @@ router.put('/updatefriend/:id', (req, res, next) => {
         }
     });
 });
-
 
 module.exports = router;

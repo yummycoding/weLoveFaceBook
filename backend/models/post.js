@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 const Schema = mongoose.Schema;
 
+//Check if the length of this title is valid
 let titleLengthChecker = (title) => {
     if (!title) {
         return false;
@@ -19,6 +20,7 @@ const titleValidators = [{
     message: 'Title must be less than 50 characters!'
 }];
 
+//Check if the length of body is valid
 let bodyLengthChecker = (body) => {
     if (!body) {
         return false;
@@ -38,6 +40,7 @@ const bodyValidators = [
     }
 ];
 
+//Check if the length of comment is valid
 let commentLengthChecker = (comment) => {
     if (!comment[0]) {
         return false;
@@ -57,6 +60,7 @@ const commentValidators = [
     }
 ];
 
+//Create post schema
 const postSchema = new Schema({
     title: {type: String, required: true, validate: titleValidators},
     body: {type: String, required: true, validate: bodyValidators},
@@ -72,4 +76,5 @@ const postSchema = new Schema({
     }]
 });
 
+//export the post schema
 module.exports = mongoose.model('Post', postSchema);

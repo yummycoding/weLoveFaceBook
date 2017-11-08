@@ -3,6 +3,7 @@ mongoose.Promise = global.Promise;
 const bcrypt = require('bcrypt-nodejs');
 const config = require('../config/database');
 
+//Check if the length of email is valid
 let emailLengthChecker = (email) => {
     if (!email) {
         return false;
@@ -15,6 +16,7 @@ let emailLengthChecker = (email) => {
     }
 };
 
+//Check if the format of email is valid
 let validEmailChecker = (email) => {
     if (!email) {
         return false;
@@ -35,6 +37,7 @@ const emailValidators = [
     }
 ];
 
+//Check if the length of username is valid
 let usernameLengthChecker = (username) => {
     if (!username) {
         return false;
@@ -67,6 +70,7 @@ const usernameValidators = [
     }
 ];
 
+//Check if your password is safe
 let passwordLengthChecker = (password) => {
     if (!password) {
         return false;
@@ -147,6 +151,7 @@ const UserSchema = mongoose.Schema({
     }
 });
 
+//middleware
 UserSchema.pre('save', function(next){
     if (!this.isModified('password')){
         return next();
@@ -158,11 +163,12 @@ UserSchema.pre('save', function(next){
     });
 });
 
+//compare the password with the hashed password
 UserSchema.methods.comparePassword = function(password) {
     return bcrypt.compareSync(password, this.password);
 };
 
-
+//export the userschema
 const User = module.exports = mongoose.model('User', UserSchema);
 
 module.exports.getUserById = function(id, callback) {
