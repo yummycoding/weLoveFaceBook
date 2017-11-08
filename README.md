@@ -2,13 +2,9 @@
 
 This project was generated with MongoDB, Express, Angular2, Node.js.
 
-- [MongoDB](https://www.mongodb.org/) - MongoDB is the leading NoSQL database, empowering businesses to be more agile and scalable
-- [Express](http://expressjs.com/) - Express is a minimal and flexible node.js web application framework, providing a robust set of features for building single and multi-page, and hybrid web applications
-- [AngularJS](https://angularjs.org/) - based framework. -AngularJS lets you extend HTML vocabulary for your application. The resulting environment is extraordinarily expressive, readable, and quick to develop
-- [Node.js](http://www.nodejs.org/) - Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications
-
 **Table of Contents**
 
+- [MEAN](#mean)
 - [Installation](#installation)
   - [Node v6.11.2](#node-v6.11.2)
   - [NPM global dependencies](#npm-global-dependencies)
@@ -19,6 +15,13 @@ This project was generated with MongoDB, Express, Angular2, Node.js.
 - [Contributors](#contributors)
 - [Contact](#contact)
 - [Licence](#licence)
+
+# MEAN
+
+- [MongoDB](https://www.mongodb.org/) - MongoDB is the leading NoSQL database, empowering businesses to be more agile and scalable
+- [Express](http://expressjs.com/) - Express is a minimal and flexible node.js web application framework, providing a robust set of features for building single and multi-page, and hybrid web applications
+- [AngularJS](https://angularjs.org/) - based framework. -AngularJS lets you extend HTML vocabulary for your application. The resulting environment is extraordinarily expressive, readable, and quick to develop
+- [Node.js](http://www.nodejs.org/) - Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications
 
 # Installation
 
