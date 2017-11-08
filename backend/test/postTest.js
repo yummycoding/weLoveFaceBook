@@ -121,7 +121,7 @@ describe('Test the comment API', function(){
         .end(function(err, res){
             res.status.should.equal(200);
             res.body.success.should.equal(false);
-            res.body.message.should.equal('User not found.');
+            res.body.message.should.equal('Post not found.');
             done();
         });
     });
