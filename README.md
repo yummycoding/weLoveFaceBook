@@ -79,6 +79,7 @@ npm install
 For any questions, ideas for improvement use [click here](https://github.com/yummycoding/weLoveFaceBook/issues/new).
 
 # Contributors
+Zhuoru Li, You Zhou, Junhao Zhang, Zhenqian Guo
 
 # Contact
 
