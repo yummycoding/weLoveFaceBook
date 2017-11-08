@@ -4,8 +4,8 @@ import {} from 'jasmine';
 
 describe('Sign up:', () => {
   let signuppage: SignUpPage;
-  var newusername = "e2etest4";
-  var newemail =    "e2etest4@ufl.edu";
+  var newusername = "e2etest9";
+  var newemail =    "e2etest9@ufl.edu";
   var newpassword = "Admin$$$1";
 
   beforeEach(() => {

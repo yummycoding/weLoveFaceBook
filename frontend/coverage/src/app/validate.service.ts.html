@@ -20,14 +20,14 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">87.5% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>14/16</span>
+        <span class='fraction'>16/16</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">33.33% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>6/18</span>
+        <span class='fraction'>18/18</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>5/5</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">85.71% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>12/14</span>
+        <span class='fraction'>14/14</span>
       </div>
     </div>
   </div>
@@ -92,7 +92,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -104,24 +104,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -133,19 +133,19 @@ export class ValidateService {
   constructor() { }
 &nbsp;
   validateRegister(user) {
-    <span class="missing-if-branch" title="else path not taken" >E</span>if (user.nickname === undefined ||
+    if (user.nickname === undefined ||
         user.nickname === '' ||
-<span class="branch-2 cbranch-no" title="branch not covered" >        user.email === undefined </span>||
-<span class="branch-3 cbranch-no" title="branch not covered" >        user.email === '' </span>||
-<span class="branch-4 cbranch-no" title="branch not covered" >        user.username === undefined </span>||
-<span class="branch-5 cbranch-no" title="branch not covered" >        user.username === '' </span>||
-<span class="branch-6 cbranch-no" title="branch not covered" >        user.password === undefined </span>||
-<span class="branch-7 cbranch-no" title="branch not covered" >        user.password === '' </span>||
-<span class="branch-8 cbranch-no" title="branch not covered" >        user.dob === undefined </span>||
-<span class="branch-9 cbranch-no" title="branch not covered" >        user.dob === '')</span> {
+        user.email === undefined ||
+        user.email === '' ||
+        user.username === undefined ||
+        user.username === '' ||
+        user.password === undefined ||
+        user.password === '' ||
+        user.dob === undefined ||
+        user.dob === '') {
       return false;
     } else {
-<span class="cstat-no" title="statement not covered" >      return true;</span>
+      return true;
     }
   }
 &nbsp;
@@ -156,13 +156,13 @@ export class ValidateService {
   }
 &nbsp;
   validateLogin(user) {
-    <span class="missing-if-branch" title="else path not taken" >E</span>if (user.username === undefined ||
+    if (user.username === undefined ||
         user.username === '' ||
-<span class="branch-2 cbranch-no" title="branch not covered" >        user.password === undefined </span>||
-<span class="branch-3 cbranch-no" title="branch not covered" >        user.password === '')</span> {
+        user.password === undefined ||
+        user.password === '') {
       return false;
     } else {
-<span class="cstat-no" title="statement not covered" >      return true;</span>
+      return true;
     }
   }
 }
@@ -172,7 +172,7 @@ export class ValidateService {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Nov 06 2017 23:35:23 GMT-0500 (EST)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Nov 07 2017 15:15:50 GMT-0500 (EST)
 </div>
 </div>
 <script src="../../prettify.js"></script>

@@ -67,6 +67,11 @@ describe('LoginFormComponent', () => {
       done();
     });
   });
+
+  // it('signinUser() should signin', () => {
+  //   expect(component.loginUser(event)).toBeUndefined();
+  // });
+
 });
 // describe('LoginFormComponent', () => {
   

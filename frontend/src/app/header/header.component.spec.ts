@@ -35,6 +35,15 @@ describe('HeaderComponent', () => {
   it('should be created', () => {
     expect(component).toBeTruthy();
   });
+
+  it('logoutUser()should return to login page', (): void => {
+    expect(component.logoutUser()).toBeUndefined();
+  });
+
+  it('setUserProfile()should return to profile page', (): void => {
+    expect(component.setUserProfile()).toBeUndefined();
+    expect(mockRouter.navigate).toHaveBeenCalledWith(['/userprofile']);
+  });
 });
 // describe('HeaderComponent', () => {
   

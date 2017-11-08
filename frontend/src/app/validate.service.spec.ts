@@ -23,9 +23,21 @@ describe('ValidateService', () => {
 
   it('validateRegister() should check register', inject([ValidateService], (service: ValidateService) => {
     expect(service.validateRegister(user)).toBeFalsy();
+    let userTwo = new User();
+    userTwo.nickname = "123",
+    userTwo.email = "123",
+    userTwo.username = "123",
+    userTwo.password = "123",
+    userTwo.dob = "123"
+    expect(service.validateRegister(userTwo)).toBeTruthy();
+ 
   }));
 
   it('validateLogin() should check login', inject([ValidateService], (service: ValidateService) => {
     expect(service.validateLogin(user)).toBeFalsy();
+    let userTwo = new User();
+    userTwo.username = "123";
+    userTwo.password = "123";
+    expect(service.validateLogin(userTwo)).toBeTruthy();
   }));
 });

@@ -30,9 +30,9 @@ export class HomeComponent implements OnInit {
   pageSizeOptions = [1, 2, 5, 10];
   
   constructor(private userService: UserService, private postService: PostService, private http: Http, public dialog: MdDialog) {
-    this.http.get('assets/mock-data-home/data.json')
-    .map(response => response.json().screenshots)
-    .subscribe(res => this.spaceScreens = res);
+    // this.http.get('assets/mock-data-home/data.json')
+    // .map(response => response.json().screenshots)
+    // .subscribe(res => this.spaceScreens = res);
   }
 
   ngOnInit() {
@@ -86,14 +86,6 @@ export class HomeComponent implements OnInit {
         console.log("Fail to like -- err msg from home component ",data.message)
       }
     });
-  }
-
-  commentMe(i) {
-
-  }
-
-  shareMe(i) {
-
   }
 
   pageChange(event) {

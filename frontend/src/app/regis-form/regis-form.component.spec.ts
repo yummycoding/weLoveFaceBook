@@ -64,6 +64,10 @@ describe('RegisFormComponent', () => {
     });
   });
 
+   it('signupUser() should sign up', () => {
+    expect(component.signupUser()).toBeFalsy();
+  });
+
 });
 // describe('RegisFormComponent', () => {
   

@@ -57,7 +57,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 var AppComponent = (function () {
     function AppComponent() {
-        this.title = 'app';
     }
     return AppComponent;
 }());
@@ -77,6 +76,7 @@ AppComponent = __decorate([
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* unused harmony export appRoutes */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__("../../../platform-browser/@angular/platform-browser.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
@@ -108,6 +108,7 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__user_user_edit_user_edit_component__ = __webpack_require__("../../../../../src/app/user/user-edit/user-edit.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__user_user_profile_user_profile_component__ = __webpack_require__("../../../../../src/app/user/user-profile/user-profile.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__post_service__ = __webpack_require__("../../../../../src/app/post.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__helpcenter_helpcenter_component__ = __webpack_require__("../../../../../src/app/helpcenter/helpcenter.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -152,6 +153,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 // make post
 
+
 var appRoutes = [
     {
         path: '',
@@ -169,6 +171,10 @@ var appRoutes = [
     {
         path: 'userprofile',
         component: __WEBPACK_IMPORTED_MODULE_26__user_user_profile_user_profile_component__["a" /* UserProfileComponent */]
+    },
+    {
+        path: 'helpcenter',
+        component: __WEBPACK_IMPORTED_MODULE_28__helpcenter_helpcenter_component__["a" /* HelpcenterComponent */]
     },
 ];
 var AppModule = (function () {
@@ -195,7 +201,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_25__user_user_edit_user_edit_component__["a" /* UserEditComponent */],
             __WEBPACK_IMPORTED_MODULE_26__user_user_profile_user_profile_component__["a" /* UserProfileComponent */],
             __WEBPACK_IMPORTED_MODULE_19__friendlist_friendlist_component__["a" /* AddFriendComponent */],
-            __WEBPACK_IMPORTED_MODULE_20__home_home_component__["a" /* AddCommentComponent */]
+            __WEBPACK_IMPORTED_MODULE_20__home_home_component__["a" /* AddCommentComponent */],
+            __WEBPACK_IMPORTED_MODULE_28__helpcenter_helpcenter_component__["a" /* HelpcenterComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* RouterModule */].forRoot(appRoutes),
@@ -290,7 +297,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".post-card {\n    width: 600px;\n  }\n  \n.post-image {\n  background-image: url(" + __webpack_require__("../../../../../src/assets/headerimage/head6.jpg") + ");\n  /* background-image: spaceScreen.headerimg; */\n  background-size: cover;\n}", ""]);
+exports.push([module.i, ".post-card {\n    width: 600px;\n  }\n  \n.post-image {\n  background-image: url(" + __webpack_require__("../../../../../src/assets/headerimage/head6.jpg") + ");\n  /* background-image: spaceScreen.headerimg; */\n  background-size: cover;\n}\n", ""]);
 
 // exports
 
@@ -303,7 +310,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/dashboard/dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<md-tab-group> \n  <md-tab label=\"Home\">\n    <app-home [curUsername]=\"curUsername\"></app-home>\n  </md-tab>\n  <md-tab label=\"My Post\">\n    <app-selfpost [curUsername]=\"curUsername\"></app-selfpost>\n  </md-tab>\n  <md-tab label=\"Friends List\">\n    <app-friendlist></app-friendlist>\n  </md-tab>\n  <!-- <md-tab label=\"Settings\">\n    <div id=\"page-padding\">\n      <h1>Settings</h1>\n      <p>A bunch of useful settings can be done here</p>\n      <label class=\"label-title\">Number of news displayed</label>\n      <md-slider class=\"md-slider-horizontal\" showTicks=\"true\" max=\"100\" min=\"0\" step=\"1\" thumbLabel=\"true\" value=\"18\"></md-slider>\n      <md-slide-toggle>Some settings</md-slide-toggle>\n    </div>\n  </md-tab> -->\n</md-tab-group>\n\n<h5 id=\"location\">Welcome to Gatorbook!</h5>    <!-- this line used for e2e testing, don't delete -->\n\n\n<!-- <p>\n  Welcome to FitNex!\n  <a routerLink=\"/\">Go Back</a>\n</p> -->\n"
+module.exports = "<md-tab-group> \n  <md-tab label=\"Home\">\n    <app-home [curUsername]=\"curUsername\"></app-home>\n  </md-tab>\n  <md-tab label=\"My Post\">\n    <app-selfpost [curUsername]=\"curUsername\"></app-selfpost>\n  </md-tab>\n  <md-tab label=\"Friends List\" id=\"friendlist\">\n    <app-friendlist></app-friendlist>\n  </md-tab>\n  <!-- <md-tab label=\"Settings\">\n    <div id=\"page-padding\">\n      <h1>Settings</h1>\n      <p>A bunch of useful settings can be done here</p>\n      <label class=\"label-title\">Number of news displayed</label>\n      <md-slider class=\"md-slider-horizontal\" showTicks=\"true\" max=\"100\" min=\"0\" step=\"1\" thumbLabel=\"true\" value=\"18\"></md-slider>\n      <md-slide-toggle>Some settings</md-slide-toggle>\n    </div>\n  </md-tab> -->\n</md-tab-group>\n\n<h5 id=\"location\">Welcome to Gatorbook!</h5>    <!-- this line used for e2e testing, don't delete -->\n\n\n<!-- <p>\n  Welcome to FitNex!\n  <a routerLink=\"/\">Go Back</a>\n</p> -->\n"
 
 /***/ }),
 
@@ -426,7 +433,7 @@ FooterComponent = __decorate([
 /***/ "../../../../../src/app/friendlist/addFriend.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h1 md-dialog-title>New Friend Request</h1>\n<!-- Hi {{data.name}} -->\n<div md-dialog-content>\n  <p>Friend's name:</p>\n  <md-form-field>\n    <input placeholder= {{data.name}} mdInput tabindex=\"1\" [(ngModel)]=\"data.friendName\">\n  </md-form-field>\n  <p>Friend's email:</p>\n  <md-form-field>\n    <input placeholder= \"Enter the email\" mdInput tabindex=\"2\" [(ngModel)]=\"data.friendEmail\">\n  </md-form-field>\n</div>\n<div md-dialog-actions>\n  <button md-button [md-dialog-close]=\"data\" tabindex=\"3\" color=\"alert\">Send</button>\n  <button md-button (click)=\"onNoClick()\" tabindex=\"-1\" color=\"primary\">Cancel</button>\n</div>"
+module.exports = "<h1 md-dialog-title>New Friend Request</h1>\n<!-- Hi {{data.name}} -->\n<div md-dialog-content>\n  <p>Friend's name:</p>\n  <md-form-field>\n    <input placeholder= {{data.name}} mdInput tabindex=\"1\" name=\"friendnametoadd\" [(ngModel)]=\"data.friendName\">\n  </md-form-field>\n  <p>Friend's email:</p>\n  <md-form-field>\n    <input placeholder= \"Enter the email\" mdInput tabindex=\"2\" name=\"friendemailtoadd\" [(ngModel)]=\"data.friendEmail\">\n  </md-form-field>\n</div>\n<div md-dialog-actions>\n  <button md-button [md-dialog-close]=\"data\" tabindex=\"3\" color=\"alert\" id=\"sendbtnforaddingfriend\">Send</button>\n  <button md-button (click)=\"onNoClick()\" tabindex=\"-1\" color=\"primary\" id=\"cancelbtnforaddingfriend\">Cancel</button>\n</div>"
 
 /***/ }),
 
@@ -451,7 +458,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/friendlist/friendlist.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<md-form-field style=\"width: 300px\">\n    <input mdInput [(ngModel)]=\"name\" placeholder=\"Search\">\n</md-form-field>\n<button md-raised-button (click)=\"openDialog()\" color=\"primary\" style=\"margin-left: 15px\">Add a new friend</button>\n<button color =\"primary\" (click)=\"refreshFriendlist()\" md-raised-button>Refresh</button>\n<md-list>\n  <md-list-item *ngFor=\"let friend of myFriends\">\n    <md-icon md-list-icon>face</md-icon>\n    <p md-line>{{friend.nickname}}</p>\n    <span class=\"spacer\"></span>\n    <button md-icon-button (click)=\"deleteFriend(friend)\">\n      <i class=\"material-icons\">clear</i>  \n    </button>\n  </md-list-item>\n</md-list>\n\n<!-- <md-list>\n  <h3 md-subheader>A</h3>\n  <md-list-item *ngFor=\"let nameA of A\">\n    <md-icon md-list-icon>face</md-icon>\n    <p md-line>{{nameA.name}}</p>\n  </md-list-item>\n  <md-divider></md-divider>\n  <h3 md-subheader>B</h3>\n  <md-list-item *ngFor=\"let nameB of B\">\n    <md-icon md-list-icon>face</md-icon>\n    <p md-line>{{nameB.name}}</p>\n  </md-list-item>\n</md-list> -->\n"
+module.exports = "<md-form-field style=\"width: 300px\">\n    <input mdInput [(ngModel)]=\"name\" placeholder=\"Search\">\n</md-form-field>\n<button md-raised-button (click)=\"openDialog()\" color=\"primary\" style=\"margin-left: 15px\" id=\"addfriend\">Add a new friend</button>\n<button color =\"primary\" (click)=\"refreshFriendlist()\" md-raised-button>Refresh</button>\n<md-list>\n  <md-list-item *ngFor=\"let friend of myFriends\">\n    <md-icon md-list-icon>face</md-icon>\n    <p md-line>{{friend.nickname}}</p>\n    <span class=\"spacer\"></span>\n    <button md-icon-button (click)=\"deleteFriend(friend)\">\n      <i class=\"material-icons\">clear</i>  \n    </button>\n  </md-list-item>\n</md-list>\n\n<!-- <md-list>\n  <h3 md-subheader>A</h3>\n  <md-list-item *ngFor=\"let nameA of A\">\n    <md-icon md-list-icon>face</md-icon>\n    <p md-line>{{nameA.name}}</p>\n  </md-list-item>\n  <md-divider></md-divider>\n  <h3 md-subheader>B</h3>\n  <md-list-item *ngFor=\"let nameB of B\">\n    <md-icon md-list-icon>face</md-icon>\n    <p md-line>{{nameB.name}}</p>\n  </md-list-item>\n</md-list> -->\n"
 
 /***/ }),
 
@@ -655,7 +662,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/header/header.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<header>\n  <md-toolbar color=\"primary\">\n      <span style=\"text-align:center;\">GatorBook</span>\n      <span class=\"spacer\"></span>\n      <button md-icon-button [mdMenuTriggerFor]=\"menu\" id=\"menubtn\">\n          <i class=\"material-icons\">account_circle</i>  \n      </button>\n      <md-menu #menu=\"mdMenu\">\n          <button md-menu-item>\n              <md-icon>lightbulb_outline</md-icon>\n              <span>Notifications</span>\n          </button>\n          <button md-menu-item id=\"userprofilebtn\" (click)=\"setUserProfile($event)\">\n              <md-icon>person_outline</md-icon>\n              <span>Profile</span>\n          </button>\n          <button md-menu-item>\n              <md-icon>settings</md-icon>\n              <span>Setting</span>\n          </button>\n          <button md-menu-item id=\"logout_header\" (click)=\"logoutUser($event)\">\n              <md-icon>power_settings_new</md-icon>\n              <span>Log Out</span>\n          </button>\n          <!-- <button md-menu-item>\n              <md-icon>notifications_off</md-icon>\n              <span>Disable alerts</span>\n          </button> -->\n      </md-menu>\n  </md-toolbar>\n</header>\n"
+module.exports = "<header>\n  <md-toolbar color=\"primary\">\n      <span style=\"text-align:center;\">GatorBook</span>\n      <span class=\"spacer\"></span>\n      <ul class=\"nav navbar-nav navbar-left\" >\n        <span>\n            <a align=\"right\" href=\"/helpcenter\"><img width=\"80\" src=\"../assets/headerimage/helpcenter1.png\"></a>\n        </span>\n      </ul> \n      <button md-icon-button [mdMenuTriggerFor]=\"menu\" id=\"menubtn\">\n          <i class=\"material-icons\">account_circle</i>  \n      </button>\n      <md-menu #menu=\"mdMenu\">\n          <button md-menu-item>\n              <md-icon>lightbulb_outline</md-icon>\n              <span>Notifications</span>\n          </button>\n          <button md-menu-item id=\"userprofilebtn\" (click)=\"setUserProfile()\">\n              <md-icon>person_outline</md-icon>\n              <span>Profile</span>\n          </button>\n          <button md-menu-item>\n              <md-icon>settings</md-icon>\n              <span>Setting</span>\n          </button>\n          <button md-menu-item id=\"logout_header\" (click)=\"logoutUser()\">\n              <md-icon>power_settings_new</md-icon>\n              <span>Log Out</span>\n          </button>\n          <!-- <button md-menu-item>\n              <md-icon>notifications_off</md-icon>\n              <span>Disable alerts</span>\n          </button> -->\n      </md-menu>\n  </md-toolbar>\n</header>\n"
 
 /***/ }),
 
@@ -686,11 +693,11 @@ var HeaderComponent = (function () {
     }
     HeaderComponent.prototype.ngOnInit = function () {
     };
-    HeaderComponent.prototype.setUserProfile = function (e) {
+    HeaderComponent.prototype.setUserProfile = function () {
         this.router.navigate(['/userprofile']);
     };
-    HeaderComponent.prototype.logoutUser = function (e) {
-        e.preventDefault();
+    HeaderComponent.prototype.logoutUser = function () {
+        //e.preventDefault();
         // console.log(e);
         this.user.setUserLoggedOut();
         // console.log('user logged in? ', this.user.getUserLoggedIn());
@@ -713,10 +720,71 @@ var _a, _b;
 
 /***/ }),
 
+/***/ "../../../../../src/app/helpcenter/helpcenter.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ":host {\n    -webkit-box-flex: 1;\n        -ms-flex-positive: 1;\n            flex-grow: 1;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n}\n  \n.example-full-width {\n    width: 100%;\n}\n.helper-title {\n    font-weight:bold;\n    font-size: 40px;\n    margin:1.5em 0;\n    display:block;\n}\n.button-style {\n    margin:2.5em 0;\n}\n.gender-style {\n    margin:1.5em 0;\n}\n.alert {\n    padding: 20px;\n    /* background-color: #f44336; Red */\n    color: red;\n    margin-bottom: 15px;\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/helpcenter/helpcenter.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<table>\n    <tr>\n      <div><h1 md-dialog-title>Help center</h1></div>\n      <div style=\"text-align:center\"><img src=\"../assets/images-home/helpcenter.png\" width=\"80%\"></div>\n    <span><h3>Questions You May Have</h3></span>\n    </tr>\n    <tr>\n    <div><ul ><h3>\n      </h3><li >\n        \n          What names are allowed on Gatorbook?\n        </li>\n        <li >\n           How do I choose what I get notifications about?\n          </li><li>Where can I find my settings?\n          </li>\n          <li>How do I change or reset my password?\n          </li>        \n          <li>How do I change or reset my E－mail?\n          </li>\n        </ul>\n      </div>\n      </tr>\n      <tr>\n          <h3>Quick start using Gatorbook</h3>\n          <p>Creating an Account\n          To create a Gatorbook account:\n          Go to homepage, near the bottle of the page, and click the Sign Up button.\n          Enter your name, email, password, date of birth and gender.\n          Click Create an Account.\n          Then you can sign in and use Gatorbook. While everyone experiences Gatorbook differently, here are a few areas that might interest you to help you get started.You can find your friends and start explore the wonderful Gatorbook world!</p>\n      </tr>\n      <tr>\n          <h3>How to sign up with Gatorbook</h3>\n          \n          <p>To create an account on the web:\n          \n          Go to http://twitter.com and find the sign up box, or go directly to https://twitter.com/signup.\n          Enter your full name, phone number, and a password.\n          Click Sign up for Twitter.\n          In order to verify your phone number, we will send you an SMS text message with a code. Enter the verification code in the box provided. Learn more about having a phone number associated with your account here. \n          Once you've clicked Sign up for Twitter, you can select a username (usernames are unique identifiers on Twitter) — type your own or choose one we've suggested. We'll tell you if the username you want is available.\n          Double-check your name, phone number, password, and username.\n          Click Create my account.You may be asked to complete a Captcha to let us know that you're human.</p>\n          \n          \n          \n          <h3>What names are allowed on Gatorbook?</h3>\n          <p>Gatorbook is a community where everyone uses the name they go by in everyday life. This makes it so that you always know who you're connecting with and helps keep our community safe.\n          Your name can't include:\n          Symbols, numbers, unusual capitalization, repeating characters or punctuation\n          Characters from multiple languages\n          Titles of any kind (example: professional, religious)\n          Words or phrases in place of a name\n          Offensive or suggestive words of any kind\n          If your name follows our standards and you're still having trouble changing it, find out why.\n          Other things to keep in mind:\n          The name on your profile should be the name that your friends call you in everyday life. This name should also appear on an ID or document from our ID list.\n          Nicknames can be used as a first or middle name if they're a variation of your authentic name (like Bob instead of Robert).\n          You can also list another name on your account (example: maiden name, nickname, professional name).\n          Profiles are for individual use only. You can create a Page for a business, organization or idea.\n          Pretending to be anything or anyone isn't allowed.</p>\n          \n          <h3>Where can I find my settings?</h3>\n          \n          <p>To find your settings, click  in the top right corner of your screen and select Settings. From here, you can select the option in the left sidebar that contains the settings you want to adjust:\n          General: Edit the basics like your name, email or password\n          Security: Turn on alerts and approvals to keep your account secure\n          Privacy: Adjust who can see your stuff and who can look you up\n          Timeline and Tagging: Set who can see your timeline and how to manage photo tagging\n          Blocking: Manage who and what you block\n          Language: Select the language that you want to use for Gatorbook.</p>\n          \n          \n          <h3>How do I change or reset my password?</h3>\n          <p>To change your password on Gatorbook if you're already logged in:\n          Click  in the top right corner of any Gatorbook page and select Settings.\n          Click Security and Login.\n          Click Edit next to Change Password.\n          Click Save Changes.\n          If you're logged in but have forgotten your password, follow the steps under Change Your Password then click Forgot your password? and follow the steps to reset it. Keep in mind that you'll need access to the email associated with your account.\n          Reset Your Password\n          To reset your password if you're not logged in to Gatorbook:\n          Go to the Find Your Account Page.\n          Type the email, mobile phone number, full name or username associated with your account, then click Search.\n          Follow the on-screen instructions.\n          If you're still having trouble, we can help you recover your account.</p>\n          \n          <h3>How can I make my Gatorbook password strong?</h3>\n          <p>When you create a new password, make sure that it's at least 6 characters long. Try to use a complex combination of numbers, letters and punctuation marks.\n          If you see a message letting you know the password you entered isn't strong enough, try mixing together uppercase and lowercase letters. You can also make the password more complex by making it longer with a phrase or series of words that you can easily remember, but no one else knows.\n          Keep in mind that your Gatorbook password should also be different than the passwords you use to log into other accounts, like your email or bank account.</p>\n          \n          <h3>Friending</h3>\n          \n          <p>You should send friend requests to friends, family and other people on Gatorbook you know and trust. You can add a friend by searching for them and sending them a friend request. If they accept, you automatically follow that person, and they automatically follow you — which means that you may see each other's posts in News Feed.\n          \n          If you'd like to see updates from people you find interesting but don't know personally, like a journalist or celebrity, try following them instead.</p>\n          <h3>Your Home Page</h3>\n          <p>Your home page is what you see when you log into Gatorbook. It includes your News Feed, the constantly updating list of posts from friends, Pages and other connections you've made. You can react to things you see or search for people and topics that matter to you. Learn how to control what you see in News Feed.</p>\n          \n          \n          <h3>Like and React to Posts</h3>\n          <p>Clicking Like below a post on Gatorbook is an easy way to let people know that you enjoy it without leaving a comment. Just like a comment, the fact that you liked the post is visible below it.\n          For example, if you click Like below a friend's video:\n          People who can see the video will be able to see that you liked it.</p>\n          \n          <h3>How do I react to a post or comment?</h3>\n          <p>Liking tells your friends that you enjoyed their post or comment, whereas reacting allows you to specify your response.\n          To react to a post or comment, hover over Like and choose a reaction. The most popular reactions appear below the post or comment as icons (ex: ). Keep in mind that you can only leave one reaction per post or comment.\n          To use the pride reaction, Like the official LGBTQ@Gatorbook page.\n          Learn how to change or remove your reaction to a post or comment.</p>\n          <h3>How do I see who's reacted to my post or comment?</h3>\n          <p>To see who's reacted to your post or comment, click the icons (ex: ) directly below your post or comment, and then select an option at the top to see who chose that reaction.</p>\n          \n          \n          \n          <h3>What can I search for on Gatorbook?</h3>\n          <p>You can search for people, posts and events on Gatorbook. Start searching with keywords (ex: Caroline wedding) and you'll see a list of results that you can filter. \n          You can also combine phrases together, or add things like locations, times, likes and interests to get more specific (ex: friends who live in San Francisco).</p>\n          \n          \n          <h3>Managing Your Account</h3>\n          <h3>Login and Password</h3>\n          \n          <p>If you know your current password, you can change it. When you create a new password, make sure it's at least 6 characters long and uses a combination of numbers, uppercase and lowercase letters and punctuation to make it strong. Avoid including your name or common words. Your password should be difficult to guess.\n          \n          If you're having trouble changing your password, learn how to fix the problem.</p>\n          \n          \n          <h3>Change Your Password</h3>\n          <p>How do I change or reset my password?\n          Change Your Password\n          To change your password on Gatorbook if you're already logged in:\n          Click in the top right corner of any Gatorbook page and select Settings.\n          Click Security and Login.\n          Click Edit next to Change Password.\n          Click Save Changes.\n          Keep in mind that you'll need access to the email associated with your account.\n          Reset Your Password\n          To reset your password if you're not logged in to Gatorbook:\n          Go to the Find Your Account Page.\n          Follow the on-screen instructions.\n          If you're still having trouble, we can help you recover your account.</p>   \n          \n          <h3>How can I make my Gatorbook password strong?</h3>\n          <p>When you create a new password, make sure that it's at least 6 characters long. Try to use a complex combination of numbers, letters and punctuation marks.\n          If you see a message letting you know the password you entered isn't strong enough, try mixing together uppercase and lowercase letters. You can also make the password more complex by making it longer with a phrase or series of words that you can easily remember, but no one else knows.\n          \n          Keep in mind that your Gatorbook password should also be different than the passwords you use to log into other accounts, like your email or bank account.</p>\n          \n      </tr>\n</table>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/helpcenter/helpcenter.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HelpcenterComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var HelpcenterComponent = (function () {
+    function HelpcenterComponent() {
+    }
+    HelpcenterComponent.prototype.ngOnInit = function () {
+    };
+    return HelpcenterComponent;
+}());
+HelpcenterComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-helpcenter',
+        template: __webpack_require__("../../../../../src/app/helpcenter/helpcenter.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/helpcenter/helpcenter.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], HelpcenterComponent);
+
+//# sourceMappingURL=helpcenter.component.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/home/addComment.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h1 md-dialog-title>Comment Something..</h1>\n<div md-dialog-content>\n    <md-form-field class=\"textwidth\">\n        <input mdInput [(ngModel)]=\"data.commentContent\" #message maxlength=\"200\">\n        <md-hint align=\"end\">{{message.value.length}} / 200</md-hint>\n      </md-form-field>\n</div>\n<div md-dialog-actions>\n  <button md-button [md-dialog-close]=\"data\" tabindex=\"3\" color=\"alert\">Send</button>\n  <button md-button (click)=\"onNoClick()\" tabindex=\"-1\" color=\"primary\">Cancel</button>\n</div>"
+module.exports = "<h1 md-dialog-title>Comment Something..</h1>\n<div md-dialog-content>\n    <md-form-field class=\"textwidth\">\n        <input name=\"commentinput\" mdInput [(ngModel)]=\"data.commentContent\" #message maxlength=\"200\">\n        <md-hint align=\"end\">{{message.value.length}} / 200</md-hint>\n      </md-form-field>\n</div>\n<div md-dialog-actions>\n  <button md-button id=\"commentsendbtn\" [md-dialog-close]=\"data\" tabindex=\"3\" color=\"alert\">Send</button>\n  <button md-button (click)=\"onNoClick()\" tabindex=\"-1\" color=\"primary\">Cancel</button>\n</div>"
 
 /***/ }),
 
@@ -741,7 +809,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n<div style=\"float:left\">\n  <div class=\"make-post\">\n    <md-expansion-panel>\n      <md-expansion-panel-header>\n        <md-panel-title>\n          Make Post\n        </md-panel-title>\n        <md-panel-description>\n          What's on your mind?\n        </md-panel-description>\n      </md-expansion-panel-header>\n      <md-form-field class=\"textwidth\">\n        <!-- <input mdInput #message maxlength=\"256\" placeholder=\"Say something\">\n      <md-hint align=\"start\"><strong>Don't disclose personal info</strong> </md-hint> -->\n        <input mdInput [(ngModel)]=\"post.body\" #message maxlength=\"256\">\n        <md-hint align=\"end\">{{message.value.length}} / 256</md-hint>\n      </md-form-field>\n      <div class=\"input\">\n        <input class=\"ng-hide\" id=\"input-file-id\" multiple type=\"file\" #inputFile hidden/>\n        <button color=\"primary\" id=\"selectFile\" md-raised-button>\n          <Label for=\"input-file-id\">\n            <i class=\"material-icons md-18 icon-align\">insert_photo</i>\n            Photo\n          </Label>\n        </button>\n        <button color=\"warn\" (click)=\"sendPost()\" md-raised-button>Post</button>\n      </div>\n    </md-expansion-panel>\n  </div>\n\n  <!-- post information -->\n  <!-- <md-card class=\"post-card\" *ngFor=\"let spaceScreen of spaceScreens | slice: [start] : [end]; let i = index\">\n    <md-card-header>\n      <div md-card-avatar class=\"post-image\"></div>\n      <md-card-title>{{spaceScreen.name}}</md-card-title>\n      <md-card-subtitle>{{spaceScreen.remark}}</md-card-subtitle>\n    </md-card-header>\n    <img md-card-image src=\"{{spaceScreen.img}}\" alt=\"post photo\">\n    <md-card-content>\n      <p>{{spaceScreen.description}}</p>\n    </md-card-content>\n    <md-card-actions>\n      <button md-button (click)=\"likeMe(i)\">\n        <i class=\"material-icons md-18\" [class.red-color]=\"spaceScreen.liked == '1'\">favorite</i>\n      </button>\n      <button md-button (click)=\"commentMe(i)\">\n        <i class=\"material-icons md-18\">insert_comment</i>\n      </button>\n      <button md-button (click)=\"shareMe(i)\">\n        <i class=\"material-icons md-18\">share</i>\n      </button>\n    </md-card-actions>\n  </md-card> -->\n  <button class=\"make-post\" color =\"primary\" (click)=\"refreshSelfposts($event)\" md-raised-button>\n    <i class=\"material-icons\">refresh</i>\n  </button>\n  <md-card class=\"post-card\" *ngFor=\"let homePost of homePosts | slice: [start] : [end]; let i = index\">\n    <md-card-header>\n      <div md-card-avatar class=\"post-image\"></div>\n      <md-card-title>{{homePost.createdBy}}</md-card-title>\n      <md-card-subtitle>{{homePost.createdAt}}</md-card-subtitle>\n    </md-card-header>\n    <md-card-content>\n      <p>{{homePost.body}}</p>\n      <!-- comment section -->\n      <div *ngIf=\"homePost.comments.length > 0\">\n        <span>\n          <i class=\"material-icons\">mode_comment</i>\n        </span>\n        <span>\n          <md-list class=\"comment-section\">\n            <md-list-item class=\"comment-font\" *ngFor=\"let comment of homePost.comments\">\n              <div style=\"font-weight: bold\">\n                {{comment.commentator}}: \n              </div> \n              {{comment.comment}}\n              <span class=\"spacer\"></span>\n              <div *ngIf=\"comment.commentator == curUsername\">\n                <button md-icon-button (click)=\"deleteComment(comment,i)\">\n                  <i class=\"material-icons\">clear</i>  \n                </button>\n              </div>\n            </md-list-item>\n          </md-list>\n          </span>\n      </div>\n    </md-card-content>\n    \n    \n    <!-- post operation -->\n    <md-card-actions>\n      <button md-button (click)=\"likeCancelLikePost(i)\">\n        <span><i class=\"material-icons md-18\" [class.red-color]=\"homePost.likedBy.indexOf(curUsername) >= 0\">favorite</i></span>\n        <span class=\"fill-space\"></span>\n        <span>{{homePost.likes}}</span>\n      </button>\n      <button md-button (click)=\"openDialog(i)\">\n        <i class=\"material-icons md-18\">insert_comment</i>\n      </button>\n      <button md-button>\n        <i class=\"material-icons md-18\">share</i>\n      </button>\n      <md-card-content>\n          <p class=\"like-font\">Liked by: {{homePost.likedBy}}</p>\n      </md-card-content>\n    </md-card-actions>\n  </md-card>\n\n  <!-- choose post amount to display in each page -->\n  <div class=\"make-post\">\n    <md-paginator [length]=\"homePosts.length\" [pageSize]=\"pageSize\" [pageSizeOptions]=\"pageSizeOptions\" (page)=\"pageEvent = $event; pageChange($event)\">\n    </md-paginator>\n  </div>\n</div>\n\n<!-- notification -->\n<div style=\"float:left\">\n  <p class=\"notiTitle\">Notifications</p>\n  <md-card class=\"notification\">Notifications</md-card>\n</div>\n\n</div>"
+module.exports = "<div>\n<div style=\"float:left\">\n  <div class=\"make-post\">\n    <md-expansion-panel>\n      <md-expansion-panel-header id=\"makepost\">\n        <md-panel-title>\n          Make Post\n        </md-panel-title>\n        <md-panel-description>\n          What's on your mind?\n        </md-panel-description>\n      </md-expansion-panel-header>\n      <md-form-field class=\"textwidth\">\n        <!-- <input mdInput #message maxlength=\"256\" placeholder=\"Say something\">\n      <md-hint align=\"start\"><strong>Don't disclose personal info</strong> </md-hint> -->\n        <input mdInput name=\"postinput\" [(ngModel)]=\"post.body\" #message maxlength=\"256\">\n        <md-hint align=\"end\">{{message.value.length}} / 256</md-hint>\n      </md-form-field>\n      <div class=\"input\">\n        <input class=\"ng-hide\" id=\"input-file-id\" multiple type=\"file\" #inputFile hidden/>\n        <button color=\"primary\" id=\"selectFile\" md-raised-button>\n          <Label for=\"input-file-id\">\n            <i class=\"material-icons md-18 icon-align\">insert_photo</i>\n            Photo\n          </Label>\n        </button>\n        <button color=\"warn\" id=\"sendpost\" (click)=\"sendPost()\" md-raised-button>Post</button>\n      </div>\n    </md-expansion-panel>\n  </div>\n\n  <!-- post information -->\n  <!-- <md-card class=\"post-card\" *ngFor=\"let spaceScreen of spaceScreens | slice: [start] : [end]; let i = index\">\n    <md-card-header>\n      <div md-card-avatar class=\"post-image\"></div>\n      <md-card-title>{{spaceScreen.name}}</md-card-title>\n      <md-card-subtitle>{{spaceScreen.remark}}</md-card-subtitle>\n    </md-card-header>\n    <img md-card-image src=\"{{spaceScreen.img}}\" alt=\"post photo\">\n    <md-card-content>\n      <p>{{spaceScreen.description}}</p>\n    </md-card-content>\n    <md-card-actions>\n      <button md-button (click)=\"likeMe(i)\">\n        <i class=\"material-icons md-18\" [class.red-color]=\"spaceScreen.liked == '1'\">favorite</i>\n      </button>\n      <button md-button (click)=\"commentMe(i)\">\n        <i class=\"material-icons md-18\">insert_comment</i>\n      </button>\n      <button md-button (click)=\"shareMe(i)\">\n        <i class=\"material-icons md-18\">share</i>\n      </button>\n    </md-card-actions>\n  </md-card> -->\n  \n  <!-- refresh button -->\n  <button class=\"make-post\" color =\"primary\" (click)=\"refreshSelfposts($event)\" md-raised-button>\n    <i class=\"material-icons\">refresh</i>\n  </button>\n\n  <!-- post content -->\n  <md-card id=\"postcards\" class=\"post-card\" *ngFor=\"let homePost of homePosts | slice: [start] : [end]; let i = index\">\n    <md-card-header>\n      <div md-card-avatar class=\"post-image\"></div>\n      <md-card-title id=\"postauthor\">{{homePost.createdBy}}</md-card-title>\n      <md-card-subtitle>{{homePost.createdAt}}</md-card-subtitle>\n    </md-card-header>\n    <md-card-content>\n      <p id=\"postcontent\">{{homePost.body}}</p>\n      <!-- comment section -->\n      <div id=\"commentssection\" *ngIf=\"homePost.comments.length > 0\">\n        <span>\n          <i class=\"material-icons\">mode_comment</i>\n        </span>\n        <span>\n          <md-list class=\"comment-section\">\n            <md-list-item class=\"comment-font\" id=\"commentsfor\" *ngFor=\"let comment of homePost.comments\">\n              <div id=\"commentator\" style=\"font-weight: bold\">\n                {{comment.commentator}}: \n              </div> \n              {{comment.comment}}\n              <span class=\"spacer\"></span>\n              <div *ngIf=\"comment.commentator == curUsername\">\n                <button md-icon-button (click)=\"deleteComment(comment,i)\">\n                  <i class=\"material-icons\">clear</i>  \n                </button>\n              </div>\n            </md-list-item>\n          </md-list>\n          </span>\n      </div>\n    </md-card-content>\n    <!-- post operation -->\n    <md-card-actions>\n      <button md-button id=\"likebtn\" (click)=\"likeCancelLikePost(i)\">\n        <span><i class=\"material-icons md-18\" [class.red-color]=\"homePost.likedBy.indexOf(curUsername) >= 0\">favorite</i></span>\n        <span class=\"fill-space\"></span>\n        <span *ngIf=\"homePost.likes>0\" id=\"likenum\">{{homePost.likes}}</span>\n      </button>\n      <button md-button id=\"commentbtn\" (click)=\"openDialog(i)\">\n        <i class=\"material-icons md-18\">insert_comment</i>\n      </button>\n      <button md-button>\n        <i class=\"material-icons md-18\">share</i>\n      </button>\n      <md-card-content>\n        <p *ngIf=\"homePost.likes>0\" class=\"like-font\" id=\"likeby\">Liked by: {{homePost.likedBy}}</p>\n      </md-card-content>\n    </md-card-actions>\n  </md-card>\n\n  <!-- choose post amount to display in each page -->\n  <div class=\"make-post\">\n    <md-paginator [length]=\"homePosts.length\" [pageSize]=\"pageSize\" [pageSizeOptions]=\"pageSizeOptions\" (page)=\"pageEvent = $event; pageChange($event)\">\n    </md-paginator>\n  </div>\n</div>\n\n<!-- notification -->\n<div style=\"float:left\">\n  <p class=\"notiTitle\">Notifications</p>\n  <md-card class=\"notification\">Notifications</md-card>\n</div>\n\n</div>"
 
 /***/ }),
 
@@ -784,7 +852,6 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 
 var HomeComponent = (function () {
     function HomeComponent(userService, postService, http, dialog) {
-        var _this = this;
         this.userService = userService;
         this.postService = postService;
         this.http = http;
@@ -798,9 +865,9 @@ var HomeComponent = (function () {
         this.pageIndex = 0;
         this.pageSize = 2;
         this.pageSizeOptions = [1, 2, 5, 10];
-        this.http.get('assets/mock-data-home/data.json')
-            .map(function (response) { return response.json().screenshots; })
-            .subscribe(function (res) { return _this.spaceScreens = res; });
+        // this.http.get('assets/mock-data-home/data.json')
+        // .map(response => response.json().screenshots)
+        // .subscribe(res => this.spaceScreens = res);
     }
     HomeComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -855,10 +922,6 @@ var HomeComponent = (function () {
                 console.log("Fail to like -- err msg from home component ", data.message);
             }
         });
-    };
-    HomeComponent.prototype.commentMe = function (i) {
-    };
-    HomeComponent.prototype.shareMe = function (i) {
     };
     HomeComponent.prototype.pageChange = function (event) {
         this.pageIndex = event.pageIndex;
@@ -953,7 +1016,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/login-form/login-form.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<form (submit)=\"loginUser($event)\"> \n  <div class=\"alert\">\n    <flash-messages></flash-messages>\n  </div>\n  <div>\n    <img width=\"500\" src=\"../assets/headerimage/GatorBook.jpg\">\n    <h4 id=\"location\">-- share your beautiful life</h4>     <!-- this line used for e2e testing, don't delete -->\n  </div>\n  <div>\n    <img width=\"500\" src=\"../assets/headerimage/gator.png\">\n  </div>\n  <md-form-field class=\"example-full-width\">\n      <input mdInput placeholder=\"Username\" name=\"signinusername\" [(ngModel)]=\"signinUser.username\">\n  </md-form-field>\n  <md-form-field class=\"example-full-width\">\n      <input type =\"password\" mdInput placeholder=\"Password\" name=\"signinpassword\" [(ngModel)]=\"signinUser.password\">\n  </md-form-field>\n  <div class=\"input\">    \n    <button color =\"primary\" id=signinbtn type =\"submit\" md-raised-button>Sign In</button>   \n    <button color =\"primary\" id=signupbtn routerLink=\"/regis-form\" md-raised-button>Sign Up</button>\n  </div>\n</form>\n\n\n\n"
+module.exports = "\n<form (submit)=\"loginUser($event)\"> \n  <div class=\"alert\">\n    <flash-messages></flash-messages>\n  </div>\n  <div>\n    <img width=\"500\" src=\"../assets/headerimage/GatorBook.jpg\">\n    <h4 id=\"location\">-- share your beautiful life</h4>     <!-- this line used for e2e testing, don't delete -->\n  </div>\n  <div>\n    <img width=\"500\" src=\"../assets/headerimage/gator.png\">\n  </div>\n  <md-form-field class=\"example-full-width\">\n      <input mdInput placeholder=\"Username\" type =\"username\" name=\"signinusername\" [(ngModel)]=\"signinUser.username\">\n  </md-form-field>\n  <md-form-field class=\"example-full-width\">\n      <input type =\"password\" mdInput placeholder=\"Password\" type =\"password\"name=\"signinpassword\" [(ngModel)]=\"signinUser.password\">\n  </md-form-field>\n  <div class=\"input\">    \n    <button color =\"primary\" id=signinbtn type =\"submit\" md-raised-button>Sign In</button>   \n    <button color =\"primary\" id=signupbtn routerLink=\"/regis-form\" md-raised-button>Sign Up</button>\n  </div>\n</form>\n\n\n\n"
 
 /***/ }),
 
@@ -1364,6 +1427,7 @@ var SelfpostComponent = (function () {
         this.userService = userService;
         this.postService = postService;
         this.http = http;
+        this.selfPosts = [];
         // this.http.get('assets/mock-data-mypost/data.json')
         // .map(response => response.json().screenshots)
         // .subscribe(res => this.spaceScreens = res);
@@ -1398,18 +1462,6 @@ var SelfpostComponent = (function () {
                 console.log("Error when getting self post from database: ", data.message);
             }
         });
-    };
-    SelfpostComponent.prototype.markMe = function (i) {
-        if (this.spaceScreens[i].marked !== 1) {
-            this.spaceScreens[i].marked = 1;
-        }
-        else {
-            this.spaceScreens[i].marked = 0;
-        }
-    };
-    SelfpostComponent.prototype.deleteMe = function (i) {
-        this.spaceScreens.splice(i, 1);
-        console.log(i);
     };
     return SelfpostComponent;
 }());
