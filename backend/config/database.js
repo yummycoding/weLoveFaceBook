@@ -1,5 +1,11 @@
+/**
+ * @module Databases in this project
+ */
 module.exports = {
-    database: 'mongodb://localhost:27017/weLoveFB',//connect to database
+    /** Database used to store information of users and posts */
+    database: 'mongodb://localhost:27017/weLoveFB',
+    /** Secret when constructing json web token */
     secret: 'yoursecret',
-    testDb: 'mongodb://localhost:27017/testDb'//connect to test database
+    /** Database when you test your program */
+    testDb: 'mongodb://localhost:27017/testDb'
 }

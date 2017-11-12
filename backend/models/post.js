@@ -1,8 +1,18 @@
+/**
+ * Require the mongoose module
+ * For further information, check out
+ * {@link https://www.npmjs.com/package/mongoose|mongoose}
+ */
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 const Schema = mongoose.Schema;
 
-//Check if the length of this title is valid
+/**
+ * This function is used to test whether the length
+ * of title is valid
+ * @param {String} title The title you input
+ * @returns {boolean} Whether valid or not
+ */
 let titleLengthChecker = (title) => {
     if (!title) {
         return false;
@@ -20,7 +30,12 @@ const titleValidators = [{
     message: 'Title must be less than 50 characters!'
 }];
 
-//Check if the length of body is valid
+/**
+ * This function is used to check if the body length is valid,
+ * the length cannot be longer than 500 characters
+ * @param {string} body 
+ * @returns {boolean} Whether body is valid or not
+ */
 let bodyLengthChecker = (body) => {
     if (!body) {
         return false;
@@ -40,7 +55,12 @@ const bodyValidators = [
     }
 ];
 
-//Check if the length of comment is valid
+/**
+ * This function is used to check if the length of comment 
+ * is valid, length of comment cannot be longer than 200 characters
+ * @param {string} comment 
+ * @returns {boolean}
+ */
 let commentLengthChecker = (comment) => {
     if (!comment[0]) {
         return false;
@@ -60,7 +80,12 @@ const commentValidators = [
     }
 ];
 
-//Create post schema
+/**
+ * Create a new post
+ * @class
+ * @classdesc Post schema with title, body, createdBy, createdAt, number of likes, 
+ * number of dislikes, who likes it, who dislikes it, comments
+ */
 const postSchema = new Schema({
     title: {type: String, required: true, validate: titleValidators},
     body: {type: String, required: true, validate: bodyValidators},
@@ -76,5 +101,8 @@ const postSchema = new Schema({
     }]
 });
 
-//export the post schema
+/**
+ * @module Post
+ * export the post module
+ */
 module.exports = mongoose.model('Post', postSchema);

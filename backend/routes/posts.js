@@ -1,11 +1,42 @@
+/** 
+ * An http helper
+ * For more information about express, see
+ * {@link https://www.npmjs.com/package/express|express-npm} for more information
+ * @module routes/posts
+ * @const
+ * */
 const express = require('express');
+
+/**@requires module -User module*/
 const User = require('../models/user');
+
+/**@requires module - Post module*/
 const Post = require('../models/post');
+
+/**
+ * Jwt is a compact URL-safe means of representing claims to be transformed between
+ * two parties. For more information about jwt, see {@link https://www.npmjs.com/package/jsonwebtoken|jwt-npm}.
+ * @requires module - Jwt module
+ */
 const jwt = require('jsonwebtoken');
-const config = require('../config/database');
+
+/**
+ * Express router to mount posts
+ * @type {object}
+ * @constant
+ * @namespace postsRouter
+ */
 const router = express.Router();
 
-//Create a new post
+/**
+ * Router serving sending a new post
+ * @name post/newPost
+ * @function
+ * @memberof module: routes/posts~postsRouter
+ * @inner
+ * @param {string} path - Express path
+ * @param {callback} middleware - Express middleware
+ */
 router.post('/newPost', (req, res) => {
     console.log('POST > posts/newPost');
     if (!req.body.title) {//Title should not be empty 
@@ -22,8 +53,6 @@ router.post('/newPost', (req, res) => {
                     body: req.body.body,
                     createdBy: req.body.createdBy
                 });
-
-                //Save this post into database
                 post.save((err) => {
                     if (err) {
                         if (err.errors) {//Check if the post is valid
@@ -44,7 +73,14 @@ router.post('/newPost', (req, res) => {
     }
 });
 
-//Get all the posts sent by all people
+/**
+ * Route serving getting all posts
+ * @name get/allPosts
+ * @function
+ * @memberof module: routes/posts~postsRouter
+ * @param {string} path - Express path
+ * @param {callback} middleware - Express middleware
+ */
 router.get('/allPosts', (req, res) => {
     Post.find({}, (err, posts) => {
         if (err) {
@@ -59,8 +95,15 @@ router.get('/allPosts', (req, res) => {
     }).sort({'_id': -1});
 });
 
-// Given username, find all of its friends first, search in database all posts from both 
-// userhimself and his friends
+/**
+ * Route serving getting posts from username
+ * @name get/getHomePosts
+ * @function
+ * @memberof module: routes/posts~postsRouter
+ * @inner
+ * @param {string} path - Express path
+ * @param {callback} middleware - Express middleware
+ */
 router.get('/getHomePosts/:username', (req, res) => {
     console.log('GET > /getHomePosts/:username > username', req.params.username);
     User.find({username:req.params.username},(err, curUser) => {
@@ -96,7 +139,15 @@ router.get('/getHomePosts/:username', (req, res) => {
     })
 });
 
-// get all posts sent by user: username
+/**
+ * Routing serving getting my own posts
+ * @name get/getSelfPosts
+ * @function
+ * @memberof module: routes/posts~postsRouter
+ * @inner
+ * @param {string} path -Express path
+ * @param {callback} middleware - Express middleware
+ */
 router.get('/getSelfPosts/:username', (req, res) => {
     console.log('GET > /getSelfPosts/:username > username',req.params.username)
     Post.find({ createdBy: req.params.username }, (err, posts) => {
@@ -112,7 +163,15 @@ router.get('/getSelfPosts/:username', (req, res) => {
     }).sort({'_id': -1});
 });
 
-//Update the post after posting
+/**
+ * Route serving update Posts
+ * @name put/updatePost
+ * @function
+ * @memberof module: routes/posts~postsRouter
+ * @inner
+ * @param {string} path - Express path
+ * @param {callback} middleware - Express middleware
+ */
 router.put('/updatePost', (req, res) => {
     if (!req.body._id) {
         res.json({success: false, message: 'No post id provided'});
@@ -157,7 +216,15 @@ router.put('/updatePost', (req, res) => {
     }
 });
 
-//Delete a post if you want
+/**
+ * Routes deleting posts
+ * @name delete/deletePost
+ * @function
+ * @memberof module: routes/posts~postsRouter
+ * @inner
+ * @param {string} path - Express path
+ * @param {callback} middleware - Express middleware
+ */
 router.delete('/deletePost/:id', (req, res) => { 
     console.log('DELETE > /deletePost/:id > id', req.params.id);
     if (!req.params.id) {
@@ -183,9 +250,15 @@ router.delete('/deletePost/:id', (req, res) => {
     };
 });
 
-// find post in database using post id, check whether user has liked this post or not,
-// if liked before, cancel like
-// if not liked before, update that like
+/**
+ * Route serving like posts
+ * @name put/likePosts
+ * @function
+ * @memberof module: routes/posts~postsRouter
+ * @inner
+ * @param {string} path - Express path
+ * @param {callback} middleware - Express middleware
+ */
 router.put('/likePostOrCancelLike/:username', (req,res) => {
     if (!req.body._id) {
         res.json({success: false, message: 'No id for post was provided'});
@@ -281,7 +354,15 @@ router.put('/likePost', (req, res) => {
     }
 });
 
-//If you dislike the post
+/**
+ * Routes serving dislike Post
+ * @name put/dislikePost
+ * @function
+ * @memberof module: routes/posts~postsRouter
+ * @inner
+ * @param {string} path - Express path
+ * @param {callback} middleware - Express middleware
+ */
 router.put('/dislikePost', (req, res) => {
     if (!req.body.id) {//If you want to dislike the post, you should provide id
         res.json({success: false, message: 'No id was provided.'});
@@ -337,6 +418,15 @@ router.put('/dislikePost', (req, res) => {
     }
 });
 
+/**
+ * Routes serving posting comments
+ * @name post/comment
+ * @function
+ * @memberof module: routes/posts~postsRouter
+ * @inner
+ * @param {string} path - Express path
+ * @param {callback} middleware - Express middleware
+ */
 router.post('/comment', (req, res) => {
     // Check if comment was provided in request body
     if (!req.body.comment) {
@@ -390,7 +480,15 @@ router.post('/comment', (req, res) => {
     }
   });
 
-//Update the comment if you want
+/**
+ * Routes serving updateComment
+ * @name put/updateComment
+ * @function
+ * @memberof module: routes/posts~postsRouter
+ * @inner
+ * @param {string} path - Express path
+ * @param {callback} middleware - Express middleware
+ */
 router.put('/updateComment/:id', (req, res, next) => {
     console.log("Server > PUT 'posts/updateComment/:id' > id", req.params.id);
     console.log("Server > PUT 'posts/updateComment/:post' > post", req.body);
@@ -407,4 +505,10 @@ router.put('/updateComment/:id', (req, res, next) => {
         });
 });
 
+
+
+/**
+ * A module that can post, update, delete
+ * @module post
+ */
 module.exports = router;
