@@ -1,6 +1,10 @@
-<md-card>
+<md-card class="example-card">
     <!-- {{ user | json }} <br>
     {{ userEdit | json }} -->
+    <md-card-header class="card-header">
+        <div md-card-avatar class="post-image"></div>
+    </md-card-header>
+    
     <form class="example-form">
         <!-- User name -->
         <md-form-field class="example-full-width">
@@ -55,7 +59,7 @@
 
     </form>
     
-    <button color ="primary" routerLink="/dashboard" md-raised-button>Back to Homepage</button>
+    <button color ="primary" class="back-button" routerLink="/dashboard" md-raised-button>Back to Homepage</button>
 
 
 </md-card>
