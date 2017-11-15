@@ -1,6 +1,8 @@
 # WeLoveFacebook
 
-This project was generated with MongoDB, Express, Angular2, Node.js.
+This social network was generated with MongoDB, Express, Angular2, Node.js.
+
+![image](https://github.com/yummycoding/weLoveFaceBook/blob/newb/frontend/src/assets/images-home/gator.png)
 
 **Table of Contents**
 
