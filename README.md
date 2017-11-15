@@ -3,6 +3,7 @@
 This social network was generated with MongoDB, Express, Angular2, Node.js.
 
 ![image](https://github.com/yummycoding/weLoveFaceBook/blob/newb/frontend/src/assets/images-home/gator.png)
+[image]:https://github.com/yummycoding/weLoveFaceBook/blob/newb/README.md
 
 **Table of Contents**
 
