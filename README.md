@@ -4,7 +4,6 @@ This social network was generated with MongoDB, Express, Angular2, Node.js.
 
 ![image](https://github.com/yummycoding/weLoveFaceBook/blob/newb/frontend/src/assets/images-home/gator.png)
 
-<div align=center><img wid="100" src="https://github.com/yummycoding/weLoveFaceBook/blob/newb/frontend/src/assets/images-home/gator.png"></div>
 **Table of Contents**
 
 - [MEAN](#mean)
