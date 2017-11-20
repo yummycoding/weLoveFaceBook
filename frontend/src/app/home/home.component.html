@@ -63,7 +63,7 @@
     <md-card-header>
       <div md-card-avatar class="post-image"></div>
       <md-card-title id="postauthor">{{homePost.createdBy}}</md-card-title>
-      <md-card-subtitle>{{homePost.createdAt}}</md-card-subtitle>
+      <md-card-subtitle>{{homePost.createdAt | date:"yyyy-MM-dd HH:mm:ss"}}</md-card-subtitle>
     </md-card-header>
     <md-card-content>
       <p id="postcontent">{{homePost.body}}</p>
