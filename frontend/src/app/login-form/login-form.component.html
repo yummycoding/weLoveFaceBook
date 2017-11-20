@@ -1,7 +1,7 @@
 <body>
-  <li>
+  <!-- <li>
     <img width="102%" style="backface-visibility: hidden; position: absolute; left: -3.771px; top: 0px; z-index: -1;" src="../assets/images-home/beach1.jpg">
-  </li>
+  </li> -->
   <form (submit)="loginUser($event)"> 
     <div class="alert">
       <flash-messages></flash-messages>
@@ -10,9 +10,9 @@
       <img width="500" src="../assets/headerimage/GatorBook.jpg">
       <h4 id="location">-- share your beautiful life</h4>     <!-- this line used for e2e testing, don't delete -->
     </div>
-    <!-- <div>
-      <img width="100" src="../assets/headerimage/gator.png">
-    </div> -->
+    <div>
+      <img width="500" src="../assets/headerimage/gator.png">
+    </div>
     <md-form-field class="example-full-width">
         <input mdInput placeholder="Username" type ="username" name="signinusername" [(ngModel)]="signinUser.username">
     </md-form-field>

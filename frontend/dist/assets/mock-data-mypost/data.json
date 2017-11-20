@@ -1,0 +1,19 @@
+{
+    "screenshots": [
+        {
+            "img": "assets/images-mypost/gator.jpg",
+            "description": "It's great to be a florida gator!",
+            "liked":"0"
+        },
+        {
+            "img": "assets/images-mypost/football.jpg",
+            "description": "28-27, we win!!!!!!!",
+            "liked":"0"
+        },
+        {
+            "img": "assets/images-mypost/irma.jpg",
+            "description": "Hurricane is comming, stay safe!",
+            "liked":"0"
+        }
+    ]
+}
