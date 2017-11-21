@@ -897,6 +897,7 @@ var HomeComponent = (function () {
             }
         });
         // clear make post form
+        this.url = "";
         this.post = new __WEBPACK_IMPORTED_MODULE_1__post__["a" /* Post */]();
     };
     HomeComponent.prototype.getHomeposts = function () {

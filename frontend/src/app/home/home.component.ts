@@ -63,6 +63,7 @@ export class HomeComponent implements OnInit {
       }
     });
     // clear make post form
+    this.url = "";
     this.post = new Post();
   }
 
