@@ -16,8 +16,9 @@
         <input mdInput name="postinput" [(ngModel)]="post.body" #message maxlength="256">
         <md-hint align="end">{{message.value.length}} / 256</md-hint>
       </md-form-field>
+      <img *ngIf="url.length > 0" class="uploadImg" src="{{ url }}">
       <div class="input">
-        <input class="ng-hide" id="input-file-id" multiple type="file" #inputFile hidden/>
+        <input class="ng-hide" id="input-file-id" (change)="fileChangeEvent($event)" type="file" #inputFile hidden/>
         <button color="primary" id="selectFile" md-raised-button>
           <Label for="input-file-id">
             <i class="material-icons md-18 icon-align">insert_photo</i>
@@ -66,6 +67,7 @@
       <md-card-subtitle>{{homePost.createdAt | date:"yyyy-MM-dd HH:mm:ss"}}</md-card-subtitle>
     </md-card-header>
     <md-card-content>
+        <img class="uploadImg" *ngIf="homePost.img" src="{{ homePost.img }}"> 
       <p id="postcontent">{{homePost.body}}</p>
       <!-- comment section -->
       <div id="commentssection" *ngIf="homePost.comments.length > 0">
@@ -93,7 +95,7 @@
     <!-- post operation -->
     <md-card-actions>
       <button md-button id="likebtn" (click)="likeCancelLikePost(i)">
-        <span><i class="material-icons md-18" [class.red-color]="homePost.likedBy.indexOf(curUsername) >= 0">favorite</i></span>
+        <span><i class="material-icons md-18 icon-align" [class.red-color]="homePost.likedBy.indexOf(curUsername) >= 0">favorite</i></span>
         <span class="fill-space"></span>
         <span *ngIf="homePost.likes>0" id="likenum">{{homePost.likes}}</span>
       </button>
@@ -117,9 +119,9 @@
 </div>
 
 <!-- notification -->
-<div style="float:left">
+<!-- <div style="float:left">
   <p class="notiTitle">Notifications</p>
   <md-card class="notification">Notifications</md-card>
-</div>
+</div> -->
 
 </div>

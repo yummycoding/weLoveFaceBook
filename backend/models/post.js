@@ -69,7 +69,8 @@ const postSchema = new Schema({
     comments: [{
         comment: {type: String, validate: commentValidators},
         commentator: {type: String}
-    }]
+    }],
+    img:{type: String}
 });
 
 module.exports = mongoose.model('Post', postSchema);

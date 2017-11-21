@@ -21,13 +21,14 @@ export class HomeComponent implements OnInit {
   curUser: User = new User();
   homePosts: Array<Post> = [];
   commentContent: String;
+  url: string = "";  
 
   spaceScreens: Array<any> = [];
   start = 0;
   end = 0;
   pageIndex = 0;
-  pageSize = 2;
-  pageSizeOptions = [1, 2, 5, 10];
+  pageSize = 5;
+  pageSizeOptions = [5, 10, 15, 20, 100];
   
   constructor(private userService: UserService, private postService: PostService, private http: Http, public dialog: MdDialog) {
     // this.http.get('assets/mock-data-home/data.json')
@@ -52,6 +53,7 @@ export class HomeComponent implements OnInit {
   sendPost() {
     this.post.title = 'wedontneedtitle';
     this.post.createdBy = this.curUsername;
+    this.post.img = this.url;
     this.postService.sendPost(this.post).then(data => {
       if (data.success === true) {
         this.getHomeposts();  // refresh homepage after send new post
@@ -121,6 +123,16 @@ deleteComment(comment, i){
   const index = commentedpost.comments.indexOf(comment);
   commentedpost.comments.splice(index,1);
   this.postService.updateComment(commentedpost);
+}
+
+fileChangeEvent(fileInput: any) {
+  if (fileInput.target.files && fileInput.target.files[0]) {
+    const reader = new FileReader();
+    reader.readAsDataURL(fileInput.target.files[0]);
+    reader.onload = (x: any) => { // called once readAsDataURL is completed
+      this.url = x.target.result; 
+    }
+  }
 }
 
 }

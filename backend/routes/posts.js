@@ -19,6 +19,7 @@ router.post('/newPost', (req, res) => {
                 const post = new Post({
                     title: req.body.title,
                     body: req.body.body,
+                    img: req.body.img,
                     createdBy: req.body.createdBy
                 });
 

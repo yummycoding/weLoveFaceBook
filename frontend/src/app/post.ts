@@ -11,5 +11,6 @@ export class Post {
         public dislikes: Number = 0,
         public dislikedBy: Array<String> = [],
         public comments: Array<Comment> = [],
+        public img: String = ''
     ) {}
 }

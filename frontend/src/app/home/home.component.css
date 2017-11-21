@@ -43,3 +43,13 @@
 .comment-font{
   font-size: 12px;
 }
+
+.uploadImg{
+  width: 100%;
+  height: 100%;
+  max-width: 300px;
+}
+
+.line-breaker{
+  overflow-wrap: break-word;
+}

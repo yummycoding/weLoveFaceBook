@@ -796,7 +796,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".post-card {\n    width: 600px;\n  }\n  \n.post-image {\n  background-image: url(" + __webpack_require__("../../../../../src/assets/headerimage/head6.jpg") + ");\n  /* background-image: spaceScreen.headerimg; */\n  background-size: cover;\n}\n.make-post {\n  width: 648px;\n}\n.textwidth {\n  width: 100%;\n}\n.icon-align{\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  vertical-align: middle;\n}\n.notification{\n  margin-left: 5px;\n  width:350px;\n}\n.notiTitle{\n  margin-left: 150px;\n  font-size: 20px;\n}\n\n.fill-space {\n  -webkit-box-flex: 1;\n      -ms-flex: 1 1 auto;\n          flex: 1 1 auto;\n}\n\n.like-font {\n  font-size: 12px;\n  color:#9E9E9E;\n}\n\n.comment-section {\n  width:570px;\n  background-color:#E0F2F1;\n}\n\n.comment-font{\n  font-size: 12px;\n}", ""]);
+exports.push([module.i, ".post-card {\n    width: 600px;\n  }\n  \n.post-image {\n  background-image: url(" + __webpack_require__("../../../../../src/assets/headerimage/head6.jpg") + ");\n  /* background-image: spaceScreen.headerimg; */\n  background-size: cover;\n}\n.make-post {\n  width: 648px;\n}\n.textwidth {\n  width: 100%;\n}\n.icon-align{\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  vertical-align: middle;\n}\n.notification{\n  margin-left: 5px;\n  width:350px;\n}\n.notiTitle{\n  margin-left: 150px;\n  font-size: 20px;\n}\n\n.fill-space {\n  -webkit-box-flex: 1;\n      -ms-flex: 1 1 auto;\n          flex: 1 1 auto;\n}\n\n.like-font {\n  font-size: 12px;\n  color:#9E9E9E;\n}\n\n.comment-section {\n  width:570px;\n  background-color:#E0F2F1;\n}\n\n.comment-font{\n  font-size: 12px;\n}\n\n.uploadImg{\n  width: 100%;\n  height: 100%;\n  max-width: 300px;\n}\n\n.line-breaker{\n  overflow-wrap: break-word;\n}", ""]);
 
 // exports
 
@@ -809,7 +809,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n<div style=\"float:left\">\n  <div class=\"make-post\">\n    <md-expansion-panel>\n      <md-expansion-panel-header id=\"makepost\">\n        <md-panel-title>\n          Make Post\n        </md-panel-title>\n        <md-panel-description>\n          What's on your mind?\n        </md-panel-description>\n      </md-expansion-panel-header>\n      <md-form-field class=\"textwidth\">\n        <!-- <input mdInput #message maxlength=\"256\" placeholder=\"Say something\">\n      <md-hint align=\"start\"><strong>Don't disclose personal info</strong> </md-hint> -->\n        <input mdInput name=\"postinput\" [(ngModel)]=\"post.body\" #message maxlength=\"256\">\n        <md-hint align=\"end\">{{message.value.length}} / 256</md-hint>\n      </md-form-field>\n      <div class=\"input\">\n        <input class=\"ng-hide\" id=\"input-file-id\" multiple type=\"file\" #inputFile hidden/>\n        <button color=\"primary\" id=\"selectFile\" md-raised-button>\n          <Label for=\"input-file-id\">\n            <i class=\"material-icons md-18 icon-align\">insert_photo</i>\n            Photo\n          </Label>\n        </button>\n        <button color=\"warn\" id=\"sendpost\" (click)=\"sendPost()\" md-raised-button>Post</button>\n      </div>\n    </md-expansion-panel>\n  </div>\n\n  <!-- post information -->\n  <!-- <md-card class=\"post-card\" *ngFor=\"let spaceScreen of spaceScreens | slice: [start] : [end]; let i = index\">\n    <md-card-header>\n      <div md-card-avatar class=\"post-image\"></div>\n      <md-card-title>{{spaceScreen.name}}</md-card-title>\n      <md-card-subtitle>{{spaceScreen.remark}}</md-card-subtitle>\n    </md-card-header>\n    <img md-card-image src=\"{{spaceScreen.img}}\" alt=\"post photo\">\n    <md-card-content>\n      <p>{{spaceScreen.description}}</p>\n    </md-card-content>\n    <md-card-actions>\n      <button md-button (click)=\"likeMe(i)\">\n        <i class=\"material-icons md-18\" [class.red-color]=\"spaceScreen.liked == '1'\">favorite</i>\n      </button>\n      <button md-button (click)=\"commentMe(i)\">\n        <i class=\"material-icons md-18\">insert_comment</i>\n      </button>\n      <button md-button (click)=\"shareMe(i)\">\n        <i class=\"material-icons md-18\">share</i>\n      </button>\n    </md-card-actions>\n  </md-card> -->\n  \n  <!-- refresh button -->\n  <button class=\"make-post\" color =\"primary\" (click)=\"refreshSelfposts($event)\" md-raised-button>\n    <i class=\"material-icons\">refresh</i>\n  </button>\n\n  <!-- post content -->\n  <md-card id=\"postcards\" class=\"post-card\" *ngFor=\"let homePost of homePosts | slice: [start] : [end]; let i = index\">\n    <md-card-header>\n      <div md-card-avatar class=\"post-image\"></div>\n      <md-card-title id=\"postauthor\">{{homePost.createdBy}}</md-card-title>\n      <md-card-subtitle>{{homePost.createdAt | date:\"yyyy-MM-dd HH:mm:ss\"}}</md-card-subtitle>\n    </md-card-header>\n    <md-card-content>\n      <p id=\"postcontent\">{{homePost.body}}</p>\n      <!-- comment section -->\n      <div id=\"commentssection\" *ngIf=\"homePost.comments.length > 0\">\n        <span>\n          <i class=\"material-icons\">mode_comment</i>\n        </span>\n        <span>\n          <md-list class=\"comment-section\">\n            <md-list-item class=\"comment-font\" id=\"commentsfor\" *ngFor=\"let comment of homePost.comments\">\n              <div id=\"commentator\" style=\"font-weight: bold\">\n                {{comment.commentator}}: \n              </div> \n              {{comment.comment}}\n              <span class=\"spacer\"></span>\n              <div *ngIf=\"comment.commentator == curUsername\">\n                <button md-icon-button (click)=\"deleteComment(comment,i)\">\n                  <i class=\"material-icons\">clear</i>  \n                </button>\n              </div>\n            </md-list-item>\n          </md-list>\n          </span>\n      </div>\n    </md-card-content>\n    <!-- post operation -->\n    <md-card-actions>\n      <button md-button id=\"likebtn\" (click)=\"likeCancelLikePost(i)\">\n        <span><i class=\"material-icons md-18\" [class.red-color]=\"homePost.likedBy.indexOf(curUsername) >= 0\">favorite</i></span>\n        <span class=\"fill-space\"></span>\n        <span *ngIf=\"homePost.likes>0\" id=\"likenum\">{{homePost.likes}}</span>\n      </button>\n      <button md-button id=\"commentbtn\" (click)=\"openDialog(i)\">\n        <i class=\"material-icons md-18\">insert_comment</i>\n      </button>\n      <button md-button>\n        <i class=\"material-icons md-18\">share</i>\n      </button>\n      <md-card-content>\n        <p *ngIf=\"homePost.likes>0\" class=\"like-font\" id=\"likeby\">Liked by: {{homePost.likedBy}}</p>\n      </md-card-content>\n    </md-card-actions>\n  </md-card>\n\n  <!-- choose post amount to display in each page -->\n  <div class=\"make-post\">\n    <md-paginator [length]=\"homePosts.length\" [pageSize]=\"pageSize\" [pageSizeOptions]=\"pageSizeOptions\" (page)=\"pageEvent = $event; pageChange($event)\">\n    </md-paginator>\n  </div>\n</div>\n\n<!-- notification -->\n<div style=\"float:left\">\n  <p class=\"notiTitle\">Notifications</p>\n  <md-card class=\"notification\">Notifications</md-card>\n</div>\n\n</div>"
+module.exports = "<div>\n<div style=\"float:left\">\n  <div class=\"make-post\">\n    <md-expansion-panel>\n      <md-expansion-panel-header id=\"makepost\">\n        <md-panel-title>\n          Make Post\n        </md-panel-title>\n        <md-panel-description>\n          What's on your mind?\n        </md-panel-description>\n      </md-expansion-panel-header>\n      <md-form-field class=\"textwidth\">\n        <!-- <input mdInput #message maxlength=\"256\" placeholder=\"Say something\">\n      <md-hint align=\"start\"><strong>Don't disclose personal info</strong> </md-hint> -->\n        <input mdInput name=\"postinput\" [(ngModel)]=\"post.body\" #message maxlength=\"256\">\n        <md-hint align=\"end\">{{message.value.length}} / 256</md-hint>\n      </md-form-field>\n      <img *ngIf=\"url.length > 0\" class=\"uploadImg\" src=\"{{ url }}\">\n      <div class=\"input\">\n        <input class=\"ng-hide\" id=\"input-file-id\" (change)=\"fileChangeEvent($event)\" type=\"file\" #inputFile hidden/>\n        <button color=\"primary\" id=\"selectFile\" md-raised-button>\n          <Label for=\"input-file-id\">\n            <i class=\"material-icons md-18 icon-align\">insert_photo</i>\n            Photo\n          </Label>\n        </button>\n        <button color=\"warn\" id=\"sendpost\" (click)=\"sendPost()\" md-raised-button>Post</button>\n      </div>\n    </md-expansion-panel>\n  </div>\n\n  <!-- post information -->\n  <!-- <md-card class=\"post-card\" *ngFor=\"let spaceScreen of spaceScreens | slice: [start] : [end]; let i = index\">\n    <md-card-header>\n      <div md-card-avatar class=\"post-image\"></div>\n      <md-card-title>{{spaceScreen.name}}</md-card-title>\n      <md-card-subtitle>{{spaceScreen.remark}}</md-card-subtitle>\n    </md-card-header>\n    <img md-card-image src=\"{{spaceScreen.img}}\" alt=\"post photo\">\n    <md-card-content>\n      <p>{{spaceScreen.description}}</p>\n    </md-card-content>\n    <md-card-actions>\n      <button md-button (click)=\"likeMe(i)\">\n        <i class=\"material-icons md-18\" [class.red-color]=\"spaceScreen.liked == '1'\">favorite</i>\n      </button>\n      <button md-button (click)=\"commentMe(i)\">\n        <i class=\"material-icons md-18\">insert_comment</i>\n      </button>\n      <button md-button (click)=\"shareMe(i)\">\n        <i class=\"material-icons md-18\">share</i>\n      </button>\n    </md-card-actions>\n  </md-card> -->\n  \n  <!-- refresh button -->\n  <button class=\"make-post\" color =\"primary\" (click)=\"refreshSelfposts($event)\" md-raised-button>\n    <i class=\"material-icons\">refresh</i>\n  </button>\n\n  <!-- post content -->\n  <md-card id=\"postcards\" class=\"post-card\" *ngFor=\"let homePost of homePosts | slice: [start] : [end]; let i = index\">\n    <md-card-header>\n      <div md-card-avatar class=\"post-image\"></div>\n      <md-card-title id=\"postauthor\">{{homePost.createdBy}}</md-card-title>\n      <md-card-subtitle>{{homePost.createdAt | date:\"yyyy-MM-dd HH:mm:ss\"}}</md-card-subtitle>\n    </md-card-header>\n    <md-card-content>\n        <img class=\"uploadImg\" *ngIf=\"homePost.img\" src=\"{{ homePost.img }}\"> \n      <p id=\"postcontent\">{{homePost.body}}</p>\n      <!-- comment section -->\n      <div id=\"commentssection\" *ngIf=\"homePost.comments.length > 0\">\n        <span>\n          <i class=\"material-icons\">mode_comment</i>\n        </span>\n        <span>\n          <md-list class=\"comment-section\">\n            <md-list-item class=\"comment-font\" id=\"commentsfor\" *ngFor=\"let comment of homePost.comments\">\n              <div id=\"commentator\" style=\"font-weight: bold\">\n                {{comment.commentator}}: \n              </div> \n              {{comment.comment}}\n              <span class=\"spacer\"></span>\n              <div *ngIf=\"comment.commentator == curUsername\">\n                <button md-icon-button (click)=\"deleteComment(comment,i)\">\n                  <i class=\"material-icons\">clear</i>  \n                </button>\n              </div>\n            </md-list-item>\n          </md-list>\n          </span>\n      </div>\n    </md-card-content>\n    <!-- post operation -->\n    <md-card-actions>\n      <button md-button id=\"likebtn\" (click)=\"likeCancelLikePost(i)\">\n        <span><i class=\"material-icons md-18 icon-align\" [class.red-color]=\"homePost.likedBy.indexOf(curUsername) >= 0\">favorite</i></span>\n        <span class=\"fill-space\"></span>\n        <span *ngIf=\"homePost.likes>0\" id=\"likenum\">{{homePost.likes}}</span>\n      </button>\n      <button md-button id=\"commentbtn\" (click)=\"openDialog(i)\">\n        <i class=\"material-icons md-18\">insert_comment</i>\n      </button>\n      <button md-button>\n        <i class=\"material-icons md-18\">share</i>\n      </button>\n      <md-card-content>\n        <p *ngIf=\"homePost.likes>0\" class=\"like-font\" id=\"likeby\">Liked by: {{homePost.likedBy}}</p>\n      </md-card-content>\n    </md-card-actions>\n  </md-card>\n\n  <!-- choose post amount to display in each page -->\n  <div class=\"make-post\">\n    <md-paginator [length]=\"homePosts.length\" [pageSize]=\"pageSize\" [pageSizeOptions]=\"pageSizeOptions\" (page)=\"pageEvent = $event; pageChange($event)\">\n    </md-paginator>\n  </div>\n</div>\n\n<!-- notification -->\n<!-- <div style=\"float:left\">\n  <p class=\"notiTitle\">Notifications</p>\n  <md-card class=\"notification\">Notifications</md-card>\n</div> -->\n\n</div>"
 
 /***/ }),
 
@@ -859,12 +859,13 @@ var HomeComponent = (function () {
         this.post = new __WEBPACK_IMPORTED_MODULE_1__post__["a" /* Post */]();
         this.curUser = new __WEBPACK_IMPORTED_MODULE_2__user__["a" /* User */]();
         this.homePosts = [];
+        this.url = "";
         this.spaceScreens = [];
         this.start = 0;
         this.end = 0;
         this.pageIndex = 0;
-        this.pageSize = 2;
-        this.pageSizeOptions = [1, 2, 5, 10];
+        this.pageSize = 5;
+        this.pageSizeOptions = [5, 10, 15, 20, 100];
         // this.http.get('assets/mock-data-home/data.json')
         // .map(response => response.json().screenshots)
         // .subscribe(res => this.spaceScreens = res);
@@ -885,6 +886,7 @@ var HomeComponent = (function () {
         var _this = this;
         this.post.title = 'wedontneedtitle';
         this.post.createdBy = this.curUsername;
+        this.post.img = this.url;
         this.postService.sendPost(this.post).then(function (data) {
             if (data.success === true) {
                 _this.getHomeposts(); // refresh homepage after send new post
@@ -955,6 +957,16 @@ var HomeComponent = (function () {
         var index = commentedpost.comments.indexOf(comment);
         commentedpost.comments.splice(index, 1);
         this.postService.updateComment(commentedpost);
+    };
+    HomeComponent.prototype.fileChangeEvent = function (fileInput) {
+        var _this = this;
+        if (fileInput.target.files && fileInput.target.files[0]) {
+            var reader = new FileReader();
+            reader.readAsDataURL(fileInput.target.files[0]);
+            reader.onload = function (x) {
+                _this.url = x.target.result;
+            };
+        }
     };
     return HomeComponent;
 }());
@@ -1233,7 +1245,7 @@ var _a;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Post; });
 var Post = (function () {
     function Post(_id, title, body, createdBy, createdAt, // need take care initial value
-        likes, likedBy, dislikes, dislikedBy, comments) {
+        likes, likedBy, dislikes, dislikedBy, comments, img) {
         if (_id === void 0) { _id = ''; }
         if (title === void 0) { title = 'wedontneedtitle'; }
         if (body === void 0) { body = ''; }
@@ -1244,6 +1256,7 @@ var Post = (function () {
         if (dislikes === void 0) { dislikes = 0; }
         if (dislikedBy === void 0) { dislikedBy = []; }
         if (comments === void 0) { comments = []; }
+        if (img === void 0) { img = ''; }
         this._id = _id;
         this.title = title;
         this.body = body;
@@ -1254,6 +1267,7 @@ var Post = (function () {
         this.dislikes = dislikes;
         this.dislikedBy = dislikedBy;
         this.comments = comments;
+        this.img = img;
     }
     return Post;
 }());
