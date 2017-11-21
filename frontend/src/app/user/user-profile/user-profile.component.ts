@@ -61,7 +61,8 @@ export class UserProfileComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.avatar = URL;
+      //this.avatar = URL;
+      this.ngOnInit();
     });
   }
   
@@ -86,7 +87,6 @@ export class AvatarPreviewComponent implements OnInit {
     this.username = this.currentuser.user.username;
     this.userService.getUserByUsername(this.username).then(data => {
       this.user = data;
-      console.log(this.avatar);
       if(this.user.avatar !== "undefined") {
         this.avatar = this.user.avatar;
       }else{
