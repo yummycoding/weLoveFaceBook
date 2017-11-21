@@ -67,7 +67,7 @@
       <md-card-subtitle>{{homePost.createdAt | date:"yyyy-MM-dd HH:mm:ss"}}</md-card-subtitle>
     </md-card-header>
     <md-card-content>
-        <img class="uploadImg" *ngIf="homePost.img" src="{{ homePost.img }}"> 
+      <img class="uploadImg" *ngIf="homePost.img" src="{{ homePost.img }}"> 
       <p id="postcontent">{{homePost.body}}</p>
       <!-- comment section -->
       <div id="commentssection" *ngIf="homePost.comments.length > 0">

@@ -10,6 +10,7 @@
   </md-card-header>
   <!-- <img md-card-image src ="{{spaceScreen.img}}"> -->
   <md-card-content>
+    <img class="uploadImg" *ngIf="selfPost.img" src="{{ selfPost.img }}"> 
     <p>{{selfPost.body}}</p>
   </md-card-content>
   <md-card-actions>
