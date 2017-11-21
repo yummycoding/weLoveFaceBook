@@ -151,6 +151,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 // file upload
 
 
+
 // make post
 
 
@@ -170,7 +171,7 @@ var appRoutes = [
     },
     {
         path: 'userprofile',
-        component: __WEBPACK_IMPORTED_MODULE_26__user_user_profile_user_profile_component__["a" /* UserProfileComponent */]
+        component: __WEBPACK_IMPORTED_MODULE_26__user_user_profile_user_profile_component__["b" /* UserProfileComponent */]
     },
     {
         path: 'helpcenter',
@@ -199,10 +200,11 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_23__user_user_list_user_list_component__["a" /* UserListComponent */],
             __WEBPACK_IMPORTED_MODULE_24__user_user_new_user_new_component__["a" /* UserNewComponent */],
             __WEBPACK_IMPORTED_MODULE_25__user_user_edit_user_edit_component__["a" /* UserEditComponent */],
-            __WEBPACK_IMPORTED_MODULE_26__user_user_profile_user_profile_component__["a" /* UserProfileComponent */],
+            __WEBPACK_IMPORTED_MODULE_26__user_user_profile_user_profile_component__["b" /* UserProfileComponent */],
             __WEBPACK_IMPORTED_MODULE_19__friendlist_friendlist_component__["a" /* AddFriendComponent */],
             __WEBPACK_IMPORTED_MODULE_20__home_home_component__["a" /* AddCommentComponent */],
-            __WEBPACK_IMPORTED_MODULE_28__helpcenter_helpcenter_component__["a" /* HelpcenterComponent */]
+            __WEBPACK_IMPORTED_MODULE_28__helpcenter_helpcenter_component__["a" /* HelpcenterComponent */],
+            __WEBPACK_IMPORTED_MODULE_26__user_user_profile_user_profile_component__["a" /* AvatarPreviewComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* RouterModule */].forRoot(appRoutes),
@@ -217,7 +219,8 @@ AppModule = __decorate([
         ],
         entryComponents: [
             __WEBPACK_IMPORTED_MODULE_19__friendlist_friendlist_component__["a" /* AddFriendComponent */],
-            __WEBPACK_IMPORTED_MODULE_20__home_home_component__["a" /* AddCommentComponent */]
+            __WEBPACK_IMPORTED_MODULE_20__home_home_component__["a" /* AddCommentComponent */],
+            __WEBPACK_IMPORTED_MODULE_26__user_user_profile_user_profile_component__["a" /* AvatarPreviewComponent */]
         ],
         providers: [
             __WEBPACK_IMPORTED_MODULE_6__user_service__["a" /* UserService */],
@@ -796,7 +799,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".post-card {\n    width: 600px;\n  }\n  \n.post-image {\n  background-image: url(" + __webpack_require__("../../../../../src/assets/headerimage/head6.jpg") + ");\n  /* background-image: spaceScreen.headerimg; */\n  background-size: cover;\n}\n.make-post {\n  width: 648px;\n}\n.textwidth {\n  width: 100%;\n}\n.icon-align{\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  vertical-align: middle;\n}\n.notification{\n  margin-left: 5px;\n  width:350px;\n}\n.notiTitle{\n  margin-left: 150px;\n  font-size: 20px;\n}\n\n.fill-space {\n  -webkit-box-flex: 1;\n      -ms-flex: 1 1 auto;\n          flex: 1 1 auto;\n}\n\n.like-font {\n  font-size: 12px;\n  color:#9E9E9E;\n}\n\n.comment-section {\n  width:570px;\n  background-color:#E0F2F1;\n}\n\n.comment-font{\n  font-size: 12px;\n}\n\n.uploadImg{\n  width: 100%;\n  height: 100%;\n  max-width: 300px;\n  /* display: block;\n  margin: auto; */\n}\n\n.line-breaker{\n  overflow-wrap: break-word;\n}", ""]);
+exports.push([module.i, ".post-card {\n    width: 600px;\n  }\n  \n.post-image {\n  /* background-image: url('../../assets/headerimage/head6.jpg'); */\n  /* background-image: spaceScreen.headerimg; */\n  background-size: cover;\n}\n.make-post {\n  width: 648px;\n}\n.textwidth {\n  width: 100%;\n}\n.icon-align{\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  vertical-align: middle;\n}\n.notification{\n  margin-left: 5px;\n  width:350px;\n}\n.notiTitle{\n  margin-left: 150px;\n  font-size: 20px;\n}\n\n.fill-space {\n  -webkit-box-flex: 1;\n      -ms-flex: 1 1 auto;\n          flex: 1 1 auto;\n}\n\n.like-font {\n  font-size: 12px;\n  color:#9E9E9E;\n}\n\n.comment-section {\n  width:570px;\n  background-color:#E0F2F1;\n}\n\n.comment-font{\n  font-size: 12px;\n}\n\n.uploadImg{\n  width: 100%;\n  height: 100%;\n  max-width: 300px;\n  /* display: block;\n  margin: auto; */\n}\n\n.line-breaker{\n  overflow-wrap: break-word;\n}", ""]);
 
 // exports
 
@@ -809,7 +812,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n<div style=\"float:left\">\n  <div class=\"make-post\">\n    <md-expansion-panel>\n      <md-expansion-panel-header id=\"makepost\">\n        <md-panel-title>\n          Make Post\n        </md-panel-title>\n        <md-panel-description>\n          What's on your mind?\n        </md-panel-description>\n      </md-expansion-panel-header>\n      <md-form-field class=\"textwidth\">\n        <!-- <input mdInput #message maxlength=\"256\" placeholder=\"Say something\">\n      <md-hint align=\"start\"><strong>Don't disclose personal info</strong> </md-hint> -->\n        <input mdInput name=\"postinput\" [(ngModel)]=\"post.body\" #message maxlength=\"256\">\n        <md-hint align=\"end\">{{message.value.length}} / 256</md-hint>\n      </md-form-field>\n      <img *ngIf=\"url.length > 0\" class=\"uploadImg\" src=\"{{ url }}\">\n      <div class=\"input\">\n        <input class=\"ng-hide\" id=\"input-file-id\" (change)=\"fileChangeEvent($event)\" type=\"file\" #inputFile hidden/>\n        <button color=\"primary\" id=\"selectFile\" md-raised-button>\n          <Label for=\"input-file-id\">\n            <i class=\"material-icons md-18 icon-align\">insert_photo</i>\n            Photo\n          </Label>\n        </button>\n        <button color=\"warn\" id=\"sendpost\" (click)=\"sendPost()\" md-raised-button>Post</button>\n      </div>\n    </md-expansion-panel>\n  </div>\n\n  <!-- post information -->\n  <!-- <md-card class=\"post-card\" *ngFor=\"let spaceScreen of spaceScreens | slice: [start] : [end]; let i = index\">\n    <md-card-header>\n      <div md-card-avatar class=\"post-image\"></div>\n      <md-card-title>{{spaceScreen.name}}</md-card-title>\n      <md-card-subtitle>{{spaceScreen.remark}}</md-card-subtitle>\n    </md-card-header>\n    <img md-card-image src=\"{{spaceScreen.img}}\" alt=\"post photo\">\n    <md-card-content>\n      <p>{{spaceScreen.description}}</p>\n    </md-card-content>\n    <md-card-actions>\n      <button md-button (click)=\"likeMe(i)\">\n        <i class=\"material-icons md-18\" [class.red-color]=\"spaceScreen.liked == '1'\">favorite</i>\n      </button>\n      <button md-button (click)=\"commentMe(i)\">\n        <i class=\"material-icons md-18\">insert_comment</i>\n      </button>\n      <button md-button (click)=\"shareMe(i)\">\n        <i class=\"material-icons md-18\">share</i>\n      </button>\n    </md-card-actions>\n  </md-card> -->\n  \n  <!-- refresh button -->\n  <button class=\"make-post\" color =\"primary\" (click)=\"refreshSelfposts($event)\" md-raised-button>\n    <i class=\"material-icons\">refresh</i>\n  </button>\n\n  <!-- post content -->\n  <md-card id=\"postcards\" class=\"post-card\" *ngFor=\"let homePost of homePosts | slice: [start] : [end]; let i = index\">\n    <md-card-header>\n      <div md-card-avatar class=\"post-image\"></div>\n      <md-card-title id=\"postauthor\">{{homePost.createdBy}}</md-card-title>\n      <md-card-subtitle>{{homePost.createdAt | date:\"yyyy-MM-dd HH:mm:ss\"}}</md-card-subtitle>\n    </md-card-header>\n    <md-card-content>\n      <img class=\"uploadImg\" *ngIf=\"homePost.img\" src=\"{{ homePost.img }}\"> \n      <p id=\"postcontent\">{{homePost.body}}</p>\n      <!-- comment section -->\n      <div id=\"commentssection\" *ngIf=\"homePost.comments.length > 0\">\n        <span>\n          <i class=\"material-icons\">mode_comment</i>\n        </span>\n        <span>\n          <md-list class=\"comment-section\">\n            <md-list-item class=\"comment-font\" id=\"commentsfor\" *ngFor=\"let comment of homePost.comments\">\n              <div id=\"commentator\" style=\"font-weight: bold\">\n                {{comment.commentator}}: \n              </div> \n              {{comment.comment}}\n              <span class=\"spacer\"></span>\n              <div *ngIf=\"comment.commentator == curUsername\">\n                <button md-icon-button (click)=\"deleteComment(comment,i)\">\n                  <i class=\"material-icons\">clear</i>  \n                </button>\n              </div>\n            </md-list-item>\n          </md-list>\n          </span>\n      </div>\n    </md-card-content>\n    <!-- post operation -->\n    <md-card-actions>\n      <button md-button id=\"likebtn\" (click)=\"likeCancelLikePost(i)\">\n        <span><i class=\"material-icons md-18 icon-align\" [class.red-color]=\"homePost.likedBy.indexOf(curUsername) >= 0\">favorite</i></span>\n        <span class=\"fill-space\"></span>\n        <span *ngIf=\"homePost.likes>0\" id=\"likenum\">{{homePost.likes}}</span>\n      </button>\n      <button md-button id=\"commentbtn\" (click)=\"openDialog(i)\">\n        <i class=\"material-icons md-18\">insert_comment</i>\n      </button>\n      <button md-button>\n        <i class=\"material-icons md-18\">share</i>\n      </button>\n      <md-card-content>\n        <p *ngIf=\"homePost.likes>0\" class=\"like-font\" id=\"likeby\">Liked by: {{homePost.likedBy}}</p>\n      </md-card-content>\n    </md-card-actions>\n  </md-card>\n\n  <!-- choose post amount to display in each page -->\n  <div class=\"make-post\">\n    <md-paginator [length]=\"homePosts.length\" [pageSize]=\"pageSize\" [pageSizeOptions]=\"pageSizeOptions\" (page)=\"pageEvent = $event; pageChange($event)\">\n    </md-paginator>\n  </div>\n</div>\n\n<!-- notification -->\n<!-- <div style=\"float:left\">\n  <p class=\"notiTitle\">Notifications</p>\n  <md-card class=\"notification\">Notifications</md-card>\n</div> -->\n\n</div>"
+module.exports = "<div>\n<div style=\"float:left\">\n  <div class=\"make-post\">\n    <md-expansion-panel>\n      <md-expansion-panel-header id=\"makepost\">\n        <md-panel-title>\n          Make Post\n        </md-panel-title>\n        <md-panel-description>\n          What's on your mind?\n        </md-panel-description>\n      </md-expansion-panel-header>\n      <md-form-field class=\"textwidth\">\n        <!-- <input mdInput #message maxlength=\"256\" placeholder=\"Say something\">\n      <md-hint align=\"start\"><strong>Don't disclose personal info</strong> </md-hint> -->\n        <input mdInput name=\"postinput\" [(ngModel)]=\"post.body\" #message maxlength=\"256\">\n        <md-hint align=\"end\">{{message.value.length}} / 256</md-hint>\n      </md-form-field>\n      <img *ngIf=\"url.length > 0\" class=\"uploadImg\" src=\"{{ url }}\">\n      <div class=\"input\">\n        <input class=\"ng-hide\" id=\"input-file-id\" (change)=\"fileChangeEvent($event)\" type=\"file\" #inputFile hidden/>\n        <button color=\"primary\" id=\"selectFile\" md-raised-button>\n          <Label for=\"input-file-id\">\n            <i class=\"material-icons md-18 icon-align\">insert_photo</i>\n            Photo\n          </Label>\n        </button>\n        <button color=\"warn\" id=\"sendpost\" (click)=\"sendPost()\" md-raised-button>Post</button>\n      </div>\n    </md-expansion-panel>\n  </div>\n\n  <!-- post information -->\n  <!-- <md-card class=\"post-card\" *ngFor=\"let spaceScreen of spaceScreens | slice: [start] : [end]; let i = index\">\n    <md-card-header>\n      <div md-card-avatar class=\"post-image\"></div>\n      <md-card-title>{{spaceScreen.name}}</md-card-title>\n      <md-card-subtitle>{{spaceScreen.remark}}</md-card-subtitle>\n    </md-card-header>\n    <img md-card-image src=\"{{spaceScreen.img}}\" alt=\"post photo\">\n    <md-card-content>\n      <p>{{spaceScreen.description}}</p>\n    </md-card-content>\n    <md-card-actions>\n      <button md-button (click)=\"likeMe(i)\">\n        <i class=\"material-icons md-18\" [class.red-color]=\"spaceScreen.liked == '1'\">favorite</i>\n      </button>\n      <button md-button (click)=\"commentMe(i)\">\n        <i class=\"material-icons md-18\">insert_comment</i>\n      </button>\n      <button md-button (click)=\"shareMe(i)\">\n        <i class=\"material-icons md-18\">share</i>\n      </button>\n    </md-card-actions>\n  </md-card> -->\n  \n  <!-- refresh button -->\n  <button class=\"make-post\" color =\"primary\" (click)=\"refreshSelfposts($event)\" md-raised-button>\n    <i class=\"material-icons\">refresh</i>\n  </button>\n\n  <!-- post content -->\n  <md-card id=\"postcards\" class=\"post-card\" *ngFor=\"let homePost of homePosts | slice: [start] : [end]; let i = index\">\n    <md-card-header>\n      <img md-card-avatar class=\"post-image\" src=\"https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg\">\n      <md-card-title id=\"postauthor\">{{homePost.createdBy}}</md-card-title>\n      <md-card-subtitle>{{homePost.createdAt | date:\"yyyy-MM-dd HH:mm:ss\"}}</md-card-subtitle>\n    </md-card-header>\n    <md-card-content>\n      <img class=\"uploadImg\" *ngIf=\"homePost.img\" src=\"{{ homePost.img }}\"> \n      <p id=\"postcontent\">{{homePost.body}}</p>\n      <!-- comment section -->\n      <div id=\"commentssection\" *ngIf=\"homePost.comments.length > 0\">\n        <span>\n          <i class=\"material-icons\">mode_comment</i>\n        </span>\n        <span>\n          <md-list class=\"comment-section\">\n            <md-list-item class=\"comment-font\" id=\"commentsfor\" *ngFor=\"let comment of homePost.comments\">\n              <div id=\"commentator\" style=\"font-weight: bold\">\n                {{comment.commentator}}: \n              </div> \n              {{comment.comment}}\n              <span class=\"spacer\"></span>\n              <div *ngIf=\"comment.commentator == curUsername\">\n                <button md-icon-button (click)=\"deleteComment(comment,i)\">\n                  <i class=\"material-icons\">clear</i>  \n                </button>\n              </div>\n            </md-list-item>\n          </md-list>\n          </span>\n      </div>\n    </md-card-content>\n    <!-- post operation -->\n    <md-card-actions>\n      <button md-button id=\"likebtn\" (click)=\"likeCancelLikePost(i)\">\n        <span><i class=\"material-icons md-18 icon-align\" [class.red-color]=\"homePost.likedBy.indexOf(curUsername) >= 0\">favorite</i></span>\n        <span class=\"fill-space\"></span>\n        <span *ngIf=\"homePost.likes>0\" id=\"likenum\">{{homePost.likes}}</span>\n      </button>\n      <button md-button id=\"commentbtn\" (click)=\"openDialog(i)\">\n        <i class=\"material-icons md-18\">insert_comment</i>\n      </button>\n      <button md-button>\n        <i class=\"material-icons md-18\">share</i>\n      </button>\n      <md-card-content>\n        <p *ngIf=\"homePost.likes>0\" class=\"like-font\" id=\"likeby\">Liked by: {{homePost.likedBy}}</p>\n      </md-card-content>\n    </md-card-actions>\n  </md-card>\n\n  <!-- choose post amount to display in each page -->\n  <div class=\"make-post\">\n    <md-paginator [length]=\"homePosts.length\" [pageSize]=\"pageSize\" [pageSizeOptions]=\"pageSizeOptions\" (page)=\"pageEvent = $event; pageChange($event)\">\n    </md-paginator>\n  </div>\n</div>\n\n<!-- notification -->\n<!-- <div style=\"float:left\">\n  <p class=\"notiTitle\">Notifications</p>\n  <md-card class=\"notification\">Notifications</md-card>\n</div> -->\n\n</div>"
 
 /***/ }),
 
@@ -859,7 +862,8 @@ var HomeComponent = (function () {
         this.post = new __WEBPACK_IMPORTED_MODULE_1__post__["a" /* Post */]();
         this.curUser = new __WEBPACK_IMPORTED_MODULE_2__user__["a" /* User */]();
         this.homePosts = [];
-        this.url = "";
+        this.url = '';
+        this.avatars = new Map();
         this.spaceScreens = [];
         this.start = 0;
         this.end = 0;
@@ -877,6 +881,11 @@ var HomeComponent = (function () {
             _this.curUser = data;
             _this.getHomeposts();
         });
+        // if(this.curUser.avatar !== "undefined") {
+        //   this.avatar = this.curUser.avatar;
+        // } else {
+        //   this.avatar = 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg';
+        // }
         this.end = this.start + this.pageSize;
     };
     HomeComponent.prototype.refreshSelfposts = function (e) {
@@ -1593,6 +1602,9 @@ var UserService = (function () {
         //console.log("Client > New friend to be updated > ", user)
         return this._http.put('/users/updatefriend/' + user._id, user).map(function (data) { return data.json(); }).toPromise();
     };
+    UserService.prototype.updateAvatar = function (user) {
+        return this._http.put('users/updateavatar/' + user._id, user).map(function (data) { return data.json(); }).toPromise();
+    };
     return UserService;
 }());
 UserService = __decorate([
@@ -1611,7 +1623,7 @@ var _a;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return User; });
 var User = (function () {
-    function User(_id, username, password, email, nickname, gender, dob, friend, emaileditable, passwordeditable) {
+    function User(_id, username, password, email, nickname, gender, dob, friend, emaileditable, passwordeditable, avatar) {
         if (_id === void 0) { _id = ''; }
         if (username === void 0) { username = ''; }
         if (password === void 0) { password = ''; }
@@ -1622,6 +1634,7 @@ var User = (function () {
         if (friend === void 0) { friend = []; }
         if (emaileditable === void 0) { emaileditable = false; }
         if (passwordeditable === void 0) { passwordeditable = false; }
+        if (avatar === void 0) { avatar = ''; }
         this._id = _id;
         this.username = username;
         this.password = password;
@@ -1632,6 +1645,7 @@ var User = (function () {
         this.friend = friend;
         this.emaileditable = emaileditable;
         this.passwordeditable = passwordeditable;
+        this.avatar = avatar;
     }
     return User;
 }());
@@ -1898,6 +1912,13 @@ UserNewComponent = __decorate([
 
 /***/ }),
 
+/***/ "../../../../../src/app/user/user-profile/avatarPreview.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div>\n    <div>\n        <img class=\"uploadImg\" src=\"{{ avatar || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg' }}\">\n    </div>\n    \n    <div class=\"input\">\n        <input class=\"ng-hide\" id=\"input-file-id\" (change)=\"fileChangeEvent($event)\" type=\"file\" #inputFile hidden/>\n        <button color=\"primary\" id=\"selectFile\" md-raised-button>\n          <Label for=\"input-file-id\">\n            <i class=\"material-icons md-18 icon-align\">insert_photo</i>\n            Photo\n          </Label>\n        </button>\n        <button class=\"button-spacer\" color=\"warn\" id=\"sendpost\" (click)=\"updateAvatar()\" md-raised-button>Confirm</button>\n    </div>\n</div>"
+
+/***/ }),
+
 /***/ "../../../../../src/app/user/user-profile/user-profile.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1906,7 +1927,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ":host {\n  -webkit-box-flex: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  background-color:#E0F2F1;\n}\n\n.example-full-width {\n  width: 100%;\n}\n\n.example-button-color {\n    color: #80CBC4\n}\n\n.example-form {\n  min-width: 150px;\n  max-width: 600px;\n  width: 100%;\n  margin-left: auto;\n  margin-right: auto;\n}\n.post-image {\n  background-image: url(" + __webpack_require__("../../../../../src/assets/headerimage/head6.jpg") + ");\n  /*background-image: spaceScreen.headerimg; */\n  background-size: cover;\n  width: 150px;\n  height: 150px;\n  margin-left: auto;\n  margin-right: auto;\n  margin-top: 80px;\n  margin-bottom: 100px;\n}\n.example-card {\n  width: 800px;\n  padding:0 0 50px 0;\n}\n.card-header {\n  background-size: cover;\n  background-image: url(" + __webpack_require__("../../../../../src/assets/images-home/color.jpg") + ");\n  margin-bottom: 50px;\n}\n.back-button {\n  margin-left: 100px;\n}\n", ""]);
+exports.push([module.i, ":host {\n  -webkit-box-flex: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  background-color:#E0F2F1;\n}\n\n.example-full-width {\n  width: 100%;\n}\n\n.example-button-color {\n    color: #80CBC4\n}\n\n.example-form {\n  min-width: 150px;\n  max-width: 600px;\n  width: 100%;\n  margin-left: auto;\n  margin-right: auto;\n}\n.post-image {\n  /* background-image: url('../../../assets/headerimage/head6.jpg'); */\n  background-size: cover;\n  width: 150px;\n  height: 150px;\n  margin-left: auto;\n  margin-right: auto;\n  margin-top: 80px;\n  margin-bottom: 100px;\n}\n.example-card {\n  width: 800px;\n  padding:0 0 50px 0;\n}\n.card-header {\n  background-size: cover;\n  background-image: url(" + __webpack_require__("../../../../../src/assets/images-home/color.jpg") + ");\n  margin-bottom: 50px;\n}\n.back-button {\n  margin-left: 100px;\n}\n.uploadImg{\n  width: 100%;\n  height: 100%;\n  max-width: 300px;\n  padding:0 0 20px 0;\n  /* display: block;\n  margin: auto; */\n}\n.icon-align{\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  vertical-align: middle;\n}\n\n.input{\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n.button-spacer{\n  margin-left: 10px;\n}", ""]);
 
 // exports
 
@@ -1919,7 +1940,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/user/user-profile/user-profile.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<md-card class=\"example-card\">\n    <!-- {{ user | json }} <br>\n    {{ userEdit | json }} -->\n    <md-card-header class=\"card-header\">\n        <div md-card-avatar class=\"post-image\"></div>\n    </md-card-header>\n    \n    <form class=\"example-form\">\n        <!-- User name -->\n        <md-form-field class=\"example-full-width\">\n          <input mdInput id=\"prfusername\" placeholder=\"Username\" disabled value={{user.username}}>\n        </md-form-field>\n        <!-- Nick name -->\n        <md-form-field class=\"example-full-width\">\n          <input mdInput id=\"prfnickname\" placeholder=\"Nickname\" disabled value={{user.nickname}}>\n        </md-form-field>\n        <!-- Birthday -->\n        <md-form-field class=\"example-full-width\">\n            <input mdInput id=\"prfbirthday\" placeholder=\"Birthday\" disabled value={{user.dob}}>\n        </md-form-field>\n        <!-- Email -->\n        <table class=\"example-full-width\" cellspacing=\"0\"><tr>\n          <td><md-form-field class=\"example-full-width\">\n            <input mdInput id=\"prfemail\" placeholder=\"Email\" disabled value={{userEdit.email}}>\n          </md-form-field></td>\n          <td>\n              <button color=\"primary\" id=\"editemailbtn\" (click)=\"userEdit.emaileditable=!userEdit.emaileditable\" md-raised-button>Edit</button>     \n          </td>\n        </tr></table>\n        <table class=\"example-full-width\" cellspacing=\"0\" *ngIf=\"userEdit.emaileditable\"><tr>\n            <td><form class=\"example-form\">\n                <md-form-field class=\"example-full-width\">\n                  <input type=\"text\" mdInput placeholder=\"New Email Address\" name=\"email\" [(ngModel)]=\"userEdit.email\">\n                </md-form-field>\n            </form></td>\n            <td>\n              <button color=\"primary\" id=\"confirmemailbtn\" (click)=\"update_email()\" md-raised-button>Confirm Change</button>\n            </td>  \n        </tr></table>\n        <!-- Password -->\n        <table class=\"example-full-width\" cellspacing=\"0\"><tr>\n          <td><md-form-field class=\"example-full-width\">\n            <input mdInput placeholder=\"Password\" disabled value=...............................>\n          </md-form-field></td>\n          <td>\n              <button color =\"primary\" id=\"editpasswordbtn\" (click)=\"user.passwordeditable=!user.passwordeditable\" md-raised-button>Edit</button>    \n          </td>\n        </tr></table>\n        <table class=\"example-full-width\" cellspacing=\"0\" *ngIf=\"user.passwordeditable\"><tr>\n            <td><form class=\"example-form\">\n                <md-form-field class=\"example-full-width\">\n                  <input type=\"password\" mdInput placeholder=\"New Password\" name=\"password\" [(ngModel)]=\"userEdit.password\">\n                </md-form-field>\n            </form></td>\n            <td>\n              <button color=\"primary\" id=\"confirmpasswordbtn\" (click)=\"update_password()\" md-raised-button>Confirm Change</button>\n            </td>  \n        </tr></table>\n\n    </form>\n    \n    <button color =\"primary\" class=\"back-button\" routerLink=\"/dashboard\" md-raised-button>Back to Homepage</button>\n\n\n</md-card>\n  "
+module.exports = "<md-card class=\"example-card\">\n    <!-- {{ user | json }} <br>\n    {{ userEdit | json }} -->\n    <md-card-header class=\"card-header\">\n        <img md-card-avatar class=\"post-image\" src=\"{{user.avatar || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}\" (click)=\"openDialog()\" >\n    </md-card-header>\n    \n    <form class=\"example-form\">\n        <!-- User name -->\n        <md-form-field class=\"example-full-width\">\n          <input mdInput id=\"prfusername\" placeholder=\"Username\" disabled value={{user.username}}>\n        </md-form-field>\n        <!-- Nick name -->\n        <md-form-field class=\"example-full-width\">\n          <input mdInput id=\"prfnickname\" placeholder=\"Nickname\" disabled value={{user.nickname}}>\n        </md-form-field>\n        <!-- Birthday -->\n        <md-form-field class=\"example-full-width\">\n            <input mdInput id=\"prfbirthday\" placeholder=\"Birthday\" disabled value={{user.dob}}>\n        </md-form-field>\n        <!-- Email -->\n        <table class=\"example-full-width\" cellspacing=\"0\"><tr>\n          <td><md-form-field class=\"example-full-width\">\n            <input mdInput id=\"prfemail\" placeholder=\"Email\" disabled value={{userEdit.email}}>\n          </md-form-field></td>\n          <td>\n              <button color=\"primary\" id=\"editemailbtn\" (click)=\"userEdit.emaileditable=!userEdit.emaileditable\" md-raised-button>Edit</button>     \n          </td>\n        </tr></table>\n        <table class=\"example-full-width\" cellspacing=\"0\" *ngIf=\"userEdit.emaileditable\"><tr>\n            <td><form class=\"example-form\">\n                <md-form-field class=\"example-full-width\">\n                  <input type=\"text\" mdInput placeholder=\"New Email Address\" name=\"email\" [(ngModel)]=\"userEdit.email\">\n                </md-form-field>\n            </form></td>\n            <td>\n              <button color=\"primary\" id=\"confirmemailbtn\" (click)=\"update_email()\" md-raised-button>Confirm Change</button>\n            </td>  \n        </tr></table>\n        <!-- Password -->\n        <table class=\"example-full-width\" cellspacing=\"0\"><tr>\n          <td><md-form-field class=\"example-full-width\">\n            <input mdInput placeholder=\"Password\" disabled value=...............................>\n          </md-form-field></td>\n          <td>\n              <button color =\"primary\" id=\"editpasswordbtn\" (click)=\"user.passwordeditable=!user.passwordeditable\" md-raised-button>Edit</button>    \n          </td>\n        </tr></table>\n        <table class=\"example-full-width\" cellspacing=\"0\" *ngIf=\"user.passwordeditable\"><tr>\n            <td><form class=\"example-form\">\n                <md-form-field class=\"example-full-width\">\n                  <input type=\"password\" mdInput placeholder=\"New Password\" name=\"password\" [(ngModel)]=\"userEdit.password\">\n                </md-form-field>\n            </form></td>\n            <td>\n              <button color=\"primary\" id=\"confirmpasswordbtn\" (click)=\"update_password()\" md-raised-button>Confirm Change</button>\n            </td>  \n        </tr></table>\n\n    </form>\n    \n    <button color =\"primary\" class=\"back-button\" routerLink=\"/dashboard\" md-raised-button>Back to Homepage</button>\n\n\n</md-card>\n  "
 
 /***/ }),
 
@@ -1927,10 +1948,12 @@ module.exports = "<md-card class=\"example-card\">\n    <!-- {{ user | json }} <
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserProfileComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return UserProfileComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AvatarPreviewComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__user_service__ = __webpack_require__("../../../../../src/app/user.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user__ = __webpack_require__("../../../../../src/app/user.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_material__ = __webpack_require__("../../../material/@angular/material.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1940,16 +1963,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 
 
 
+
+var URL = 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg';
 var UserProfileComponent = (function () {
-    function UserProfileComponent(userService) {
+    function UserProfileComponent(userService, dialog) {
         this.userService = userService;
+        this.dialog = dialog;
         this.user = new __WEBPACK_IMPORTED_MODULE_2__user__["a" /* User */]();
         this.userEdit = new __WEBPACK_IMPORTED_MODULE_2__user__["a" /* User */]();
         this.currentuser = JSON.parse(localStorage.getItem("currentUser"));
         this.username = '';
+        this.avatar = '';
     }
     UserProfileComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -1958,9 +1988,9 @@ var UserProfileComponent = (function () {
         // console.log(this.currentuser);
         // if('token' in this.currentuser){
         this.username = this.currentuser.user.username;
-        // }else {
-        //   this.username = this.currentuser.username;
-        // };
+        if (this.currentuser.user.avatar !== "undefined") {
+            URL = this.currentuser.user.avatar;
+        }
         // get all user information from database and assign to user and useredit
         this.userService.getUserByUsername(this.username).then(function (data) {
             _this.user = data;
@@ -1983,6 +2013,16 @@ var UserProfileComponent = (function () {
         this.user = this.userEdit;
         this.userService.updatePassword(this.userEdit);
     };
+    UserProfileComponent.prototype.openDialog = function () {
+        var _this = this;
+        var dialogRef = this.dialog.open(AvatarPreviewComponent, {
+            width: '350px',
+            data: { avatar: URL }
+        });
+        dialogRef.afterClosed().subscribe(function (result) {
+            _this.avatar = URL;
+        });
+    };
     return UserProfileComponent;
 }());
 UserProfileComponent = __decorate([
@@ -1991,10 +2031,66 @@ UserProfileComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/user/user-profile/user-profile.component.html"),
         styles: [__webpack_require__("../../../../../src/app/user/user-profile/user-profile.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__user_service__["a" /* UserService */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__user_service__["a" /* UserService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__angular_material__["d" /* MdDialog */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_material__["d" /* MdDialog */]) === "function" && _b || Object])
 ], UserProfileComponent);
 
-var _a;
+var AvatarPreviewComponent = (function () {
+    function AvatarPreviewComponent(dialogRef, data, userService) {
+        this.dialogRef = dialogRef;
+        this.data = data;
+        this.userService = userService;
+        this.avatar = 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg';
+        this.user = new __WEBPACK_IMPORTED_MODULE_2__user__["a" /* User */]();
+        this.currentuser = JSON.parse(localStorage.getItem("currentUser"));
+    }
+    ;
+    AvatarPreviewComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.username = this.currentuser.user.username;
+        this.userService.getUserByUsername(this.username).then(function (data) {
+            _this.user = data;
+            console.log(_this.avatar);
+            if (_this.user.avatar !== "undefined") {
+                _this.avatar = _this.user.avatar;
+            }
+            else {
+                _this.avatar = 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg';
+            }
+        });
+    };
+    AvatarPreviewComponent.prototype.onNoClick = function () {
+        this.dialogRef.close();
+    };
+    AvatarPreviewComponent.prototype.fileChangeEvent = function (fileInput) {
+        var _this = this;
+        if (fileInput.target.files && fileInput.target.files[0]) {
+            var reader = new FileReader();
+            reader.readAsDataURL(fileInput.target.files[0]);
+            reader.onload = function (x) {
+                URL = x.target.result;
+                _this.avatar = URL;
+                //console.log(this.data.avatar);
+            };
+        }
+    };
+    AvatarPreviewComponent.prototype.updateAvatar = function () {
+        this.user.avatar = this.avatar;
+        this.userService.updateAvatar(this.user);
+        this.dialogRef.close();
+    };
+    return AvatarPreviewComponent;
+}());
+AvatarPreviewComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-avatarpreview',
+        template: __webpack_require__("../../../../../src/app/user/user-profile/avatarPreview.html"),
+        styles: [__webpack_require__("../../../../../src/app/user/user-profile/user-profile.component.css")]
+    }),
+    __param(1, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])(__WEBPACK_IMPORTED_MODULE_3__angular_material__["a" /* MD_DIALOG_DATA */])),
+    __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_material__["e" /* MdDialogRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_material__["e" /* MdDialogRef */]) === "function" && _c || Object, Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__user_service__["a" /* UserService */]) === "function" && _d || Object])
+], AvatarPreviewComponent);
+
+var _a, _b, _c, _d;
 //# sourceMappingURL=user-profile.component.js.map
 
 /***/ }),

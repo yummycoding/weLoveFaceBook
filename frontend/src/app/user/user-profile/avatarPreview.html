@@ -1,0 +1,16 @@
+<div>
+    <div>
+        <img class="uploadImg" src="{{ avatar || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg' }}">
+    </div>
+    
+    <div class="input">
+        <input class="ng-hide" id="input-file-id" (change)="fileChangeEvent($event)" type="file" #inputFile hidden/>
+        <button color="primary" id="selectFile" md-raised-button>
+          <Label for="input-file-id">
+            <i class="material-icons md-18 icon-align">insert_photo</i>
+            Photo
+          </Label>
+        </button>
+        <button class="button-spacer" color="warn" id="sendpost" (click)="updateAvatar()" md-raised-button>Confirm</button>
+    </div>
+</div>

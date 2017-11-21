@@ -9,6 +9,7 @@ export class User {
         public dob     : string = '',
         public friend  : Array<string> = [],
         public emaileditable: boolean = false,
-        public passwordeditable: boolean = false
+        public passwordeditable: boolean = false,
+        public avatar: string = ''
     ) {}
 }

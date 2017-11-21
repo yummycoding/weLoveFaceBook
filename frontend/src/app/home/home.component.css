@@ -3,7 +3,7 @@
   }
   
 .post-image {
-  background-image: url('../../assets/headerimage/head6.jpg');
+  /* background-image: url('../../assets/headerimage/head6.jpg'); */
   /* background-image: spaceScreen.headerimg; */
   background-size: cover;
 }

@@ -36,6 +36,7 @@ import { UserProfileComponent } from './user/user-profile/user-profile.component
 // file upload
 import { AddFriendComponent } from './friendlist/friendlist.component';
 import { AddCommentComponent } from './home/home.component';
+import { AvatarPreviewComponent } from './user/user-profile/user-profile.component';
 // make post
 import { PostService } from './post.service';
 import { HelpcenterComponent } from './helpcenter/helpcenter.component';
@@ -83,7 +84,8 @@ export const appRoutes: Routes = [
     UserProfileComponent,
     AddFriendComponent,
     AddCommentComponent,
-    HelpcenterComponent
+    HelpcenterComponent,
+    AvatarPreviewComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -98,7 +100,8 @@ export const appRoutes: Routes = [
   ],
   entryComponents: [
     AddFriendComponent,
-    AddCommentComponent
+    AddCommentComponent,
+    AvatarPreviewComponent
   ],
   providers: [
     UserService, 

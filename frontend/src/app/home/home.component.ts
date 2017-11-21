@@ -21,8 +21,9 @@ export class HomeComponent implements OnInit {
   curUser: User = new User();
   homePosts: Array<Post> = [];
   commentContent: String;
-  url: string = "";  
-
+  url: string = '';  
+  avatars : Map<string, string> = new Map<string, string>();
+  
   spaceScreens: Array<any> = [];
   start = 0;
   end = 0;
@@ -42,7 +43,11 @@ export class HomeComponent implements OnInit {
       this.curUser = data
       this.getHomeposts();
     });
-   
+    // if(this.curUser.avatar !== "undefined") {
+    //   this.avatar = this.curUser.avatar;
+    // } else {
+    //   this.avatar = 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg';
+    // }
     this.end = this.start + this.pageSize;
   }
 

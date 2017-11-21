@@ -284,5 +284,20 @@ router.put('/updatefriend/:id', (req, res, next) => {
     });
 });
 
+router.put('/updateavatar/:id', (req, res, next) => {
+    console.log("Server > PUT 'users/updatefriend/:id' > id", req.params.id);
+    //console.log("Server > PUT 'users/updatefriend/:id' > user", req.body.avatar);
+    User.findByIdAndUpdate(req.params.id,
+    {
+        $set:{ avatar: req.body.avatar }
+    },
+    function(err, updatedUser) {
+        if(err) {
+            res.send("Failed updating the friend")
+        }else{
+            res.json(updatedUser);
+        }
+    });
+});
 
 module.exports = router;

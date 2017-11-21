@@ -79,4 +79,8 @@ export class UserService {
     //console.log("Client > New friend to be updated > ", user)
     return this._http.put('/users/updatefriend/' + user._id, user).map(data => data.json()).toPromise();
   }
+  updateAvatar(user: User) {
+    return this._http.put('users/updateavatar/' + user._id, user).map(data => data.json()).toPromise();
+  }
+
 }

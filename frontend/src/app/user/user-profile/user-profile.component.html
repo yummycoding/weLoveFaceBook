@@ -2,7 +2,7 @@
     <!-- {{ user | json }} <br>
     {{ userEdit | json }} -->
     <md-card-header class="card-header">
-        <div md-card-avatar class="post-image"></div>
+        <img md-card-avatar class="post-image" src="{{user.avatar || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}" (click)="openDialog()" >
     </md-card-header>
     
     <form class="example-form">

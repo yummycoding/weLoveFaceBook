@@ -144,6 +144,9 @@ const UserSchema = mongoose.Schema({
     },
     friend: {
         type: Array
+    },
+    avatar: {
+        type: String,
     }
 });
 

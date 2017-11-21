@@ -62,7 +62,7 @@
   <!-- post content -->
   <md-card id="postcards" class="post-card" *ngFor="let homePost of homePosts | slice: [start] : [end]; let i = index">
     <md-card-header>
-      <div md-card-avatar class="post-image"></div>
+      <img md-card-avatar class="post-image" src="https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg">
       <md-card-title id="postauthor">{{homePost.createdBy}}</md-card-title>
       <md-card-subtitle>{{homePost.createdAt | date:"yyyy-MM-dd HH:mm:ss"}}</md-card-subtitle>
     </md-card-header>
