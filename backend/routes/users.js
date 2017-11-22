@@ -24,6 +24,7 @@ router.post('/register', (req, res, next) => {
                     nickname: req.body.nickname,
                     gender  : req.body.gender,
                     dob     : req.body.dob,
+                    avatar  : req.body.avatar,
                     friend  : req.body.friend,
                     emaileditable: false,
                     passwordeditable: false
@@ -66,6 +67,7 @@ router.post('/register', (req, res, next) => {
                                 nickname:user.nickname,
                                 gender:user.gender,
                                 dob:user.dob,
+                                avatar:user.avatar,
                                 friend:user.friend,
                                 emaileditable:user.emaileditable,
                                 passwordeditable:user.passwordeditable,
@@ -115,6 +117,7 @@ router.post('/authenticate', (req, res) => {
                                    nickname:user.nickname,
                                    gender:user.gender,
                                    dob:user.dob,
+                                   avatar:user.avatar,
                                    friend:user.friend,
                                    emaileditable:user.emaileditable,
                                    passwordeditable:user.passwordeditable,
@@ -298,6 +301,41 @@ router.put('/updateavatar/:id', (req, res, next) => {
             res.json(updatedUser);
         }
     });
+});
+
+router.get('/getallfriends/:username', (req, res) => {
+    console.log('GET > /getallfriends/:username > username', req.params.username);
+    User.find({username:req.params.username},(err, curUser) => {
+        if(err) {
+            res.json({success: false, message: err});
+        } else {
+            if(curUser.length === 0) {
+                res.json({success: false, message: 'username:'+req.params.username+'does not exist'});
+            }else if(curUser.length !== 1) {
+                res.json({success: false, message: 'multiple users are called(username): '+req.params.username});
+            }else{ // the only curUser were found using username
+                // found query array 
+                var qarray = [{username: req.params.username}];
+                curUser[0].friend.forEach(function(friendraw) {
+                    var friendallinfo = friendraw.split("$$"); // parse friend
+                    qarray.push({username: friendallinfo[1]});
+                });
+                // console.log("qarray to get post: ",qarray);
+                var query = { $or: qarray};
+                User.find( query, (err, users) => {
+                    if (err) {
+                        res.json({success: false, message: err});
+                    } else {
+                        if (!users) {
+                            res.json({success: false, message: 'No users found.'});
+                        } else {
+                            res.json({success: true, users: users});
+                        }
+                    }
+                }).sort({'_id': -1});
+            }
+        }
+    })
 });
 
 module.exports = router;

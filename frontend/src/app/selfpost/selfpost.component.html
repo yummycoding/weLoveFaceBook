@@ -4,7 +4,7 @@
 </button>
 <md-card class="post-card" *ngFor="let selfPost of selfPosts; let i = index">
   <md-card-header>
-      <div md-card-avatar class="post-image"></div>
+      <img md-card-avatar class="post-image" src="{{ curUserAvatar || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}">      
       <md-card-title>{{selfPost.createdBy}}</md-card-title>
       <md-card-subtitle>{{selfPost.createdAt}}</md-card-subtitle>
   </md-card-header>

@@ -14,6 +14,7 @@ export class SelfpostComponent implements OnInit {
 
   spaceScreens: Array<any>;
   @Input() curUsername: string;
+  @Input() curUserAvatar: string;
   selfPosts: Array<Post> =[];
 
   constructor(private userService: UserService, private postService: PostService, private http: Http) {

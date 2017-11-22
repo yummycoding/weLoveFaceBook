@@ -22,8 +22,9 @@ export class HomeComponent implements OnInit {
   homePosts: Array<Post> = [];
   commentContent: String;
   url: string = '';  
-  avatars : Map<string, string> = new Map<string, string>();
-  
+  friendAvatars: Map<string, string> = new Map<string, string>();
+
+
   spaceScreens: Array<any> = [];
   start = 0;
   end = 0;
@@ -32,9 +33,7 @@ export class HomeComponent implements OnInit {
   pageSizeOptions = [5, 10, 15, 20, 100];
   
   constructor(private userService: UserService, private postService: PostService, private http: Http, public dialog: MdDialog) {
-    // this.http.get('assets/mock-data-home/data.json')
-    // .map(response => response.json().screenshots)
-    // .subscribe(res => this.spaceScreens = res);
+
   }
 
   ngOnInit() {
@@ -43,12 +42,19 @@ export class HomeComponent implements OnInit {
       this.curUser = data
       this.getHomeposts();
     });
-    // if(this.curUser.avatar !== "undefined") {
-    //   this.avatar = this.curUser.avatar;
-    // } else {
-    //   this.avatar = 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg';
-    // }
+
     this.end = this.start + this.pageSize;
+    this.userService.getAllFriends(this.curUsername).then(data => {
+      if (data.success === true) {
+        
+        for(var i = 0; i < data.users.length; i++) {
+          this.friendAvatars.set(data.users[i].username, data.users[i].avatar);
+          //console.log("Friends got from database", this.avatars, this.avatars.size);
+        }
+      }else {
+        console.log("Error when getting friends from database: ",data.message);
+      }
+    });
   }
 
   refreshSelfposts(e) {

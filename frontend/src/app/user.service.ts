@@ -82,5 +82,7 @@ export class UserService {
   updateAvatar(user: User) {
     return this._http.put('users/updateavatar/' + user._id, user).map(data => data.json()).toPromise();
   }
-
+  getAllFriends(username: string) {
+    return this._http.get('/users/getallfriends/'+ username).map(data => data.json()).toPromise();
+  }
 }
