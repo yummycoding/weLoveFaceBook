@@ -1,3 +1,5 @@
+[![Gitter](https://badges.gitter.im/JoinChat.svg)](https://gitter.im/linnovate/mean?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+
 # WeLoveFacebook
 
 This social network was generated with MongoDB, Express, Angular2, Node.js.
