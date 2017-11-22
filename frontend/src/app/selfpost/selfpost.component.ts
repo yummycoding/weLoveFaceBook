@@ -14,7 +14,7 @@ export class SelfpostComponent implements OnInit {
 
   spaceScreens: Array<any>;
   @Input() curUsername: string;
-  @Input() curUserAvatar: string;
+  curUserAvatar: string;
   selfPosts: Array<Post> =[];
 
   constructor(private userService: UserService, private postService: PostService, private http: Http) {
@@ -24,11 +24,15 @@ export class SelfpostComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userService.getUserByUsername(this.curUsername).then(data => {
+      this.curUserAvatar = data.avatar;
+      console.log(this.curUserAvatar);
+    });
     this.getMyPosts(this.curUsername);
   }
 
   refreshSelfposts(e) {
-    this.getMyPosts(this.curUsername);
+    this.ngOnInit();
   }
 
   deleteSelfposts(i) {

@@ -313,7 +313,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/dashboard/dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<md-tab-group> \n  <md-tab label=\"Home\">\n    <app-home [curUsername]=\"curUsername\"></app-home>\n  </md-tab>\n  <md-tab label=\"My Post\">\n    <app-selfpost [curUsername]=\"curUsername\" [curUserAvatar]=\"curUserAvatar\"></app-selfpost>\n  </md-tab>\n  <md-tab label=\"Friends List\" id=\"friendlist\">\n    <app-friendlist></app-friendlist>\n  </md-tab>\n</md-tab-group>\n\n<h5 id=\"location\">Welcome to Gatorbook!</h5>    <!-- this line used for e2e testing, don't delete -->\n\n\n<!-- <p>\n  Welcome to FitNex!\n  <a routerLink=\"/\">Go Back</a>\n</p> -->\n"
+module.exports = "<md-tab-group> \n  <md-tab label=\"Home\">\n    <app-home [curUsername]=\"curUsername\"></app-home>\n  </md-tab>\n  <md-tab label=\"My Post\">\n    <app-selfpost [curUsername]=\"curUsername\"></app-selfpost>\n  </md-tab>\n  <md-tab label=\"Friends List\" id=\"friendlist\">\n    <app-friendlist></app-friendlist>\n  </md-tab>\n</md-tab-group>\n\n<h5 id=\"location\">Welcome to Gatorbook!</h5>    <!-- this line used for e2e testing, don't delete -->\n\n\n<!-- <p>\n  Welcome to FitNex!\n  <a routerLink=\"/\">Go Back</a>\n</p> -->\n"
 
 /***/ }),
 
@@ -1458,10 +1458,15 @@ var SelfpostComponent = (function () {
         // .subscribe(res => this.spaceScreens = res);
     }
     SelfpostComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.userService.getUserByUsername(this.curUsername).then(function (data) {
+            _this.curUserAvatar = data.avatar;
+            console.log(_this.curUserAvatar);
+        });
         this.getMyPosts(this.curUsername);
     };
     SelfpostComponent.prototype.refreshSelfposts = function (e) {
-        this.getMyPosts(this.curUsername);
+        this.ngOnInit();
     };
     SelfpostComponent.prototype.deleteSelfposts = function (i) {
         var _this = this;
@@ -1494,10 +1499,6 @@ __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", String)
 ], SelfpostComponent.prototype, "curUsername", void 0);
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
-    __metadata("design:type", String)
-], SelfpostComponent.prototype, "curUserAvatar", void 0);
 SelfpostComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-selfpost',
