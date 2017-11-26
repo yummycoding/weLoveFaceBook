@@ -65,6 +65,7 @@ export class HomeComponent implements OnInit {
     this.post.title = 'wedontneedtitle';
     this.post.createdBy = this.curUsername;
     this.post.img = this.url;
+    this.post.createdAt = new Date();
     this.postService.sendPost(this.post).then(data => {
       if (data.success === true) {
         this.getHomeposts();  // refresh homepage after send new post
