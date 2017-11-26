@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../user.service';
+import { UserService } from '../service/user.service';
 import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/map';
-import { User } from '../user';
+import { User } from '../class/user';
 
 @Component({
   selector: 'app-dashboard',

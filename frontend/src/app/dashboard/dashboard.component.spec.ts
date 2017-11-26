@@ -5,8 +5,8 @@
 // import { SelfpostComponent } from '../selfpost/selfpost.component';
 // import { FriendlistComponent } from '../friendlist/friendlist.component';
 // import { MaterialModule } from '@angular/material';
-// import { UserService } from '../user.service';
-// import { PostService } from '../post.service';
+// import { UserService } from '../service/user.service';
+// import { PostService } from '../service/post.service';
 // import { Http, BaseRequestOptions } from '@angular/http';
 // import { MockBackend } from '@angular/http/testing';
 // import { BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';

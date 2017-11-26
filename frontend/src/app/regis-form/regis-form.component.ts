@@ -1,8 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { UserService } from '../user.service';
-import { User } from '../user';
+import { UserService } from '../service/user.service';
+import { User } from '../class/user';
 import { Router } from '@angular/router';
-import {ValidateService} from '../validate.service';
+import {ValidateService} from '../service/validate.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({

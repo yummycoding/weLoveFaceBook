@@ -4,9 +4,9 @@ import {} from 'jasmine';
 
 describe('Profile edit:', () => {
   let profilepage: EditProfilePage;
-  var username =  "e2etest9";
-  var email_old = "e2etest9@ufl.edu";
-  var email_new = "e2etest9@gmail.com";
+  var username =  "e2etest20";
+  var email_old = "e2etest20@ufl.edu";
+  var email_new = "e2etest20@gmail.com";
   var password_old = "Admin$$$1";
   var password_new = "Newpassword$$$1";
 

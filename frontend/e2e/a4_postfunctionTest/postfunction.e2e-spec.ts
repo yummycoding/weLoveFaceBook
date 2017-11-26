@@ -4,7 +4,7 @@ import {} from 'jasmine';
 
 describe('Post function:', () => {
     let postfunc:PostFunc;
-    let username:string = 'e2etest9';
+    let username:string = 'e2etest20';
     let password:string = 'Admin$$$1';
 
     beforeEach(() => {

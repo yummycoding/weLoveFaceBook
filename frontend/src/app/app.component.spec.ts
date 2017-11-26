@@ -5,7 +5,7 @@ import { FooterComponent } from './footer/footer.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router, RouterModule } from '@angular/router';
 import { MaterialModule } from '@angular/material';
-import { UserService } from './user.service';
+import { UserService } from './service/user.service';
 import { Http } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 

@@ -1,12 +1,12 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
-import { Post } from '../post';
-import { User } from '../user';
-import { PostService } from '../post.service';
-import { UserService } from '../user.service';
+import { PostService } from '../service/post.service';
+import { UserService } from '../service/user.service';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
-import { Comment } from '../comment';
+import { Post } from '../class/post';
+import { User } from '../class/user';
+import { Comment } from '../class/comment';
 
 @Component({
   selector: 'app-home',

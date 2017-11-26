@@ -4,12 +4,12 @@ import { LoginFormComponent } from './login-form.component';
 import { FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router, RouterModule } from '@angular/router';
-import { UserService } from '../user.service';
+import { UserService } from '../service/user.service';
 import { Http, BaseRequestOptions, Response, ResponseOptions, RequestMethod } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { FlashMessagesService, FlashMessagesModule } from 'angular2-flash-messages';
-import { ValidateService } from '../validate.service';
+import { ValidateService } from '../service/validate.service';
 
 describe('LoginFormComponent', () => {
   let component: LoginFormComponent;

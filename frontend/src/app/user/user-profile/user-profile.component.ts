@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, Input, EventEmitter, Inject } from '@angular/core';
-import { UserService } from '../../user.service';
-import { User } from '../../user';
+import { UserService } from '../../service/user.service';
+import { User } from '../../class/user';
 import { Router } from '@angular/router';
 import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 import { isDefined } from '@angular/compiler/src/util';

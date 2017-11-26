@@ -1,12 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MaterialModule } from '@angular/material';
 import { SelfpostComponent } from './selfpost.component';
-import { UserService } from '../user.service';
+import { UserService } from '../service/user.service';
 import { Http, BaseRequestOptions, Response, ResponseOptions, RequestMethod } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 import { BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
-import { PostService } from '../post.service';
-import { Post } from'../post';
+import { PostService } from '../service/post.service';
+import { Post } from'../class/post';
 
 describe('SelfpostComponent', () => {
   let component: SelfpostComponent;

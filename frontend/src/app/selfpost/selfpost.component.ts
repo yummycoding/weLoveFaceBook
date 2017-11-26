@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { UserService } from '../user.service';
-import { PostService } from '../post.service';
+import { UserService } from '../service/user.service';
+import { PostService } from '../service/post.service';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { Post } from '../post';
+import { Post } from '../class/post';
 
 @Component({
   selector: 'app-selfpost',
