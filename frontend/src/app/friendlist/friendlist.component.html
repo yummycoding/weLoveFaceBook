@@ -1,10 +1,11 @@
 <md-form-field style="width: 300px">
     <input mdInput [(ngModel)]="name" placeholder="Search">
 </md-form-field>
-<button md-raised-button (click)="openDialog()" color="primary" style="margin-left: 15px" id="addfriend">Add a new friend</button>
+<button color ="primary" (click)="filterFriends()" md-raised-button>Search</button>
 <button color ="primary" (click)="refreshFriendlist()" md-raised-button>Refresh</button>
+<button md-raised-button (click)="openDialog()" color="warn" style="margin-left: 15px" id="addfriend">Add a new friend</button>
 <md-list>
-  <md-list-item *ngFor="let friend of myFriends">
+  <md-list-item *ngFor="let friend of filteredFriends">
     <md-icon md-list-icon>face</md-icon>
     <p md-line>{{friend.nickname}}</p>
     <span class="spacer"></span>
