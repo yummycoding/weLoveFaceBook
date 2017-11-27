@@ -1,29 +1,36 @@
 <body>
-  <!-- <li>
-    <img width="102%" style="backface-visibility: hidden; position: absolute; left: -3.771px; top: 0px; z-index: -1;" src="../assets/images-home/beach1.jpg">
-  </li> -->
-  <form (submit)="loginUser($event)"> 
-    <div class="alert">
-      <flash-messages></flash-messages>
-    </div>
-    <div>
-      <img width="500" src="../assets/headerimage/GatorBook.jpg">
-      <h4 class="sub-title" id="location">—— Share Your Beautiful Life</h4>     <!-- this line used for e2e testing, don't delete -->
-    </div>
-    <div>
-      <img width="500" src="../assets/headerimage/gator.png">
-    </div>
-    <md-form-field class="example-full-width">
-        <input mdInput placeholder="Username" type ="username" name="signinusername" [(ngModel)]="signinUser.username">
-    </md-form-field>
-    <md-form-field class="example-full-width">
-        <input type ="password" mdInput placeholder="Password" type ="password"name="signinpassword" [(ngModel)]="signinUser.password">
-    </md-form-field>
-    <div class="input">    
-      <button color ="primary" id=signinbtn type ="submit" md-raised-button>Sign In</button>   
-      <button color ="primary" id=signupbtn routerLink="/regis-form" md-raised-button>Sign Up</button>
-    </div>
-  </form>
+  <div ng-app="myApp" ng-controller="customersCtrl"> 
+    <!-- <li>
+      <img width="102%" style="backface-visibility: hidden; position: absolute; left: -1px; top: -1px; z-index: -1;" src="../assets/images-home/alligator.jpg">
+｀  </li> -->
+  <tr>
+    <td style="width:500px"></td>
+    <td>
+      <form (submit)="loginUser($event)"> 
+        <div class="alert">
+          <flash-messages></flash-messages>
+        </div>
+        <div>
+          <img src="../assets/images-home/logo3.png">
+          <h4 class="sub-title" id="location">—— Share Your Beautiful Life</h4>     <!-- this line used for e2e testing, don't delete -->
+        </div>
+        <div>
+          <img width="500" src="../assets/headerimage/gator.png">
+        </div>
+        <md-form-field class="example-full-width">
+            <input mdInput placeholder="Username" type ="username" name="signinusername" [(ngModel)]="signinUser.username">
+        </md-form-field>
+        <md-form-field class="example-full-width">
+            <input type ="password" mdInput placeholder="Password" type ="password"name="signinpassword" [(ngModel)]="signinUser.password">
+        </md-form-field>
+        <div class="input">    
+          <button color ="primary" id=signinbtn type ="submit" md-raised-button>Sign In</button>   
+          <button color ="primary" id=signupbtn routerLink="/regis-form" md-raised-button>Sign Up</button>
+        </div>
+      </form>
+</td>  
+</tr>
+  </div>
 </body>
 
 
