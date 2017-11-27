@@ -7,6 +7,11 @@
   /* background-image: spaceScreen.headerimg; */
   background-size: cover;
 }
+
+.post-author {
+  color: #00897B;
+}
+
 .make-post {
   width: 648px;
 }
@@ -54,4 +59,19 @@
 
 .line-breaker{
   overflow-wrap: break-word;
+}
+
+.displaypicker{
+  width: 648px;
+  background-color: #EEEEEE;
+}
+
+hr {
+  /* display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;  */
+  border-color: #F5F5F5;
 }

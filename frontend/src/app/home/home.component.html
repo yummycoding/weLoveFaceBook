@@ -41,7 +41,7 @@
   <md-card id="postcards" class="post-card" *ngFor="let homePost of homePosts | slice: [start] : [end]; let i = index">
     <md-card-header>
       <img md-card-avatar class="post-image" src="{{ friendAvatars.get(homePost.createdBy) || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}">
-      <md-card-title id="postauthor">{{homePost.createdBy}}</md-card-title>
+      <md-card-title id="postauthor" class="post-author">{{homePost.createdBy}}</md-card-title>
       <md-card-subtitle>{{homePost.createdAt | date:"yyyy-MM-dd HH:mm:ss"}}</md-card-subtitle>
     </md-card-header>
     <md-card-content>
@@ -50,15 +50,16 @@
       <!-- comment section -->
       <div id="commentssection" *ngIf="homePost.comments.length > 0">
         <span>
-          <i class="material-icons">mode_comment</i>
+          <i class="material-icons">chat_bubble_outline</i>
         </span>
+        <hr>
         <span>
           <md-list class="comment-section">
             <md-list-item class="comment-font" id="commentsfor" *ngFor="let comment of homePost.comments">
-              <div id="commentator" style="font-size: 15px; font-weight: bold">
+              <div id="commentator" style="font-size: 12px; font-weight: bold">
                 {{comment.commentator}}: &nbsp;
               </div> 
-              <div style="font-size: 15px">{{comment.comment}}</div>
+              <div style="font-size: 12px">{{comment.comment}}</div>
               <span class="spacer"></span>
               <div *ngIf="comment.commentator == curUsername">
                 <button md-icon-button (click)="deleteComment(comment,i)">
@@ -90,8 +91,8 @@
   </md-card>
 
   <!-- choose post amount to display in each page -->
-  <div class="make-post">
-    <md-paginator [length]="homePosts.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="pageEvent = $event; pageChange($event)">
+  <div>
+    <md-paginator class="displaypicker" [length]="homePosts.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="pageEvent = $event; pageChange($event)">
     </md-paginator>
   </div>
 </div>

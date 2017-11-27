@@ -1,8 +1,9 @@
 :host {
-    flex-grow: 1;
+    /* flex-grow: 1; */
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
+    background-color: white
 }
 div.input {
     position: relative;
@@ -41,5 +42,7 @@ div.input {
 .sub-title {
     margin-left: 300px;
     font-size: 20px;
-    font: bold;
+    font-weight: bold;
+    font-style: italic;
+    color: #4DB6AC
 }

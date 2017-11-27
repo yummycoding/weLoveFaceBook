@@ -7,6 +7,11 @@
   /* background-image: spaceScreen.headerimg; */
   background-size: cover;
 }
+
+.post-author {
+  color: #00897B;
+}
+
 .refresh {
   width: 648px;
 }
