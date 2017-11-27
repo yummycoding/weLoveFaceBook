@@ -33,7 +33,7 @@
   <!-- post information -->
   
   <!-- refresh button -->
-  <button class="make-post" color ="primary" (click)="refreshSelfposts($event)" md-raised-button>
+  <button class="refresh-btn" (click)="refreshSelfposts($event)" md-raised-button>
     <i class="material-icons">refresh</i>
   </button>
 
@@ -88,13 +88,19 @@
         <p *ngIf="homePost.likes>0" class="like-font" id="likeby">Liked by: {{homePost.likedBy}}</p>
       </md-card-content>
     </md-card-actions>
-  </md-card>
+    <!-- blank line -->
+    <!-- <p class="blankline">&nbsp;</p> -->
+  </md-card> 
 
   <!-- choose post amount to display in each page -->
   <div>
     <md-paginator class="displaypicker" [length]="homePosts.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="pageEvent = $event; pageChange($event)">
     </md-paginator>
   </div>
+  <p class="copyright">
+    Copyright 2017&copy; yummycoding
+  </p>
+
 </div>
 
 <!-- notification -->

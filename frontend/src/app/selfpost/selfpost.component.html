@@ -1,5 +1,5 @@
 
-<button class="refresh" color ="primary" (click)="refreshSelfposts($event)" md-raised-button>
+<button class="refresh-btn"  (click)="refreshSelfposts($event)" md-raised-button>
     <i class="material-icons">refresh</i>
 </button>
 <md-card class="post-card" *ngFor="let selfPost of selfPosts; let i = index">
@@ -25,6 +25,9 @@
     </button>
   </md-card-actions>
 </md-card>
+<p class="copyright">
+  Copyright 2017&copy; yummycoding
+</p>
 
 
 

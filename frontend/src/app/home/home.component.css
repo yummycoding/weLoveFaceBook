@@ -11,7 +11,10 @@
 .post-author {
   color: #00897B;
 }
-
+.refresh-btn {
+  width: 648px;
+  background-color: #E0E0E0;
+}
 .make-post {
   width: 648px;
 }
@@ -74,4 +77,12 @@ hr {
   margin: 1em 0;
   padding: 0;  */
   border-color: #F5F5F5;
+}
+
+.blankline {
+  background-color: #EEEEEE;
+}
+
+.copyright{
+  font-size: 10px;
 }

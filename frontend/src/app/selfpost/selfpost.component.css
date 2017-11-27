@@ -12,8 +12,9 @@
   color: #00897B;
 }
 
-.refresh {
+.refresh-btn {
   width: 648px;
+  background-color: #E0E0E0;
 }
 
 .uploadImg{
@@ -22,4 +23,8 @@
   max-width: 300px;
   /* display: block;
   margin: auto; */
+}
+
+.copyright{
+  font-size: 10px;
 }
