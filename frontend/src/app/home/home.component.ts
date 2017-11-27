@@ -58,7 +58,8 @@ export class HomeComponent implements OnInit {
   }
 
   refreshSelfposts(e) {
-    this.getHomeposts();
+    this.ngOnInit();
+    //this.getHomeposts();
   }
 
   sendPost() {

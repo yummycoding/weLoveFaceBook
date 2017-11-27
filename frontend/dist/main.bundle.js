@@ -528,12 +528,8 @@ var FriendlistComponent = (function () {
         this.filteredFriends = [];
     }
     FriendlistComponent.prototype.ngOnInit = function () {
-        // if('token' in this.currentuser){
         this.getFriends(this.currentuser.user);
         this.filteredFriends = this.myFriends;
-        // }else {
-        //   this.getFriends(this.currentuser);
-        // };
     };
     FriendlistComponent.prototype.openDialog = function () {
         var _this = this;
@@ -616,6 +612,7 @@ var FriendlistComponent = (function () {
                 this.myFriends.push(user_1);
             }
         }
+        this.filteredFriends = this.myFriends;
     };
     FriendlistComponent.prototype.refreshFriendlist = function () {
         this.getFriends(this.currentuser.user);
@@ -925,7 +922,8 @@ var HomeComponent = (function () {
         });
     };
     HomeComponent.prototype.refreshSelfposts = function (e) {
-        this.getHomeposts();
+        this.ngOnInit();
+        //this.getHomeposts();
     };
     HomeComponent.prototype.sendPost = function () {
         var _this = this;
