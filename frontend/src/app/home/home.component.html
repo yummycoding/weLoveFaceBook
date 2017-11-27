@@ -46,7 +46,7 @@
     </md-card-header>
     <md-card-content>
       <img class="uploadImg" *ngIf="homePost.img" src="{{ homePost.img }}"> 
-      <p id="postcontent">{{homePost.body}}</p>
+      <p id="postcontent" style="font-size: 15px">{{homePost.body}}</p>
       <!-- comment section -->
       <div id="commentssection" *ngIf="homePost.comments.length > 0">
         <span>
@@ -55,10 +55,10 @@
         <span>
           <md-list class="comment-section">
             <md-list-item class="comment-font" id="commentsfor" *ngFor="let comment of homePost.comments">
-              <div id="commentator" style="font-weight: bold">
-                {{comment.commentator}}: 
+              <div id="commentator" style="font-size: 15px; font-weight: bold">
+                {{comment.commentator}}: &nbsp;
               </div> 
-              {{comment.comment}}
+              <div style="font-size: 15px">{{comment.comment}}</div>
               <span class="spacer"></span>
               <div *ngIf="comment.commentator == curUsername">
                 <button md-icon-button (click)="deleteComment(comment,i)">
