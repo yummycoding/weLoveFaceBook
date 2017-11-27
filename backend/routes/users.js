@@ -141,6 +141,7 @@ router.post('/authenticate', (req, res) => {
 });
 
 router.get('/checkEmail/:email', (req, res) => {
+    console.log('GET > /checkEmail/:email > email', req.params.email);
     if (!req.params.email) {
         res.json({success: false, message: 'E-mail was not provided'});
     } else {
@@ -159,6 +160,7 @@ router.get('/checkEmail/:email', (req, res) => {
 });
 
 router.get('/checkUsername/:username', (req, res) => {
+    console.log('GET > /checkUsername/:username > username', req.params.username);
     if (!req.params.username) {
         res.json({success: false, message: err});
     } else {

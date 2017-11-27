@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class ValidateService {
 
-  constructor() { }
+  constructor(private _http: Http) { }
 
   validateRegister(user) {
     if (user.nickname === undefined ||
@@ -30,12 +34,24 @@ export class ValidateService {
 
   validateLogin(user) {
     if (user.username === undefined ||
-        user.username === '' ||
-        user.password === undefined ||
-        user.password === '') {
-      return false;
-    } else {
-      return true;
+      user.username === '' ||
+      user.password === undefined ||
+      user.password === '') {
+        return false;
+      } else {
+        return true;
+      }
+    }
+
+    // return true if username not registered yet
+    usernameCanRegister(username:string) {
+      console.log("Client > Check whether username exists > ",username)
+      return this._http.get('/users/checkUsername/' + username).map(data => data.json()).toPromise()
+    }
+  
+    // return true if email not not registered yet
+    emailCanRegister(email:string) {
+      console.log("Client > Check whether email exists > ",email)
+      return this._http.get('/users/checkEmail/' + email).map(data => data.json()).toPromise()
     }
   }
-}
