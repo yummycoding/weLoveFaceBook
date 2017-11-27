@@ -64,3 +64,8 @@
 .button-spacer{
   margin-left: 10px;
 }
+.avatar-header{
+  align-items: center;
+  justify-content: center;
+  font: bold;
+}

@@ -2,7 +2,6 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 import { User } from '../class/user';
 import { UserService } from '../service/user.service';
-import * as _ from 'lodash';
 
 @Component({
   selector: 'app-friendlist',

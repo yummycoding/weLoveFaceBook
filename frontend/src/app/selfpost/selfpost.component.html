@@ -6,7 +6,7 @@
   <md-card-header>
       <img md-card-avatar class="post-image" src="{{ curUserAvatar || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}">      
       <md-card-title>{{selfPost.createdBy}}</md-card-title>
-      <md-card-subtitle>{{selfPost.createdAt}}</md-card-subtitle>
+      <md-card-subtitle>{{selfPost.createdAt | date:"yyyy-MM-dd HH:mm:ss"}}</md-card-subtitle>
   </md-card-header>
   <!-- <img md-card-image src ="{{spaceScreen.img}}"> -->
   <md-card-content>

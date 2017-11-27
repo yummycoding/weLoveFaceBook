@@ -38,3 +38,8 @@ div.input {
     color: red;
     margin-bottom: 15px;
 }
+.sub-title {
+    margin-left: 300px;
+    font-size: 20px;
+    font: bold;
+}

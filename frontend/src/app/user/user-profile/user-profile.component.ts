@@ -56,7 +56,7 @@ export class UserProfileComponent implements OnInit {
 
   openDialog(): void {
     let dialogRef = this.dialog.open(AvatarPreviewComponent, {
-      width: '350px',
+      width: '450px',
       data: {  avatar: URL }
     });
 
