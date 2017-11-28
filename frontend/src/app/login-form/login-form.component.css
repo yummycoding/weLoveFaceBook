@@ -53,5 +53,7 @@ div.input {
 .sub-title {
     margin-left: 300px;
     font-size: 20px;
-    font: bold;
+    font-weight: bold;
+    font-style: italic;
+    color: #4DB6AC;
 }
