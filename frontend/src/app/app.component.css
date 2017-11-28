@@ -1,7 +1,11 @@
-
 #fullPage {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     background-color:#EEEEEE
+}
+app-footer {
+    align-self: flex-end;
+    text-align: center;
+    width: 100%;
 }

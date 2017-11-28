@@ -25,7 +25,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "\n#fullPage {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    min-height: 100vh;\n    background-color:#EEEEEE\n}\n", ""]);
+exports.push([module.i, "#fullPage {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    min-height: 100vh;\n    background-color:#EEEEEE\n}\napp-footer {\n    -ms-flex-item-align: end;\n        align-self: flex-end;\n    text-align: center;\n    width: 100%;\n}", ""]);
 
 // exports
 
@@ -420,7 +420,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/footer/footer.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <p>\n    Copyright 2017&copy; yummycoding\n</p> -->\n"
+module.exports = "<p>\n    Copyright 2017&copy; yummycoding\n</p>\n"
 
 /***/ }),
 
@@ -1060,7 +1060,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ":host {\n    /* flex-grow: 1; */\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    /* align-items: center; */\n    background-color: white\n}\ndiv.input {\n    position: relative;\n}\ndiv.input label {\n    position: absolute;\n    top: 0;\n    -webkit-transform: translateY(-50%);\n            transform: translateY(-50%);\n    left: 10px;\n    background: white;\n    padding: 5px 2px;\n}\ndiv.input input {\n    padding: 10px 20px;\n    font-size: 25px;\n    outline: 0;\n}\ndiv.input {\n    margin-top: 20px;\n}\n.example-form {\n    min-width: 150px;\n    max-width: 500px;\n    width: 100%;\n}\n  \n.example-full-width {\n    width: 100%;\n}\n.alert {\n    padding: 20px;\n    /* background-color: #f44336; Red */\n    color: red;\n    margin-bottom: 15px;\n}\n.sub-title {\n    margin-left: 300px;\n    font-size: 20px;\n    font-weight: bold;\n    font-style: italic;\n    color: #4DB6AC\n}", ""]);
+exports.push([module.i, ":host {\n    -webkit-box-flex: 1;\n        -ms-flex-positive: 1;\n            flex-grow: 1;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    background-color: white\n}\ndiv.input {\n    position: relative;\n}\ndiv.input label {\n    position: absolute;\n    top: 0;\n    -webkit-transform: translateY(-50%);\n            transform: translateY(-50%);\n    left: 10px;\n    background: white;\n    padding: 5px 2px;\n}\ndiv.input input {\n    padding: 10px 20px;\n    font-size: 25px;\n    outline: 0;\n}\ndiv.input {\n    margin-top: 20px;\n}\n.example-form {\n    min-width: 150px;\n    max-width: 500px;\n    width: 100%;\n}\n  \n.example-full-width {\n    width: 100%;\n}\n.alert {\n    padding: 20px;\n    /* background-color: #f44336; Red */\n    color: red;\n    margin-bottom: 15px;\n}\n.sub-title {\n    margin-left: 300px;\n    font-size: 20px;\n    font-weight: bold;\n    font-style: italic;\n    color: #4DB6AC\n}", ""]);
 
 // exports
 
