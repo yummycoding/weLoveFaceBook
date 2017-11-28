@@ -8,7 +8,7 @@ describe('Test the users registration API', function(){
         server
         .post('/users/register')
         .send({
-            username: 'Zhuoru',
+            username: 'Zhuoru3',
             password: 'Oz65229780!',
             email: 'lizhuoru19940423@gmail.com'
         })
