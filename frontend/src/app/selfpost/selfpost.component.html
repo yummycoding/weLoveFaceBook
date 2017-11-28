@@ -2,7 +2,7 @@
 <button class="refresh" color ="primary" (click)="refreshSelfposts($event)" md-raised-button>
     <i class="material-icons">refresh</i>
 </button>
-<md-card class="post-card" *ngFor="let selfPost of selfPosts; let i = index">
+<md-card class="post-card" *ngFor="let selfPost of selfPosts | slice: [start] : [end]; let i = index">
   <md-card-header>
       <img md-card-avatar class="post-image" src="{{ curUserAvatar || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}">      
       <md-card-title class="post-author">{{selfPost.createdBy}}</md-card-title>
@@ -25,6 +25,10 @@
     </button>
   </md-card-actions>
 </md-card>
+<div>
+  <md-paginator class="displaypicker" [length]="selfPosts.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="pageEvent = $event; pageChange($event)">
+  </md-paginator>
+</div>
 
 
 

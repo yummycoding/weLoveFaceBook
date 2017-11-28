@@ -1348,7 +1348,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".post-card {\n    width: 600px;\n  }\n  \n.post-image {\n  /* background-image: url('../../assets/headerimage/head5.jpg'); */\n  /* background-image: spaceScreen.headerimg; */\n  background-size: cover;\n}\n\n.post-author {\n  color: #00897B;\n}\n\n.refresh {\n  width: 648px;\n}\n\n.uploadImg{\n  width: 100%;\n  height: 100%;\n  max-width: 300px;\n  /* display: block;\n  margin: auto; */\n}", ""]);
+exports.push([module.i, ".post-card {\n    width: 600px;\n  }\n  \n.post-image {\n  /* background-image: url('../../assets/headerimage/head5.jpg'); */\n  /* background-image: spaceScreen.headerimg; */\n  background-size: cover;\n}\n\n.post-author {\n  color: #00897B;\n}\n\n.refresh {\n  width: 648px;\n}\n\n.displaypicker{\n  width: 648px;\n  background-color: #EEEEEE;\n}\n\n.uploadImg{\n  width: 100%;\n  height: 100%;\n  max-width: 300px;\n  /* display: block;\n  margin: auto; */\n}", ""]);
 
 // exports
 
@@ -1361,7 +1361,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/selfpost/selfpost.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<button class=\"refresh\" color =\"primary\" (click)=\"refreshSelfposts($event)\" md-raised-button>\n    <i class=\"material-icons\">refresh</i>\n</button>\n<md-card class=\"post-card\" *ngFor=\"let selfPost of selfPosts; let i = index\">\n  <md-card-header>\n      <img md-card-avatar class=\"post-image\" src=\"{{ curUserAvatar || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}\">      \n      <md-card-title class=\"post-author\">{{selfPost.createdBy}}</md-card-title>\n      <md-card-subtitle>{{selfPost.createdAt | date:\"yyyy-MM-dd HH:mm:ss\"}}</md-card-subtitle>\n  </md-card-header>\n  <!-- <img md-card-image src =\"{{spaceScreen.img}}\"> -->\n  <md-card-content>\n    <img class=\"uploadImg\" *ngIf=\"selfPost.img\" src=\"{{ selfPost.img }}\"> \n    <p>{{selfPost.body}}</p>\n  </md-card-content>\n  <md-card-actions>\n    <button md-button>\n      <i class=\"material-icons md-18\">bookmark</i> \n    </button>\n    <!-- <button md-button (click)=\"markMe(i)\">\n      <i class=\"material-icons md-18\" [class.green-color]=\"spaceScreen.marked == '1'\">bookmark</i> \n    </button> -->\n    <button md-button (click)=\"deleteSelfposts(i)\">\n      <i class=\"material-icons md-18\">delete</i> \n    </button>\n  </md-card-actions>\n</md-card>\n\n\n\n"
+module.exports = "\n<button class=\"refresh\" color =\"primary\" (click)=\"refreshSelfposts($event)\" md-raised-button>\n    <i class=\"material-icons\">refresh</i>\n</button>\n<md-card class=\"post-card\" *ngFor=\"let selfPost of selfPosts | slice: [start] : [end]; let i = index\">\n  <md-card-header>\n      <img md-card-avatar class=\"post-image\" src=\"{{ curUserAvatar || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}\">      \n      <md-card-title class=\"post-author\">{{selfPost.createdBy}}</md-card-title>\n      <md-card-subtitle>{{selfPost.createdAt | date:\"yyyy-MM-dd HH:mm:ss\"}}</md-card-subtitle>\n  </md-card-header>\n  <!-- <img md-card-image src =\"{{spaceScreen.img}}\"> -->\n  <md-card-content>\n    <img class=\"uploadImg\" *ngIf=\"selfPost.img\" src=\"{{ selfPost.img }}\"> \n    <p>{{selfPost.body}}</p>\n  </md-card-content>\n  <md-card-actions>\n    <button md-button>\n      <i class=\"material-icons md-18\">bookmark</i> \n    </button>\n    <!-- <button md-button (click)=\"markMe(i)\">\n      <i class=\"material-icons md-18\" [class.green-color]=\"spaceScreen.marked == '1'\">bookmark</i> \n    </button> -->\n    <button md-button (click)=\"deleteSelfposts(i)\">\n      <i class=\"material-icons md-18\">delete</i> \n    </button>\n  </md-card-actions>\n</md-card>\n<div>\n  <md-paginator class=\"displaypicker\" [length]=\"selfPosts.length\" [pageSize]=\"pageSize\" [pageSizeOptions]=\"pageSizeOptions\" (page)=\"pageEvent = $event; pageChange($event)\">\n  </md-paginator>\n</div>\n\n\n\n"
 
 /***/ }),
 
@@ -1396,12 +1396,18 @@ var SelfpostComponent = (function () {
         this.postService = postService;
         this.http = http;
         this.selfPosts = [];
+        this.start = 0;
+        this.end = 0;
+        this.pageIndex = 0;
+        this.pageSize = 5;
+        this.pageSizeOptions = [5, 10, 15, 20, 100];
         // this.http.get('assets/mock-data-mypost/data.json')
         // .map(response => response.json().screenshots)
         // .subscribe(res => this.spaceScreens = res);
     }
     SelfpostComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.end = this.start + this.pageSize;
         this.userService.getUserByUsername(this.curUsername).then(function (data) {
             _this.curUserAvatar = data.avatar;
             console.log(_this.curUserAvatar);
@@ -1435,6 +1441,12 @@ var SelfpostComponent = (function () {
                 console.log("Error when getting self post from database: ", data.message);
             }
         });
+    };
+    SelfpostComponent.prototype.pageChange = function (event) {
+        this.pageIndex = event.pageIndex;
+        this.pageSize = event.pageSize;
+        this.start = (this.pageIndex + 1) * this.pageSize - this.pageSize;
+        this.end = (this.pageIndex + 1) * this.pageSize;
     };
     return SelfpostComponent;
 }());

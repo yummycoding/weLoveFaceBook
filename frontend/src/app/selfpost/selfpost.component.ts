@@ -17,6 +17,12 @@ export class SelfpostComponent implements OnInit {
   curUserAvatar: string;
   selfPosts: Array<Post> =[];
 
+  start = 0;
+  end = 0;
+  pageIndex = 0;
+  pageSize = 5;
+  pageSizeOptions = [5, 10, 15, 20, 100];
+
   constructor(private userService: UserService, private postService: PostService, private http: Http) {
     // this.http.get('assets/mock-data-mypost/data.json')
     // .map(response => response.json().screenshots)
@@ -24,6 +30,7 @@ export class SelfpostComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.end = this.start + this.pageSize;
     this.userService.getUserByUsername(this.curUsername).then(data => {
       this.curUserAvatar = data.avatar;
       console.log(this.curUserAvatar);
@@ -58,5 +65,10 @@ export class SelfpostComponent implements OnInit {
     });
   }
   
-
+  pageChange(event) {
+    this.pageIndex = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.start = (this.pageIndex + 1) * this.pageSize - this.pageSize;
+    this.end = (this.pageIndex + 1) * this.pageSize;
+  }
 }
