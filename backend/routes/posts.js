@@ -51,7 +51,9 @@ router.post('/newPost', (req, res) => {
                 const post = new Post({
                     title: req.body.title,
                     body: req.body.body,
-                    createdBy: req.body.createdBy
+                    img: req.body.img,
+                    createdBy: req.body.createdBy,
+                    createdAt: req.body.createdAt
                 });
                 post.save((err) => {
                     if (err) {

@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
-import { User } from '../user';
-import { UserService } from '../user.service';
+import { User } from '../class/user';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-friendlist',
@@ -16,15 +16,13 @@ export class FriendlistComponent implements OnInit {
   //currentTime: number;
   currentuser: any = JSON.parse(localStorage.getItem("currentUser"));
   myFriends: Array<User> = [];
+  filteredFriends: Array<User> = [];
 
   constructor(public dialog: MdDialog, private userService: UserService) { }
 
   ngOnInit() {
-    // if('token' in this.currentuser){
       this.getFriends(this.currentuser.user);
-    // }else {
-    //   this.getFriends(this.currentuser);
-    // };
+      this.filteredFriends = this.myFriends;
   }
 
   openDialog(): void {
@@ -101,11 +99,19 @@ export class FriendlistComponent implements OnInit {
         user.email = info[2];
         this.myFriends.push(user);
       }
-    }  
+    }
+    this.filteredFriends = this.myFriends;
   }
   refreshFriendlist() {
     this.getFriends(this.currentuser.user);
   }
+
+  filterFriends() {
+    this.filteredFriends = this.myFriends.filter(
+       friend => friend.nickname.toLowerCase().indexOf(this.name.toLowerCase()) > -1
+      );
+  }
+
   deleteFriend(friend) {
     const user = new User;
     //update current user's friendlist

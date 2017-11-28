@@ -5,12 +5,12 @@ import { MaterialModule } from '@angular/material';
 import { BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router, RouterModule } from '@angular/router';
-import { UserService } from '../user.service';
+import { UserService } from '../service/user.service';
 import { Http, BaseRequestOptions, Response, ResponseOptions, RequestMethod } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
-import { User } from '../user';
+import { User } from '../class/user';
 import { FlashMessagesService, FlashMessagesModule } from 'angular2-flash-messages';
-import { ValidateService } from '../validate.service';
+import { ValidateService } from '../service/validate.service';
 
 describe('RegisFormComponent', () => {
   let component: RegisFormComponent;

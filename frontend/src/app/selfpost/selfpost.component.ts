@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { UserService } from '../user.service';
-import { PostService } from '../post.service';
+import { UserService } from '../service/user.service';
+import { PostService } from '../service/post.service';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { Post } from '../post';
+import { Post } from '../class/post';
 
 @Component({
   selector: 'app-selfpost',
@@ -14,6 +14,7 @@ export class SelfpostComponent implements OnInit {
 
   spaceScreens: Array<any>;
   @Input() curUsername: string;
+  curUserAvatar: string;
   selfPosts: Array<Post> =[];
 
   constructor(private userService: UserService, private postService: PostService, private http: Http) {
@@ -23,11 +24,15 @@ export class SelfpostComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userService.getUserByUsername(this.curUsername).then(data => {
+      this.curUserAvatar = data.avatar;
+      console.log(this.curUserAvatar);
+    });
     this.getMyPosts(this.curUsername);
   }
 
   refreshSelfposts(e) {
-    this.getMyPosts(this.curUsername);
+    this.ngOnInit();
   }
 
   deleteSelfposts(i) {

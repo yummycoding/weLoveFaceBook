@@ -1,5 +1,5 @@
 <div>
-<div style="float:left">
+<div style="float:left; width:100%">
   <div class="make-post">
     <md-expansion-panel>
       <md-expansion-panel-header id="makepost">
@@ -16,8 +16,9 @@
         <input mdInput name="postinput" [(ngModel)]="post.body" #message maxlength="256">
         <md-hint align="end">{{message.value.length}} / 256</md-hint>
       </md-form-field>
+      <img *ngIf="url.length > 0" class="uploadImg" src="{{ url }}">
       <div class="input">
-        <input class="ng-hide" id="input-file-id" multiple type="file" #inputFile hidden/>
+        <input class="ng-hide" id="input-file-id" (change)="fileChangeEvent($event)" type="file" #inputFile hidden/>
         <button color="primary" id="selectFile" md-raised-button>
           <Label for="input-file-id">
             <i class="material-icons md-18 icon-align">insert_photo</i>
@@ -30,96 +31,85 @@
   </div>
 
   <!-- post information -->
-  <!-- <md-card class="post-card" *ngFor="let spaceScreen of spaceScreens | slice: [start] : [end]; let i = index">
-    <md-card-header>
-      <div md-card-avatar class="post-image"></div>
-      <md-card-title>{{spaceScreen.name}}</md-card-title>
-      <md-card-subtitle>{{spaceScreen.remark}}</md-card-subtitle>
-    </md-card-header>
-    <img md-card-image src="{{spaceScreen.img}}" alt="post photo">
-    <md-card-content>
-      <p>{{spaceScreen.description}}</p>
-    </md-card-content>
-    <md-card-actions>
-      <button md-button (click)="likeMe(i)">
-        <i class="material-icons md-18" [class.red-color]="spaceScreen.liked == '1'">favorite</i>
-      </button>
-      <button md-button (click)="commentMe(i)">
-        <i class="material-icons md-18">insert_comment</i>
-      </button>
-      <button md-button (click)="shareMe(i)">
-        <i class="material-icons md-18">share</i>
-      </button>
-    </md-card-actions>
-  </md-card> -->
   
   <!-- refresh button -->
-  <button class="make-post" color ="primary" (click)="refreshSelfposts($event)" md-raised-button>
+  <button class="refresh-btn" (click)="refreshSelfposts($event)" md-raised-button>
     <i class="material-icons">refresh</i>
   </button>
 
   <!-- post content -->
-  <md-card id="postcards" class="post-card" *ngFor="let homePost of homePosts | slice: [start] : [end]; let i = index">
-    <md-card-header>
-      <div md-card-avatar class="post-image"></div>
-      <md-card-title id="postauthor">{{homePost.createdBy}}</md-card-title>
-      <md-card-subtitle>{{homePost.createdAt}}</md-card-subtitle>
-    </md-card-header>
-    <md-card-content>
-      <p id="postcontent">{{homePost.body}}</p>
-      <!-- comment section -->
-      <div id="commentssection" *ngIf="homePost.comments.length > 0">
-        <span>
-          <i class="material-icons">mode_comment</i>
-        </span>
-        <span>
-          <md-list class="comment-section">
-            <md-list-item class="comment-font" id="commentsfor" *ngFor="let comment of homePost.comments">
-              <div id="commentator" style="font-weight: bold">
-                {{comment.commentator}}: 
-              </div> 
-              {{comment.comment}}
-              <span class="spacer"></span>
-              <div *ngIf="comment.commentator == curUsername">
-                <button md-icon-button (click)="deleteComment(comment,i)">
-                  <i class="material-icons">clear</i>  
-                </button>
-              </div>
-            </md-list-item>
-          </md-list>
-          </span>
-      </div>
-    </md-card-content>
-    <!-- post operation -->
-    <md-card-actions>
-      <button md-button id="likebtn" (click)="likeCancelLikePost(i)">
-        <span><i class="material-icons md-18" [class.red-color]="homePost.likedBy.indexOf(curUsername) >= 0">favorite</i></span>
-        <span class="fill-space"></span>
-        <span *ngIf="homePost.likes>0" id="likenum">{{homePost.likes}}</span>
-      </button>
-      <button md-button id="commentbtn" (click)="openDialog(i)">
-        <i class="material-icons md-18">insert_comment</i>
-      </button>
-      <button md-button>
-        <i class="material-icons md-18">share</i>
-      </button>
+  <div *ngFor="let homePost of homePosts | slice: [start] : [end]; let i = index">
+    <md-card id="postcards" class="post-card" >
+      <md-card-header>
+        <img md-card-avatar class="post-image" src="{{ friendAvatars.get(homePost.createdBy) || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}">
+        <md-card-title id="postauthor" class="post-author">{{homePost.createdBy}}</md-card-title>
+        <md-card-subtitle>{{homePost.createdAt | date:"yyyy-MM-dd HH:mm:ss"}}</md-card-subtitle>
+      </md-card-header>
       <md-card-content>
-        <p *ngIf="homePost.likes>0" class="like-font" id="likeby">Liked by: {{homePost.likedBy}}</p>
+        <img class="uploadImg" *ngIf="homePost.img" src="{{ homePost.img }}"> 
+        <p id="postcontent" style="font-size: 15px">{{homePost.body}}</p>
       </md-card-content>
-    </md-card-actions>
-  </md-card>
-
+      <!-- post operation -->
+      <md-card-actions>
+        <button md-button id="likebtn" (click)="likeCancelLikePost(i)">
+          <span><i class="material-icons md-18 icon-align" [class.favorite]="homePost.likedBy.indexOf(curUsername) >= 0">favorite_border</i></span>
+          <span class="fill-space"></span>
+          <span *ngIf="homePost.likes>0" id="likenum">{{homePost.likes}}</span>
+        </button>
+        <button md-button id="commentbtn" (click)="openDialog(i)">
+          <i class="material-icons md-18">insert_comment</i>
+        </button>
+        <button md-button>
+          <i class="material-icons md-18">share</i>
+        </button>
+        <md-card-content>
+          <p *ngIf="homePost.likes>0" class="like-font" id="likeby">Liked by: {{homePost.likedBy}}</p>
+        </md-card-content>
+        <!-- comment section -->
+        <div id="commentssection" class="clearfix" *ngIf="homePost.comments.length > 0">
+          <!-- <hr> -->
+          <span style="float: left;">
+            <i class="material-icons">chat_bubble_outline</i> 
+          </span>
+          <span style="float: left;">
+            <md-list class="comment-section" >
+              <md-list-item class="comment-line" id="commentsfor" *ngFor="let comment of homePost.comments">
+                <div id="commentator" style="font-size: 12px; font-weight: bold;">
+                  {{comment.commentator}}: &nbsp;
+                </div> 
+                <div style="font-size: 12px; color: #616161">{{comment.comment}}</div>
+                <span class="spacer"></span>
+                <div *ngIf="comment.commentator == curUsername">
+                  <button md-icon-button (click)="deleteComment(comment,i)">
+                    <i class="material-icons">clear</i>  
+                  </button>
+                </div>
+              </md-list-item>
+            </md-list>
+          </span>   
+        </div>
+        <p style="margin-top: 0em; margin-bottom: 0em; font-size: 10px;">&nbsp;</p>
+      </md-card-actions>
+    </md-card> 
+    <p style="margin-top: 0em; margin-bottom: 0em; font-size: 8px;">&nbsp;</p>
+  </div>  
+  
   <!-- choose post amount to display in each page -->
-  <div class="make-post">
-    <md-paginator [length]="homePosts.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="pageEvent = $event; pageChange($event)">
+  <div>
+    <md-paginator class="displaypicker" [length]="homePosts.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="pageEvent = $event; pageChange($event)">
     </md-paginator>
   </div>
+
+  <p class="copyright">
+    Copyright 2017&copy; yummycoding
+  </p>
+
 </div>
 
 <!-- notification -->
-<div style="float:left">
+<!-- <div style="float:left">
   <p class="notiTitle">Notifications</p>
   <md-card class="notification">Notifications</md-card>
-</div>
+</div> -->
 
 </div>

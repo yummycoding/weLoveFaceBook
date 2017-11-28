@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../user.service';
+import { UserService } from '../service/user.service';
 import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/map';
+import { User } from '../class/user';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,21 +12,17 @@ import 'rxjs/add/operator/map';
 })
 export class DashboardComponent implements OnInit {
   currentuser: any = JSON.parse(localStorage.getItem("currentUser"));
-  curUsername: String = '';  
+  curUsername: string = '';  
+  curUserAvatar: string = '';
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private userService: UserService) {
 
   }
 
   ngOnInit() {
     // get current user name, currentuser stored in local storage is different, signup without token, sinin with,
     // so need the if clause to get username
-    if('token' in this.currentuser){
       this.curUsername = this.currentuser.user.username;
-    }else {
-      this.curUsername = this.currentuser.username;
-    };
-    // console.log("current username got from dashboard: ", this.curUsername);
+      this.curUserAvatar = this.currentuser.user.avatar;
   }
-
 }

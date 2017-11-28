@@ -2,7 +2,7 @@
 // import { MaterialModule } from '@angular/material';
 // import { FriendlistComponent } from './friendlist.component';
 // import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// import { UserService } from '../user.service';
+// import { UserService } from '../service/user.service';
 // import { Http, BaseRequestOptions, Response, ResponseOptions, RequestMethod } from '@angular/http';
 // import { MockBackend, MockConnection } from '@angular/http/testing';
 

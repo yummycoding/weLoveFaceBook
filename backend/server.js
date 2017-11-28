@@ -29,7 +29,7 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
 //Body Parser Middleware
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit:'10mb'}));
 
 //Passport Middleware
 app.use(passport.initialize());

@@ -4,11 +4,11 @@ import { RouterModule, Routes} from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Http, HttpModule } from '@angular/http';
 import { MaterialModule, MdDatepickerModule, MdNativeDateModule, DateAdapter, NativeDateAdapter  } from '@angular/material';
-import { UserService } from './user.service';
+import { UserService } from './service/user.service';
 // validate
-import { ValidateService } from './validate.service';
+import { ValidateService } from './service/validate.service';
 import { FlashMessagesModule } from 'angular2-flash-messages';
-import { AuthguardGuard } from './authguard.guard';
+import { AuthguardGuard } from './service/authguard.guard';
 import { FormsModule } from '@angular/forms';
 import 'hammerjs';
 
@@ -29,16 +29,15 @@ import { FriendlistComponent } from './friendlist/friendlist.component';
 import { HomeComponent } from './home/home.component';
 import { RegisFormComponent } from './regis-form/regis-form.component';
 import { UserComponent } from './user/user.component';
-import { UserListComponent } from './user/user-list/user-list.component';
-import { UserNewComponent } from './user/user-new/user-new.component';
-import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 // file upload
 import { AddFriendComponent } from './friendlist/friendlist.component';
 import { AddCommentComponent } from './home/home.component';
+import { AvatarPreviewComponent } from './user/user-profile/user-profile.component';
 // make post
-import { PostService } from './post.service';
+import { PostService } from './service/post.service';
 import { HelpcenterComponent } from './helpcenter/helpcenter.component';
+import { ActivityComponent } from './activity/activity.component';
 
 export const appRoutes: Routes = [
   {
@@ -77,13 +76,12 @@ export const appRoutes: Routes = [
     HomeComponent,
     RegisFormComponent,
     UserComponent,
-    UserListComponent,
-    UserNewComponent,
-    UserEditComponent,
     UserProfileComponent,
     AddFriendComponent,
     AddCommentComponent,
-    HelpcenterComponent
+    HelpcenterComponent,
+    AvatarPreviewComponent,
+    ActivityComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -98,7 +96,8 @@ export const appRoutes: Routes = [
   ],
   entryComponents: [
     AddFriendComponent,
-    AddCommentComponent
+    AddCommentComponent,
+    AvatarPreviewComponent
   ],
   providers: [
     UserService, 

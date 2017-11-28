@@ -98,7 +98,8 @@ const postSchema = new Schema({
     comments: [{
         comment: {type: String, validate: commentValidators},
         commentator: {type: String}
-    }]
+    }],
+    img:{type: String}
 });
 
 /**

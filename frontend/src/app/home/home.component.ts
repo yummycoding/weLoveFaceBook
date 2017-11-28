@@ -1,12 +1,12 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
-import { Post } from '../post';
-import { User } from '../user';
-import { PostService } from '../post.service';
-import { UserService } from '../user.service';
+import { PostService } from '../service/post.service';
+import { UserService } from '../service/user.service';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
-import { Comment } from '../comment';
+import { Post } from '../class/post';
+import { User } from '../class/user';
+import { Comment } from '../class/comment';
 
 @Component({
   selector: 'app-home',
@@ -21,18 +21,19 @@ export class HomeComponent implements OnInit {
   curUser: User = new User();
   homePosts: Array<Post> = [];
   commentContent: String;
+  url: string = '';  
+  friendAvatars: Map<string, string> = new Map<string, string>();
+
 
   spaceScreens: Array<any> = [];
   start = 0;
   end = 0;
   pageIndex = 0;
-  pageSize = 2;
-  pageSizeOptions = [1, 2, 5, 10];
+  pageSize = 5;
+  pageSizeOptions = [5, 10, 15, 20, 100];
   
   constructor(private userService: UserService, private postService: PostService, private http: Http, public dialog: MdDialog) {
-    // this.http.get('assets/mock-data-home/data.json')
-    // .map(response => response.json().screenshots)
-    // .subscribe(res => this.spaceScreens = res);
+
   }
 
   ngOnInit() {
@@ -41,17 +42,31 @@ export class HomeComponent implements OnInit {
       this.curUser = data
       this.getHomeposts();
     });
-   
+
     this.end = this.start + this.pageSize;
+    this.userService.getAllFriends(this.curUsername).then(data => {
+      if (data.success === true) {
+        
+        for(var i = 0; i < data.users.length; i++) {
+          this.friendAvatars.set(data.users[i].username, data.users[i].avatar);
+          //console.log("Friends got from database", this.avatars, this.avatars.size);
+        }
+      }else {
+        console.log("Error when getting friends from database: ",data.message);
+      }
+    });
   }
 
   refreshSelfposts(e) {
-    this.getHomeposts();
+    this.ngOnInit();
+    //this.getHomeposts();
   }
 
   sendPost() {
     this.post.title = 'wedontneedtitle';
     this.post.createdBy = this.curUsername;
+    this.post.img = this.url;
+    this.post.createdAt = new Date();
     this.postService.sendPost(this.post).then(data => {
       if (data.success === true) {
         this.getHomeposts();  // refresh homepage after send new post
@@ -61,6 +76,7 @@ export class HomeComponent implements OnInit {
       }
     });
     // clear make post form
+    this.url = "";
     this.post = new Post();
   }
 
@@ -121,6 +137,16 @@ deleteComment(comment, i){
   const index = commentedpost.comments.indexOf(comment);
   commentedpost.comments.splice(index,1);
   this.postService.updateComment(commentedpost);
+}
+
+fileChangeEvent(fileInput: any) {
+  if (fileInput.target.files && fileInput.target.files[0]) {
+    const reader = new FileReader();
+    reader.readAsDataURL(fileInput.target.files[0]);
+    reader.onload = (x: any) => { // called once readAsDataURL is completed
+      this.url = x.target.result; 
+    }
+  }
 }
 
 }

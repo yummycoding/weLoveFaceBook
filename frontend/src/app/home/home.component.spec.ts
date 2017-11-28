@@ -3,14 +3,14 @@ import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/t
 import { MaterialModule } from '@angular/material';
 import { HomeComponent } from './home.component';
 import { AddCommentComponent } from './home.component';
-import { UserService } from '../user.service';
-import { PostService } from '../post.service';
+import { UserService } from '../service/user.service';
+import { PostService } from '../service/post.service';
 import { Http, BaseRequestOptions, Response, ResponseOptions, RequestMethod } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 import { BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Post } from'../post';
-import { Comment } from'../comment';
+import { Post } from'../class/post';
+import { Comment } from'../class/comment';
 //import { MdDialog, MdDialogModule, MdDialogRef} from '@angular/material';
 
 describe('HomeComponent', () => {

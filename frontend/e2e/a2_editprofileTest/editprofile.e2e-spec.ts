@@ -4,9 +4,9 @@ import {} from 'jasmine';
 
 describe('Profile edit:', () => {
   let profilepage: EditProfilePage;
-  var username =  "e2etest9";
-  var email_old = "e2etest9@ufl.edu";
-  var email_new = "e2etest9@gmail.com";
+  var username =  "e2etest23";
+  var email_old = "e2etest23@ufl.edu";
+  var email_new = "e2etest23@gmail.com";
   var password_old = "Admin$$$1";
   var password_new = "Newpassword$$$1";
 
@@ -45,7 +45,7 @@ describe('Profile edit:', () => {
     profilepage.navigateToSigninPage();
     // try old password, should not login
     profilepage.signin(username,password_old);
-    expect(profilepage.getlocation().getText()).toEqual("-- share your beautiful life");
+    expect(profilepage.getlocation().getText()).toEqual("—— Share Your Beautiful Life");
     // try new password, should login
     profilepage.signin(username,password_new);
     expect(profilepage.getlocation().getText()).toEqual("Welcome to Gatorbook!");

@@ -4,8 +4,8 @@ import {} from 'jasmine';
 
 describe('Sign up:', () => {
   let signuppage: SignUpPage;
-  var newusername = "e2etest9";
-  var newemail =    "e2etest9@ufl.edu";
+  var newusername = "e2etest23";
+  var newemail =    "e2etest23@ufl.edu";
   var newpassword = "Admin$$$1";
 
   beforeEach(() => {
@@ -67,7 +67,7 @@ describe('Sign up:', () => {
     username_signin.sendKeys(newusername);
     password_signin.sendKeys("wrongpassword");
     signinbtn.click();
-    expect(location.getText()).toEqual("-- share your beautiful life"); //you get this because you're still in signin page
+    expect(location.getText()).toEqual("—— Share Your Beautiful Life"); //you get this because you're still in signin page
     // try the correct password
     browser.refresh();
     username_signin.sendKeys(newusername);
