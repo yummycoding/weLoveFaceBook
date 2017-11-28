@@ -11,7 +11,7 @@
 |Zhuoru Li|79****51|wobusimanong|
 |Zhenqian Guo|46****76|GrandStar & smallGrandstar|
               
-This social network application was built with MongoDB, Express, Angular2, Node.js.
+This social network application was built with MongoDB, Express, Angular4, Node.js.
 
 <img src="https://github.com/yummycoding/weLoveFaceBook/blob/newb/frontend/src/assets/images-home/gator.png" width="300">
 
