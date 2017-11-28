@@ -17,6 +17,67 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_gendir lazy recursive";
 
 /***/ }),
 
+/***/ "../../../../../src/app/activity/activity.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".swipe {\n    overflow: hidden;\n    visibility: hidden;\n    position: relative;\n  }\n  .swipe-wrap {\n    overflow: hidden;\n    position: relative;\n  }\n  .swipe-wrap > div {\n    float: left;\n    width: 100%;\n    position: relative;\n  }", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/activity/activity.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div id=\"slider\" class=\"swipe\">\n  <div class=\"swipe-wrap\">\n    <div>test swipe</div>\n    <div><img src=\"../assets/images-home/logo3.png\"> </div>\n    <div><img width=\"350\" src=\"../assets/headerimage/gator.png\"></div>\n  </div>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/activity/activity.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ActivityComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var ActivityComponent = (function () {
+    function ActivityComponent() {
+    }
+    ActivityComponent.prototype.ngOnInit = function () {
+    };
+    return ActivityComponent;
+}());
+ActivityComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-activity',
+        template: __webpack_require__("../../../../../src/app/activity/activity.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/activity/activity.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], ActivityComponent);
+
+//# sourceMappingURL=activity.component.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/app.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -106,6 +167,7 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__user_user_profile_user_profile_component__ = __webpack_require__("../../../../../src/app/user/user-profile/user-profile.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__service_post_service__ = __webpack_require__("../../../../../src/app/service/post.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__helpcenter_helpcenter_component__ = __webpack_require__("../../../../../src/app/helpcenter/helpcenter.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__activity_activity_component__ = __webpack_require__("../../../../../src/app/activity/activity.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -147,6 +209,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 // make post
+
 
 
 var appRoutes = [
@@ -195,7 +258,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_19__friendlist_friendlist_component__["a" /* AddFriendComponent */],
             __WEBPACK_IMPORTED_MODULE_20__home_home_component__["a" /* AddCommentComponent */],
             __WEBPACK_IMPORTED_MODULE_25__helpcenter_helpcenter_component__["a" /* HelpcenterComponent */],
-            __WEBPACK_IMPORTED_MODULE_23__user_user_profile_user_profile_component__["a" /* AvatarPreviewComponent */]
+            __WEBPACK_IMPORTED_MODULE_23__user_user_profile_user_profile_component__["a" /* AvatarPreviewComponent */],
+            __WEBPACK_IMPORTED_MODULE_26__activity_activity_component__["a" /* ActivityComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* RouterModule */].forRoot(appRoutes),
@@ -761,7 +825,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ":host {\n    -webkit-box-flex: 1;\n        -ms-flex-positive: 1;\n            flex-grow: 1;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n}\n  \n.example-full-width {\n    width: 100%;\n}\n.helper-title {\n    font-weight:bold;\n    font-size: 40px;\n    margin:1.5em 0;\n    display:block;\n}\n.button-style {\n    margin:2.5em 0;\n}\n.gender-style {\n    margin:1.5em 0;\n}\n.alert {\n    padding: 20px;\n    /* background-color: #f44336; Red */\n    color: red;\n    margin-bottom: 15px;\n}", ""]);
+exports.push([module.i, ":host {\n    -webkit-box-flex: 1;\n        -ms-flex-positive: 1;\n            flex-grow: 1;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n}\n  \n.example-full-width {\n    width: 100%;\n}\n.helper-title {\n    font-weight:bold;\n    font-size: 40px;\n    margin:1.5em 0;\n    display:block;\n}\n.button-style {\n    margin:2.5em 0;\n}\n.gender-style {\n    margin:1.5em 0;\n}\n.alert {\n    padding: 20px;\n    /* background-color: #f44336; Red */\n    color: red;\n    margin-bottom: 15px;\n}\n.para-style {\n    width: 70%;\n}", ""]);
 
 // exports
 
@@ -1060,7 +1124,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "/* :host {\n    flex-grow: 1;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n} */\n:host {\n        -webkit-box-flex: 1;\n            -ms-flex-positive: 1;\n                flex-grow: 1;\n        /* flex-grow: 1; */\n         display: -webkit-box;\n         display: -ms-flexbox;\n         display: flex;\n         -webkit-box-pack: center;\n             -ms-flex-pack: center;\n                 justify-content: center;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        /* align-items: center; */\n        /* background-color: white; */\n        background-image: url('/asstes/images-home/alligatorgause.jpg');\n     }\ndiv.input {\n    position: relative;\n}\n/* .body {\n    background-image: url('~/asstes/images-home/alligator.jpg');\n} */\n/* }\ndiv.input label {\n    background-image:url('./assets/images-home/alligator.jpg');\n} */\ndiv.input label {\n    position: absolute;\n    top: 0;\n    -webkit-transform: translateY(-50%);\n            transform: translateY(-50%);\n    left: 10px;\n    /* background: white; */\n    background-image: url('/asstes/images-home/alligator.jpg');\n    \n    padding: 5px 2px;\n}\n/* .body {\n    background-image: url(\"../assets/images-home/alligator.jpg\"); \n} */\n\ndiv.input input {\n    padding: 10px 20px;\n    font-size: 25px;\n    outline: 0;\n}\ndiv.input {\n    margin-top: 20px;\n}\n.example-form {\n    min-width: 150px;\n    max-width: 500px;\n    width: 100%;\n}\n.example-form {\n    min-width: 150px;\n    max-width: 500px;\n    width: 100%;\n}\n.example-half-width {\n    width: 85%;\n}\n.example-full-width {\n    width: 100%;\n}\n.alert {\n    padding: 20px;\n    /* background-color: #f44336; Red */\n    color: red;\n    margin-bottom: 15px;\n}\n.sub-title {\n    /* margin-left: 300px; */\n    font-size: 20px;\n    font-weight: bold;\n    font-style: italic;\n    color: #4DB6AC;\n}\n.border {\n    border: 0px solid rgb(88, 95, 204);\n    /* background-color: white; */\n    filter:alpha(opacity=50, Style=0);\n}", ""]);
+exports.push([module.i, "/* :host {\n    flex-grow: 1;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n} */\n:host {\n        -webkit-box-flex: 1;\n            -ms-flex-positive: 1;\n                flex-grow: 1;\n        /* flex-grow: 1; */\n         display: -webkit-box;\n         display: -ms-flexbox;\n         display: flex;\n         -webkit-box-pack: center;\n             -ms-flex-pack: center;\n                 justify-content: center;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        /* align-items: center; */\n        /* background-color: white; */\n        background-image: url('/asstes/images-home/alligatorgause.jpg');\n     }\ndiv.input {\n    position: relative;\n}\n/* .body {\n    background-image: url('~/asstes/images-home/alligator.jpg');\n} */\n/* }\ndiv.input label {\n    background-image:url('./assets/images-home/alligator.jpg');\n} */\ndiv.input label {\n    position: absolute;\n    top: 0;\n    -webkit-transform: translateY(-50%);\n            transform: translateY(-50%);\n    left: 10px;\n    /* background: white; */\n    background-image: url('/asstes/images-home/alligator.jpg');\n    \n    padding: 5px 2px;\n}\n/* .body {\n    background-image: url(\"../assets/images-home/alligator.jpg\"); \n} */\n\ndiv.input input {\n    padding: 10px 20px;\n    font-size: 25px;\n    outline: 0;\n}\ndiv.input {\n    margin-top: 20px;\n}\n.example-form {\n    min-width: 150px;\n    max-width: 500px;\n    width: 100%;\n}\n.example-form {\n    min-width: 150px;\n    max-width: 500px;\n    width: 100%;\n}\n.example-half-width {\n    width: 90%;\n}\n.example-full-width {\n    width: 100%;\n}\n.alert {\n    padding: 20px;\n    /* background-color: #f44336; Red */\n    color: red;\n    margin-bottom: 15px;\n}\n.sub-title {\n    /* margin-left: 300px; */\n    -ms-flex-line-pack: right;\n        align-content: right;\n    font-size: 20px;\n    font-weight: bold;\n    font-style: italic;\n    color: #4DB6AC;\n}\n.border {\n    border: 0px solid rgb(88, 95, 204);\n    /* background-color: white; */\n    filter:alpha(opacity=50, Style=0);\n}", ""]);
 
 // exports
 
@@ -1073,7 +1137,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/login-form/login-form.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <body background-image:url('../assets/images-home/alligator.jpg')> -->\n<body>\n  <!-- <style>\n    div {image:url('~/asstes/images-home/alligator.jpg');}\n  </style> -->\n  <!-- <img src=\"../assets/images-home/alligator.jpg\"> -->\n  <div ng-app=\"myApp\" ng-controller=\"customersCtrl\"> \n    <!--   -->\n    <img width=\"102%\" style=\"backface-visibility: hidden; position: absolute; left: -3px; top: -10px; z-index: -1;\" src=\"../assets/images-home/alligator2.jpg\">\n  <tr>\n    <td style=\"width:500px\">\n        <h4 class=\"sub-title\">—— Share Your Beautiful Life</h4> \n        <h4 class=\"sub-title\">Find Your Old And New Gator Friend!</h4>\n    </td>\n\n    <td class=\"border\">\n      <form (submit)=\"loginUser($event)\"> \n        <div class=\"alert\">\n          <flash-messages></flash-messages>\n        </div>\n        <div>\n          <img src=\"../assets/images-home/logo3.png\">\n          <!-- <h4 class=\"sub-title\" id=\"location\">—— Share Your Beautiful Life</h4>     this line used for e2e testing, don't delete -->\n        </div>\n        <div>\n          <img width=\"300\" src=\"../assets/headerimage/gator.png\">\n        </div>\n        <md-form-field class=\"example-half-width\">\n            <input mdInput placeholder=\"Username\" type =\"username\" name=\"signinusername\" [(ngModel)]=\"signinUser.username\">\n        </md-form-field>\n        <md-form-field class=\"example-half-width\">\n            <input type =\"password\" mdInput placeholder=\"Password\" type =\"password\"name=\"signinpassword\" [(ngModel)]=\"signinUser.password\">\n        </md-form-field>\n        <div class=\"input\">    \n          <button color =\"primary\" id=signinbtn type =\"submit\" md-raised-button>Sign In</button>   \n          <button color =\"primary\" id=signupbtn routerLink=\"/regis-form\" md-raised-button>Sign Up</button>\n        </div>\n      </form>\n      <p>\n          Copyright 2017&copy; yummycoding\n      </p>\n</td>  \n</tr>\n  </div>\n</body>\n\n\n"
+module.exports = "<!-- <body background-image:url('../assets/images-home/alligator.jpg')> -->\n<body>\n  <!-- <style>\n    div {image:url('~/asstes/images-home/alligator.jpg');}\n  </style> -->\n  <!-- <img src=\"../assets/images-home/alligator.jpg\"> -->\n  <div ng-app=\"myApp\" ng-controller=\"customersCtrl\"> \n    <!--   -->\n    <img width=\"102%\" style=\"backface-visibility: hidden; position: absolute; left: -3px; top: -10px; z-index: -1;\" src=\"../assets/images-home/alligator2.jpg\">\n  <tr>\n    <td style=\"width:500px\">\n        <h4 class=\"sub-title\">—— Share Your Beautiful Life</h4> \n        <h4 class=\"sub-title\">Find Your Old And New Gator Friend!</h4>\n    </td>\n\n    <td class=\"border\">\n      <form (submit)=\"loginUser($event)\"> \n        <div class=\"alert\">\n          <flash-messages></flash-messages>\n        </div>\n        <div>\n          <img src=\"../assets/images-home/logo3.png\">\n          <!-- <h4 class=\"sub-title\" id=\"location\">—— Share Your Beautiful Life</h4>     this line used for e2e testing, don't delete -->\n        </div>\n        <div>\n          <img width=\"350\" src=\"../assets/headerimage/gator.png\">\n        </div>\n        <md-form-field class=\"example-half-width\">\n            <input mdInput placeholder=\"Username\" type =\"username\" name=\"signinusername\" [(ngModel)]=\"signinUser.username\">\n        </md-form-field>\n        <md-form-field class=\"example-half-width\">\n            <input type =\"password\" mdInput placeholder=\"Password\" type =\"password\"name=\"signinpassword\" [(ngModel)]=\"signinUser.password\">\n        </md-form-field>\n        <div class=\"input\">    \n          <button color =\"primary\" id=signinbtn type =\"submit\" md-raised-button>Sign In</button>   \n          <button color =\"primary\" id=signupbtn routerLink=\"/regis-form\" md-raised-button>Sign Up</button>\n        </div>\n      </form>\n      <p>\n          Copyright 2017&copy; yummycoding\n      </p>\n</td>  \n</tr>\n  </div>\n</body>\n\n\n"
 
 /***/ }),
 

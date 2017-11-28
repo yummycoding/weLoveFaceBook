@@ -57,7 +57,7 @@ div.input {
     width: 100%;
 }
 .example-half-width {
-    width: 85%;
+    width: 90%;
 }
 .example-full-width {
     width: 100%;
@@ -70,6 +70,7 @@ div.input {
 }
 .sub-title {
     /* margin-left: 300px; */
+    align-content: right;
     font-size: 20px;
     font-weight: bold;
     font-style: italic;
