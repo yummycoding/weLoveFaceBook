@@ -3,7 +3,7 @@
 </md-form-field>
 <button color ="primary" (click)="filterFriends()" md-raised-button>Search</button>
 <button color ="primary" (click)="refreshFriendlist()" md-raised-button>Refresh</button>
-<button md-raised-button (click)="openDialog()" color="warn" style="margin-left: 15px" id="addfriend">Add a new friend</button>
+<button md-raised-button (click)="openDialog()" color="warn" style="margin-left: 15px; margin-right: 23px" id="addfriend">Add a new friend</button>
 <md-list>
   <md-list-item *ngFor="let friend of filteredFriends">
     <md-icon md-list-icon>face</md-icon>
