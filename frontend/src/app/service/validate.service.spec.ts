@@ -1,15 +1,25 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { User } from'../class/user';
 import { ValidateService } from './validate.service';
+import { MockBackend, MockConnection } from '@angular/http/testing';
+import { Http, BaseRequestOptions, ResponseOptions } from '@angular/http';
 
 describe('ValidateService', () => {
   let service: ValidateService;
   let user = new User();
+  let backend: MockBackend; 
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ValidateService]
+      providers: [ValidateService, MockBackend, BaseRequestOptions,
+        {provide: Http, useFactory: (backendInstance: MockBackend, defaultOptions: BaseRequestOptions) => {
+        return new Http(backendInstance, defaultOptions);
+      }, deps: [MockBackend, BaseRequestOptions]}]
     });
+    backend = TestBed.get(MockBackend);
+    // TestBed.configureTestingModule({
+    //   providers: [ValidateService]
+    // });
     service = TestBed.get(ValidateService);
   });
 
