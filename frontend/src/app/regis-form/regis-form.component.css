@@ -26,3 +26,17 @@
     color: red;
     margin-bottom: 15px;
 }
+#fullPage {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #eeeeee;
+}
+:host {
+    flex-grow: 1;
+     display: flex;
+     justify-content: center;
+    align-items: center;
+    align-items: center;
+    background-color: #eeeeee;
+ }

@@ -1,21 +1,39 @@
-:host {
+/* :host {
     flex-grow: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
+:host {
+        flex-grow: 1;
+        /* flex-grow: 1; */
+         display: flex;
+         justify-content: center;
+        align-items: center;
+        /* align-items: center; */
+        /* background-color: white; */
+        background-image: url('~/asstes/images-home/alligatorgause.jpg');
+     }
 div.input {
     position: relative;
 }
-/* div.input label {
+/* .body {
+    background-image: url('~/asstes/images-home/alligator.jpg');
+} */
+/* }
+div.input label {
+    background-image:url('./assets/images-home/alligator.jpg');
+} */
+div.input label {
     position: absolute;
     top: 0;
     transform: translateY(-50%);
     left: 10px;
-    background-image: url(../assets/images-home/alligator.jpg);
-    /* background: #121212; */
-    /* padding: 5px 2px;
-} */
+    /* background: white; */
+    background-image: url('~/asstes/images-home/alligator.jpg');
+    
+    padding: 5px 2px;
+}
 /* .body {
     background-image: url("../assets/images-home/alligator.jpg"); 
 } */
@@ -39,7 +57,7 @@ div.input {
     width: 100%;
 }
 .example-half-width {
-    width: 50%;
+    width: 90%;
 }
 .example-full-width {
     width: 100%;
@@ -51,9 +69,15 @@ div.input {
     margin-bottom: 15px;
 }
 .sub-title {
-    margin-left: 300px;
+    /* margin-left: 300px; */
+    align-content: right;
     font-size: 20px;
     font-weight: bold;
     font-style: italic;
     color: #4DB6AC;
+}
+.border {
+    border: 0px solid rgb(88, 95, 204);
+    /* background-color: white; */
+    filter:alpha(opacity=50, Style=0);
 }

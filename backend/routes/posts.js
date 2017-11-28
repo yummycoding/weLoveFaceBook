@@ -1,21 +1,53 @@
+/** 
+ * An http helper
+ * For more information about express, see
+ * {@link https://www.npmjs.com/package/express|express-npm} for more information
+ * @module routes/posts
+ * @const
+ * */
 const express = require('express');
+
+/**@requires module -User module*/
 const User = require('../models/user');
+
+/**@requires module - Post module*/
 const Post = require('../models/post');
+
+/**
+ * Jwt is a compact URL-safe means of representing claims to be transformed between
+ * two parties. For more information about jwt, see {@link https://www.npmjs.com/package/jsonwebtoken|jwt-npm}.
+ * @requires module - Jwt module
+ */
 const jwt = require('jsonwebtoken');
-const config = require('../config/database');
+
+/**
+ * Express router to mount posts
+ * @type {object}
+ * @constant
+ * @namespace postsRouter
+ */
 const router = express.Router();
 
+/**
+ * Router serving sending a new post
+ * @name post/newPost
+ * @function
+ * @memberof module: routes/posts~postsRouter
+ * @inner
+ * @param {string} path - Express path
+ * @param {callback} middleware - Express middleware
+ */
 router.post('/newPost', (req, res) => {
     console.log('POST > posts/newPost');
-    if (!req.body.title) {
+    if (!req.body.title) {//Title should not be empty 
         res.json({success: false, message: 'Post title is requested!'});
     } else {
-        if (!req.body.body) {
+        if (!req.body.body) {//body should not be empty
             res.json({success: false, message: 'Post body is required!'});
         } else {
-            if (!req.body.createdBy) {
+            if (!req.body.createdBy) {//There should be someone who create this post
                 res.json({success: false, message: 'Post creator is required!'});
-            } else {
+            } else {//create a new post schema
                 const post = new Post({
                     title: req.body.title,
                     body: req.body.body,
@@ -23,10 +55,9 @@ router.post('/newPost', (req, res) => {
                     createdBy: req.body.createdBy,
                     createdAt: req.body.createdAt
                 });
-
                 post.save((err) => {
                     if (err) {
-                        if (err.errors) {
+                        if (err.errors) {//Check if the post is valid
                             if (err.errors.title) {
                                 res.json({success: false, message: err.errors.title.message});
                             } else {
@@ -44,6 +75,14 @@ router.post('/newPost', (req, res) => {
     }
 });
 
+/**
+ * Route serving getting all posts
+ * @name get/allPosts
+ * @function
+ * @memberof module: routes/posts~postsRouter
+ * @param {string} path - Express path
+ * @param {callback} middleware - Express middleware
+ */
 router.get('/allPosts', (req, res) => {
     Post.find({}, (err, posts) => {
         if (err) {
@@ -58,8 +97,15 @@ router.get('/allPosts', (req, res) => {
     }).sort({'_id': -1});
 });
 
-// Given username, find all of its friends first, search in database all posts from both 
-// userhimself and his friends
+/**
+ * Route serving getting posts from username
+ * @name get/getHomePosts
+ * @function
+ * @memberof module: routes/posts~postsRouter
+ * @inner
+ * @param {string} path - Express path
+ * @param {callback} middleware - Express middleware
+ */
 router.get('/getHomePosts/:username', (req, res) => {
     console.log('GET > /getHomePosts/:username > username', req.params.username);
     User.find({username:req.params.username},(err, curUser) => {
@@ -95,7 +141,15 @@ router.get('/getHomePosts/:username', (req, res) => {
     })
 });
 
-// get all posts sent by user: username
+/**
+ * Routing serving getting my own posts
+ * @name get/getSelfPosts
+ * @function
+ * @memberof module: routes/posts~postsRouter
+ * @inner
+ * @param {string} path -Express path
+ * @param {callback} middleware - Express middleware
+ */
 router.get('/getSelfPosts/:username', (req, res) => {
     console.log('GET > /getSelfPosts/:username > username',req.params.username)
     Post.find({ createdBy: req.params.username }, (err, posts) => {
@@ -111,6 +165,15 @@ router.get('/getSelfPosts/:username', (req, res) => {
     }).sort({'_id': -1});
 });
 
+/**
+ * Route serving update Posts
+ * @name put/updatePost
+ * @function
+ * @memberof module: routes/posts~postsRouter
+ * @inner
+ * @param {string} path - Express path
+ * @param {callback} middleware - Express middleware
+ */
 router.put('/updatePost', (req, res) => {
     if (!req.body._id) {
         res.json({success: false, message: 'No post id provided'});
@@ -155,6 +218,15 @@ router.put('/updatePost', (req, res) => {
     }
 });
 
+/**
+ * Routes deleting posts
+ * @name delete/deletePost
+ * @function
+ * @memberof module: routes/posts~postsRouter
+ * @inner
+ * @param {string} path - Express path
+ * @param {callback} middleware - Express middleware
+ */
 router.delete('/deletePost/:id', (req, res) => { 
     console.log('DELETE > /deletePost/:id > id', req.params.id);
     if (!req.params.id) {
@@ -180,9 +252,15 @@ router.delete('/deletePost/:id', (req, res) => {
     };
 });
 
-// find post in database using post id, check whether user has liked this post or not,
-// if liked before, cancel like
-// if not liked before, update that like
+/**
+ * Route serving like posts
+ * @name put/likePosts
+ * @function
+ * @memberof module: routes/posts~postsRouter
+ * @inner
+ * @param {string} path - Express path
+ * @param {callback} middleware - Express middleware
+ */
 router.put('/likePostOrCancelLike/:username', (req,res) => {
     if (!req.body._id) {
         res.json({success: false, message: 'No id for post was provided'});
@@ -224,6 +302,7 @@ router.put('/likePostOrCancelLike/:username', (req,res) => {
     }
 })
 
+//Like the post
 router.put('/likePost', (req, res) => {
     if (!req.body.id) {
         res.json({success: false, message: 'No id was provided'});
@@ -236,7 +315,7 @@ router.put('/likePost', (req, res) => {
                     if (err) {
                         res.json({success: false, message: 'Something went wrong'});
                     } else {
-                        if (!user) {
+                        if (!user) {//check if user is valid to like this post
                             res.json({success: false, message: 'Could not authenticate user.'});
                         } else {
                             if (user.username === post.createdBy) {
@@ -244,7 +323,7 @@ router.put('/likePost', (req, res) => {
                             } else {
                                 if (post.likedBy.includes(user.username)) {
                                     res.json({success: false, message: 'You already liked this post.'});
-                                } else {
+                                } else {//If you dislike this post, then you click like button
                                     if (post.dislikedBy.includes(user.username)) {
                                         post.dislikedBy.splice(arrayIndex, 1);
                                         post.likes++;
@@ -277,27 +356,36 @@ router.put('/likePost', (req, res) => {
     }
 });
 
+/**
+ * Routes serving dislike Post
+ * @name put/dislikePost
+ * @function
+ * @memberof module: routes/posts~postsRouter
+ * @inner
+ * @param {string} path - Express path
+ * @param {callback} middleware - Express middleware
+ */
 router.put('/dislikePost', (req, res) => {
-    if (!req.body.id) {
+    if (!req.body.id) {//If you want to dislike the post, you should provide id
         res.json({success: false, message: 'No id was provided.'});
     } else {
-        Post.findOne({_id: req.body.id}, (err, blog) => {
+        Post.findOne({_id: req.body.id}, (err, blog) => {//Get the post you want to dislike
             if (err) {
                 res.json({success: false, message: 'Invalid post id'});
             } else {
-                if (!post) {
+                if (!post) {//If the post does not exist, you cannot dislike it
                     res.json({success: false, message: 'That post was not found'});
                 } else {
                     User.findOne({_id: req.decoded.userId}, (err, user) => {
-                        if (err) {
+                        if (err) {//Get the user who logs in
                             res.json({success: false, message: 'Something went wrong.'});
                         } else {
                             if (!user) {
                                 res.json({success: false, message: 'Could not authenticate user.'});
-                            } else {
+                            } else {//You cannot dislike your own post
                                 if (user.username === post.createdBy) {
                                     res.json({success: false, message: 'You already disliked this post'});
-                                } else {
+                                } else {//Check if you have liked this post before
                                     if (post.likedBy.includes(user.username)) {
                                         post.likes--;
                                         const arrayIndex = post.likedBy.indexOf(user.username);
@@ -315,7 +403,7 @@ router.put('/dislikePost', (req, res) => {
                                         post.dislikes++;
                                         post.dislikedBy.push(user.username);
                                         post.save((err) => {
-                                            if (err) {
+                                            if (err) {//Dislike this post successfully
                                                 res.json({success: false, message: 'Something went wrong.'});
                                             } else {
                                                 res.json({success: true, message: 'Post disliked!'});
@@ -332,6 +420,15 @@ router.put('/dislikePost', (req, res) => {
     }
 });
 
+/**
+ * Routes serving posting comments
+ * @name post/comment
+ * @function
+ * @memberof module: routes/posts~postsRouter
+ * @inner
+ * @param {string} path - Express path
+ * @param {callback} middleware - Express middleware
+ */
 router.post('/comment', (req, res) => {
     // Check if comment was provided in request body
     if (!req.body.comment) {
@@ -385,6 +482,15 @@ router.post('/comment', (req, res) => {
     }
   });
 
+/**
+ * Routes serving updateComment
+ * @name put/updateComment
+ * @function
+ * @memberof module: routes/posts~postsRouter
+ * @inner
+ * @param {string} path - Express path
+ * @param {callback} middleware - Express middleware
+ */
 router.put('/updateComment/:id', (req, res, next) => {
     console.log("Server > PUT 'posts/updateComment/:id' > id", req.params.id);
     console.log("Server > PUT 'posts/updateComment/:post' > post", req.body);
@@ -401,4 +507,10 @@ router.put('/updateComment/:id', (req, res, next) => {
         });
 });
 
+
+
+/**
+ * A module that can post, update, delete
+ * @module post
+ */
 module.exports = router;

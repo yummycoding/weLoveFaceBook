@@ -40,11 +40,7 @@ require('./config/passport')(passport);
 app.use('/users', users);
 app.use('/posts', posts);
 
-//Index Route
-// app.get('/', (req, res) => {
-//     res.send('Invalid Endpoint');
-// });
-
+//Your initial state is to go to index.html
 app.all("*",(req,res,next) => {
     res.sendFile(path.resolve('../frontend/dist/index.html'))
 });

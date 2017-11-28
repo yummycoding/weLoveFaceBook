@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 var should = require('should');
 var supertest = require('supertest');
 var server = supertest.agent("http://localhost:3000");
@@ -20,6 +23,7 @@ describe('Test the users registration API', function(){
         });
     });
 
+    //You should add an email to register a user
     it('should return an empty email message', function(done){
         server
         .post('/users/register')
@@ -36,6 +40,7 @@ describe('Test the users registration API', function(){
         });
     });
 
+    //You should provide a valid username to register a new user
     it('should return an empty username message', function(done){
         server
         .post('/users/register')
@@ -52,6 +57,7 @@ describe('Test the users registration API', function(){
         });
     });
 
+    //Password should not be empty
     it('should return an empty password message', function(done){
         server
         .post('/users/register')
@@ -87,6 +93,7 @@ describe('Test the user login API', function(){
         });
     });
 
+    //No username provided in this test case
     it('should return no username provided', function(done){
         server
         .post('/users/authenticate')
@@ -102,6 +109,7 @@ describe('Test the user login API', function(){
         });
     });
 
+    //No user information provided in this case
     it('should return no user information', function(done){
         server
         .post('/users/authenticate')
@@ -118,6 +126,7 @@ describe('Test the user login API', function(){
         });
     });
 
+    //The password is not valid
     it('should return invalid password', function(done){
         server
         .post('/users/authenticate')
@@ -148,6 +157,7 @@ describe('Test check email API', function(){
         });
     });
 
+    //Should have a correct format email
     it('should return email is available', function(done){
         server
         .get('/users/checkEmail/hehe@gmail.com')
@@ -173,6 +183,7 @@ describe('Test the checkUsername API', function(){
         });
     });
 
+    //Username is in correct format and no duplicate username in the database
     it('should return username is available', function(done){
         server
         .get('/users/checkUsername/YouZhou')

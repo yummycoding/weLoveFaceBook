@@ -37,6 +37,7 @@ import { AvatarPreviewComponent } from './user/user-profile/user-profile.compone
 // make post
 import { PostService } from './service/post.service';
 import { HelpcenterComponent } from './helpcenter/helpcenter.component';
+import { ActivityComponent } from './activity/activity.component';
 
 export const appRoutes: Routes = [
   {
@@ -79,7 +80,8 @@ export const appRoutes: Routes = [
     AddFriendComponent,
     AddCommentComponent,
     HelpcenterComponent,
-    AvatarPreviewComponent
+    AvatarPreviewComponent,
+    ActivityComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

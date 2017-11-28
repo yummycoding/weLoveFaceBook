@@ -1,12 +1,46 @@
+/**
+ * Express router providing user related routes
+ * @module routes/users
+ * @requires express
+ */
 const express = require('express');
+
+/**
+ * Express router to mount users
+ * @type {object}
+ * @constant
+ * @namespace usersRouter
+ */
 const router = express.Router();
+
+/**
+ * Passport is Express-compatible authentication middleware, For more information,
+ * see {@link https://www.npmjs.com/package/passport|passport-npm}.
+ * @module passport
+ * @const
+ */
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const User = require('../models/user');
+
+/**
+ * Hash passwords, For more information, please see 
+ * {@link https://www.npmjs.com/package/bcrypt-nodejs|bcrypt-nodejs}
+ * @module bcrypt
+ * @const
+ */
 const bcrypt = require('bcrypt-nodejs');
 
-//Register
+/**
+ * Router serving register a new user
+ * @name post/register
+ * @function
+ * @memberof module: routes/users~usersRouter
+ * @inner
+ * @param {string} path - Express path
+ * @param {callback} middleware - Express middleware
+ */
 router.post('/register', (req, res, next) => {
     if(!req.body.email) {
         res.json({success: false, message: 'You must provide an e-mail'});
@@ -82,8 +116,16 @@ router.post('/register', (req, res, next) => {
     }
 });
 
-//Authenticate 
-//Notice :changed here from /authenticate to /login
+
+/**
+ * Router serving login a user
+ * @name post/authenticate
+ * @function
+ * @memberof module: routes/users~usersRouter
+ * @inner
+ * @param {string} path - Express path
+ * @param {callback} middleware - Express middleware
+ */
 router.post('/authenticate', (req, res) => {
     if (!req.body.username) {
         res.json({success: false, message: 'No username was provided.'})
@@ -103,7 +145,7 @@ router.post('/authenticate', (req, res) => {
                             res.json({success: false, message: 'Invalid password.'});
                         } else {
                             const token = jwt.sign({ sub: user._id }, config.secret, {
-                                expiresIn:604800//1 week
+                                expiresIn:'24h'//The jwt will expire in 24h
                             });
                            //console.log(token);
                            res.json({
@@ -140,6 +182,15 @@ router.post('/authenticate', (req, res) => {
     }
 });
 
+/**
+ * Router serving checking email of a user
+ * @name get/checkEmail
+ * @function
+ * @memberof module: routes/users~usersRouter
+ * @inner
+ * @param {string} path - Express path
+ * @param {callback} middleware - Express middleware
+ */
 router.get('/checkEmail/:email', (req, res) => {
     console.log('GET > /checkEmail/:email > email', req.params.email);
     if (!req.params.email) {
@@ -159,6 +210,15 @@ router.get('/checkEmail/:email', (req, res) => {
     }
 });
 
+/**
+ * Router serving checking if username is valid
+ * @name get/checkUsername
+ * @function
+ * @memberof module: routes/users~usersRouter
+ * @inner
+ * @param {string} path - Express path
+ * @param {callback} middleware - Express middleware
+ */
 router.get('/checkUsername/:username', (req, res) => {
     console.log('GET > /checkUsername/:username > username', req.params.username);
     if (!req.params.username) {
@@ -178,8 +238,33 @@ router.get('/checkUsername/:username', (req, res) => {
     }
 });
 
+router.use((req, res, next) => {
+    const token = req.headers['authorization'];
+    if (!token) {
+        res.json({success: false, message: 'No token provided'})
+    } else {
+        jwt.verify(token, config.secret, (err, decoded) => {
+            if (err) {
+                res.json({success: false, message: 'Token invalid ' + err});
+            } else {
+                req.decoded = decoded;
+                next();
+            }
+        })
+    }
+})
+
+/**
+ * Router serving getting profile
+ * @name get/profile
+ * @function
+ * @memberof module: routes/users~usersRouter
+ * @inner
+ * @param {string} path - Express path
+ * @param {callback} middleware - Express middleware
+ */
 router.get('/profile', (req, res) => {
-    User.findOne({_id: req.decoded.userId}).select('username email').exec((err, user) => {
+    User.findOne({_id: req.decoded.sub}).select('username email').exec((err, user) => {
         if (err) {
             res.json({success: false, message: 'User not found'});
         } else {
@@ -189,7 +274,15 @@ router.get('/profile', (req, res) => {
 });
 
 
-// given an username string, returns all data of that user
+/**
+ * Router serving getting user by username
+ * @name get/getuserbyusername
+ * @function
+ * @memberof module: routes/users~usersRouter
+ * @inner
+ * @param {string} path - Express path
+ * @param {callback} middleware - Express middleware
+ */
 router.get('/getuserbyusername/:username', (req, res, next) => {
     // console.log('Server > GET user by user name > ',req.params.username);
     User.getUserByUsername(req.params.username, (err, user) =>{
@@ -201,8 +294,17 @@ router.get('/getuserbyusername/:username', (req, res, next) => {
         return res.json(user);
     })
 });
-// given an user email, return all data of that user
 
+
+/**
+ * Router serving getuserbyemail
+ * @name get/getuserbyemail
+ * @function
+ * @memberof module: routes/users~usersRouter
+ * @inner
+ * @param {string} path - Express path
+ * @param {callback} middleware - Express middleware
+ */
 router.get('/getuserbyemail/:email', (req, res, next) => {
     //console.log('Server > GET user by email > ',req.params.email);
     User.getUserByEmail(req.params.email, (err, user) =>{
@@ -216,6 +318,15 @@ router.get('/getuserbyemail/:email', (req, res, next) => {
 });
 
 
+/**
+ * Router serving getting user by userid
+ * @name get/getuserbyuserid
+ * @function
+ * @memberof module: routes/users~usersRouter
+ * @inner
+ * @param {string} path - Express path
+ * @param {callback} middleware - Express middleware
+ */
 router.get('/getuserbyuserid/:userid', (req, res, next) => {
      console.log('Server > GET user by user id > ',req.params.userid);
      User.getUserByUserID(req.params.userid, (err, user) =>{
@@ -241,6 +352,15 @@ router.get('/getuserbyuserid/:userid', (req, res, next) => {
 //     })
 // });
 
+/**
+ * Router serving updating password
+ * @name put/updatepassword
+ * @function
+ * @memberof module: routes/users~usersRouter
+ * @inner
+ * @param {string} path - Express path
+ * @param {callback} middleware - Express middleware
+ */
 router.put('/updatepassword/:id', (req, res, next) => {
     console.log("Server > PUT 'users/updatepassword/:id' > id", req.params.id);
     console.log("Server > PUT 'users/updatepassword/:id' > user", req.body);
@@ -260,6 +380,15 @@ router.put('/updatepassword/:id', (req, res, next) => {
     });
 });
 
+/**
+ * Router serving updating email
+ * @name put/updateemail
+ * @function
+ * @memberof module: routes/users~usersRouter
+ * @inner
+ * @param {string} path - Express path
+ * @param {callback} middleware - Express middleware
+ */
 router.put('/updateemail/:id', (req, res, next) => {
     console.log("Server > PUT 'users/updateemail/:id' > id", req.params.id);
     console.log("Server > PUT 'users/updateemail/:id' > user", req.body);
@@ -273,6 +402,15 @@ router.put('/updateemail/:id', (req, res, next) => {
     })
 });
 
+/**
+ * Router serving adding a new friend to friend list
+ * @name put/updatefriend
+ * @function
+ * @memberof module: routes/users~usersRouter
+ * @inner
+ * @param {string} path - Express path
+ * @param {callback} middleware - Express middleware
+ */
 router.put('/updatefriend/:id', (req, res, next) => {
     console.log("Server > PUT 'users/updatefriend/:id' > id", req.params.id);
     console.log("Server > PUT 'users/updatefriend/:id' > user", req.body);
