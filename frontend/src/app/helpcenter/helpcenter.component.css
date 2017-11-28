@@ -8,7 +8,16 @@
 .example-full-width {
     width: 100%;
 }
+.example-middle-width {
+    width: 80%;
+}
 .helper-title {
+    font-weight:bold;
+    font-size: 40px;
+    margin:1.5em 0;
+    display:block;
+}
+.helper-title2 {
     font-weight:bold;
     font-size: 40px;
     margin:1.5em 0;

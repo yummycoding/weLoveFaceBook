@@ -38,6 +38,10 @@ import { AvatarPreviewComponent } from './user/user-profile/user-profile.compone
 import { PostService } from './service/post.service';
 import { HelpcenterComponent } from './helpcenter/helpcenter.component';
 import { ActivityComponent } from './activity/activity.component';
+import { SportComponent } from './activity/sport/sport.component';
+import { CarpoolComponent } from './activity/carpool/carpool.component';
+import { MarketplaceComponent } from './activity/marketplace/marketplace.component';
+import { WeatherComponent } from './activity/weather/weather.component';
 
 export const appRoutes: Routes = [
   {
@@ -81,7 +85,11 @@ export const appRoutes: Routes = [
     AddCommentComponent,
     HelpcenterComponent,
     AvatarPreviewComponent,
-    ActivityComponent
+    ActivityComponent,
+    SportComponent,
+    CarpoolComponent,
+    MarketplaceComponent,
+    WeatherComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
