@@ -42,6 +42,7 @@ import { SportComponent } from './activity/sport/sport.component';
 import { CarpoolComponent } from './activity/carpool/carpool.component';
 import { MarketplaceComponent } from './activity/marketplace/marketplace.component';
 import { WeatherComponent } from './activity/weather/weather.component';
+import { DocumentComponent } from './activity/document/document.component';
 
 export const appRoutes: Routes = [
   {
@@ -89,7 +90,8 @@ export const appRoutes: Routes = [
     SportComponent,
     CarpoolComponent,
     MarketplaceComponent,
-    WeatherComponent
+    WeatherComponent,
+    DocumentComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

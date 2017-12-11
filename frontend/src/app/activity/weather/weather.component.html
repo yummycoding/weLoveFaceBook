@@ -1,111 +1,31 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <! The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <!-- <title>weather.js</title> --> 
+<head>
+	<meta charset="UTF-8">
+	<title>Weather App</title>
+</head>
+<body>
+	<h5>Today's weather</h5>
+	<div id="weather"></div>
+	<p>Temperature: <span id="temp"></span></p>
+	<p>Wind: <span id="wind"></span></p>
+	<!-- <p><span id="wind"></span></p> -->
 
-    <!-- Bootstrap - for styling purposes only -->
-    <!-- <link  rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script>
+	var weather = new XMLHttpRequest();
+	weather.open("GET", "http://api.wunderground.com/api/6bbd3abbf5596f9a/conditions/q/FL/Gainesville.json", false);
+	weather.send(null);
 
-  </head>
-  <body>
-    <div class="container">
-        <div class="row">
-            <h1 class="text-center">Guntersville, AL</h1>
-            <div class="col-sm-6">
-                <h2>Current Conditions</h2>
-                <h3 id="current"></h3>
-            </div>
-            <div class="col-sm-6">
-                <h2>Forecast</h1>
-                <h3 id="forecast"></h2>
-            </div>
-        </div>
-    </div> -->
+	var r = JSON.parse(weather.response);
+	var weather = "Current location: " + r.current_observation.display_location.full + "<br />";
+	var temp = r.current_observation.temperature_string + "<br />"
+	var wind = r.current_observation.wind_string + "<br />"
+	document.getElementById("weather").innerHTML = weather;
+	document.getElementById("temp").innerHTML = temp;
+	document.getElementById("wind").innerHTML = wind;
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="../weather.js"></script>
-        <div class="container">
-        <div class="row">
-            <h1 class="text-center">Guntersville, AL</h1>
-            <div class="col-sm-6">
-                <h2>Current Conditions</h2>
-                <h3 id="current"></h3>
-            </div>
-            <div class="col-sm-6">
-                <h2>Forecast</h1>
-                <h3 id="forecast"></h2>
-            </div>
-        </div>
-    </div>     <div class="container">
-        <div class="row">
-            <h1 class="text-center">Guntersville, AL</h1>
-            <div class="col-sm-6">
-                <h2>Current Conditions</h2>
-                <h3 id="current"></h3>
-            </div>
-            <div class="col-sm-6">
-                <h2>Forecast</h1>
-                <h3 id="forecast"></h2>
-            </div>
-        </div>
-    </div>     <div class="container">
-        <div class="row">
-            <h1 class="text-center">Guntersville, AL</h1>
-            <div class="col-sm-6">
-                <h2>Current Conditions</h2>
-                <h3 id="current"></h3>
-            </div>
-            <div class="col-sm-6">
-                <h2>Forecast</h1>
-                <h3 id="forecast"></h2>
-            </div>
-        </div>
-    </div>     <div class="container">
-        <div class="row">
-            <h1 class="text-center">Guntersville, AL</h1>
-            <div class="col-sm-6">
-                <h2>Current Conditions</h2>
-                <h3 id="current"></h3>
-            </div>
-            <div class="col-sm-6">
-                <h2>Forecast</h1>
-                <h3 id="forecast"></h2>
-            </div>
-        </div>
-    </div>     <div class="container">
-        <div class="row">
-            <h1 class="text-center">Guntersville, AL</h1>
-            <div class="col-sm-6">
-                <h2>Current Conditions</h2>
-                <h3 id="current"></h3>
-            </div>
-            <div class="col-sm-6">
-                <h2>Forecast</h1>
-                <h3 id="forecast"></h2>
-            </div>
-        </div>
-    </div> 
-    <script>
-        Weather.getCurrent( "Guntersville", function( current ) {
-            $( "#current" ).html( "Temperature: " + current.temperature() + "&deg;K or " +
-                Weather.kelvinToFahrenheit( current.temperature() ) + "&deg;F or " +
-                Weather.kelvinToCelsius( current.temperature() ) + "&deg;C" +
-                "<br />Current Conditions: " + current.conditions() );
-        });
+</script>	
 
-        Weather.getForecast( "Guntersville", function ( forecast ) {
-            $( "#forecast" ).html( "High: " + forecast.high() + "&deg;K or " +
-                Weather.kelvinToFahrenheit( forecast.high() ) + "&deg;F or " +
-                Weather.kelvinToCelsius( forecast.high() ) + "&deg;C<br />Low: " +
-                forecast.low() + "&deg;K or " +
-                Weather.kelvinToFahrenheit( forecast.low() ) + "&deg;F or " +
-                Weather.kelvinToCelsius( forecast.low() ) + "&deg;C" );
-        });
-    </script>
-  </body>
-</html> -->
+</body>
+</html>
+ 　

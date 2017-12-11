@@ -92,14 +92,17 @@
       </md-card-actions>
     </md-card> 
     <p style="margin-top: 0em; margin-bottom: 0em; font-size: 8px;">&nbsp;</p>
+    
   </div>  
   
   <!-- choose post amount to display in each page -->
   <div>
     <md-paginator class="displaypicker" [length]="homePosts.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="pageEvent = $event; pageChange($event)">
     </md-paginator>
+    <!-- <app-weather></app-weather> -->
   </div>
 
+  
   <p class="copyright">
     Copyright 2017&copy; yummycoding
   </p>

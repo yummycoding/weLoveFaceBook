@@ -17,10 +17,64 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_gendir lazy recursive";
 
 /***/ }),
 
-/***/ "../../../../../src/app/activity/activity.component.ts":
+/***/ "../../../../../src/app/activity/activity.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".swipe {\n    overflow: hidden;\n    visibility: hidden;\n    position: relative;\n  }\n  .swipe-wrap {\n    overflow: hidden;\n    position: relative;\n  }\n  .swipe-wrap > div {\n    float: left;\n    width: 100%;\n    position: relative;\n  }", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/activity/activity.component.html":
 /***/ (function(module, exports) {
 
+module.exports = "<div id=\"slider\" class=\"swipe\">\n  <div class=\"swipe-wrap\">\n    <div>swipe</div>\n    <div><img src=\"../assets/images-home/logo3.png\"> </div>\n    <div><img width=\"350\" src=\"../assets/headerimage/gator.png\"></div>\n  </div>\n</div>"
 
+/***/ }),
+
+/***/ "../../../../../src/app/activity/activity.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ActivityComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var ActivityComponent = (function () {
+    function ActivityComponent() {
+    }
+    ActivityComponent.prototype.ngOnInit = function () {
+    };
+    return ActivityComponent;
+}());
+ActivityComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-activity',
+        template: __webpack_require__("../../../../../src/app/activity/activity.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/activity/activity.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], ActivityComponent);
+
+//# sourceMappingURL=activity.component.js.map
 
 /***/ }),
 
@@ -85,6 +139,67 @@ CarpoolComponent = __decorate([
 
 /***/ }),
 
+/***/ "../../../../../src/app/activity/document/document.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/activity/document/document.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  document works!\n</p>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/activity/document/document.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DocumentComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var DocumentComponent = (function () {
+    function DocumentComponent() {
+    }
+    DocumentComponent.prototype.ngOnInit = function () {
+    };
+    return DocumentComponent;
+}());
+DocumentComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-document',
+        template: __webpack_require__("../../../../../src/app/activity/document/document.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/activity/document/document.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], DocumentComponent);
+
+//# sourceMappingURL=document.component.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/activity/marketplace/marketplace.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -146,10 +261,64 @@ MarketplaceComponent = __decorate([
 
 /***/ }),
 
-/***/ "../../../../../src/app/activity/sport/sport.component.ts":
+/***/ "../../../../../src/app/activity/sport/sport.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/activity/sport/sport.component.html":
 /***/ (function(module, exports) {
 
+module.exports = "<!-- <!DOCTYPE html>\n<html>\n<head>\n    <title>Leaflet Map</title>\n\n    <meta charset=\"utf-8\" />\n    <! only needed for mobile browsers: disable unwanted scaling and use full width -->\n    <!-- <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no\" /> -->\n\n    <!-- force the map to use the full available space -->\n    <!-- <style>\n        html, body, #map {\n            height: 100%;\n            width: 100%;\n            padding: 0px;\n            margin: 0px;\n         }\n   </style> -->\n\n    <!-- for remote access of the Leaflet library\n    <link rel=\"stylesheet\" href=\"https://unpkg.com/leaflet@1.0.3/dist/leaflet.css\" />\n    <script src=\"https://unpkg.com/leaflet@1.0.3/dist/leaflet.js\"></script> -->\n\n    <!-- <link rel=\"stylesheet\" href=\"leaflet/leaflet.css\" />\n    <script src=\"leaflet/leaflet.js\"></script>\n\n    <script src=\"leaflet-color-markers/leaflet-color-markers.js\"></script>\n</head>\n<body>\n    <div id=\"map\" />\n</body>\n</html> -->\n"
 
+/***/ }),
+
+/***/ "../../../../../src/app/activity/sport/sport.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SportComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var SportComponent = (function () {
+    function SportComponent() {
+    }
+    SportComponent.prototype.ngOnInit = function () {
+    };
+    return SportComponent;
+}());
+SportComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-sport',
+        template: __webpack_require__("../../../../../src/app/activity/sport/sport.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/activity/sport/sport.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], SportComponent);
+
+//# sourceMappingURL=sport.component.js.map
 
 /***/ }),
 
@@ -174,7 +343,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/activity/weather/weather.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <! The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->\n    <!-- <title>weather.js</title> --> \n\n    <!-- Bootstrap - for styling purposes only -->\n    <!-- <link  rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css\">\n\n  </head>\n  <body>\n    <div class=\"container\">\n        <div class=\"row\">\n            <h1 class=\"text-center\">Guntersville, AL</h1>\n            <div class=\"col-sm-6\">\n                <h2>Current Conditions</h2>\n                <h3 id=\"current\"></h3>\n            </div>\n            <div class=\"col-sm-6\">\n                <h2>Forecast</h1>\n                <h3 id=\"forecast\"></h2>\n            </div>\n        </div>\n    </div> -->\n\n    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->\n    <!-- <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js\"></script>\n    <script src=\"../weather.js\"></script>\n        <div class=\"container\">\n        <div class=\"row\">\n            <h1 class=\"text-center\">Guntersville, AL</h1>\n            <div class=\"col-sm-6\">\n                <h2>Current Conditions</h2>\n                <h3 id=\"current\"></h3>\n            </div>\n            <div class=\"col-sm-6\">\n                <h2>Forecast</h1>\n                <h3 id=\"forecast\"></h2>\n            </div>\n        </div>\n    </div>     <div class=\"container\">\n        <div class=\"row\">\n            <h1 class=\"text-center\">Guntersville, AL</h1>\n            <div class=\"col-sm-6\">\n                <h2>Current Conditions</h2>\n                <h3 id=\"current\"></h3>\n            </div>\n            <div class=\"col-sm-6\">\n                <h2>Forecast</h1>\n                <h3 id=\"forecast\"></h2>\n            </div>\n        </div>\n    </div>     <div class=\"container\">\n        <div class=\"row\">\n            <h1 class=\"text-center\">Guntersville, AL</h1>\n            <div class=\"col-sm-6\">\n                <h2>Current Conditions</h2>\n                <h3 id=\"current\"></h3>\n            </div>\n            <div class=\"col-sm-6\">\n                <h2>Forecast</h1>\n                <h3 id=\"forecast\"></h2>\n            </div>\n        </div>\n    </div>     <div class=\"container\">\n        <div class=\"row\">\n            <h1 class=\"text-center\">Guntersville, AL</h1>\n            <div class=\"col-sm-6\">\n                <h2>Current Conditions</h2>\n                <h3 id=\"current\"></h3>\n            </div>\n            <div class=\"col-sm-6\">\n                <h2>Forecast</h1>\n                <h3 id=\"forecast\"></h2>\n            </div>\n        </div>\n    </div>     <div class=\"container\">\n        <div class=\"row\">\n            <h1 class=\"text-center\">Guntersville, AL</h1>\n            <div class=\"col-sm-6\">\n                <h2>Current Conditions</h2>\n                <h3 id=\"current\"></h3>\n            </div>\n            <div class=\"col-sm-6\">\n                <h2>Forecast</h1>\n                <h3 id=\"forecast\"></h2>\n            </div>\n        </div>\n    </div> \n    <script>\n        Weather.getCurrent( \"Guntersville\", function( current ) {\n            $( \"#current\" ).html( \"Temperature: \" + current.temperature() + \"&deg;K or \" +\n                Weather.kelvinToFahrenheit( current.temperature() ) + \"&deg;F or \" +\n                Weather.kelvinToCelsius( current.temperature() ) + \"&deg;C\" +\n                \"<br />Current Conditions: \" + current.conditions() );\n        });\n\n        Weather.getForecast( \"Guntersville\", function ( forecast ) {\n            $( \"#forecast\" ).html( \"High: \" + forecast.high() + \"&deg;K or \" +\n                Weather.kelvinToFahrenheit( forecast.high() ) + \"&deg;F or \" +\n                Weather.kelvinToCelsius( forecast.high() ) + \"&deg;C<br />Low: \" +\n                forecast.low() + \"&deg;K or \" +\n                Weather.kelvinToFahrenheit( forecast.low() ) + \"&deg;F or \" +\n                Weather.kelvinToCelsius( forecast.low() ) + \"&deg;C\" );\n        });\n    </script>\n  </body>\n</html> -->"
+module.exports = "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n\t<meta charset=\"UTF-8\">\n\t<title>Weather App</title>\n</head>\n<body>\n\t<h5>Today's weather</h5>\n\t<div id=\"weather\"></div>\n\t<p>Temperature: <span id=\"temp\"></span></p>\n\t<p>Wind: <span id=\"wind\"></span></p>\n\t<!-- <p><span id=\"wind\"></span></p> -->\n\n<script>\n\tvar weather = new XMLHttpRequest();\n\tweather.open(\"GET\", \"http://api.wunderground.com/api/6bbd3abbf5596f9a/conditions/q/FL/Gainesville.json\", false);\n\tweather.send(null);\n\n\tvar r = JSON.parse(weather.response);\n\tvar weather = \"Current location: \" + r.current_observation.display_location.full + \"<br />\";\n\tvar temp = r.current_observation.temperature_string + \"<br />\"\n\tvar wind = r.current_observation.wind_string + \"<br />\"\n\tdocument.getElementById(\"weather\").innerHTML = weather;\n\tdocument.getElementById(\"temp\").innerHTML = temp;\n\tdocument.getElementById(\"wind\").innerHTML = wind;\n\n</script>\t\n\n</body>\n</html>\n 　"
 
 /***/ }),
 
@@ -310,12 +479,11 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__service_post_service__ = __webpack_require__("../../../../../src/app/service/post.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__helpcenter_helpcenter_component__ = __webpack_require__("../../../../../src/app/helpcenter/helpcenter.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__activity_activity_component__ = __webpack_require__("../../../../../src/app/activity/activity.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__activity_activity_component___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_26__activity_activity_component__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__activity_sport_sport_component__ = __webpack_require__("../../../../../src/app/activity/sport/sport.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__activity_sport_sport_component___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_27__activity_sport_sport_component__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__activity_carpool_carpool_component__ = __webpack_require__("../../../../../src/app/activity/carpool/carpool.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__activity_marketplace_marketplace_component__ = __webpack_require__("../../../../../src/app/activity/marketplace/marketplace.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__activity_weather_weather_component__ = __webpack_require__("../../../../../src/app/activity/weather/weather.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__activity_document_document_component__ = __webpack_require__("../../../../../src/app/activity/document/document.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -357,6 +525,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 // make post
+
 
 
 
@@ -411,11 +580,12 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_20__home_home_component__["a" /* AddCommentComponent */],
             __WEBPACK_IMPORTED_MODULE_25__helpcenter_helpcenter_component__["a" /* HelpcenterComponent */],
             __WEBPACK_IMPORTED_MODULE_23__user_user_profile_user_profile_component__["a" /* AvatarPreviewComponent */],
-            __WEBPACK_IMPORTED_MODULE_26__activity_activity_component__["ActivityComponent"],
-            __WEBPACK_IMPORTED_MODULE_27__activity_sport_sport_component__["SportComponent"],
+            __WEBPACK_IMPORTED_MODULE_26__activity_activity_component__["a" /* ActivityComponent */],
+            __WEBPACK_IMPORTED_MODULE_27__activity_sport_sport_component__["a" /* SportComponent */],
             __WEBPACK_IMPORTED_MODULE_28__activity_carpool_carpool_component__["a" /* CarpoolComponent */],
             __WEBPACK_IMPORTED_MODULE_29__activity_marketplace_marketplace_component__["a" /* MarketplaceComponent */],
-            __WEBPACK_IMPORTED_MODULE_30__activity_weather_weather_component__["a" /* WeatherComponent */]
+            __WEBPACK_IMPORTED_MODULE_30__activity_weather_weather_component__["a" /* WeatherComponent */],
+            __WEBPACK_IMPORTED_MODULE_31__activity_document_document_component__["a" /* DocumentComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* RouterModule */].forRoot(appRoutes),
@@ -1062,7 +1232,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n<div style=\"float:left; width:100%\">\n  <div class=\"make-post\">\n    <md-expansion-panel>\n      <md-expansion-panel-header id=\"makepost\">\n        <md-panel-title>\n          Make Post\n        </md-panel-title>\n        <md-panel-description>\n          What's on your mind?\n        </md-panel-description>\n      </md-expansion-panel-header>\n      <md-form-field class=\"textwidth\">\n        <!-- <input mdInput #message maxlength=\"256\" placeholder=\"Say something\">\n      <md-hint align=\"start\"><strong>Don't disclose personal info</strong> </md-hint> -->\n        <input mdInput name=\"postinput\" [(ngModel)]=\"post.body\" #message maxlength=\"256\">\n        <md-hint align=\"end\">{{message.value.length}} / 256</md-hint>\n      </md-form-field>\n      <img *ngIf=\"url.length > 0\" class=\"uploadImg\" src=\"{{ url }}\">\n      <div class=\"input\">\n        <input class=\"ng-hide\" id=\"input-file-id\" (change)=\"fileChangeEvent($event)\" type=\"file\" #inputFile hidden/>\n        <button color=\"primary\" id=\"selectFile\" md-raised-button>\n          <Label for=\"input-file-id\">\n            <i class=\"material-icons md-18 icon-align\">insert_photo</i>\n            Photo\n          </Label>\n        </button>\n        <button color=\"warn\" id=\"sendpost\" (click)=\"sendPost()\" md-raised-button>Post</button>\n      </div>\n    </md-expansion-panel>\n  </div>\n\n  <!-- post information -->\n  \n  <!-- refresh button -->\n  <button class=\"refresh-btn\" (click)=\"refreshSelfposts($event)\" md-raised-button>\n    <i class=\"material-icons\">refresh</i>\n  </button>\n\n  <!-- post content -->\n  <div *ngFor=\"let homePost of homePosts | slice: [start] : [end]; let i = index\">\n    <md-card id=\"postcards\" class=\"post-card\" >\n      <md-card-header>\n        <img md-card-avatar class=\"post-image\" src=\"{{ friendAvatars.get(homePost.createdBy) || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}\">\n        <md-card-title id=\"postauthor\" class=\"post-author\">{{homePost.createdBy}}</md-card-title>\n        <md-card-subtitle>{{homePost.createdAt | date:\"yyyy-MM-dd HH:mm:ss\"}}</md-card-subtitle>\n      </md-card-header>\n      <md-card-content>\n        <img class=\"uploadImg\" *ngIf=\"homePost.img\" src=\"{{ homePost.img }}\"> \n        <p id=\"postcontent\" style=\"font-size: 15px\">{{homePost.body}}</p>\n      </md-card-content>\n      <!-- post operation -->\n      <md-card-actions>\n        <button md-button id=\"likebtn\" (click)=\"likeCancelLikePost(i)\">\n          <span><i class=\"material-icons md-18 icon-align\" [class.favorite]=\"homePost.likedBy.indexOf(curUsername) >= 0\">favorite_border</i></span>\n          <span class=\"fill-space\"></span>\n          <span *ngIf=\"homePost.likes>0\" id=\"likenum\">{{homePost.likes}}</span>\n        </button>\n        <button md-button id=\"commentbtn\" (click)=\"openDialog(i)\">\n          <i class=\"material-icons md-18\">insert_comment</i>\n        </button>\n        <button md-button>\n          <i class=\"material-icons md-18\">share</i>\n        </button>\n        <md-card-content>\n          <p *ngIf=\"homePost.likes>0\" class=\"like-font\" id=\"likeby\">Liked by: {{homePost.likedBy}}</p>\n        </md-card-content>\n        <!-- comment section -->\n        <div id=\"commentssection\" class=\"clearfix\" *ngIf=\"homePost.comments.length > 0\">\n          <!-- <hr> -->\n          <span style=\"float: left;\">\n            <i class=\"material-icons\">chat_bubble_outline</i> \n          </span>\n          <span style=\"float: left;\">\n            <md-list class=\"comment-section\" >\n              <md-list-item class=\"comment-line\" id=\"commentsfor\" *ngFor=\"let comment of homePost.comments\">\n                <div id=\"commentator\" style=\"font-size: 12px; font-weight: bold;\">\n                  {{comment.commentator}}: &nbsp;\n                </div> \n                <div style=\"font-size: 12px; color: #616161\">{{comment.comment}}</div>\n                <span class=\"spacer\"></span>\n                <div *ngIf=\"comment.commentator == curUsername\">\n                  <button md-icon-button (click)=\"deleteComment(comment,i)\">\n                    <i class=\"material-icons\">clear</i>  \n                  </button>\n                </div>\n              </md-list-item>\n            </md-list>\n          </span>   \n        </div>\n        <p style=\"margin-top: 0em; margin-bottom: 0em; font-size: 10px;\">&nbsp;</p>\n      </md-card-actions>\n    </md-card> \n    <p style=\"margin-top: 0em; margin-bottom: 0em; font-size: 8px;\">&nbsp;</p>\n  </div>  \n  \n  <!-- choose post amount to display in each page -->\n  <div>\n    <md-paginator class=\"displaypicker\" [length]=\"homePosts.length\" [pageSize]=\"pageSize\" [pageSizeOptions]=\"pageSizeOptions\" (page)=\"pageEvent = $event; pageChange($event)\">\n    </md-paginator>\n  </div>\n\n  <p class=\"copyright\">\n    Copyright 2017&copy; yummycoding\n  </p>\n\n</div>\n\n<!-- notification -->\n<!-- <div style=\"float:left\">\n  <p class=\"notiTitle\">Notifications</p>\n  <md-card class=\"notification\">Notifications</md-card>\n</div> -->\n\n</div>"
+module.exports = "<div>\n<div style=\"float:left; width:100%\">\n  <div class=\"make-post\">\n    <md-expansion-panel>\n      <md-expansion-panel-header id=\"makepost\">\n        <md-panel-title>\n          Make Post\n        </md-panel-title>\n        <md-panel-description>\n          What's on your mind?\n        </md-panel-description>\n      </md-expansion-panel-header>\n      <md-form-field class=\"textwidth\">\n        <!-- <input mdInput #message maxlength=\"256\" placeholder=\"Say something\">\n      <md-hint align=\"start\"><strong>Don't disclose personal info</strong> </md-hint> -->\n        <input mdInput name=\"postinput\" [(ngModel)]=\"post.body\" #message maxlength=\"256\">\n        <md-hint align=\"end\">{{message.value.length}} / 256</md-hint>\n      </md-form-field>\n      <img *ngIf=\"url.length > 0\" class=\"uploadImg\" src=\"{{ url }}\">\n      <div class=\"input\">\n        <input class=\"ng-hide\" id=\"input-file-id\" (change)=\"fileChangeEvent($event)\" type=\"file\" #inputFile hidden/>\n        <button color=\"primary\" id=\"selectFile\" md-raised-button>\n          <Label for=\"input-file-id\">\n            <i class=\"material-icons md-18 icon-align\">insert_photo</i>\n            Photo\n          </Label>\n        </button>\n        <button color=\"warn\" id=\"sendpost\" (click)=\"sendPost()\" md-raised-button>Post</button>\n      </div>\n    </md-expansion-panel>\n  </div>\n\n  <!-- post information -->\n  \n  <!-- refresh button -->\n  <button class=\"refresh-btn\" (click)=\"refreshSelfposts($event)\" md-raised-button>\n    <i class=\"material-icons\">refresh</i>\n  </button>\n\n  <!-- post content -->\n  <div *ngFor=\"let homePost of homePosts | slice: [start] : [end]; let i = index\">\n    <md-card id=\"postcards\" class=\"post-card\" >\n      <md-card-header>\n        <img md-card-avatar class=\"post-image\" src=\"{{ friendAvatars.get(homePost.createdBy) || 'https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg'}}\">\n        <md-card-title id=\"postauthor\" class=\"post-author\">{{homePost.createdBy}}</md-card-title>\n        <md-card-subtitle>{{homePost.createdAt | date:\"yyyy-MM-dd HH:mm:ss\"}}</md-card-subtitle>\n      </md-card-header>\n      <md-card-content>\n        <img class=\"uploadImg\" *ngIf=\"homePost.img\" src=\"{{ homePost.img }}\"> \n        <p id=\"postcontent\" style=\"font-size: 15px\">{{homePost.body}}</p>\n      </md-card-content>\n      <!-- post operation -->\n      <md-card-actions>\n        <button md-button id=\"likebtn\" (click)=\"likeCancelLikePost(i)\">\n          <span><i class=\"material-icons md-18 icon-align\" [class.favorite]=\"homePost.likedBy.indexOf(curUsername) >= 0\">favorite_border</i></span>\n          <span class=\"fill-space\"></span>\n          <span *ngIf=\"homePost.likes>0\" id=\"likenum\">{{homePost.likes}}</span>\n        </button>\n        <button md-button id=\"commentbtn\" (click)=\"openDialog(i)\">\n          <i class=\"material-icons md-18\">insert_comment</i>\n        </button>\n        <button md-button>\n          <i class=\"material-icons md-18\">share</i>\n        </button>\n        <md-card-content>\n          <p *ngIf=\"homePost.likes>0\" class=\"like-font\" id=\"likeby\">Liked by: {{homePost.likedBy}}</p>\n        </md-card-content>\n        <!-- comment section -->\n        <div id=\"commentssection\" class=\"clearfix\" *ngIf=\"homePost.comments.length > 0\">\n          <!-- <hr> -->\n          <span style=\"float: left;\">\n            <i class=\"material-icons\">chat_bubble_outline</i> \n          </span>\n          <span style=\"float: left;\">\n            <md-list class=\"comment-section\" >\n              <md-list-item class=\"comment-line\" id=\"commentsfor\" *ngFor=\"let comment of homePost.comments\">\n                <div id=\"commentator\" style=\"font-size: 12px; font-weight: bold;\">\n                  {{comment.commentator}}: &nbsp;\n                </div> \n                <div style=\"font-size: 12px; color: #616161\">{{comment.comment}}</div>\n                <span class=\"spacer\"></span>\n                <div *ngIf=\"comment.commentator == curUsername\">\n                  <button md-icon-button (click)=\"deleteComment(comment,i)\">\n                    <i class=\"material-icons\">clear</i>  \n                  </button>\n                </div>\n              </md-list-item>\n            </md-list>\n          </span>   \n        </div>\n        <p style=\"margin-top: 0em; margin-bottom: 0em; font-size: 10px;\">&nbsp;</p>\n      </md-card-actions>\n    </md-card> \n    <p style=\"margin-top: 0em; margin-bottom: 0em; font-size: 8px;\">&nbsp;</p>\n    \n  </div>  \n  \n  <!-- choose post amount to display in each page -->\n  <div>\n    <md-paginator class=\"displaypicker\" [length]=\"homePosts.length\" [pageSize]=\"pageSize\" [pageSizeOptions]=\"pageSizeOptions\" (page)=\"pageEvent = $event; pageChange($event)\">\n    </md-paginator>\n    <!-- <app-weather></app-weather> -->\n  </div>\n\n  \n  <p class=\"copyright\">\n    Copyright 2017&copy; yummycoding\n  </p>\n\n</div>\n\n<!-- notification -->\n<!-- <div style=\"float:left\">\n  <p class=\"notiTitle\">Notifications</p>\n  <md-card class=\"notification\">Notifications</md-card>\n</div> -->\n\n</div>"
 
 /***/ }),
 
@@ -1280,7 +1450,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "/* :host {\n    flex-grow: 1;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n} */\n:host {\n        -webkit-box-flex: 1;\n            -ms-flex-positive: 1;\n                flex-grow: 1;\n        /* flex-grow: 1; */\n         display: -webkit-box;\n         display: -ms-flexbox;\n         display: flex;\n         -webkit-box-pack: center;\n             -ms-flex-pack: center;\n                 justify-content: center;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        /* align-items: center; */\n        /* background-color: white; */\n        background-image: url('/asstes/images-home/alligatorgause.jpg');\n     }\ndiv.input {\n    position: relative;\n}\n/* .body {\n    background-image: url('~/asstes/images-home/alligator.jpg');\n} */\n/* }\ndiv.input label {\n    background-image:url('./assets/images-home/alligator.jpg');\n} */\ndiv.input label {\n    position: absolute;\n    top: 0;\n    -webkit-transform: translateY(-50%);\n            transform: translateY(-50%);\n    left: 10px;\n    /* background: white; */\n    background-image: url('/asstes/images-home/alligator.jpg');\n    \n    padding: 5px 2px;\n}\n/* .body {\n    background-image: url(\"../assets/images-home/alligator.jpg\"); \n} */\n\ndiv.input input {\n    padding: 10px 20px;\n    font-size: 25px;\n    outline: 0;\n}\ndiv.input {\n    margin-top: 20px;\n}\n.example-form {\n    min-width: 150px;\n    max-width: 500px;\n    width: 100%;\n}\n.example-form {\n    min-width: 150px;\n    max-width: 500px;\n    width: 100%;\n}\n.example-half-width {\n    width: 90%;\n    color: red;\n    margin-bottom: 15px;\n}\n.example-middle-width {\n    width: 70%;\n}\n.example-full-width {\n    width: 100%;\n}\n.alert {\n    padding: 20px;\n    /* background-color: #f44336; Red */\n    color: red;\n    margin-bottom: 15px;\n}\n.sub-title {\n    /* margin-left: 300px; */\n    -ms-flex-line-pack: right;\n        align-content: right;\n    font-size: 20px;\n    font-weight: bold;\n    font-style: italic;\n    color: #4DB6AC;\n}\n.border {\n    border: 0px solid rgb(88, 95, 204);\n    /* background-color: white; */\n    filter:alpha(opacity=50, Style=0);\n}", ""]);
+exports.push([module.i, "/* :host {\n    flex-grow: 1;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n} */\n:host {\n        -webkit-box-flex: 1;\n            -ms-flex-positive: 1;\n                flex-grow: 1;\n        /* flex-grow: 1; */\n         display: -webkit-box;\n         display: -ms-flexbox;\n         display: flex;\n         -webkit-box-pack: center;\n             -ms-flex-pack: center;\n                 justify-content: center;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        /* align-items: center; */\n        /* background-color: white; */\n        background-image: url('/asstes/images-home/alligatorgause.jpg');\n     }\ndiv.input {\n    position: relative;\n}\n/* .body {\n    background-image: url('~/asstes/images-home/alligator.jpg');\n} */\n/* }\ndiv.input label {\n    background-image:url('./assets/images-home/alligator.jpg');\n} */\ndiv.input label {\n    position: absolute;\n    top: 0;\n    -webkit-transform: translateY(-50%);\n            transform: translateY(-50%);\n    left: 10px;\n    /* background: white; */\n    background-image: url('/asstes/images-home/alligator.jpg');\n    \n    padding: 5px 2px;\n}\n/* .body {\n    background-image: url(\"../assets/images-home/alligator.jpg\"); \n} */\n\ndiv.input input {\n    padding: 10px 20px;\n    font-size: 25px;\n    outline: 0;\n}\ndiv.input {\n    margin-top: 20px;\n}\n.example-form {\n    min-width: 150px;\n    max-width: 500px;\n    width: 100%;\n}\n.example-form {\n    min-width: 150px;\n    max-width: 500px;\n    width: 100%;\n}\n.example-half-width {\n    width: 90%;\n}\n.example-middle-width {\n    width: 70%;\n}\n.example-full-width {\n    width: 100%;\n}\n.alert {\n    padding: 20px;\n    /* background-color: #f44336; Red */\n    color: red;\n    margin-bottom: 15px;\n}\n.sub-title {\n    /* margin-left: 300px; */\n    -ms-flex-line-pack: right;\n        align-content: right;\n    font-size: 20px;\n    font-weight: bold;\n    font-style: italic;\n    color: #4DB6AC;\n}\n.border {\n    border: 0px solid rgb(88, 95, 204);\n    /* background-color: white; */\n    filter:alpha(opacity=50, Style=0);\n}", ""]);
 
 // exports
 
@@ -1460,7 +1630,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/regis-form/regis-form.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<form (submit)=\"signupUser()\">\n    <div>\n      <label class=\"regis-title\">Sign Up</label>\n    </div>\n    <div class=\"alert\">\n      <flash-messages></flash-messages>\n    </div>\n    <md-form-field class=\"example-full-width\">\n      <input mdInput placeholder=\"Username\" name=\"signupusername\" [(ngModel)]=\"newUser.username\">\n    </md-form-field>\n    <md-form-field class=\"example-full-width\">\n      <input mdInput placeholder=\"Nickname\" name=\"nickname\" [(ngModel)]=\"newUser.nickname\">\n    </md-form-field>\n    <md-form-field class=\"example-full-width\">\n      <input type =\"password\" mdInput placeholder=\"Password\" name=\"signuppassword\" [(ngModel)]=\"newUser.password\">\n    </md-form-field>\n    <md-form-field class=\"example-full-width\">\n      <input type =\"password\" mdInput placeholder=\"Confirm Password\" name=\"confirmedpassword\" [(ngModel)]=\"confirmedpassword\">\n    </md-form-field>\n    <md-form-field class=\"example-full-width\">\n      <input type =\"text\" mdInput placeholder=\"Email\" name=\"email\" [(ngModel)]=\"newUser.email\">\n    </md-form-field>\n    <!-- <md-form-field>\n      <input mdInput [mdDatepicker]=\"picker\" placeholder=\"Birthdate\" [(ngModel)]=\"newUser.dob\">\n      <md-datepicker-toggle mdSuffix [for]=\"picker\"></md-datepicker-toggle>\n      <md-datepicker #picker startView=\"year\" [startAt]=\"startDate\"></md-datepicker>\n    </md-form-field> -->\n    <md-form-field class=\"example-full-width\">\n      <input type =\"text\" mdInput placeholder=\"Birthday (mm/dd/yyyy)\" name=\"birthday\" [(ngModel)]=\"newUser.dob\">\n    </md-form-field>\n    <div class=\"gender-style\">\n      <md-radio-group>\n      <md-radio-button value=\"1\">Male</md-radio-button>\n      <md-radio-button value=\"2\">Female</md-radio-button>\n    </md-radio-group>\n    </div>\n    <div class=\"button-style\">    \n      <button color =\"primary\" id=signupsubmitbtn type =\"submit\" md-raised-button>Submit</button>\n      <button color =\"primary\" id=signupcancelbtn routerLink=\"/\" md-raised-button>Cancel</button>\n    </div>\n  </form>"
+module.exports = "<form (submit)=\"signupUser()\" width>\n    <div>\n      <label class=\"regis-title\">Sign Up</label>\n    </div>\n    <div class=\"alert\">\n      <flash-messages></flash-messages>\n    </div>\n    <md-form-field class=\"example-full-width\">\n      <input mdInput placeholder=\"Username\" name=\"signupusername\" [(ngModel)]=\"newUser.username\">\n    </md-form-field>\n    <md-form-field class=\"example-full-width\">\n      <input mdInput placeholder=\"Nickname\" name=\"nickname\" [(ngModel)]=\"newUser.nickname\">\n    </md-form-field>\n    <md-form-field class=\"example-full-width\">\n      <input type =\"password\" mdInput placeholder=\"Password\" name=\"signuppassword\" [(ngModel)]=\"newUser.password\">\n    </md-form-field>\n    <md-form-field class=\"example-full-width\">\n      <input type =\"password\" mdInput placeholder=\"Confirm Password\" name=\"confirmedpassword\" [(ngModel)]=\"confirmedpassword\">\n    </md-form-field>\n    <md-form-field class=\"example-full-width\">\n      <input type =\"text\" mdInput placeholder=\"Email\" name=\"email\" [(ngModel)]=\"newUser.email\">\n    </md-form-field>\n    <!-- <md-form-field>\n      <input mdInput [mdDatepicker]=\"picker\" placeholder=\"Birthdate\" [(ngModel)]=\"newUser.dob\">\n      <md-datepicker-toggle mdSuffix [for]=\"picker\"></md-datepicker-toggle>\n      <md-datepicker #picker startView=\"year\" [startAt]=\"startDate\"></md-datepicker>\n    </md-form-field> -->\n    <md-form-field class=\"example-full-width\">\n      <input type =\"text\" mdInput placeholder=\"Birthday (mm/dd/yyyy)\" name=\"birthday\" [(ngModel)]=\"newUser.dob\">\n    </md-form-field>\n    <div class=\"gender-style\">\n      <md-radio-group>\n      <md-radio-button value=\"1\">Male</md-radio-button>\n      <md-radio-button value=\"2\">Female</md-radio-button>\n    </md-radio-group>\n    </div>\n    <div class=\"button-style\">    \n      <button color =\"primary\" id=signupsubmitbtn type =\"submit\" md-raised-button>Submit</button>\n      <button color =\"primary\" id=signupcancelbtn routerLink=\"/\" md-raised-button>Cancel</button>\n    </div>\n  </form>"
 
 /***/ }),
 
