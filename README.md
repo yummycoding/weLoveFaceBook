@@ -34,7 +34,7 @@ This social network application was built with MongoDB, Express, Angular4, Node.
 
 - [MongoDB](https://www.mongodb.org/) - MongoDB is the leading NoSQL database, empowering businesses to be more agile and scalable
 - [Express](http://expressjs.com/) - Express is a minimal and flexible node.js web application framework, providing a robust set of features for building single and multi-page, and hybrid web applications
-- [AngularJS](https://angularjs.org/) - based framework. -AngularJS lets you extend HTML vocabulary for your application. The resulting environment is extraordinarily expressive, readable, and quick to develop
+- [Angular 4](https://angular.io/) - based framework. -Angular lets you extend HTML vocabulary for your application. The resulting environment is extraordinarily expressive, readable, and quick to develop
 - [Node.js](http://www.nodejs.org/) - Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications
 
 # Installation
