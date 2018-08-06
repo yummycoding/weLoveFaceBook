@@ -28,18 +28,18 @@ Gatorbook is a Facebook-like social network web application built using MEAN sta
 
 
 
-# MEAN
+## MEAN
 
 - [MongoDB](https://www.mongodb.org/) - MongoDB is the leading NoSQL database, empowering businesses to be more agile and scalable
 - [Express](http://expressjs.com/) - Express is a minimal and flexible node.js web application framework, providing a robust set of features for building single and multi-page, and hybrid web applications
 - [Angular 4](https://angular.io/) - based framework. -Angular lets you extend HTML vocabulary for your application. The resulting environment is extraordinarily expressive, readable, and quick to develop
 - [Node.js](http://www.nodejs.org/) - Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications
 
-# Installation
+## Installation
 
 The following instructions are the most common to get the development environment up and running, if you run into issues, check out the [feedback](#Feedback) section and let us know what issues you met.
 
-## Node v6.11.2
+#### Node v6.11.2
 You need Node 6.11.2 in your system. Verify if you already have it with `node -v`. If not or different version, you can use Node Version Manager (nvm) to install it.
 ```bash
 curl https://raw.githubusercontent.com/creationix/nvm/v0.24.1/install.sh | bash
@@ -48,7 +48,7 @@ nvm install 0.12
 nvm use 0.12
 ```
 
-## NPM global dependencies
+#### NPM global dependencies
 ```bash
 # Nodemon
 npm install -g nodemon
@@ -75,12 +75,12 @@ npm install -g jwt
 npm install -g bcrypt-nodejs
 ```
 
-## MongoDB v3.4.9
+#### MongoDB v3.4.9
 
 - Mac: `brew install mongodb 3.4.9`
 - Ubuntu: `sudo apt-get -y install mongodb=3.4.9`
 
-## Source code
+#### Source code
 To install our source code, try
 ```bash
 git clone https://github.com/yummycoding/weLoveFaceBook
@@ -88,7 +88,7 @@ cd weLoveFaceBook
 npm install
 ```
 
-# Mount Program
+## Mount Program
 To mount Gatorbook server and try to use it in your browser:
 
 - In your terminal, key in `mongod`. This will open your database.
@@ -99,16 +99,16 @@ To mount Gatorbook server and try to use it in your browser:
 
 - Then in your browser, view https://localhost:3000 and you are now able to use our application on your own computer.
 
-# Testing
+## Testing
 - [Instructions on front end unit test](https://github.com/yummycoding/weLoveFaceBook/wiki/Making-Client-side-Tests)
 - [Instructions on back end unit test](https://github.com/yummycoding/weLoveFaceBook/wiki/Making-Server-side-Tests)
 - [Instructions on e2e test](https://github.com/yummycoding/weLoveFaceBook/wiki/Making-End-to-End-Tests)
  
-# Feedback
+## Feedback
 If you have any doubts, questions or ideas for improvement, we'd like to hear from you, clike [here](https://github.com/yummycoding/weLoveFaceBook/issues/new) to give use your feedback!
 
 
-# License and Authors
+## License and Authors
 
 #### License
 
