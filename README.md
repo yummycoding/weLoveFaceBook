@@ -22,8 +22,7 @@ Gatorbook is a Facebook-like social network web application built using MEAN sta
   - [MongoDB v3.4.9](#mongodb-v3.4.9)
   - [Source code](#source-code)
 - [Mount Program](#mount-program)
-- [License](#license)
-- [Authors](#authors)
+- [License and authors](#license-and-authors)
 - [Feedback your suggestions](#feedback)
 
 
@@ -105,10 +104,12 @@ To mount Gatorbook server and try to use it in your browser:
 If you have any doubts, questions or ideas for improvement, we'd like to hear from you, clike [here](https://github.com/yummycoding/weLoveFaceBook/issues/new) to give use your feedback!
 
 
-# License
+# License and Authors
+
+#### License
 
 
-# Authors
+#### Authors
 | Name | GitHub ID | Contact Information |
 |------|-----------|---------------------|
 |You Zhou|ZhouYou528| |
