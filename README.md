@@ -15,8 +15,8 @@ Gatorbook is a Facebook-like social network web application built using MEAN sta
 
 **Table of Contents**
 
-- [MEAN Stack Introduction](#mean)
-- [Setup Environment and Install Our Code](#installation)
+- [MEAN Stack Introduction](#about-mean-stack)
+- [Setup Environment and Install Our Code](#set-and-install-Gatorbook)
   - [Node v6.11.2](#node-v6.11.2)
   - [NPM global dependencies](#npm-global-dependencies)
   - [MongoDB v3.4.9](#mongodb-v3.4.9)
@@ -28,14 +28,14 @@ Gatorbook is a Facebook-like social network web application built using MEAN sta
 
 
 
-## MEAN
+## About MEAN Stack
 
 - [MongoDB](https://www.mongodb.org/) - MongoDB is the leading NoSQL database, empowering businesses to be more agile and scalable
 - [Express](http://expressjs.com/) - Express is a minimal and flexible node.js web application framework, providing a robust set of features for building single and multi-page, and hybrid web applications
 - [Angular 4](https://angular.io/) - based framework. -Angular lets you extend HTML vocabulary for your application. The resulting environment is extraordinarily expressive, readable, and quick to develop
 - [Node.js](http://www.nodejs.org/) - Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications
 
-## Installation
+## Set and Install Gatorbook
 
 The following instructions are the most common to get the development environment up and running, if you run into issues, check out the [feedback](#Feedback) section and let us know what issues you met.
 
@@ -81,7 +81,7 @@ npm install -g bcrypt-nodejs
 - Ubuntu: `sudo apt-get -y install mongodb=3.4.9`
 
 #### Source code
-To install our source code, try
+To install our source code
 ```bash
 git clone https://github.com/yummycoding/weLoveFaceBook
 cd weLoveFaceBook
@@ -89,23 +89,28 @@ npm install
 ```
 
 ## Mount Program
-To mount Gatorbook server and try to use it in your browser:
+After setting up the environment needed and installing our source code, now you can mount Gatorbook server and use the app on your own end!
+
+To mount Gatorbook server:
 
 - In your terminal, key in `mongod`. This will open your database.
 
-- Then change your working directory to folder "frontend", and key in `ng build -w` in your terminal. This will build dist for your front end. 
+- Then open a new terminal and change your working directory to folder "frontend", and key in `ng build -w`. This will build dist for your front end. 
 
-- At last change your working directory to folder "backend", key in `nodemon server.js`, which use the dist built in step 2, and mount the server on https://localhost:3000.
+- At last open another terminal and change your working directory to folder "backend", key in `nodemon server.js`, which use the dist built in step 2, and mount the server on https://localhost:3000.
 
-- Then in your browser, view https://localhost:3000 and you are now able to use our application on your own computer.
+Enjoy using Gatorbook:
+
+- In your browser, view https://localhost:3000 and you are now able to use our application on your own computer!
 
 ## Testing
-- [Instructions on front end unit test](https://github.com/yummycoding/weLoveFaceBook/wiki/Making-Client-side-Tests)
-- [Instructions on back end unit test](https://github.com/yummycoding/weLoveFaceBook/wiki/Making-Server-side-Tests)
-- [Instructions on e2e test](https://github.com/yummycoding/weLoveFaceBook/wiki/Making-End-to-End-Tests)
+For testing, we did unit testing for both front and back end when developing, also e2e testing were done to make sure project works as a whole.
+- [Instructions on front end unit testing](https://github.com/yummycoding/weLoveFaceBook/wiki/Making-Client-side-Tests)
+- [Instructions on back end unit testing](https://github.com/yummycoding/weLoveFaceBook/wiki/Making-Server-side-Tests)
+- [Instructions on e2e testing](https://github.com/yummycoding/weLoveFaceBook/wiki/Making-End-to-End-Tests)
  
 ## Feedback
-If you have any doubts, questions or ideas for improvement, we'd like to hear from you, clike [here](https://github.com/yummycoding/weLoveFaceBook/issues/new) to give use your feedback!
+If you have any doubts, questions or ideas for improvement, feel free to give us your feedback [here](https://github.com/yummycoding/weLoveFaceBook/issues/new) !
 
 
 ## License and Authors
