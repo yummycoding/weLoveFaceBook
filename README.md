@@ -102,7 +102,7 @@ To mount Gatorbook server and try to use it in your browser:
 # Testing
 - [Instructions on front end unit test](https://github.com/yummycoding/weLoveFaceBook/wiki/Making-Client-side-Tests)
 - [Instructions on back end unit test](https://github.com/yummycoding/weLoveFaceBook/wiki/Making-Server-side-Tests)
-- [Instructions on unit test](https://github.com/yummycoding/weLoveFaceBook/wiki/Making-End-to-End-Tests)
+- [Instructions on e2e test](https://github.com/yummycoding/weLoveFaceBook/wiki/Making-End-to-End-Tests)
  
 # Feedback
 If you have any doubts, questions or ideas for improvement, we'd like to hear from you, clike [here](https://github.com/yummycoding/weLoveFaceBook/issues/new) to give use your feedback!
