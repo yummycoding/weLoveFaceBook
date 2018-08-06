@@ -5,33 +5,28 @@
 # WeLoveFacebook （Gatorbook）
 Gatorbook is a Facebook-like social network web application built using MEAN stack (MongoDB, Express, Angular 4, Node.js), with nearly ALL features you have on a facebook!
 
-For users, user guide can be found [here](https://github.com/yummycoding/weLoveFaceBook/wiki/Front-End-Documentation) (You can see what our interface look like there :) )
-For developers, RESTful API can be found [here](https://github.com/yummycoding/weLoveFaceBook/wiki/REST-API-Documentation)
+- For users, user guide can be found [here](https://github.com/yummycoding/weLoveFaceBook/wiki/Front-End-Documentation) (You can see what our interface looks like there :) )
 
-## Authors
-| Name | UFID | Github |
-|------|------|--------|
-|You Zhou|14****01|ZhouYou528|
-|Junhao Zhang|27****46|zjunhao|
-|Zhuoru Li|79****51|wobusimanong|
-|Zhenqian Guo|46****76|GrandStar & smallGrandstar|
+- For developers, RESTful API can be found [here](https://github.com/yummycoding/weLoveFaceBook/wiki/REST-API-Documentation)
+
+- To get started and mount Gatorbook on your own computer, please read the following
 
 <img src="https://github.com/yummycoding/weLoveFaceBook/blob/newb/frontend/src/assets/images-home/gator.png" width="300">
 
-
 **Table of Contents**
 
-- [MEAN](#mean)
+- [MEAN stack](#mean)
 - [Installation](#installation)
   - [Node v6.11.2](#node-v6.11.2)
   - [NPM global dependencies](#npm-global-dependencies)
   - [MongoDB v3.4.9](#mongodb-v3.4.9)
   - [Source code](#source-code)
 - [Usage](#usage)
-- [Issues](#issues)
-- [Contributors](#contributors)
-- [Contact](#contact)
 - [Licence](#licence)
+- [Authors](#authors)
+- [Feedback your suggestions](#issues)
+
+
 
 # MEAN
 
@@ -101,11 +96,15 @@ npm install
    
  
 # Issues
-For any questions, ideas for improvement use [click here](https://github.com/yummycoding/weLoveFaceBook/issues/new).
+For any questions, ideas for improvement please use [click me](https://github.com/yummycoding/weLoveFaceBook/issues/new) to give us your feedback.
 
-# Contact
-
-# Licence
+# Authors
+| Name | GitHub ID | Contact Information |
+|------|-----------|---------------------|
+|You Zhou|ZhouYou528| |
+|Junhao Zhang|zjunhao| |
+|Zhuoru Li|wobusimanong| |
+|Zhenqian Guo|GrandStar & smallGrandstar| |
 
 ## Development server
 
