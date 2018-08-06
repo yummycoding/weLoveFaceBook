@@ -21,8 +21,8 @@ Gatorbook is a Facebook-like social network web application built using MEAN sta
   - [NPM global dependencies](#npm-global-dependencies)
   - [MongoDB v3.4.9](#mongodb-v3.4.9)
   - [Source code](#source-code)
-- [Mount Our Program](#usage)
-- [Licence](#licence)
+- [Mount Program](#mount program)
+- [License](#license)
 - [Authors](#authors)
 - [Feedback your suggestions](#Feedback)
 
@@ -88,7 +88,7 @@ cd weLoveFaceBook
 npm install
 ```
 
-## Usage
+## Mount Program
 To mount Gatorbook server and try to use it in your browser:
 
 - In your terminal, key in `mongod`. This will open your database.
