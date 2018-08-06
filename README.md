@@ -24,7 +24,7 @@ Gatorbook is a Facebook-like social network web application built using MEAN sta
 - [Mount Program](#mount-program)
 - [License](#license)
 - [Authors](#authors)
-- [Feedback your suggestions](#Feedback)
+- [Feedback your suggestions](#feedback)
 
 
 
