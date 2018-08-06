@@ -16,7 +16,7 @@ Gatorbook is a Facebook-like social network web application built using MEAN sta
 **Table of Contents**
 
 - [MEAN Stack Introduction](#about-mean-stack)
-- [Setup Environment and Install Our Code](#set-and-install-Gatorbook)
+- [Setup Environment and Install Our Code](#setup-and-install)
   - [Node v6.11.2](#node-v6.11.2)
   - [NPM global dependencies](#npm-global-dependencies)
   - [MongoDB v3.4.9](#mongodb-v3.4.9)
@@ -35,9 +35,9 @@ Gatorbook is a Facebook-like social network web application built using MEAN sta
 - [Angular 4](https://angular.io/) - based framework. -Angular lets you extend HTML vocabulary for your application. The resulting environment is extraordinarily expressive, readable, and quick to develop
 - [Node.js](http://www.nodejs.org/) - Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications
 
-## Set and Install Gatorbook
+## Setup and Install
 
-The following instructions are the most common to get the development environment up and running, if you run into issues, check out the [feedback](#Feedback) section and let us know what issues you met.
+The following instructions are the most common ways to get the development environment up and running, if you run into issues, check out the [feedback](#Feedback) section and let us know what issues you met.
 
 #### Node v6.11.2
 You need Node 6.11.2 in your system. Verify if you already have it with `node -v`. If not or different version, you can use Node Version Manager (nvm) to install it.
