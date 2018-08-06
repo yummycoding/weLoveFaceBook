@@ -15,16 +15,16 @@ Gatorbook is a Facebook-like social network web application built using MEAN sta
 
 **Table of Contents**
 
-- [MEAN stack](#mean)
-- [Installation](#installation)
+- [MEAN Stack Introduction](#mean)
+- [Setup Environment and Install Our Code](#installation)
   - [Node v6.11.2](#node-v6.11.2)
   - [NPM global dependencies](#npm-global-dependencies)
   - [MongoDB v3.4.9](#mongodb-v3.4.9)
   - [Source code](#source-code)
-- [Usage](#usage)
+- [Mount Our Program](#usage)
 - [Licence](#licence)
 - [Authors](#authors)
-- [Feedback your suggestions](#issues)
+- [Feedback your suggestions](#Feedback)
 
 
 
@@ -37,7 +37,7 @@ Gatorbook is a Facebook-like social network web application built using MEAN sta
 
 # Installation
 
-The following instructions are the most common to get the development environment up and running, if you run into issues, check out the [issues](#issues) section and let us know what issues you met.
+The following instructions are the most common to get the development environment up and running, if you run into issues, check out the [feedback](#Feedback) section and let us know what issues you met.
 
 ## Node v6.11.2
 You need Node 6.11.2 in your system. Verify if you already have it with `node -v`. If not or different version, you can use Node Version Manager (nvm) to install it.
@@ -81,7 +81,7 @@ npm install -g bcrypt-nodejs
 - Ubuntu: `sudo apt-get -y install mongodb=3.4.9`
 
 ## Source code
-You can build the project from scratch following the instructions below.
+To install our source code, try
 ```bash
 git clone https://github.com/yummycoding/weLoveFaceBook
 cd weLoveFaceBook
@@ -89,14 +89,24 @@ npm install
 ```
 
 ## Usage
-   - cd backend and then run server: `nodemon`
-   - run tests: `npm test`
-   - run e2e test:
-   - compile assets: `ng build`
+To mount Gatorbook server and try to use it in your browser:
+
+- In your terminal, key in `mongod`. This will open your database.
+
+- Then change your working directory to folder "frontend", and key in `ng build -w` in your terminal. This will build dist for your front end. 
+
+- At last change your working directory to folder "backend", key in `nodemon server.js`, which use the dist built in step 2, and mount the server on https://localhost:3000.
+
+- Then in your browser, view https://localhost:3000 and you are now able to use our application on your own computer.
+
    
  
-# Issues
-For any questions, ideas for improvement please use [click me](https://github.com/yummycoding/weLoveFaceBook/issues/new) to give us your feedback.
+# Feedback
+If you have any doubts, questions or ideas for improvement, we'd like to hear from you, clike [here](https://github.com/yummycoding/weLoveFaceBook/issues/new) to give use your feedback!
+
+
+# License
+
 
 # Authors
 | Name | GitHub ID | Contact Information |
@@ -105,6 +115,14 @@ For any questions, ideas for improvement please use [click me](https://github.co
 |Junhao Zhang|zjunhao| |
 |Zhuoru Li|wobusimanong| |
 |Zhenqian Guo|GrandStar & smallGrandstar| |
+
+
+
+
+
+
+
+
 
 ## Development server
 
@@ -132,14 +150,13 @@ Before running the tests make sure you are serving the app via `ng serve`.
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 ## Usage
-mongod (open database)
 
-cd frontend
-ng build -w (build dist for front end)
-
-cd backend
-nodemon server.js (backend server.js use dist for front end, and mount server on localhost:3000)
 
 When do e2e testing 
 cd frontend/e2e
 ng e2e --no-serve
+
+   - cd backend and then run server: `nodemon`
+   - run tests: `npm test`
+   - run e2e test:
+   - compile assets: `ng build`
