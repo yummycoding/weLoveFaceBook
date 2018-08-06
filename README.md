@@ -2,16 +2,19 @@
 [![Coverage Status](https://coveralls.io/repos/github/jsdoc2md/jsdoc-to-markdown/badge.svg?branch=master)](https://coveralls.io/github/jsdoc2md/jsdoc-to-markdown?branch=master)
 [![view on npm](http://img.shields.io/npm/v/jsdoc-to-markdown.svg)](https://www.npmjs.org/package/jsdoc-to-markdown)
 
-# WeLoveFacebook
-## Group Members
+# WeLoveFacebook （Gatorbook）
+Gatorbook is a Facebook-like social network web application built using MEAN stack (MongoDB, Express, Angular 4, Node.js), with nearly ALL features you have on a facebook!
+
+For users, user guide can be found [here](https://github.com/yummycoding/weLoveFaceBook/wiki/Front-End-Documentation) (You can see what our interface look like there :) )
+For developers, RESTful API can be found [here](https://github.com/yummycoding/weLoveFaceBook/wiki/REST-API-Documentation)
+
+## Authors
 | Name | UFID | Github |
 |------|------|--------|
 |You Zhou|14****01|ZhouYou528|
 |Junhao Zhang|27****46|zjunhao|
 |Zhuoru Li|79****51|wobusimanong|
 |Zhenqian Guo|46****76|GrandStar & smallGrandstar|
-              
-This social network application was built with MongoDB, Express, Angular4, Node.js.
 
 <img src="https://github.com/yummycoding/weLoveFaceBook/blob/newb/frontend/src/assets/images-home/gator.png" width="300">
 
